@@ -1,51 +1,51 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    <! CSRF Token
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>MariDonasi</title>
+ -->
+     <!-- Favicons 
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+-->
+  <!-- Google Fonts 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+-->
+  <!-- Bootstrap CSS File 
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+-->
+  <!-- Libraries CSS Files 
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+-->
+  <!-- Main Stylesheet File 
+  <link href="css/style.css" rel="stylesheet">-->
 
     <!-- Styles -->
-     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
-    <!-- Main Stylesheet File -->
-</head>
+     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">  
+     Main Stylesheet File -->
+<!--</head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    
-                        <a class="navbar-brand " href="{{ url('/') }}">
-                            MariDonasi
-                        </a>
-                    
+        <header id="header">
+            <div class="container-fuild">
+                <div id="logo" class="pull-left">
+                    <h1>
+                        <a href="{{url('/')}}">MariDonasi</a>
+                    </h1>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <div id="logo" class="pull-left">
-                            &nbsp;
-                        </div>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -71,10 +71,12 @@
                                 </ul>
                             </li>
                         @endguest
+                        
                     </ul>
-                </div>
+                </nav>
             </div>
-        </nav>
+            
+        </header>
 
         @yield('content')
     </div>
@@ -83,3 +85,4 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+ -->

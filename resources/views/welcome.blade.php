@@ -178,7 +178,7 @@
 
     <!--==========================
       Featured Services Section
-    ============================-->
+    ============================
     <section id="featured-services">
       <div class="container">
         <div class="row">
@@ -203,7 +203,7 @@
 
         </div>
       </div>
-    </section><!-- #featured-services -->
+    </section><! #featured-services -->
 
     <!--==========================
       Portfolio Section
@@ -212,7 +212,7 @@
       <div class="container">
 
         <header class="section-header">
-          <h3 class="section-title">Our Portfolio</h3>
+          <h3 class="section-title">Donasi</h3>
         </header>
 
         <div class="row">
@@ -369,9 +369,9 @@
     ============================-->
     <section id="call-to-action" class="wow fadeIn">
       <div class="container text-center">
-        <h3>Call To Action</h3>
-        <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a class="cta-btn" href="#">Call To Action</a>
+        <h3>Galang Dana</h3>
+        <p> Anda bisa menggalang dana untuk orang yang tersayang</p>
+        <a class="cta-btn" href="#">Buat Campaign</a>
       </div>
     </section><!-- #call-to-action -->
 
@@ -544,7 +544,7 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 wow fadeInUp">
+          <div class="col-lg-2 col-md-6 wow fadeInUp">
             <div class="member">
               <img src="img/team-1.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -562,7 +562,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="member">
               <img src="img/team-2.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -580,7 +580,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="member">
               <img src="img/team-3.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -598,7 +598,43 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="img/team-4.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="img/team-4.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
             <div class="member">
               <img src="img/team-4.jpg" class="img-fluid" alt="">
               <div class="member-info">
@@ -730,15 +766,15 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>BizPage</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <h3>MariDonasi</h3>
+            <p>Mari Donasi merupakan website untuk membantu orang-orang yang membutuhkan dengan mendonasikan uang atau barang.</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#abaut">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
@@ -768,9 +804,7 @@
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit"  value="Subscribe">
-            </form>
+            
           </div>
 
         </div>

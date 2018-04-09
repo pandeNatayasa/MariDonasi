@@ -75,16 +75,7 @@
           <li><a href="#about">About Us</a></li>
           
           <li><a href="#contact">Contact</a></li>
-          @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+          
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
