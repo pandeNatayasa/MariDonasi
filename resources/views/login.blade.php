@@ -37,20 +37,20 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">MariDonasi</a></h1>
+        <h1><a href="{{ url('/') }}" class="scrollto">MariDonasi</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#team">Team</a></li>
           <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                            <li><a href="#team">Team</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -99,23 +99,44 @@
                       <p>Enter your email and password to log on:</p>
                             
                       <div >
-                        <form role="form" action="{{ action('memberController@store')}}" method="post" class="login-form">
+                        <form role="form" action="{{ route('login') }}" method="POST" class="login-form">
                           {{ csrf_field()}}
-                          <div class="form-group">
-                            <label class="sr-only" for="form-email">Username</label>
-                            <input type="email" placeholder="Email..." name="form_email" class=" form-control" id="form-email">
+                          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="sr-only" for="form-email">E-mail Address</label>
+                            <input type="email" placeholder="Email..." name="form_email" class=" form-control" id="form-email" value="{{ old('email') }}">
+
+                            @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                           </div>
-                          <div class="form-group">
+                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="sr-only" for="form-password">Password</label>
                             <input type="password" name="form_password" placeholder="Password..." class="form-control" id="form-password">
+                            @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
                           </div>
                           <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin">Sign in!</button>
-                        </form>
+                        
                         <div class="forgot-password-turun">
                           <a href="#" class="forgot-password"> 
                             Forgot the password?
                           </a>
                         </div>
+                        </form>
                       </div>  
                     </div>
                   </div>

@@ -133,6 +133,17 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(104, 145, 162);
 }
 
+.remember{
+  color: white;
+}
+.remember:hover,
+.remember:active{
+  color: rgb(104, 145, 162);
+  },
+.remember:focus{
+    color: #0069d9;
+}
+
 .forgot-password:hover,
 .forgot-password:active,
 .forgot-password:focus{
