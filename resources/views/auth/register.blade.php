@@ -110,7 +110,7 @@
 
                             <div class="col-md-12">
                               <center>
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input rows="6" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                               </center>
                               @if ($errors->has('name'))
