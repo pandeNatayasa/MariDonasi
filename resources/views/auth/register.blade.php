@@ -110,7 +110,7 @@
 
                             <div class="col-md-12">
                               <center>
-                                <input rows="6" id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input rows="6" id="name" type="text" placeholder="Your Name..." class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                               </center>
                               @if ($errors->has('name'))
@@ -126,7 +126,7 @@
                             </center>
                             <div class="col-md-12">
                               <center>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" placeholder="Your E-Mail..." name="email" value="{{ old('email') }}" required>
                               </center>
                               @if ($errors->has('email'))
                                     <span class="help-block">
@@ -142,7 +142,7 @@
                             </center>
                               <div class="col-md-12">
                                 <center>
-                                  <input id="password" type="password" class="form-control" name="password" required>
+                                  <input id="password" type="password" class="form-control" placeholder="Password..." name="password" required>
                                 </center>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -157,7 +157,7 @@
                                 <label for="password-confirm" class="col-md-12 control-label">Confirm Password :</label>
                               </center>
                               <div class="col-md-12">
-                                  <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                  <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password..." name="password_confirmation" required>
                               </div>
                             </div>
                           

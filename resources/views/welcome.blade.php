@@ -51,7 +51,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu-active"><a href="#intro">Welcome</a></li>
           <!--<ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">App</li>
