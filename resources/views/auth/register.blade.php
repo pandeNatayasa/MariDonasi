@@ -81,9 +81,9 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel">
+  <section id="introo">
+    <div class="introo-container">
+      <div id="introoCarousel">
 
         <ol class="carousel-indicators"></ol>
 
@@ -105,7 +105,7 @@
                           
                           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <center>
-                              <label for="name" class="col-md-12 control-label">Name</label>
+                              <label for="name" class="col-md-12 control-label">Name :</label>
                             </center>
 
                             <div class="col-md-12">
@@ -122,7 +122,7 @@
                           </div>
                           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <center>
-                              <label for="email" class="col-md-12 control-label">E-Mail Address</label>
+                              <label for="email" class="col-md-12 control-label">E-Mail Address :</label>
                             </center>
                             <div class="col-md-12">
                               <center>
@@ -138,7 +138,7 @@
                           
                           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <center>
-                              <label for="password" class="col-md-4 control-label">Password</label>
+                              <label for="password" class="col-md-12 control-label">Password :</label>
                             </center>
                               <div class="col-md-12">
                                 <center>
@@ -154,7 +154,7 @@
                           
                             <div class="form-group">
                               <center>
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-12 control-label">Confirm Password :</label>
                               </center>
                               <div class="col-md-12">
                                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -163,7 +163,7 @@
                           
                             <div class="form-group">
                               <div class="col-md-12 col-md-offset-4">
-                                  <button type="submit" class="btn btn-primary">
+                                  <button type="submit" class="btn btn-get-started">
                                       Register
                                   </button>
                               </div>
