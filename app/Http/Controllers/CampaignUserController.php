@@ -14,7 +14,7 @@ class CampaignUserController extends Controller
      */
     public function index()
     {
-        return view('userHome');
+        return view('tutorial_galang_dana');
     }
 
     /**

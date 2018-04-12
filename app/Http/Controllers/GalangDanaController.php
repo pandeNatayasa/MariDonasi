@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Member;
+use App\galang_dana;
 use Illuminate\Http\Request;
 
-class MemberController extends Controller
+class GalangDanaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('asli');
+         return view('tutorial_galang_dana');
     }
 
     /**
@@ -35,22 +35,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->form_email;
-        $pass = $request->form_password;
-        if($email=='nata@gmail.com' && $pass=='12345'){
-            return view('index');
-        }else{
-            return view('login');
-        }
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Member  $member
+     * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(galang_dana $galang_dana)
     {
         //
     }
@@ -58,10 +52,10 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Member  $member
+     * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit(galang_dana $galang_dana)
     {
         //
     }
@@ -70,10 +64,10 @@ class MemberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Member  $member
+     * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, galang_dana $galang_dana)
     {
         //
     }
@@ -81,10 +75,10 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Member  $member
+     * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy(galang_dana $galang_dana)
     {
         //
     }

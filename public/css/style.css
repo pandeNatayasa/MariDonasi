@@ -153,6 +153,36 @@ h1, h2, h3, h4, h5, h6 {
 .forgot-password:focus{
     color: #0069d9;
 }
+
+/*--------------------------------------------------------------
+# Intro Section for tutorial galang dana
+--------------------------------------------------------------*/
+#introgd {
+  display: block;
+  width: 100%;
+  height: 14vh;
+  background: #000;
+}
+
+#introgd .carousel-item {
+  width: 100%;
+  height: 14vh;
+  background-size: ;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#introgd .carousel-item::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/

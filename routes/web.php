@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/member','memberController');
+Route::resource('/member','memberController')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('/campaignUser','CampaignUserController');
 
 Route::get('users','RekUserController@index')->middleware('auth');
+
+Route::resource('/galangDana','GalangDanaController')->middleware('auth');

@@ -176,34 +176,6 @@
 
   <main id="main">
 
-    <!--==========================
-      Featured Services Section
-    ============================
-    <section id="featured-services">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 box">
-            <i class="ion-ios-bookmarks-outline"></i>
-            <h4 class="title"><a href="">Donasi</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-
-          <div class="col-lg-4 box box-bg">
-            <i class="ion-ios-stopwatch-outline"></i>
-            <h4 class="title"><a href="">Galang Dana</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-
-          <div class="col-lg-4 box">
-            <i class="ion-ios-heart-outline"></i>
-            <h4 class="title"><a href="">Foundariser</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-
-        </div>
-      </div>
-    </section><! #featured-services -->
 
     <!--==========================
       Portfolio Section
@@ -371,7 +343,7 @@
       <div class="container text-center">
         <h3>Galang Dana</h3>
         <p> Anda bisa menggalang dana untuk orang yang tersayang</p>
-        <a class="cta-btn" href="#">Buat Campaign</a>
+        <a class="cta-btn" href="{{'/home'}}">Buat Campaign</a>
       </div>
     </section><!-- #call-to-action -->
 
@@ -389,24 +361,19 @@
 
         <div class="row counters">
 
-                <div class="col-lg-3 col-6 text-center">
+                <div class="col-lg-4 col-6 text-center">
+            <p>Campaign Terdanai</p>
             <span data-toggle="counter-up">274</span>
-            <p>Clients</p>
                 </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>Projects</p>
+          <div class="col-lg-4 col-6 text-center">
+            <p>Donasi Terkumpul</p>
+            <span data-toggle="counter-up">16,000000</span>
                 </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col-lg-4 col-6 text-center">
+            <p>Jumlah Partisipan</p>
             <span data-toggle="counter-up">1,364</span>
-            <p>Hours Of Support</p>
-                </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>Hard Workers</p>
                 </div>
 
             </div>
