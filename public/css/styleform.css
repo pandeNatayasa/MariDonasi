@@ -1,0 +1,102 @@
+
+.box{
+	width: 100%;
+	height: auto;
+	position: static;
+	padding-top: 0px;
+	padding-bottom: 10px;
+}
+.box-head{
+	position: static;
+	width: 100%;
+	    padding-top: 20px;
+	min-height: 70px;
+	display: block;
+	background-color:#212a4d;
+	padding-bottom: 15px;
+	opacity: 1;
+}
+.box-head h3{
+	color: #ffffff;
+	text-align: center;
+	margin: 0 auto;
+	opacity: 1;
+}
+
+.box-head h3 span{
+	font-family: 'Mogra', cursive;
+	color:  #2a2a63;
+	background-color: #c8db4c;
+	font-weight: bold;
+	padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.box-head h4 span{
+	font-family: 'Mogra', cursive;
+	color:  #2a2a63;
+	background-color: #c8db4c;
+	font-weight: bold;
+	padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.box-head h4{
+	font-family: 'Josefin Sans', cursive;
+	color: #ffffff;
+	padding-top: 25px;
+	text-align: center;
+	margin: 0 auto;
+	opacity: 1;
+}
+.box-body{
+	position: static;
+	max-width: 100%;
+	min-height: 10px;
+	display: block;
+	padding:15px; 
+	font-family: 'Arial';
+	font-weight: 0px;
+	text-align: center;
+	background-color:#fafafa;
+}
+.box-body p{
+	text-align: center;
+}
+
+.box-body h4{
+	/*font-family: 'Roboto', cursive;*/
+	color: #000;
+	text-align: center;
+	opacity: 1;
+	margin-bottom: 15px;
+}
+.box-foot{
+	position: static;
+	width: 100%;
+	padding-top: 10px;
+	min-height: 10px;
+	display: block;
+	background-color:#212a4d;
+	padding-bottom: 10px;
+	opacity: 1;
+}
+.box-body-col{
+	font-family: 'Century Gothic' cursive;
+	border: 2px solid #d7d7d7;
+	background-color:#fff; 
+    border-radius: 8px;
+    width: 100%;
+    min-height: 15px;
+    padding:15px; 
+    margin-top:10px;
+    margin-bottom:10px;
+    opacity: 1;
+}
+
+.box-body-col h4{
+	font-family: 'Century Gothic', cursive;
+}

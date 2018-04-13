@@ -30,6 +30,7 @@
 
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +50,7 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li><a href="{{ url('/') }}">Welcome</a></li>
-
+          <li><a href="{{ url('/home') }}">Home</a></li>
           <li>
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -90,35 +91,30 @@
      <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio"  >
+    <section id="makecampaign"  >
       <div class="container">
 
-        <header class="section-header">
+        <header class="section-header" style="margin-top: 10px">
           <h3 class="section-title">Make Your Campaign</h3>
         </header>
 
-        <div class="row">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter=".filter-web" class="filter-active">Informasi Campaign</li>
-              <li data-filter=".filter-app">Cerita Campaign</li>
-            </ul>
-          </div>
-        </div>
-
         <div class="row portfolio-container">
-          <div class="col-lg-12 col-md-12 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-            <form action="" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+          <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                  
+                  <div class="box" style="margin-top: 10px;">
+                     <form action="" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
              
                      <div class="box-body">
-                     <h3 style="text-align: center; font-family: 'Lobster', cursive; font-size: 30px;">Form Pendaftaran Pengembangan Ide Bisnis TIK</h3>
                         <div class="box-body-col">
                            <h4>Data Tim</h4>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Nama Tim</label>
+                            <div class="row">
+                              <label class="control-label col-md-2">Nama Tim</label>
                              <div class="col-md-9">
                                  <input class="form-control" placeholder="ex. 'Team Greentea'" name="groupname" required="required" type="text" value="">
                              </div>
+                            </div>
+                             
                            </div>
                            <div class="form-group">
                              <label class="control-label col-md-3">Asal Institusi</label>
@@ -215,22 +211,8 @@
                      
                      
                      </form>
-          </div>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="portfolio-info">
-                <h4><a href="#">App 1</a></h4>
-                <p>App</p>
-              </div>
-            </div>
-          </div>
-
+                  </div>
+               </div>
           
         </div>
 

@@ -50,39 +50,18 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Galang Dana</a></li>
-          <!--<ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul> -->
-          <!-- <li class="menu-has-children"><a href="">All</a>
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active"><a href="#"> ALL</a></li>
-              <li data-filter=".filter-app"><a href="#"> Beasiswa & Pendidikan</a></li>
-              <li data-filter=".filter-card">Lingkungan </li>
-              <li data-filter=".filter-web">PantiAsuhan</li>
-              <li><a href="#">Bencana Alam</a></li>
-              <li><a href="#">Menolong Hewan</a></li>
-              <li><a href="#">Kemanusiaan</a></li>
-              <li><a href="#">Kategori Lain</a></li>
-            </ul>
-          </li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#about">About Us</a></li>
+          <li class="menu-active"><a href="{{route('galangDana.index')}}">Galang Dana</a></li>
           
-          <li><a href="#contact">Contact</a></li> -->
           <li>
               @if (Route::has('login'))
-                <div class="top-right links">
+                <!-- <div class="top-right links"> -->
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
-                </div>
+                <!-- </div> -->
             @endif
           </li>
           
@@ -149,7 +128,7 @@
 
         </div>
         <center>
-          <a href="{{route('campaignUser.create')}}" class="btn-buat-campaign">Buat Campaign</a>
+          <a href="{{route('campaignUser.create')}}" class="btn btn-primary wow bounceInUp">Buat Campaign</a>
         </center>
       </div>
     </section><!-- #services -->
