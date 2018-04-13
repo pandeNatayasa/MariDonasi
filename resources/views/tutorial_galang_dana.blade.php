@@ -149,7 +149,7 @@
 
         </div>
         <center>
-          <a href="#" class="btn-buat-campaign">Get Started</a>
+          <a href="{{route('campaignUser.create')}}" class="btn-buat-campaign">Buat Campaign</a>
         </center>
       </div>
     </section><!-- #services -->

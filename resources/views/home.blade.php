@@ -203,7 +203,7 @@
           <h3 class="section-title">DONASI</h3>
         </header>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
@@ -212,7 +212,7 @@
               <li data-filter=".filter-web">Web</li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
         <div class="row portfolio-container">
 
