@@ -15,6 +15,12 @@ class CreateGalangDanasTable extends Migration
     {
         Schema::create('galang_danas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_user_organisasi');
+            $table->integer('id_campaign_user_organisasi');
+            $table->biginteger('nominal',20);
+            $table->enum('bank',['bri','bni','mandiri','bca','cimb']);
+            $table->enum('status',['onGoing','paidOff','cancel']);
+            $table->enum('privacy',['anonim','publik']);
             $table->timestamps();
         });
     }

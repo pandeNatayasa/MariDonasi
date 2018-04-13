@@ -15,6 +15,10 @@ class CreateRekUsersTable extends Migration
     {
         Schema::create('rek_users', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_user');
+            $table->string('no_rek',20);
+            $table->string('nama',50);
+            $table->enum('status',['verified','non_verified']);
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_campaign');
+            $table->string('url_media',200);
             $table->timestamps();
         });
     }

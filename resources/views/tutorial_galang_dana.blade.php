@@ -149,7 +149,7 @@
 
         </div>
         <center>
-          <a href="{{route('detailnota.destroy',$data->id) }}"" class="btn-buat-campaign">Get Started</a>
+          <a href="#" class="btn-buat-campaign">Get Started</a>
         </center>
       </div>
     </section><!-- #services -->

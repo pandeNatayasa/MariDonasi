@@ -15,6 +15,10 @@ class CreateRekOrganisasisTable extends Migration
     {
         Schema::create('rek_organisasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_organisas');
+            $table->string('no_rek',20);
+            $table->string('nama',50);
+            $table->enum('status',['verified','non_verified']);
             $table->timestamps();
         });
     }
