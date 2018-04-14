@@ -51,7 +51,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu-active"><a href="{{url('/home')}}">Home</a></li>
           <li class="menu-has-children"><a href="">ALL Kategori</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>

@@ -145,7 +145,7 @@
                               <label class="control-label col-md-3">Kategori Campaign</label>
                               <div class="col-md-9">
                                   <select name="kategoriCampaign" class="form-control" required="required">
-                                  <option value="">Pilih Kategori Campaign</option>
+                                  <option value="" disabled selected>Pilih Kategori Campaign</option>
                                   <option value="balitaDanAnak">Balita & Anak</option>
                                   <option value="bencanaAlam">Bencana Alam</option> 
                                   <option value="Pendidikan">Pendidikan</option>
@@ -159,7 +159,7 @@
                                 <label class="control-label col-md-3">Lokasi Penerima Dana</label>
                                 <div class="col-md-9">
                                   <select name="lokasi" class="form-control" required="required">
-                                  <option value="">Pilih Lokasi Penerima Dana</option>
+                                  <option value="" disabled selected>Pilih Lokasi Penerima Dana</option>
                                   <option value="baliBangli">Prov. Bali, Kab. Bangli</option>
                                   <option value="baliBadung">Prov. Bali, kab. Badung</option> 
                                   <option value="baliGianyar">Prov. Bali, kab. Gianyar</option>
@@ -192,12 +192,13 @@
                               <div class="row">
                                 <label class="control-label col-md-3">Deskripsi Lengkap</label>
                                 <div class="col-md-9">
-                                   <input class="form-control" placeholder="deskripsi Lengkap dari campaign anda" name="deskripsiLengkap" required="required" type="textarea">
+                                   <textarea name="deskripsiLengkap" class="form-control" required="required" placeholder="deskripsi lengkap dari campaign anda" rows="6"></textarea>
                                 </div>
                               </div>
                            </div>
+                           <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px;"> 
                         </div>
-                        <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px;">  
+                         
                      </div>
                      </form>
                   </div>
