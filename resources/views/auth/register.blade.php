@@ -140,7 +140,7 @@
                             </center>
                               <div class="col-md-12">
                                 <center>
-                                  <input id="password" type="password" class="form-control" placeholder="Password..." name="password" required>
+                                  <input id="password" type="password" class="form-control" placeholder="Password..." name="password" id="pass" required>
                                 </center>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -155,10 +155,17 @@
                                 <label for="password-confirm" class="col-md-12 control-label">Confirm Password :</label>
                               </center>
                               <div class="col-md-12">
-                                  <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password..." name="password_confirmation" required>
+                                  <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password..." name="password_confirmation" id="pass2" required>
                               </div>
                             </div>
-                          
+                             <script type="text/javascript">
+                               $('#pass2nd').on('keyup', function () {
+                                     if ($(this).val() == $('#pass').val()) {
+                                         $('#message').html('Konfirmasi Password Cocok').css('color', 'green');
+                                  } 
+                                  else $('#message').html('Konfirmasi Password Tidak Cocok').css('color', 'red');
+                               });
+                            </script> 
                             <div class="form-group">
                               <div class="col-md-12 col-md-offset-4">
                                   <button type="submit" class="btn btn-get-started">

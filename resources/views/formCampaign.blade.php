@@ -106,116 +106,103 @@
              
                      <div class="box-body">
                         <div class="box-body-col">
-                           <h4>Data Tim</h4>
+                           <h4>Informasi Campaign</h4>
                            <div class="form-group">
                             <div class="row">
-                              <label class="control-label col-md-2">Nama Tim</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. 'Team Greentea'" name="groupname" required="required" type="text" value="">
-                             </div>
+                              <label class="control-label col-md-3">Judul Campaign</label>
+                              <div class="col-md-9">
+                                 <input class="form-control" placeholder="judul singkat yang menjelaskan tujuan kamu menggalang dana (0/50)" name="campaignName" required="required" type="text" value="">
+                              </div>
                             </div>
                              
                            </div>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Asal Institusi</label>
+                            <div class="row">
+                              <label class="control-label col-md-3">Target Donasi</label>
                              <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. 'SMA/SMK, Universitas'" name="institution" required="required" type="text" value="">
+                                 <input class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi" required="required" type="text" value="">
                              </div>
-                           </div>
-                        </div>
-                        <div class="box-body-col">
-                           <h4>Data Ketua Tim</h4>
-                           <div class="form-group">
-                             <label class="control-label col-md-3">Nama Lengkap</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. 'Nama Brata'" name="fullname" required="required" type="text" value="">
-                             </div>
+                            </div>
                            </div>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Tanggal Lahir</label>
+                            <div class="row">
+                              <label class="control-label col-md-3">Link Campaign</label>
                              <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. '1995/12/27'" name="birthday" required="required" type="date" value="">
+                                 <input class="form-control" placeholder="ex. 'MariDonasi.com/bantuanSurya'" name="linkCampaign" required="required" type="text" value="MariDonasi.com/">
                              </div>
+                            </div>
                            </div>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Email</label>
+                            <div class="row">
+                              <label class="control-label col-md-3">Deadline Campaign</label>
                              <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. 'mail@site.com'" name="email" required="required" type="email" value="">
+                                 <input class="form-control" placeholder="" name="contact" required="required" type="date" value="">
                              </div>
+                            </div>
                            </div>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Nomor Kontak</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="ex. '081632111111'" name="contact" required="required" type="text" value="">
-                             </div>
-                           </div>
-                           <div class="form-group">
-                             <label class="control-label col-md-3">Vegetarian</label>
-                             <div class="col-md-9">
-                                <label><input type="radio" value="Y" name="vegetarian" required="required"> Ya </label> <label><input type="radio" value="N" name="vegetarian" required="required"> Tidak</label>
-                             </div>
-                           </div>
-                           <div class="form-group">
-                              <label class="control-label col-md-3">Ukuran Baju</label>
+                            <div class="row">
+                              <label class="control-label col-md-3">Kategori Campaign</label>
                               <div class="col-md-9">
-                                  <select name="size" class="form-control" required="required">
-                                  <option value="">Pilih Ukuran Baju</option>
-                                  <option value="s">Small</option>
-                                  <option value="m">Medium</option> 
-                                  <option value="l">Large</option>
-                                  <option value="xl">Extra Large</option>          
+                                  <select name="kategoriCampaign" class="form-control" required="required">
+                                  <option value="">Pilih Kategori Campaign</option>
+                                  <option value="balitaDanAnak">Balita & Anak</option>
+                                  <option value="bencanaAlam">Bencana Alam</option> 
+                                  <option value="Pendidikan">Pendidikan</option>
+                                  <option value="Kemanusiaan">Kemanusiaan</option>          
                                   </select>
-                                  <small>*peserta yang lolos babak penyisihan akan mendapatkan baju official ITCC 2017. Size Chart dapat dilihat</small> <a data-toggle="modal" data-target="#sizeChart">DISINI</a>
                               </div>
+                            </div> 
                             </div>
-                            <div class="form-group">
-                              <label class="control-label col-md-3">Kartu Identitas</label>
-                              <div class="col-md-9">
-                                  <input name="photo" type="file" class="form-control" accept="image/*">
-                                  <small>Gambar dalam bentuk file .jpg</small> 
+                           <div class="form-group">
+                              <div class="row">
+                                <label class="control-label col-md-3">Lokasi Penerima Dana</label>
+                                <div class="col-md-9">
+                                  <select name="lokasi" class="form-control" required="required">
+                                  <option value="">Pilih Lokasi Penerima Dana</option>
+                                  <option value="baliBangli">Prov. Bali, Kab. Bangli</option>
+                                  <option value="baliBadung">Prov. Bali, kab. Badung</option> 
+                                  <option value="baliGianyar">Prov. Bali, kab. Gianyar</option>
+                                  <option value="baliDenpasar">Prov. Bali, kota Denparas</option>          
+                                  </select>
+                                </div>
                               </div>
                             </div>
                         </div>
                         <div class="box-body-col">
-                           <h4>Data Autentifikasi</h4>
+                           <h4>Cerita Campaign</h4>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Username</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="nama pengguna" name="username" required="required" type="text" value="">
-                             </div>
+                              <div class="row">
+                                <label class="control-label col-md-3">Cover Image</label>
+                                <div class="col-md-9">
+                                    <input name="photo" type="file" class="form-control" accept="image/*">
+                                    <small>Gambar dalam bentuk file .jpg</small> 
+                                </div>
+                              </div>
+                            </div>
+                           <div class="form-group">
+                              <div class="row">
+                                <label class="control-label col-md-3">Deskripsi Singkat</label>
+                               <div class="col-md-9">
+                                   <input class="form-control" placeholder="deskripsi Singat Campaign anda" name="deskripsiSingkat" required="required" type="text" value="">
+                               </div>
+                              </div>
                            </div>
                            <div class="form-group">
-                             <label class="control-label col-md-3">Password</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="kata sandi" name="password" id="pass" required="required" type="password">
-                             </div>
-                           </div>
-                           <div class="form-group">
-                             <label class="control-label col-md-3">Konfirmasi Password</label>
-                             <div class="col-md-9">
-                                 <input class="form-control" placeholder="ulangi kata sandi" name="passconf" id="pass2nd" required="required" type="password">
-                                 <span id='message'></span>
-                             </div>
+                              <div class="row">
+                                <label class="control-label col-md-3">Deskripsi Lengkap</label>
+                                <div class="col-md-9">
+                                   <input class="form-control" placeholder="deskripsi Lengkap dari campaign anda" name="deskripsiLengkap" required="required" type="textarea">
+                                </div>
+                              </div>
                            </div>
                         </div>
-                        <script type="text/javascript">
-                           $('#pass2nd').on('keyup', function () {
-                                 if ($(this).val() == $('#pass').val()) {
-                                     $('#message').html('Konfirmasi Password Cocok').css('color', 'green');
-                              } 
-                              else $('#message').html('Konfirmasi Password Tidak Cocok').css('color', 'red');
-                           });
-                        </script> 
-                        <input type="submit" name="submit" value="Daftar" class="btn button-cabang" style="margin-bottom: 20px;">  
+                        <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px;">  
                      </div>
-                     
-                     
                      </form>
                   </div>
                </div>
-          
         </div>
-
       </div>
     </section><!-- #portfolio -->
 
