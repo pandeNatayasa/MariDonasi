@@ -8,24 +8,24 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700')}}" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -51,7 +51,7 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Welcome</a></li>
+          <li class="menu-active"><a href="{{url('/')}}">Welcome</a></li>
           <!--<ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">App</li>
@@ -74,16 +74,22 @@
           <li><a href="#about">About Us</a></li>
           
           <li><a href="#contact">Contact</a></li>
-          <li>
+          
               @if (Route::has('login'))
                     @auth
+                      <li>
                         <a href="{{ url('/home') }}">Home</a>
+                      </li>
                     @else
+                      <li>
                         <a href="{{ route('login') }}">Login</a>
+                      </li>
+                      <li>
                         <a href="{{ route('register') }}">Register</a>
+                      </li>   
                     @endauth
             @endif
-          </li>
+          
           
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -102,7 +108,7 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="carousel-item active">
-            <div class="carousel-background"><img src="img/intro-carousel/1.jpg" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/1.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>We are professional</h2>
@@ -113,7 +119,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/2.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>At vero eos et accusamus</h2>
@@ -124,7 +130,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/3.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Temporibus autem quibusdam</h2>
@@ -135,7 +141,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/4.jpg" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/4.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Nam libero tempore</h2>
@@ -146,7 +152,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="img/intro-carousel/5.jpg" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/5.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Magnam aliquam quaerat</h2>
@@ -393,57 +399,57 @@
         <div class="owl-carousel testimonials-carousel">
 
           <div class="testimonial-item">
-            <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
+            <img src="{{asset('img/testimonial-1.jpg')}}" class="testimonial-img" alt="">
             <h3>Saul Goodman</h3>
             <h4>Ceo &amp; Founder</h4>
             <p>
-              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="{{asset('img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
               Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="{{asset('img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
             </p>
           </div>
 
           <div class="testimonial-item">
-            <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
+            <img src="{{asset('img/testimonial-2.jpg')}}" class="testimonial-img" alt="">
             <h3>Sara Wilsson</h3>
             <h4>Designer</h4>
             <p>
-              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="{{asset('img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
               Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="{{asset('img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
             </p>
           </div>
 
           <div class="testimonial-item">
-            <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
+            <img src="{{asset('img/testimonial-3.jpg')}}" class="testimonial-img" alt="">
             <h3>Jena Karlis</h3>
             <h4>Store Owner</h4>
             <p>
-              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="{{asset('img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
               Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="{{asset('img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
             </p>
           </div>
 
           <div class="testimonial-item">
-            <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
+            <img src="{{asset('img/testimonial-4.jpg')}}" class="testimonial-img" alt="">
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
             <p>
-              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="{{asset('img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
               Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="{{asset('img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
             </p>
           </div>
 
           <div class="testimonial-item">
-            <img src="img/testimonial-5.jpg" class="testimonial-img" alt="">
+            <img src="{{asset('img/testimonial-5.jpg')}}" class="testimonial-img" alt="">
             <h3>John Larson</h3>
             <h4>Entrepreneur</h4>
             <p>
-              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="{{asset('img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
               Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="{{asset('img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
             </p>
           </div>
 
@@ -749,7 +755,7 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
