@@ -51,6 +51,15 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'no_telp' => '0',
+            'lokasi' => '0',
+            'bio' => '0',
+            'profil_pic' => '0',
+            'ktp_pic' => '0',
+            'verif_pic' => '0',
+            'wallet' => '0',
+            'camp_earn' => '0',
+            'status' => 'non-verified',
         ]);
     }
 
@@ -66,6 +75,15 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'no_telp'=>'0',
+            'lokasi'=>'0',
+            'bio'=>'0',
+            'profil_pic'=>'0',
+            'ktp_pic'=>'0',
+            'verif_pic'=>'0',
+            'wallet'=>0,
+            'camp_earn'=>0,
+            'status'=>'non-verified',
         ]);
     }
 }

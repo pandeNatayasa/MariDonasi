@@ -17,13 +17,13 @@ class CreateCampaignUsersTable extends Migration
             $table->increments('id');
             $table->integer('id_user');
             $table->string('judul',100);
-            $table->biginteger('target_donasi',20);
+            $table->biginteger('target_donasi');
             $table->date('tgl_awal');
             $table->date('deadline');
             $table->string('kategori',150);
             $table->string('lokasi_penerima',100);
-            $table->biginteger('dana_sementara',20);
-            $table->biginteger('dana_bersih',20);
+            $table->biginteger('dana_sementara');
+            $table->biginteger('dana_bersih');
             $table->string('pic_verif',200);
             $table->timestamps();
         });

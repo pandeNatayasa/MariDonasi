@@ -15,14 +15,14 @@ class CreateCampaignOrganisasisTable extends Migration
     {
         Schema::create('campaign_organisasis', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_organisasi');
             $table->string('judul',100);
-            $table->biginteger('target_donasi',20);
+            $table->integer('id_organisasi');
+            $table->biginteger('target_donasi');
             $table->date('tgl_awal');
             $table->date('deadline');
             $table->string('kategori',150);
-            $table->biginteger('dana_sementara',20);
-            $table->biginteger('dana_bersih',20);
+            $table->biginteger('dana_sementara');
+            $table->biginteger('dana_bersih');
             $table->string('pic_verif',200);
             $table->timestamps();
         });
