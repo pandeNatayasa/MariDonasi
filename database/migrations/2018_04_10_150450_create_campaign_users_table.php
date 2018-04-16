@@ -15,7 +15,7 @@ class CreateCampaignUsersTable extends Migration
     {
         Schema::create('campaign_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user');
+            $table->unsignedInteger('id_user');
             $table->string('judul',100);
             $table->biginteger('target_donasi');
             $table->date('tgl_awal');
@@ -26,6 +26,9 @@ class CreateCampaignUsersTable extends Migration
             $table->biginteger('dana_bersih');
             $table->string('pic_verif',200);
             $table->timestamps();
+
+             Schema::disableForeignKeyConstraints();
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

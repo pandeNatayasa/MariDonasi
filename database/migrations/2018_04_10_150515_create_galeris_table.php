@@ -15,9 +15,13 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_campaign');
+            $table->unsignedInteger('id_campaign');
             $table->string('url_media',200);
             $table->timestamps();
+
+            Schema::disableForeignKeyConstraints();
+            $table->foreign('id_campaign')->references('id')->on('campaign_users');
+            // $table->foreign('id_campaign')->references('id')->on('campaign_organisasis');
         });
     }
 
