@@ -347,7 +347,7 @@
       <div class="container text-center">
         <h3>Galang Dana</h3>
         <p> Anda bisa menggalang dana untuk orang yang tersayang</p>
-        <a class="cta-btn" href="{{'/home'}}">Buat Campaign</a>
+        <a class="cta-btn" href="{{ '/galangDana'}}">Buat Campaign</a>
       </div>
     </section><!-- #call-to-action -->
 

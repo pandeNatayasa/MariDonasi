@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\campaign_user;
 use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\DB;
 
 class CampaignUserController extends Controller
 {
@@ -24,7 +26,20 @@ class CampaignUserController extends Controller
      */
     public function create()
     {
-        return view('formCampaign');
+        $art = Auth::user()->id;
+        $artikels = DB::table('users')
+        ->where('users.id','LIKE','%'.$art.'%')
+        ->select('status')
+        ->get();
+        // select('select status from users where users.id = ?', $artikel); {{ $collection[0]->title }}
+        if($artikels[0]->status =="non-verified"){
+            return view('formUpdateUser');
+        }elseif ($artikels[0]->status=="verified") {
+            return view('formCampaign');
+        }else{
+            return "not found".$artikels;
+        }
+        
     }
 
     /**

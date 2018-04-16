@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -35,13 +37,34 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $email = $request->form_email;
-        $pass = $request->form_password;
-        if($email=='nata@gmail.com' && $pass=='12345'){
-            return view('index');
-        }else{
-            return view('login');
-        }
+        // $email = $request->form_email;
+        // $pass = $request->form_password;
+
+        // if($email=='nata@gmail.com' && $pass=='12345'){
+        //     return view('index');
+        // }else{
+        //     return view('login');
+        // }
+
+        // $data=new tb_nota();
+        // $data->id_pembeli = $request->namaPembeli;
+        // $data->id_kasir = $request->namaKasir;
+        // $data->tanggal = $tanggal1;
+        // $data->total_harga=$harga;
+        // $data->save();
+        // ->update(['delayed' => 1])
+        // $dataNota= tb_nota::find($id);
+        // $dataNota->total_harga=$request->totalharga;
+        // $dataNota->save();
+
+        $idUser = Auth::user()->id;
+        $user1 = user::find($idUser);
+        $user1->no_telp=$request->noTelpUser;
+        $user1->lokasi=$request->lokasiUser;
+        $user1->bio=$request->bioUser;
+        $user1->save();
+
+        return view('formCampaign');
     }
 
     /**
