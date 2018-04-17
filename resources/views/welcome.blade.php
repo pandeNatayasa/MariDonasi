@@ -46,7 +46,7 @@
       <div id="logo" class="pull-left">
         <h1><a href="#intro" class="scrollto">MariDonasi</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+        <a href="#intro"><img src="img/logo.png" alt="" title="" width="60px" /></a>
       </div>
 
       <nav id="nav-menu-container">
@@ -62,8 +62,8 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active"><a href="#"> ALL</a></li>
               <li data-filter=".filter-app"><a href="#"> Beasiswa & Pendidikan</a></li>
-              <li data-filter=".filter-card">Lingkungan </li>
-              <li data-filter=".filter-web">PantiAsuhan</li>
+              <li data-filter=".filter-card"><a href="#">Lingkungan</a></li>
+              <li data-filter=".filter-web"><a href="#">PantiAsuhan</a></li>
               <li><a href="#">Bencana Alam</a></li>
               <li><a href="#">Menolong Hewan</a></li>
               <li><a href="#">Kemanusiaan</a></li>
@@ -108,7 +108,7 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="carousel-item active">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/1.jpg')}}" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-1.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>We are professional</h2>
@@ -119,7 +119,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/2.jpg')}}" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-2.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>At vero eos et accusamus</h2>
@@ -130,7 +130,7 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/3.jpg')}}" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-3.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Temporibus autem quibusdam</h2>
@@ -141,22 +141,11 @@
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/4.jpg')}}" alt=""></div>
+            <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-4.jpg')}}" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Nam libero tempore</h2>
                 <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/5.jpg')}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Magnam aliquam quaerat</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
               </div>
             </div>
