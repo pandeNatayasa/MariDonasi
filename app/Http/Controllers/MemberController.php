@@ -6,6 +6,7 @@ use App\Member;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -37,48 +38,18 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        // $email = $request->form_email;
-        // $pass = $request->form_password;
-
-        // if($email=='nata@gmail.com' && $pass=='12345'){
-        //     return view('index');
-        // }else{
-        //     return view('login');
-        // }
-
-        // $data=new tb_nota();
-        // $data->id_pembeli = $request->namaPembeli;
-        // $data->id_kasir = $request->namaKasir;
-        // $data->tanggal = $tanggal1;
-        // $data->total_harga=$harga;
-        // $data->save();
-        // ->update(['delayed' => 1])
-        // $dataNota= tb_nota::find($id);
-        // $dataNota->total_harga=$request->totalharga;
-        // $dataNota->save();
-
-        // $users = user::find($id);
-        // <?php
-        // if(Input::hasFile('foto')) {
-        //         $file = $request->file('foto');
-        //         $fotoName = 'usr' . $users->id . '.' .
-        //         $file->getClientOriginalExtension();
-        //         Storage::put('profile/'.$fotoName,  File::get($file));
-        //         $img = Image::make(storage_path('app/profile/' . $fotoName));
-        //         $img->resize(256, null, function ($constraint) {
-        //           $constraint->aspectRatio();
-        //         });
-        //         $img->save();
-        //         $users->foto = $fotoName;
-        //       }
-        // $users->save();
-        //
-        if ($request->hasFile('image')) {
-            $request->file('image');
-            return Storage::putFile('public/new',$request->file('image'));
-
+        if ($request->hasFile('bioUser')) {
+            $file=$request->file('bioUser');
+            $file->move('img/bio_user',$file->getClientOriginalName());
         }else{
-            return 'no selected image';
+            return 'no selected image Bio User';
+        }
+
+        if ($request->hasFile('image')) {
+            $fileBioUser=$request->file('image');
+            $fileBioUser->move('img/profil_pic',$fileBioUser->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
         }
 
         //
@@ -86,10 +57,24 @@ class MemberController extends Controller
         $user1 = user::find($idUser);
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
-        $user1->bio=$request->bioUser;
+        $user1->bio='img/bio_user/'.$fileBioUser->getClientOriginalName();
+        $user1->profil_pic='img/profil/'.$file->getClientOriginalName();
         $user1->save();
 
-        return view('formCampaign');
+        $art = Auth::user()->id;
+        $artikels = DB::table('users')
+        ->where('users.id','LIKE','%'.$art.'%')
+        ->select('status')
+        ->get();
+        // select('select status from users where users.id = ?', $artikel); {{ $collection[0]->title }}
+        if($artikels[0]->status =="non-verified"){
+            return view('formUpdateUser');
+        }elseif ($artikels[0]->status=="verified") {
+            return view('formCampaign');
+        }else{
+            return "not found".$artikels;
+        }
+
     }
 
     /**
