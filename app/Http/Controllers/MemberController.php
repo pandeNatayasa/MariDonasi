@@ -57,21 +57,30 @@ class MemberController extends Controller
         // $dataNota->total_harga=$request->totalharga;
         // $dataNota->save();
 
-        $users = User::find($id);
-        <?php
-        if(Input::hasFile('foto')) {
-                $file = $request->file('foto');
-                $fotoName = 'usr' . $users->id . '.' .
-                $file->getClientOriginalExtension();
-                Storage::put('profile/'.$fotoName,  File::get($file));
-                $img = Image::make(storage_path('app/profile/' . $fotoName));
-                $img->resize(256, null, function ($constraint) {
-                  $constraint->aspectRatio();
-                });
-                $img->save();
-                $users->foto = $fotoName;
-              }
-        $users->save();
+        // $users = user::find($id);
+        // <?php
+        // if(Input::hasFile('foto')) {
+        //         $file = $request->file('foto');
+        //         $fotoName = 'usr' . $users->id . '.' .
+        //         $file->getClientOriginalExtension();
+        //         Storage::put('profile/'.$fotoName,  File::get($file));
+        //         $img = Image::make(storage_path('app/profile/' . $fotoName));
+        //         $img->resize(256, null, function ($constraint) {
+        //           $constraint->aspectRatio();
+        //         });
+        //         $img->save();
+        //         $users->foto = $fotoName;
+        //       }
+        // $users->save();
+        //
+        if ($request->hasFile('image')) {
+            $request->file('image');
+            return Storage::putFile('public/new',$request->file('image'));
+
+        }else{
+            return 'no selected image';
+        }
+
         //
         $idUser = Auth::user()->id;
         $user1 = user::find($idUser);
