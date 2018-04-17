@@ -107,7 +107,7 @@
                               <label class="sr-only" for="email">E-mail Address</label>
                               <input type="email" placeholder="Email..." name="email" class=" form-control" id="email" value="{{ old('email') }}" required autofocus>
                             </center>
-                            @if ($errors->has('email'))
+                                @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong style="color: red">Email anda tidak sesuai</strong>
                                     </span>

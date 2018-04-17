@@ -137,7 +137,7 @@
                             <div class="row">
                               <label class="control-label col-md-3">Profil Picture</label>
                              <div class="col-md-9">
-                                 <input class="form-control" placeholder="Your last profil picture" name="profilPicUser" required="required" type="file" value="">
+                                 <input class="form-control" placeholder="Your last profil picture" name="image" required="required" type="file" value="">
                              </div>
                             </div>
                            </div>
