@@ -183,6 +183,36 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   bottom: 0;
 }
+
+/*--------------------------------------------------------------
+# Intro Section for profil user
+--------------------------------------------------------------*/
+#introgdp {
+  display: block;
+  width: 100%;
+  height: 25vh;
+  background: #000;
+}
+
+#introgdp .carousel-item {
+  width: 100%;
+  height: 25vh;
+  background-size: ;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#introgdp .carousel-item::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/

@@ -10,12 +10,12 @@ body {
 
 /* Profile container */
 .profile {
-  margin: 20px 0;
+  padding: 40px 0;
 }
 
 /* Profile sidebar */
 .profile-sidebar {
-  padding: 20px 0 10px 0;
+  padding: 40px 0 20px 0;
   background: #fff;
 }
 
@@ -27,6 +27,7 @@ body {
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
+  align-items: center;
 }
 
 .profile-usertitle {
@@ -36,7 +37,7 @@ body {
 
 .profile-usertitle-name {
   color: #5a7391;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 7px;
 }
@@ -68,10 +69,14 @@ body {
     
 .profile-usermenu {
   margin-top: 30px;
+  padding: 0px 30px 0px 30px;
+
 }
 
 .profile-usermenu ul li {
   border-bottom: 1px solid #f0f4f7;
+  width: 100%;
+  text-decoration-style: none;
 }
 
 .profile-usermenu ul li:last-child {
@@ -80,8 +85,9 @@ body {
 
 .profile-usermenu ul li a {
   color: #93a3b5;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 400;
+  padding: 2px 0 2px 0;
 }
 
 .profile-usermenu ul li a i {

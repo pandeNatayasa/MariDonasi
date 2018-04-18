@@ -2,12 +2,17 @@
 <html>
 <head>
 	<title></title>
+	<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" > -->
+	<link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
+	<script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="lib/jquery/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+
+	<!-- Main Stylesheet File -->
+	  <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="/"> -->
 </head>
 <body>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <!--
 User Profile Sidebar by @keenthemes
@@ -42,7 +47,7 @@ Licensed under MIT
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
-					<ul class="nav">
+					<ul class="nav" >
 						<li class="active">
 							<a href="#">
 							<i class="glyphicon glyphicon-home"></i>
