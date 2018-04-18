@@ -79,9 +79,9 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="introo">
-    <div class="introo-container">
-      <div id="introoCarousel">
+  <section id="introor">
+    <div class="introor-container">
+      <div id="introorCarousel">
 
         <ol class="carousel-indicators"></ol>
 
