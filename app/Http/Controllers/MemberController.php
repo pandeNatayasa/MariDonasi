@@ -27,9 +27,17 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('profilDonasi');
     }
-
+/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createDaftarCampaign()
+    {
+        return view('profilCampaignSaya');
+    }
     /**
      * Store a newly created resource in storage.
      *

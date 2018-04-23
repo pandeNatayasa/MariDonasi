@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/member','memberController')->middleware('auth');
+Route::resource('/campaignSaya','campaignSaya')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -25,3 +26,4 @@ Route::resource('/campaignUser','CampaignUserController');
 Route::get('users','RekUserController@index')->middleware('auth');
 
 Route::resource('/galangDana','GalangDanaController')->middleware('auth');
+
