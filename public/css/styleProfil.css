@@ -53,6 +53,7 @@ body {
 .profile-userbuttons {
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 10px
 }
 
 .profile-userbuttons .btn {
@@ -62,14 +63,14 @@ body {
   padding: 6px 15px;
   margin-right: 5px;
 }
-
+.
 .profile-userbuttons .btn:last-child {
   margin-right: 0px;
 }
     
 .profile-usermenu {
   margin-top: 30px;
-  padding: 0px 30px 0px 30px;
+  padding: 0px 15px 0px 15px;
 
 }
 
@@ -83,7 +84,10 @@ body {
 .profile-usermenu ul li:last-child {
   border-bottom: none;
 }
-
+.bodyone {
+  background-color: #fff;
+  padding: 0px 20px 2px 20px;
+}
 .profile-usermenu ul li a {
   color: #93a3b5;
   font-size: 17px;
@@ -103,11 +107,11 @@ body {
 
 .profile-usermenu ul li.active {
   border-bottom: none;
+  background-color: #d0d1d5;
 }
 
 .profile-usermenu ul li.active a {
   color: #5b9bd1;
-  background-color: #f6f9fb;
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
@@ -121,13 +125,13 @@ body {
 
 /* Profile Header */
 .profile-header {
-  padding: 20px;
+  padding: 5px 0 20px 0;
   min-height: 30px;
   margin-bottom: 20px;
-  color: #5b9bd1;
+  color: black;
   border-bottom: 2px solid #5b9bd1;
   margin-bottom: -2px;
-
+  font-size: 25px;
 }
 
 /* Profile sub header */
@@ -140,8 +144,9 @@ body {
 }
 
 .profile-background {
-  background-color: #f6f9fb;
-  padding-top: 20px
+  background-color: #2e2125;
+  /*background-image: url('img/background_profil.jpg');*/
+  padding: 20px 0 5px 0;
 }
 
 /* Profile Header khusus halaman campaign saya */
@@ -152,6 +157,7 @@ body {
   color: black;
   border-bottom: 2px solid #5b9bd1;
   margin-bottom: -2px;
+  font-size: 24px;
 
 }
 

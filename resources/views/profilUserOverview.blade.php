@@ -130,13 +130,14 @@
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
+          <!-- SIDEBAR BUTTONS -->
+          <div class="profile-userbuttons">
+            <!-- <button type="button" class="btn btn-success btn-sm">Follow</button> -->
+            <button type="button" class="btn btn-info btn-sm">Edit Profile</button>
+          </div>
         </div>
         
-        <!-- SIDEBAR BUTTONS -->
-        <div class="profile-userbuttons">
-          <!-- <button type="button" class="btn btn-success btn-sm">Follow</button> -->
-          <button type="button" class="btn btn-danger btn-sm">Edit Profile</button>
-        </div>
+        
         <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
@@ -157,8 +158,9 @@
               Donasi Saya </a>
             </li>
             <li>
-              <a href="#" target="_blank">
-              <i class="glyphicon glyphicon-ok"></i>
+              <?php $art = Auth::user()->id; ?>
+              <a href="{{route('member.edit',$art)}}">
+              <i class="glyphicon glyphicon-user"></i>
               Akun Saya </a>
             </li>
             <li>
@@ -174,7 +176,7 @@
     <!-- bagian kontent -->
     <div class="col-md-9">
       <div class="profile-header">
-        Overview
+        <strong> Overview</strong>
       </div>
       <div class="row">
         <div class="col-md-4">

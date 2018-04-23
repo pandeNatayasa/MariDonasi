@@ -102,9 +102,9 @@ class MemberController extends Controller
      * @param  \App\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Member $member)
+    public function edit($id)
     {
-        //
+        return view('editProfil');
     }
 
     /**

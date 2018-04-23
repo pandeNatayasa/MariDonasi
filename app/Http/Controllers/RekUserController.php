@@ -14,7 +14,7 @@ class RekUserController extends Controller
      */
     public function index()
     {
-        //
+        return view('dompetKebaikan');
     }
 
     /**
