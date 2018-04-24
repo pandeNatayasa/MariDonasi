@@ -132,8 +132,8 @@
           <!-- END SIDEBAR USER TITLE -->
           <!-- SIDEBAR BUTTONS -->
           <div class="profile-userbuttons">
-            <!-- <button type="button" class="btn btn-success btn-sm">Follow</button> -->
-            <button type="button" class="btn btn-info btn-sm">Edit Profile</button>
+            <!-- <button type="button" class="btn btn-success btn-sm">Follow</button> <button type="button" ></button>-->
+            <a href="{{route('editProfile')}}" class="btn btn-info btn-sm">Edit Profile</a> 
           </div>
         </div>
         

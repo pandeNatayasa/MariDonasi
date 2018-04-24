@@ -27,17 +27,17 @@ class CampaignUserController extends Controller
     public function create()
     {
         $art = Auth::user()->id;
-        $artikels = DB::table('users')
+        $data = DB::table('users')
         ->where('users.id','LIKE','%'.$art.'%')
         ->select('status')
         ->get();
         // select('select status from users where users.id = ?', $artikel); {{ $collection[0]->title }}
-        if($artikels[0]->status =="non-verified"){
+        if($data[0]->status =="non-verified"){
             return view('formUpdateUser');
-        }elseif ($artikels[0]->status=="verified") {
+        }elseif ($data[0]->status=="verified") {
             return view('formCampaign');
         }else{
-            return "not found".$artikels;
+            return "not found".$data;
         }
         
     }

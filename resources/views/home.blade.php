@@ -229,8 +229,17 @@
 
               <div class="portfolio-info">
                 <h4><a href="#">App 1</a></h4>
-                <p>App</p>
+                <p>App a a a</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
+              
             </div>
           </div>
 
@@ -245,6 +254,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Web 3</a></h4>
                 <p>Web</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -260,6 +277,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">App 2</a></h4>
                 <p>App</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -275,6 +300,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Card 2</a></h4>
                 <p>Card</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -290,6 +323,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Web 2</a></h4>
                 <p>Web</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -305,6 +346,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">App 3</a></h4>
                 <p>App</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -320,6 +369,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Card 1</a></h4>
                 <p>Card</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -335,6 +392,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Card 3</a></h4>
                 <p>Card</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>
@@ -350,6 +415,14 @@
               <div class="portfolio-info">
                 <h4><a href="#">Web 1</a></h4>
                 <p>Web</p>
+                <div class="row" style="padding: 15px 0px 0 0px; ">
+                  <div class="col-md-8 pleft" >Dana Terkumpul</div>
+                  <div class="col-md-4 pright">Sisa Hari</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
+                  <div class="col-md-4 pright">20</div>
+                </div>
               </div>
             </div>
           </div>

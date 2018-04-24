@@ -34,9 +34,9 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createDaftarCampaign()
+    public function editProfile()
     {
-        return view('profilCampaignSaya');
+        return view('editProfilFull');
     }
     /**
      * Store a newly created resource in storage.
@@ -44,29 +44,37 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeCompleteAcount(Request $request)
     {
-        if ($request->hasFile('bioUser')) {
-            $file=$request->file('bioUser');
-            $file->move('img/bio_user',$file->getClientOriginalName());
-        }else{
-            return 'no selected image Bio User';
-        }
-
-        if ($request->hasFile('image')) {
-            $fileBioUser=$request->file('image');
-            $fileBioUser->move('img/profil_pic',$fileBioUser->getClientOriginalName());
+        if ($request->hasFile('profilPic')) {
+            $fileProfilPic=$request->file('profilPic');
+            $fileProfilPic->move('img/profil_pic',$fileProfilPic->getClientOriginalName());
         }else{
             return 'no selected image Profil Picture';
         }
 
+        if ($request->hasFile('ktpPic')) {
+            $fileKtpPic=$request->file('ktpPic');
+            $fileKtpPic->move('img/bio_user',$fileKtpPic->getClientOriginalName());
+        }else{
+            return 'no selected image KTP Picture';
+        }
+
+        if ($request->hasFile('verifPic')) {
+            $fileVerifPic=$request->file('verifPic');
+            $fileVerifPic->move('img/bio_user',$fileVerifPic->getClientOriginalName());
+        }else{
+            return 'no selected image Verif Picture';
+        }
         //
         $idUser = Auth::user()->id;
         $user1 = user::find($idUser);
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
-        $user1->bio='img/bio_user/'.$fileBioUser->getClientOriginalName();
-        $user1->profil_pic='img/profil/'.$file->getClientOriginalName();
+        $user1->bio=$request->bioUser;
+        $user1->profil_pic='img/profil/'.$fileProfilPic->getClientOriginalName();
+        $user1->ktp_pic='img/ktp_pic/'.$fileKtpPic->getClientOriginalName();
+        $user1->verif_pic='img/verif_pic/'.$fileVerifPic->getClientOriginalName();
         $user1->save();
 
         $art = Auth::user()->id;
@@ -83,6 +91,43 @@ class MemberController extends Controller
             return "not found".$artikels;
         }
 
+    }
+    public function store(Request $request)
+    {
+        if ($request->hasFile('profilPic')) {
+            $fileProfilPic=$request->file('profilPic');
+            $fileProfilPic->move('img/profil_pic',$fileProfilPic->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
+        }
+
+        if ($request->hasFile('ktpPic')) {
+            $fileKtpPic=$request->file('ktpPic');
+            $fileKtpPic->move('img/bio_user',$fileKtpPic->getClientOriginalName());
+        }else{
+            return 'no selected image KTP Picture';
+        }
+
+        if ($request->hasFile('verifPic')) {
+            $fileVerifPic=$request->file('verifPic');
+            $fileVerifPic->move('img/bio_user',$fileVerifPic->getClientOriginalName());
+        }else{
+            return 'no selected image Verif Picture';
+        }
+        //
+        $idUser = Auth::user()->id;
+        $user1 = user::find($idUser);
+        $user1->name = $request->nama;
+        $user1->email = $request->email;
+        $user1->no_telp=$request->noTelpUser;
+        $user1->lokasi=$request->lokasiUser;
+        $user1->bio=$request->bioUser;
+        $user1->profil_pic='img/profil/'.$fileProfilPic->getClientOriginalName();
+        $user1->ktp_pic='img/ktp_pic/'.$fileKtpPic->getClientOriginalName();
+        $user1->verif_pic='img/verif_pic/'.$fileVerifPic->getClientOriginalName();
+        $user1->save();
+
+        return view('profilUserOverview');
     }
 
     /**

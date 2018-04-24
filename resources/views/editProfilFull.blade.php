@@ -105,12 +105,28 @@
           <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                   
                   <div class="box" style="margin-top: 10px;">
-                     <form action="{{route('completeAcount')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                     <form action="{{route('member.store')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                      {{csrf_field()}}
              
                      <div class="box-body">
                         <div class="box-body-col">
-                           <h4>Complete Your Acount</h4>
+                           <h4>Edit Your Acount</h4>
+                           <div class="form-group">
+                              <div class="row">
+                                <label class="control-label col-md-3">Nama</label>
+                                <div class="col-md-9">
+                                  <input class="form-control" name="nama" required="required" type="text" value="{{ Auth::user()->name }}">
+                                </div>
+                              </div>         
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <label class="control-label col-md-3">Email</label>
+                                <div class="col-md-9">
+                                  <input class="form-control" name="email" required="required" type="text" value="{{ Auth::user()->email }}">
+                                </div>
+                              </div>        
+                            </div>
                            <div class="form-group">
                             <div class="row">
                               <label class="control-label col-md-3">No Telepun</label>
@@ -124,7 +140,7 @@
                             <div class="row">
                               <label class="control-label col-md-3">Lokasi</label>
                              <div class="col-md-9">
-                                 <select name="kategoriCampaign" class="form-control" required="required">
+                                 <select name="lokasiUser" class="form-control" required="required">
                                     <option value="" disabled selected>Pilih Lokasi Anda</option>
                                     <option value="kabBadungBali">Kab. Badung, Prov. Bali</option>
                                     <option value="kabBangliBali">Kab. Bangli, Prov. Bali</option> 
