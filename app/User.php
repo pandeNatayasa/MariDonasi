@@ -34,4 +34,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function campaign_user(){
+        return $this->hashMany('App\campaign_user');
+    }
 }

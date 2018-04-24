@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\campaign_user;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $dataDonasi = campaign_user::all();
+        return view('home',compact('dataDonasi'));
+    }
+
+    public function indexWelcome()
+    {
+        $dataDonasi = campaign_user::all();
+        return view('welcome',compact('dataDonasi'));
     }
 }

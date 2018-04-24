@@ -72,7 +72,8 @@ class CampaignUserController extends Controller
         $newCampaign->pic_verif = 'img/cover_image/'.$fileCoverPic->getClientOriginalName();
         $newCampaign->save();
         
-        return view('home');
+        $dataDonasi = campaign_user::all();
+        return view('home',compact('dataDonasi'));
     }
 
     /**

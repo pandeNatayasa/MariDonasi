@@ -218,31 +218,40 @@
         </div> -->
 
         <div class="row portfolio-container">
-
+          @foreach($dataDonasi as $data)
           <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+            
             <div class="portfolio-wrap">
               <figure>
-                <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-                <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <img src="{{$data->pic_verif}}" class="img-fluid" alt="">
+                <a href="{{$data->pic_verif}}" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
               </figure>
 
               <div class="portfolio-info">
-                <h4><a href="#">App 1</a></h4>
-                <p>App a a a</p>
+                <h4><a href="#">{{$data->judul}}</a></h4>
+                <p>{{$data->User->name}}</p>
                 <div class="row" style="padding: 15px 0px 0 0px; ">
                   <div class="col-md-8 pleft" >Dana Terkumpul</div>
                   <div class="col-md-4 pright">Sisa Hari</div>
                 </div>
                 <div class="row">
-                  <div class="col-md-8 pleft" >Rp. 15.000.000</div>
-                  <div class="col-md-4 pright">20</div>
+                  <div class="col-md-8 pleft" >{{$data->dana_sementara}}</div>
+                  <?php
+                    $dateNow = time();
+                    $end_date = strtotime($data->deadline);
+                    // $interval = date_diff($dateNow,$end_date);
+                    $diff = $end_date - $dateNow;
+                    $interval=floor($diff / (60 * 60 * 24));
+                  ?>
+                  <div class="col-md-4 pright">{{$interval}}</div>
                 </div>
               </div>
               
             </div>
+            
           </div>
-
+          @endforeach
           <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
               <figure>

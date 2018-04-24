@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@indexWelcome')->name('welcome')->middleware('auth');
 
 Route::resource('/member','memberController')->middleware('auth');
 Route::resource('/campaignSaya','campaignSaya')->middleware('auth');
