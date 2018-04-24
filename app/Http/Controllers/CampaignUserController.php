@@ -50,7 +50,29 @@ class CampaignUserController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('imageCover')) {
+            $fileCoverPic=$request->file('imageCover');
+            $fileCoverPic->move('img/cover_image',$fileCoverPic->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
+        }
+        $dateNow = date('Y-m-d');
         //
+        $idUser = Auth::user()->id;
+        $newCampaign = new campaign_user();
+        $newCampaign->id_user = $idUser;
+        $newCampaign->judul=$request->campaignName;
+        $newCampaign->target_donasi=$request->targetDonasi;
+        $newCampaign->tgl_awal = $dateNow;
+        $newCampaign->deadline=$request->deadlineCampaign;
+        $newCampaign->kategori=$request->kategoriCampaign;
+        $newCampaign->lokasi_penerima=$request->lokasi;
+        $newCampaign->dana_sementara='0';
+        $newCampaign->dana_bersih='0';
+        $newCampaign->pic_verif = 'img/cover_image/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->save();
+        
+        return view('home');
     }
 
     /**

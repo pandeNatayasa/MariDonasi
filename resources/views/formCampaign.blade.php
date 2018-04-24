@@ -105,8 +105,8 @@
           <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                   
                   <div class="box" style="margin-top: 10px;">
-                     <form action="" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-             
+                     <form action="{{route('campaignUser.store')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                      {{csrf_field()}}
                      <div class="box-body">
                         <div class="box-body-col">
                            <h4>Informasi Campaign</h4>
@@ -139,7 +139,7 @@
                             <div class="row">
                               <label class="control-label col-md-3">Deadline Campaign</label>
                              <div class="col-md-9">
-                                 <input class="form-control" placeholder="" name="contact" required="required" type="date" value="">
+                                 <input class="form-control" placeholder="" name="deadlineCampaign" required="required" type="date" value="">
                              </div>
                             </div>
                            </div>
@@ -149,8 +149,8 @@
                               <div class="col-md-9">
                                   <select name="kategoriCampaign" class="form-control" required="required">
                                   <option value="" disabled selected>Pilih Kategori Campaign</option>
-                                  <option value="balitaDanAnak">Balita & Anak</option>
-                                  <option value="bencanaAlam">Bencana Alam</option> 
+                                  <option value="Balita & Anak">Balita & Anak</option>
+                                  <option value="Bencana Alam">Bencana Alam</option> 
                                   <option value="Pendidikan">Pendidikan</option>
                                   <option value="Kemanusiaan">Kemanusiaan</option>          
                                   </select>
@@ -163,10 +163,10 @@
                                 <div class="col-md-9">
                                   <select name="lokasi" class="form-control" required="required">
                                   <option value="" disabled selected>Pilih Lokasi Penerima Dana</option>
-                                  <option value="baliBangli">Prov. Bali, Kab. Bangli</option>
-                                  <option value="baliBadung">Prov. Bali, kab. Badung</option> 
-                                  <option value="baliGianyar">Prov. Bali, kab. Gianyar</option>
-                                  <option value="baliDenpasar">Prov. Bali, kota Denparas</option>          
+                                  <option value="Prov. Bali, Kab. Bangli">Prov. Bali, Kab. Bangli</option>
+                                  <option value="Prov. Bali, kab. Badung">Prov. Bali, kab. Badung</option> 
+                                  <option value="Prov. Bali, kab. Gianyar">Prov. Bali, kab. Gianyar</option>
+                                  <option value="Prov. Bali, kota Denparas">Prov. Bali, kota Denparas</option>          
                                   </select>
                                 </div>
                               </div>
@@ -178,7 +178,7 @@
                               <div class="row">
                                 <label class="control-label col-md-3">Cover Image</label>
                                 <div class="col-md-9">
-                                    <input name="photo" type="file" class="form-control" accept="image/*">
+                                    <input name="imageCover" type="file" class="form-control" accept="image/*">
                                     <small>Gambar dalam bentuk file .jpg</small> 
                                 </div>
                               </div>
