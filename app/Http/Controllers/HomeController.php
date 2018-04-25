@@ -28,9 +28,4 @@ class HomeController extends Controller
         return view('home',compact('dataDonasi'));
     }
 
-    public function indexWelcome()
-    {
-        $dataDonasi = campaign_user::all();
-        return view('welcome',compact('dataDonasi'));
-    }
 }

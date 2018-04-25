@@ -124,7 +124,7 @@
                             <div class="row">
                               <label class="control-label col-md-3">Lokasi</label>
                              <div class="col-md-9">
-                                 <select name="kategoriCampaign" class="form-control" required="required">
+                                 <select name="lokasiUser" class="form-control" required="required">
                                     <option value="" disabled selected>Pilih Lokasi Anda</option>
                                     <option value="kabBadungBali">Kab. Badung, Prov. Bali</option>
                                     <option value="kabBangliBali">Kab. Bangli, Prov. Bali</option> 

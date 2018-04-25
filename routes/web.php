@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@indexWelcome')->name('welcome')->middleware('auth');
+Route::get('/','welcome@index');
 
 Route::resource('/member','memberController')->middleware('auth');
 Route::resource('/campaignSaya','campaignSaya')->middleware('auth');
@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/editProfile', 'memberController@editProfile')->name('editProfile')->middleware('auth');
-Route::get('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth');
+Route::post('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth');
 
 Route::resource('/campaignUser','CampaignUserController');
 

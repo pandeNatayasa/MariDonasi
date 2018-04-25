@@ -84,7 +84,7 @@ class MemberController extends Controller
         ->get();
         // select('select status from users where users.id = ?', $artikel); {{ $collection[0]->title }}
         if($artikels[0]->status =="non-verified"){
-            return view('formUpdateUser');
+            return view('intermeso');
         }elseif ($artikels[0]->status=="verified") {
             return view('formCampaign');
         }else{
