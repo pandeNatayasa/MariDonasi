@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .carousel-container {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -255,13 +255,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .carousel-content {
-  text-align: center ;
-  align-items: center;
+  text-align: left ;
+  align-items: left;
+  padding-top: 210px;
 }
 
 #intro h2 {
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 48px;
   font-weight: 700;
 }
@@ -273,19 +274,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro h3 {
-  width: 90%;
+  width: 100%;
   margin: 0 auto 10px auto;
   color: #fff;
 }
 #intro p {
-  width: 80%;
-  margin: 0 auto 30px auto;
+  width: 100%;
+  margin: 0 auto 10px auto;
   color: #fff;
 }
 
 @media (min-width: 1024px) {
   #intro p {
-    width: 60%;
+    width: 100%;
   }
 }
 
@@ -319,7 +320,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #intro .carousel-control-prev, #intro .carousel-control-next {
-  width: 10%;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -347,7 +348,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin: 10px;
+  /*margin: 5px;*/
   color: #fff;
   background: #18d26e;
 }
@@ -388,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #introhome .carousel-container {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -399,13 +400,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #introhome .carousel-content {
-  text-align: center ;
-  align-items: center;
+  text-align: left; 
+  padding-top: 210px;
+/*  align-items: l;*/
 }
 
 #introhome h2 {
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 48px;
   font-weight: 700;
 }
@@ -422,14 +424,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 #introhome p {
-  width: 80%;
-  margin: 0 auto 30px auto;
+  width: 100%;
+  margin: 0 auto 10px auto;
   color: #fff;
 }
 
 @media (min-width: 1024px) {
   #introhome p {
-    width: 60%;
+    width: 100%;
   }
 }
 
@@ -491,7 +493,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin: 10px;
+  /*margin: 10px;*/
   color: #fff;
   background: #18d26e;
 }
@@ -667,7 +669,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin: 10px;
+  /*margin: 10px;*/
   color: #fff;
   background: #18d26e;
 }
@@ -822,7 +824,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin: 10px;
+  /*margin: 10px;*/
   color: #fff;
   background: #18d26e;
 }

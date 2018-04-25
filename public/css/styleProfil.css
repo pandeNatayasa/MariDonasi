@@ -27,7 +27,7 @@ body {
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
-  align-items: center;
+  
 }
 
 .profile-usertitle {
@@ -36,7 +36,7 @@ body {
 }
 
 .profile-usertitle-name {
-  color: #5a7391;
+  color: #5b9bd1;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 7px;
@@ -44,10 +44,19 @@ body {
 
 .profile-usertitle-job {
   text-transform: uppercase;
-  color: #5b9bd1;
+  color: #5a7391;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 15px;
+}
+
+.jumlah {
+  color: #5b9bd1;
+  font-size: 20px;
+}
+.jumlah1 {
+  color: #5b9bd1;
+  font-size: 15px;
 }
 
 .profile-userbuttons {
@@ -136,10 +145,10 @@ body {
 
 /* Profile sub header */
 .profile-overview {
-  padding: 20px;
+  padding: 20px 0 20px 20px;
   background: #fff;
   min-height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-top: 20px;
 }
 

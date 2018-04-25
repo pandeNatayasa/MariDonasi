@@ -126,7 +126,7 @@
               Marcus Doe
             </div>
             <div class="profile-usertitle-job">
-              Developer
+              mercusdoe@gmail.com
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
@@ -181,20 +181,59 @@
       <div class="row">
         <div class="col-md-4">
           <div class="profile-overview">
-            0
-            Donasi
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="profile-userpic" >
+                  <img style="height: 65px; width: 65px;" src="img/start.jpg" class="img-responsive" alt=""> 
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="col-sm-12 jumlah">
+                  <strong>0</strong> 
+                </div>
+                <div class="col-sm-12 jumlah1">
+                  Campaign dimulai
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="profile-overview">
-            0
-            Donasi
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="profile-userpic" >
+                  <img style="height: 65px; width: 65px;" src="img/donate_plan.jpg" class="img-responsive" alt=""> 
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="col-sm-12 jumlah">
+                  <strong>0</strong> 
+                </div>
+                <div class="col-sm-12 jumlah1">
+                  Donasi
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
           <div class="profile-overview">
-            0
-            Donasi
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="profile-userpic" >
+                  <img style="height: 65px; width: 65px;" src="img/donate.jpg" class="img-responsive" alt="">
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="col-sm-12 jumlah">
+                  <strong>Rp. 15.000.000</strong> 
+                </div>
+                <div class="col-sm-12 jumlah1">
+                  Donasi disalurkan
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

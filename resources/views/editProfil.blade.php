@@ -211,14 +211,6 @@
                 </div>
                 <div class="form-group">
                   <div class="row">
-                    <label class="control-label col-md-3">KTP Picture</label>
-                    <div class="col-md-9">
-                      <input class="form-control" placeholder="Your bio" name="ktpPic" required="required" type="file" value="">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
                     <label class="control-label col-md-3">Bio</label>
                     <div class="col-md-9">
                       <textarea name="bioUser" class="form-control" required="required" placeholder="deskripsi lengkap dari campaign anda" rows="6"></textarea>

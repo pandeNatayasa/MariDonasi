@@ -6,7 +6,7 @@
 	<link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
 	<script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="lib/jquery/jquery.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
+	<!-- Include the above in your HEAD tag -->
 
 	<!-- Main Stylesheet File -->
 	  <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet">
