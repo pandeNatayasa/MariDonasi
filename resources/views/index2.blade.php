@@ -21,7 +21,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">MariDonasi</a>
+    <a class="navbar-brand" href="{{route('admin.index')}}">Mari Donasi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -298,7 +298,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-support"></i>
               </div>
-              <div class="mr-5">13 New Pencairan Dana!</div>
+              <div class="mr-5">13 Pencairan Dana!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="#">
               <span class="float-left">View Details</span>
@@ -309,32 +309,32 @@
           </div>
         </div>
       </div>
-   
+      
       <!-- Example DataTables Card-->
       <div class="card mb-3" style="margin-top: 40px;">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Data Campaign</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Tempat Penerima Dana</th>
+                  <th>Tempat penerima</th>
                   <th>Sisa Hari</th>
-                  <th>Deadline Campaign</th>
+                  <th>Tanggal Akhir</th>
                   <th>Dana Terkumpul</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Nama</th>
-                  <th>Judul Campaign</th>
-                  <th>Tempat Penerima Dana</th>
-                  <th>Sisa Hari</th>
-                  <th>Deadline Campaign</th>
-                  <th>Dana Terkumpul</th>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
                 </tr>
               </tfoot>
               <tbody>
