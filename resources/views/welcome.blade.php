@@ -113,12 +113,12 @@
               <div class="carousel-content" style="margin-top: 60px;">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Selamat Datang</h2>
                   </div>
                 </div>
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p>Berdonasi tidak akan membuatmu jatuh miskin, sebaliknya kamu akan mendapat pahala dari kebaikan yg kamu lakukan.</p>
                   </div>
                 </div>
                 
@@ -138,12 +138,12 @@
               <div class="carousel-content" style="margin-top: 60px;">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Buat Campaign Anda</h2>
                   </div>
                 </div>
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p>Tingkatkan kesadaran berdonasi untuk membantu sesama dan membangun kehidupan untuk lebih baik</p>
                   </div>
                 </div>
                 
@@ -163,7 +163,7 @@
               <div class="carousel-content" style="margin-top: 60px;">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Galang Dana untuk orang tercinta</h2>
                   </div>
                 </div>
                 <div class="row" >
@@ -188,7 +188,7 @@
              <div class="carousel-content" style="margin-top: 60px;">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Demi kesejahteraan bersama</h2>
                   </div>
                 </div>
                 <div class="row" >
