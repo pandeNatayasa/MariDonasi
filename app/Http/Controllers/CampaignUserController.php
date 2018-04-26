@@ -52,7 +52,13 @@ class CampaignUserController extends Controller
     {
         if ($request->hasFile('imageCover')) {
             $fileCoverPic=$request->file('imageCover');
-            $fileCoverPic->move('img/cover_image',$fileCoverPic->getClientOriginalName());
+            $fileCoverPic->move('img/cover_campaign',$fileCoverPic->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
+        }
+        if ($request->hasFile('pic_verif')) {
+            $filePicVerif=$request->file('pic_verif');
+            $filePicVerif->move('img/image_verif_campaign',$filePicVerif->getClientOriginalName());
         }else{
             return 'no selected image Profil Picture';
         }
@@ -62,6 +68,9 @@ class CampaignUserController extends Controller
         $newCampaign = new campaign_user();
         $newCampaign->id_user = $idUser;
         $newCampaign->judul=$request->campaignName;
+        $newCampaign->pic_cover_campaign = 'img/cover_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->cerita_singkat=$request->deskripsiSingkat;
+        $newCampaign->cerita_lengkap=$request->deskripsiLengkap;
         $newCampaign->target_donasi=$request->targetDonasi;
         $newCampaign->tgl_awal = $dateNow;
         $newCampaign->deadline=$request->deadlineCampaign;
@@ -69,7 +78,8 @@ class CampaignUserController extends Controller
         $newCampaign->lokasi_penerima=$request->lokasi;
         $newCampaign->dana_sementara='0';
         $newCampaign->dana_bersih='0';
-        $newCampaign->pic_verif = 'img/cover_image/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->pic_verif = 'img/image_verif_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->status='non-verified';
         $newCampaign->save();
         
         $dataDonasi = campaign_user::all();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGalangDanasTable extends Migration
+class CreateGalangDanaOrganisasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateGalangDanasTable extends Migration
      */
     public function up()
     {
-        Schema::create('galang_danas', function (Blueprint $table) {
+        Schema::create('galang_dana_organisasis', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_campaign_user');
+            $table->unsignedInteger('id_organisasi');
+            $table->unsignedInteger('id_campaign_organisasi');
             $table->biginteger('nominal');
             $table->enum('bank',['bri','bni','mandiri','bca','cimb']);
             $table->enum('status',['onGoing','paidOff','cancel']);
@@ -24,9 +24,9 @@ class CreateGalangDanasTable extends Migration
             $table->timestamps();
 
             Schema::disableForeignKeyConstraints();
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_organisasi')->references('id')->on('organisasis');
             // $table->foreign('id_user_organisasi')->references('id')->on('organisasis');
-            $table->foreign('id_campaign_user')->references('id')->on('campaign_users');
+            $table->foreign('id_campaign_organisasi')->references('id')->on('campaign_organisasis');
             // $table->foreign('id_campaign_user_organisasi')->references('id')->on('campaign_organisasis');
         });
     }
@@ -38,6 +38,6 @@ class CreateGalangDanasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galang_danas');
+        Schema::dropIfExists('galang_dana_organisasis');
     }
 }

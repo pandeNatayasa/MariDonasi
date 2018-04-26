@@ -17,6 +17,9 @@ class CreateCampaignUsersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_user');
             $table->string('judul',100);
+            $table->string('pic_cover_campaign',200);
+            $table->string('cerita_singkat',200);
+            $table->text('cerita_lengkap');
             $table->biginteger('target_donasi');
             $table->date('tgl_awal');
             $table->date('deadline');
@@ -25,6 +28,7 @@ class CreateCampaignUsersTable extends Migration
             $table->biginteger('dana_sementara');
             $table->biginteger('dana_bersih');
             $table->string('pic_verif',200);
+            $table->enum('status',['verified','non-verified']);
             $table->timestamps();
 
              Schema::disableForeignKeyConstraints();

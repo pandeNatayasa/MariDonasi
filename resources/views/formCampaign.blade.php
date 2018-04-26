@@ -199,6 +199,15 @@
                                 </div>
                               </div>
                            </div>
+                           <div class="form-group">
+                              <div class="row">
+                                <label class="control-label col-md-3">Pic Verif Campaign</label>
+                                <div class="col-md-9">
+                                    <input name="pic_verif" type="file" class="form-control" accept="image/*">
+                                    <small>Gambar dalam bentuk file .jpg</small> 
+                                </div>
+                              </div>
+                            </div>
                            <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px;"> 
                         </div>
                          

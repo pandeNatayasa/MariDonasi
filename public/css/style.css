@@ -257,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
 #intro .carousel-content {
   text-align: left ;
   align-items: left;
-  padding-top: 210px;
+  padding-top: 230px;
 }
 
 #intro h2 {
@@ -401,7 +401,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #introhome .carousel-content {
   text-align: left; 
-  padding-top: 210px;
+  padding-top: 230px;
 /*  align-items: l;*/
 }
 

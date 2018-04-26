@@ -16,6 +16,9 @@ class CreateCampaignOrganisasisTable extends Migration
         Schema::create('campaign_organisasis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('judul',100);
+            $table->string('pic_cover_campaign',200);
+            $table->string('cerita_singkat',200);
+            $table->text('cerita_lengkap');
             $table->unsignedInteger('id_organisasi');
             $table->biginteger('target_donasi');
             $table->date('tgl_awal');
@@ -24,6 +27,7 @@ class CreateCampaignOrganisasisTable extends Migration
             $table->biginteger('dana_sementara');
             $table->biginteger('dana_bersih');
             $table->string('pic_verif',200);
+            $table->enum('status',['verified','non-verified']);
             $table->timestamps();
 
             Schema::disableForeignKeyConstraints();
