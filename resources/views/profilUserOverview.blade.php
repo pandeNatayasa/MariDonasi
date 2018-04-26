@@ -115,7 +115,8 @@
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
             <center>
-              <img src="img/profil_pic/download.jpg" class="img-responsive" alt="">
+              <?php $a = Auth::user()->profil_pic ?>
+              <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
             </center>
             
           </div>
