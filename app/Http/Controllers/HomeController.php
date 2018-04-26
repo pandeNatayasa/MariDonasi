@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dataDonasi = campaign_user::all();
+        $dataDonasi = campaign_user::all()->where('status','=','verified');
         return view('home',compact('dataDonasi'));
     }
 

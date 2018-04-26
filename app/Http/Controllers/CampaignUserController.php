@@ -82,8 +82,9 @@ class CampaignUserController extends Controller
         $newCampaign->status='non-verified';
         $newCampaign->save();
         
-        $dataDonasi = campaign_user::all();
-        return view('home',compact('dataDonasi'));
+        // $dataDonasi = campaign_user::all();
+        // return view('home',compact('dataDonasi'));
+        return view('intermeso');
     }
 
     /**
