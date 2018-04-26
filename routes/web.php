@@ -29,3 +29,7 @@ Route::resource('/galangDana','GalangDanaController')->middleware('auth');
 
 Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
 
+Route::resource('/admin','admin');
+
+
+
