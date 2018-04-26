@@ -43,7 +43,6 @@ body {
 }
 
 .profile-usertitle-job {
-  text-transform: uppercase;
   color: #5a7391;
   font-size: 12px;
   font-weight: 600;
@@ -172,9 +171,45 @@ body {
 
 /* Profile sub header */
 .daftar-campaign {
-  padding: 20px;
   background: #fff;
   min-height: 300px;
   margin-bottom: 20px;
   margin-top: 40px;
+  text-align: left;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+}
+
+.daftar-campaign1 {
+  padding: 110px 20px 20px 20px;
+  background: #fff;
+  min-height: 300px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+}
+
+/*css tambahan untuk profile campaign saya*/
+.view-cover-campaign {
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+}
+.judul-campaign {
+  padding: 10px 0 25px 0;
+  color: #b8b8b8;
+  font-weight: 500;
+  font-size: 14px;
+  border-bottom: 2px solid #5b9bd1;
+  margin-bottom: -2px;
+}
+
+.judul-data-campaign { 
+  font-size: 12px; 
+  padding-top: 7px;
+}
+
+.judul-data-campaign-cover { 
+  font-size: 12px; 
+  padding-top: 0px;
 }

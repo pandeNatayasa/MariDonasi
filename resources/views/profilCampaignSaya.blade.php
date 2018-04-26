@@ -115,7 +115,7 @@
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
             <center>
-              <img src="{{asset('img/profil_pic/download.jpg')}}" class="img-responsive" alt="">
+              <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
             </center>
             
           </div>
@@ -123,10 +123,10 @@
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-              Marcus Doe
+              {{Auth::user()->name}}
             </div>
             <div class="profile-usertitle-job">
-              Developer
+              {{Auth::user()->email}}
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
@@ -162,7 +162,7 @@
               Akun Saya </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{route('dompetKebaikanUser.index')}}">
               <i class="glyphicon glyphicon-flag"></i>
               Dompet Kebaikan </a>
             </li>
@@ -177,35 +177,53 @@
         <strong>Pilih Salah Satu Campaign Anda</strong> 
       </div>
       <div class="row">
+        @foreach($dataCampaignSaya as $data)
         <div class="col-md-4">
           <div class="daftar-campaign">
-            0
-            Donasi
+            <div class="view-cover-campaign">
+              <img style="width: 100%; height: 190px;" src="{{$data->pic_cover_campaign}}" class="img-responsive" alt="">
+            </div>
+            <div style="padding : 0px 10px 10px 10px;">
+              <div class="judul-campaign">
+                {{$data->judul}}
+              </div>
+              <div class="row">
+                <div class="col-sm-6 judul-data-campaign">
+                  <p style=" margin-bottom: 0;">Dana Terkumpul</p> 
+                </div>
+                <div class="col-sm-6 judul-data-campaign">
+                  <p style="text-align: right; margin-bottom: 0;">Sisa Hari</p> 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 judul-data-campaign-cover">
+                  <p style=" margin-bottom: 0;">Rp. {{$data->dana_sementara}}</p> 
+                </div>
+                <div class="col-sm-6 judul-data-campaign-cover">
+                  <?php
+                      $dateNow = time();
+                      $end_date = strtotime($data->deadline);
+                      // $interval = date_diff($dateNow,$end_date);
+                      $diff = $end_date - $dateNow;
+                      $interval=floor($diff / (60 * 60 * 24));
+                    ?>
+                  <p style=" text-align: right; margin-bottom: 0;">{{$interval}}</p> 
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        @endforeach
         <div class="col-md-4">
-          <div class="daftar-campaign">
-            0
-            Donasi
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="daftar-campaign">
-            0
-            Donasi
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="daftar-campaign">
-            0
-            Donasi
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="daftar-campaign">
-            0
-            Donasi
-          </div>
+          <a href="{{ '/galangDana'}}">
+            <div class="daftar-campaign1">
+              <div class="col-sm-12">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+              
+              Buat Campaign Anda
+            </div>
+          </a>
         </div>
       </div>
       <!-- <div class="profile-content">

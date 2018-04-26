@@ -115,7 +115,6 @@
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
             <center>
-              <?php $a = Auth::user()->profil_pic ?>
               <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
             </center>
             
@@ -124,10 +123,10 @@
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-              Marcus Doe
+              {{Auth::user()->name}}
             </div>
             <div class="profile-usertitle-job">
-              mercusdoe@gmail.com
+              {{Auth::user()->email}}
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
@@ -165,7 +164,7 @@
               Akun Saya </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{route('dompetKebaikanUser.index')}}">
               <i class="glyphicon glyphicon-flag"></i>
               Dompet Kebaikan </a>
             </li>

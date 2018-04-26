@@ -115,7 +115,7 @@
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
             <center>
-              <img src="{{asset('img/profil_pic/download.jpg')}}" class="img-responsive" alt="">
+              <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
             </center>
             
           </div>
@@ -123,10 +123,10 @@
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-              Marcus Doe
+              {{Auth::user()->name}}
             </div>
             <div class="profile-usertitle-job">
-              Developer
+              {{Auth::user()->email}}
             </div>
           </div>
           <!-- SIDEBAR BUTTONS -->

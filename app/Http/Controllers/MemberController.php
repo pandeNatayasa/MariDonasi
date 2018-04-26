@@ -122,7 +122,7 @@ class MemberController extends Controller
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
         $user1->bio=$request->bioUser;
-        $user1->profil_pic='img/profil/'.$fileProfilPic->getClientOriginalName();
+        $user1->profil_pic='img/profil_pic/'.$fileProfilPic->getClientOriginalName();
         $user1->ktp_pic='img/ktp_pic/'.$fileKtpPic->getClientOriginalName();
         $user1->verif_pic='img/verif_pic/'.$fileVerifPic->getClientOriginalName();
         $user1->save();
