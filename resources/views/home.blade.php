@@ -18,11 +18,11 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
@@ -45,6 +45,7 @@
 
       <div id="logo" class="pull-left">
         <h1><a href="/" class="scrollto">MariDonasi</a></h1>
+        <a href="#intro"><img src="img/logo.png" alt="" title="" width="60px" /></a>
       </div>
 
       <nav id="nav-menu-container">
@@ -114,12 +115,12 @@
               <div class="carousel-content">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Selamat Datang</h2>
                   </div>
                 </div>
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p>Berdonasi tidak akan membuatmu jatuh miskin, sebaliknya kamu akan mendapat pahala dari kebaikan yg kamu lakukan.</p>
                   </div>
                 </div>
                 
@@ -129,7 +130,6 @@
                     <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -140,37 +140,12 @@
               <div class="carousel-content">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Buat Campaign Anda</h2>
                   </div>
                 </div>
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                  </div>
-                </div>
-                
-                <div class="row" >
-                  <!-- <div class="col-lg-2"></div> -->
-                  <div class="offset-md-1 offset-sm-1">
-                    <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-1.jpg')}}" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <div class="row" >
-                  <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
-                  </div>
-                </div>
-                <div class="row" >
-                  <div class="offset-md-1 offset-sm-1 ">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p>Tingkatkan kesadaran berdonasi untuk membantu sesama dan membangun kehidupan untuk lebih baik</p>
                   </div>
                 </div>
                 
@@ -190,7 +165,7 @@
               <div class="carousel-content">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Galang Dana untuk orang tercinta</h2>
                   </div>
                 </div>
                 <div class="row" >
@@ -212,10 +187,10 @@
           <div class="carousel-item">
             <div class="carousel-background"><img src="{{asset('img/intro-carousel/slider-4.jpg')}}" alt=""></div>
             <div class="carousel-container">
-              <div class="carousel-content">
+             <div class="carousel-content">
                 <div class="row" >
                   <div class="offset-md-1 offset-sm-1 ">
-                    <h2>We are professional</h2>
+                    <h2>Demi kesejahteraan bersama</h2>
                   </div>
                 </div>
                 <div class="row" >
@@ -533,9 +508,10 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>BizPage</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <h3>MariDonasi</h3>
+            <p>Mari Donasi merupakan website untuk membantu orang-orang yang membutuhkan dengan mendonasikan uang atau barang.</p>
           </div>
+
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Learn More</h4>
@@ -579,7 +555,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+        &copy; Copyright <strong>|2018</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -588,7 +564,7 @@
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
         -->
-        Best <a href="https://bootstrapmade.com/">Bootstrap Templates</a> by BootstrapMade
+        Best <a href="#">Bootstrap Templates</a> by BootstrapMade
       </div>
     </div>
   </footer><!-- #footer -->
