@@ -339,7 +339,7 @@
               </div>
               <div class="mr-5">13 New Pencairan Dana!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-pencairan')}}">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -360,9 +360,9 @@
                 <tr>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Tempat Penerima Dana</th>
+                  <th>Tempat Penerima</th>
                   <th>Sisa Hari</th>
-                  <th>Deadline Campaign</th>
+                  <th>Deadline</th>
                   <th>Dana Terkumpul</th>
                 </tr>
               </thead>
@@ -370,9 +370,9 @@
                 <tr>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Tempat Penerima Dana</th>
+                  <th>Tempat Penerima</th>
                   <th>Sisa Hari</th>
-                  <th>Deadline Campaign</th>
+                  <th>Deadline</th>
                   <th>Dana Terkumpul</th>
                 </tr>
               </tfoot>

@@ -41,6 +41,10 @@ class admin extends Controller
     public function showDaftarNewTransfer(){
         return view('daftarNewTransfer');
     }
+
+    public function showDaftarNewPencairan(){
+        return view('daftarNewPencairan');
+    }
     /**
      * Show the form for creating a new resource.
      *

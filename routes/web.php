@@ -36,6 +36,7 @@ Route::get('/datar-user','admin@showDaftarUser')->name('daftar-user');
 Route::get('/datar-new-user','admin@showDaftarNewUser')->name('daftar-new-user');
 Route::get('/daftar-new-campaign','admin@showDaftarNewCampaign')->name('daftar-new-campaign');
 Route::get('/daftar-new-transfer','admin@showDaftarNewTransfer')->name('daftar-new-transfer');
+Route::get('/daftar-new-pencairan','admin@showDaftarNewPencairan')->name('daftar-new-pencairan');
 
 Route::get('/donasi-saya','memberController@create')->middleware('auth');
 
