@@ -153,13 +153,12 @@
               Campaign Saya </a>
             </li>
             <li>
-              <a href="{{route('member.create')}}">
+              <a href="{{url('/donasi-saya')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
             <li class=>
-              <?php $art = Auth::user()->id; ?>
-              <a href="{{route('member.edit',$art)}}">
+              <a href="{{url('/edit-profile')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>

@@ -29,11 +29,14 @@
 
   <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
   <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-3.3.1.min.js"></script>
   <!-- Include the above in your HEAD tag -->
 
   <!-- Main Stylesheet File -->
     <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet">
+
+  <!-- Import data tables -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -151,13 +154,12 @@
               Campaign Saya </a>
             </li>
             <li class="active">
-              <a href="{{route('member.create')}}">
+              <a href="{{url('/donasi-saya')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
             <li>
-              <?php $art = Auth::user()->id; ?>
-              <a href="{{route('member.edit',$art)}}">
+              <a href="{{url('/edit-profile')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -176,23 +178,9 @@
       <div class="profile-header">
         <strong>Donasi Saya</strong> 
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <div class="profile-overview">
-            0
-            Donasi
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="profile-overview">
-            0
-            Donasi
-          </div>
-        </div>
-      </div>
       
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
+      <div class="table-responsive" style="margin-top: 30px;">
+        <table class="table table-bordered table-striped table-hover display" id="table_donasi">
           <thead style="background-color: black;">
             <tr>
               <th style="color: #fff;">Judul Campaign</th>
@@ -203,7 +191,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>aaaaaaa</td>
+              <td>eee</td>
               <td>20000</td>
               <td>201212</td>
               <td>sukses</td>
@@ -313,7 +301,8 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
+
   <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
   <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('lib/easing/easing.min.js')}}"></script>
@@ -329,8 +318,17 @@
   <!-- Contact Form JavaScript File -->
   <script src="{{asset('contactform/contactform.js')}}"></script>
 
+  <!-- Data Tables -->
+  <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
+
   <!-- Template Main Javascript File -->
   <script src="{{asset('js/main.js')}}"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function () {
+      $('#table_donasi').DataTable();
+    } );
+  </script>
 
 </body>
 </html>

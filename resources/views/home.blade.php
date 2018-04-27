@@ -279,8 +279,8 @@
             
             <div class="portfolio-wrap">
               <figure>
-                <img src="{{$data->pic_verif}}" class="img-fluid" alt="">
-                <a href="{{$data->pic_verif}}" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                <img src="{{$data->pic_cover_campaign}}" class="img-fluid" alt="">
+                <a href="{{$data->pic_cover_campaign}}" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
               </figure>
 

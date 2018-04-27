@@ -31,5 +31,10 @@ Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
 
 Route::resource('/admin','admin');
 
+Route::get('/donasi-saya','memberController@create')->middleware('auth');
+
+Route::get('/edit-profile','memberController@edit2')->middleware('auth');
+
+
 
 

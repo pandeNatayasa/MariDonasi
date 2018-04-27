@@ -152,6 +152,11 @@ class MemberController extends Controller
         return view('editProfil');
     }
 
+    public function edit2()
+    {
+        return view('editProfil');
+    }
+
     /**
      * Update the specified resource in storage.
      *
