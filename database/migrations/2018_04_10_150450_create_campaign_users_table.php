@@ -23,10 +23,11 @@ class CreateCampaignUsersTable extends Migration
             $table->biginteger('target_donasi');
             $table->date('tgl_awal');
             $table->date('deadline');
-            $table->string('kategori',150);
+            $table->enum('kategori',['Beasiswa & Pendidikan','Lingkungan','Panti Asuhan','Bencana Alam','Menolong Hewan','Kemanusiaan','Kategori Lain']);
             $table->string('lokasi_penerima',100);
             $table->biginteger('dana_sementara');
             $table->biginteger('dana_bersih');
+            $table->biginteger('sisa_dana');
             $table->string('pic_verif',200);
             $table->enum('status',['verified','non-verified']);
             $table->timestamps();

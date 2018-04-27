@@ -78,6 +78,7 @@ class CampaignUserController extends Controller
         $newCampaign->lokasi_penerima=$request->lokasi;
         $newCampaign->dana_sementara='0';
         $newCampaign->dana_bersih='0';
+        $newCampaign->sisa_dana='0';
         $newCampaign->pic_verif = 'img/image_verif_campaign/'.$fileCoverPic->getClientOriginalName();
         $newCampaign->status='non-verified';
         $newCampaign->save();
