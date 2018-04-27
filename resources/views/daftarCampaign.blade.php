@@ -9,13 +9,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+      	<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+      		<div class="row" style="height: 80px; background-color: #060606; margin-right: 0px;">
+      			<div class="col-sm-4 admin-pic" style="padding: 10px 10px 10px 20px;">
+      				<center>
+              	<img src="img/prastha.jpg" class="img-responsive" alt="">
+            	</center>
+      			</div>
+      			<div class="col-sm-8" style="padding: 15px 0 15px 0;">
+      				<div class="col-sm-12" style="padding: 0; color: #D6D5D5; ">Pande Natayasa</div>
+      				<div class="col-sm-12" style="padding: 0; color: #D6D5D5;font-size: 12px;">natayasa12@gmail.com</div>
+      			</div>
+      		</div>
+      	</li>
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="{{url('/datar-campaign-admin')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
@@ -54,11 +67,11 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-archive"></i>
             <span class="nav-link-text">Transaksi Barang</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
               <a href="navbar.html">
                 <i class="fa fa-fw fa-upload"></i>
@@ -289,14 +302,8 @@
               		<td>25-12-2018</td>
               		<td>Rp. 1.000.000</td>
               		<td>
-              			<div class="row">
-              				<div class="col-sm6">
-              					<button>Edit</button>
-              				</div>
-              				<div class="col-sm6">
-              					<button>Delete</button>
-              				</div>
-              			</div>
+              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
+              			<button class="btn btn-danger "><i class="fa fa-trash"></i></butto
               		</td>
               	</tr>
               	<tr>
@@ -307,14 +314,8 @@
               		<td>25-12-2018</td>
               		<td>Rp. 3.000.000</td>
               		<td>
-              			<div class="row">
-              				<div class="col-sm6">
-              					<button>Edit</button>
-              				</div>
-              				<div class="col-sm6">
-              					<button>Delete</button>
-              				</div>
-              			</div>
+              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
+              			<button class="btn btn-danger "><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
               </tbody>

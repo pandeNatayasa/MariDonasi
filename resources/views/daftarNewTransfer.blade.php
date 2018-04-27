@@ -28,19 +28,19 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="{{route('daftar-campaign')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
           </a>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{url('/datar-admin')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar Admin</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('daftar-user')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar User</span>
@@ -52,7 +52,7 @@
             <span class="nav-link-text">Transaksi Dana</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
+            <li class="active">
               <a href="navbar.html">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Transfer</span>
@@ -269,27 +269,29 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Daftar Admin</li>
+        <li class="breadcrumb-item active">Daftar New Transfer</li>
       </ol>
       <!-- Example DataTables Card-->
       
     </div>
 
     <!-- isi data -->
-    <div class="card mb-3" style="margin: 30px;">
+    <div class="card mb-3" style="margin: 20px;">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Admin</div>
+          <i class="fa fa-table"></i> Data New Transfer</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
               <thead>
                 <tr>
                 	<th>Id</th>
-                  	<th>Nama Admin</th>
-                  	<th>Alamat</th>
-                  	<th>usia</th>
-                  	<th>Tanggal Terdaftar</th>
-                  	<th>Status</th>
+                  <th>Nama</th>
+                  <th>Judul Campaign</th>
+                  <th>Cover Picture</th>
+                  <th>Target Donasi</th>
+                  <th>Verif Picture</th>
+                  <th>Detail</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -297,23 +299,27 @@
               		<td>1</td>
               		<td>Bagus</td>
               		<td>Bantu Andi</td>
-              		<td>19</td>
-              		<td>25-12-2018</td>
+                  <td></td>
+                  <td></td>
+              		<td></td>
+              		<td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
               		<td>
-              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
+              			<button class="btn btn-primary "><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
               	<tr>
               		<td>2</td>
-              		<td>Aagus</td>
-              		<td>Bantu Andi</td>
-              		<td>15</td>
-              		<td>25-12-2018</td>
-              		<td>
-              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
+                  <td>Aagus</td>
+                  <td>Bantu Anto</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
+                  <td>
+                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-              		</td>
+                  </td>
               	</tr>
               </tbody>
             </table>

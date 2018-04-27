@@ -8,14 +8,20 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>MariDonasi-admin</title>
-  <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Favicons -->
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <!-- Bootstrap core CSS -->
+  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+
+  <!-- Page level plugin CSS-->
+   <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -28,6 +34,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <div class="row" style="height: 80px; background-color: #060606; margin-right: 0px;">
+            <div class="col-sm-4 admin-pic" style="padding: 10px 10px 10px 20px;">
+              <center><!-- #898989 #181717-->
+                <img src="img/prastha.jpg" class="img-responsive" alt="">
+              </center>
+            </div>
+            <div class="col-sm-8" style="padding: 15px 0 15px 0;">
+              <div class="col-sm-12" style="padding: 0; color: #D6D5D5; ">Pande Natayasa</div>
+              <div class="col-sm-12" style="padding: 0; color: #D6D5D5;font-size: 12px;">natayasa12@gmail.com</div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
@@ -272,7 +291,7 @@
               </div>
               <div class="mr-5">26 New User!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-user')}}">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -288,7 +307,7 @@
               </div>
               <div class="mr-5">11 New Campaign!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-campaign')}}">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -304,7 +323,7 @@
               </div>
               <div class="mr-5">123 New Transfer!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-transfer')}}">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -331,12 +350,12 @@
       </div>
    
       <!-- Example DataTables Card-->
-      <div class="card mb-3" style="margin-top: 40px;">
+      <div class="card mb-3" style="margin-top: 20px;">
         <div class="card-header">
           <i class="fa fa-table"></i> Data Table Example</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Nama</th>
@@ -853,12 +872,13 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level plugin JavaScript-->
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
@@ -866,6 +886,15 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+
+    <!-- Data Tables -->
+    <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#data').DataTable();
+      } );
+    </script>    
   </div>
 </body>
 

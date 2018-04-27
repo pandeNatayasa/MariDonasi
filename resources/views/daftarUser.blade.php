@@ -10,6 +10,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <div class="row" style="height: 80px; background-color: #060606; margin-right: 0px;">
+            <div class="col-sm-4 admin-pic" style="padding: 10px 10px 10px 20px;">
+              <center><!-- #898989 #181717-->
+                <img src="img/prastha.jpg" class="img-responsive" alt="">
+              </center>
+            </div>
+            <div class="col-sm-8" style="padding: 15px 0 15px 0;">
+              <div class="col-sm-12" style="padding: 0; color: #D6D5D5; ">Pande Natayasa</div>
+              <div class="col-sm-12" style="padding: 0; color: #D6D5D5;font-size: 12px;">natayasa12@gmail.com</div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
@@ -27,7 +40,7 @@
             <span class="nav-link-text">Daftar Admin</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('daftar-user')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar User</span>
@@ -54,11 +67,11 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-archive"></i>
             <span class="nav-link-text">Transaksi Barang</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
               <a href="navbar.html">
                 <i class="fa fa-fw fa-upload"></i>

@@ -11,9 +11,9 @@
 
   <!-- Favicons -->
   <link href="{{asset('img/favicon.png')}}" rel="icon">
-  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon"
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-  <!-- Bootstrap core CSS-->
+  <!-- Bootstrap core CSS -->
   <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
   <!-- Custom fonts for this template-->
   <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
