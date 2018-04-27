@@ -16,6 +16,20 @@ class admin extends Controller
         return view('index');
     }
 
+    public function showDaftarCampaign()
+    {
+        return view('daftarCampaign');
+    }
+
+    public function showDaftarAdmin()
+    {
+        return view('daftarAdmin');
+    }
+
+    public function showDaftarUser(){
+        return view('daftarUser');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -30,6 +30,9 @@ Route::resource('/galangDana','GalangDanaController')->middleware('auth');
 Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
 
 Route::resource('/admin','admin');
+Route::get('/datar-campaign-admin','admin@showDaftarCampaign')->name('daftar-campaign');
+Route::get('/datar-admin','admin@showDaftarAdmin')->name('daftar-admin');
+Route::get('/datar-user','admin@showDaftarUser')->name('daftar-user');
 
 Route::get('/donasi-saya','memberController@create')->middleware('auth');
 

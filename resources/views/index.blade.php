@@ -28,25 +28,25 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="{{url('/datar-campaign-admin')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{url('/datar-admin')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar Admin</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{route('daftar-user')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar User</span>
           </a>
@@ -54,7 +54,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dollar"></i>
-            <span class="nav-link-text">Transaksi</span>
+            <span class="nav-link-text">Transaksi Dana</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
@@ -67,6 +67,26 @@
               <a href="cards.html">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Pencairan</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents1" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-archive"></i>
+            <span class="nav-link-text">Transaksi Barang</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents1">
+            <li>
+              <a href="navbar.html">
+                <i class="fa fa-fw fa-upload"></i>
+                <span class="nav-link-text">Pengiriman</span>
+              </a>
+            </li>
+            <li>
+              <a href="cards.html">
+                <i class="fa fa-fw fa-download"></i>
+                <span class="nav-link-text">Penerimaan</span>
               </a>
             </li>
           </ul>

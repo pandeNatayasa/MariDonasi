@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin')
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
-</head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
+@section('content')
+	<!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,22 +10,68 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{route('admin.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="{{url('/datar-campaign-admin')}}">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Daftar Campaign</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{url('/datar-admin')}}">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Daftar Admin</span>
           </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{route('daftar-user')}}">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Daftar User</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">Transaksi Dana</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="navbar.html">
+                <i class="fa fa-fw fa-upload"></i>
+                <span class="nav-link-text">Transfer</span>
+              </a>
+            </li>
+            <li>
+              <a href="cards.html">
+                <i class="fa fa-fw fa-download"></i>
+                <span class="nav-link-text">Pencairan</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-archive"></i>
+            <span class="nav-link-text">Transaksi Barang</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="navbar.html">
+                <i class="fa fa-fw fa-upload"></i>
+                <span class="nav-link-text">Pengiriman</span>
+              </a>
+            </li>
+            <li>
+              <a href="cards.html">
+                <i class="fa fa-fw fa-download"></i>
+                <span class="nav-link-text">Penerimaan</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -224,17 +254,75 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Dashboard</a>
+          <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Blank Page</li>
+        <li class="breadcrumb-item active">Tables</li>
       </ol>
-      <div class="row">
-        <div class="col-12">
-          <h1>Blank</h1>
-          <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
-        </div>
-      </div>
+      <!-- Example DataTables Card-->
+      
     </div>
+
+    <!-- isi data -->
+    <div class="card mb-3" style="margin: 30px;">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                	<th>No</th>
+                  	<th>Nama</th>
+                  	<th>Judul Campaign</th>
+                  	<th>Sisa Hari</th>
+                  	<th>Deadline Campaign</th>
+                  	<th>Dana Terkumpul</th>
+                  	<th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<tr>
+              		<td>1</td>
+              		<td>Bagus</td>
+              		<td>Bantu Andi</td>
+              		<td>12</td>
+              		<td>25-12-2018</td>
+              		<td>Rp. 1.000.000</td>
+              		<td>
+              			<div class="row">
+              				<div class="col-sm6">
+              					<button>Edit</button>
+              				</div>
+              				<div class="col-sm6">
+              					<button>Delete</button>
+              				</div>
+              			</div>
+              		</td>
+              	</tr>
+              	<tr>
+              		<td>2</td>
+              		<td>Aagus</td>
+              		<td>Bantu Andi</td>
+              		<td>15</td>
+              		<td>25-12-2018</td>
+              		<td>Rp. 3.000.000</td>
+              		<td>
+              			<div class="row">
+              				<div class="col-sm6">
+              					<button>Edit</button>
+              				</div>
+              				<div class="col-sm6">
+              					<button>Delete</button>
+              				</div>
+              			</div>
+              		</td>
+              	</tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -266,14 +354,5 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
-  </div>
-</body>
 
-</html>
+@endsection
