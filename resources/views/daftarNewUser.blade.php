@@ -285,41 +285,35 @@
               <thead>
                 <tr>
                 	<th>Id</th>
-                  	<th>Nama</th>
-                  	<th>Biography</th>
-                    <th>No Telp</th>
-                  	<th>Ktp Picture</th>
-                  	<th>Verif Picture</th>
-                  	<th>Status</th>
+                  <th>Nama</th>
+                  <th>Email</th>
+                  <th>Biography</th>
+                  <th>Ktp Picture</th>
+                  <th>Verif Picture</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
+                @foreach($dataUser as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-                  <td>19</td>
-              		<td>19</td>
-              		<td>25-12-2018</td>
+              		<td>{{$data->id}}</td>
+              		<td>{{$data->name}}</td>
+              		<td>{{$data->email}}</td>
+                  <td>{{$data->bio}}</td>
               		<td>
-                    <button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="Vew Detail"><i class="fa fa-eye"></i></button>
-              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <center><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="Ktp Picture"><i class="fa fa-eye"></i></button></center>
+                  </td>
+                  <td>
+                    <center><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="Verif Picture"><i class="fa fa-eye"></i></button></center> 
+                  </td>
+              		<td>
+                    <a href="" class="btn btn-info " data-toggle="tooltip" data-placement="right" title="Vew Detail"><i class="fa fa-eye"></i></a>
+              			<a href="{{route('admin.edit',$data->id)}}" class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></a>
+                    <a href="" class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></a>
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-              		<td>Aagus</td>
-              		<td>Bantu Andi</td>
-                  <td>19</td>
-              		<td>15</td>
-              		<td>25-12-2018</td>
-              		<td>
-                    <button class="btn btn-info "><i class="fa fa-eye"></i></button>
-              			<button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-              		</td>
-              	</tr>
+                @endforeach
+              	
               </tbody>
             </table>
           </div>

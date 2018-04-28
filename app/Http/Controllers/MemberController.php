@@ -114,11 +114,12 @@ class MemberController extends Controller
         }else{
             return 'no selected image Verif Picture';
         }
-        //
+        //$user1->name = $request->nama;
+        //$user1->email = $request->email;
+        
         $idUser = Auth::user()->id;
         $user1 = user::find($idUser);
-        $user1->name = $request->nama;
-        $user1->email = $request->email;
+        
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
         $user1->bio=$request->bioUser;

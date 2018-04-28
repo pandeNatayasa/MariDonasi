@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use DB;
+use Redirect;
 
 class admin extends Controller
 {
@@ -13,7 +16,13 @@ class admin extends Controller
      */
     public function index()
     {
-        return view('index');
+        $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
+        if($jumlahNewUser != 0){
+            return view('index',compact('jumlahNewUser'));
+        }else {
+            $jumlahNewUser = 0;
+            return view('index',compact('jumlahNewUser'));
+        }
     }
 
     public function showDaftarCampaign()
@@ -31,7 +40,8 @@ class admin extends Controller
     }
 
     public function showDaftarNewUser(){
-        return view('daftarNewUser');
+        $dataUser = User::all()->where('status','=','non-verified');
+        return view('daftarNewUser',compact('dataUser'));
     }
 
     public function showDaftarNewCampaign(){
@@ -101,7 +111,23 @@ class admin extends Controller
      */
     public function edit($id)
     {
-        //
+        // $barang = tb_barang::find($id);
+        // $barang->nama_barang = $request->namaBarang;
+        // $barang->jumlah = $request->jumlahBarang;
+        // $barang->harga = $request->harga;
+        // $barang->id_satuan = $request->namaSatuan;
+        // $barang->id_kategori = $request->namaKategori;
+        // $barang->save();
+
+        // return redirect('barang');
+
+        $data = User::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataUser = User::all()->where('status','=','non-verified');
+        // return redirect('daftarNewUser',compact('dataUser'));
+        return Redirect::to('/daftar-new-user')->with(compact('dataUser'));
     }
 
     /**

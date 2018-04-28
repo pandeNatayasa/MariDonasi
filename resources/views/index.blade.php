@@ -289,7 +289,10 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">26 New User!</div>
+              <div class="mr-5">
+                {{$jumlahNewUser}}
+                New User!
+              </div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-user')}}">
               <span class="float-left">View Details</span>

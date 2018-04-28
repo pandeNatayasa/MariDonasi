@@ -188,7 +188,7 @@
                   <div class="row">
                     <label class="control-label col-md-3">Nama</label>
                     <div class="col-md-9">
-                      <input class="form-control" disabled name="nama" required="required" type="text" value="Natayasa">
+                      <input class="form-control" disabled name="nama" required="required" type="text" value="{{Auth::user()->name}}">
                     </div>
                   </div>         
                 </div>
@@ -196,7 +196,7 @@
                   <div class="row">
                     <label class="control-label col-md-3">Email</label>
                     <div class="col-md-9">
-                      <input class="form-control" disabled name="email" required="required" type="text" value="natayasa12@gmail.com">
+                      <input class="form-control" disabled name="email" required="required" type="text" value="{{Auth::user()->email}}">
                     </div>
                   </div>        
                 </div>
@@ -210,17 +210,32 @@
                 </div>
                 <div class="form-group">
                   <div class="row">
+                    <label class="control-label col-md-3">Lokasi</label>
+                    <div class="col-md-9">
+                      <select name="lokasiUser" class="form-control" required="required">
+                        <option value="" disabled selected>Pilih Lokasi Anda</option>
+                        <option value="kabBadungBali">Kab. Badung, Prov. Bali</option>
+                        <option value="kabBangliBali">Kab. Bangli, Prov. Bali</option> 
+                        <option value="kabDenpasarBali">Kota Denpasar, Prov. Bali</option>
+                        <option value="kabGianyarBali">Kab Gianyar, Prov. Bali</option>          
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
                     <label class="control-label col-md-3">Bio</label>
                     <div class="col-md-9">
                       <textarea name="bioUser" class="form-control" required="required" placeholder="deskripsi lengkap dari campaign anda" rows="6"></textarea>
                     </div>
                   </div>
                 </div>
+                
                 <div class="form-group">
                   <div class="row">
                     <label class="control-label col-md-3">Profil Picture</label>
                     <div class="col-md-9">
-                      <input class="form-control" placeholder="Your last profil picture" name="image" required="required" type="file" value="">
+                      <input class="form-control" placeholder="Your last profil picture" name="profilPic" required="required" type="file" value="">
                     </div>
                   </div>
                 </div>
