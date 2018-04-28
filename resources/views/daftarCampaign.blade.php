@@ -53,13 +53,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">
+              <a href="{{route('daftar-transfer')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Transfer</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-pencairan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Pencairan</span>
               </a>
@@ -73,13 +73,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
-              <a href="navbar.html">
+              <a href="{{route('daftar-pengiriman')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Pengiriman</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-penerimaan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Penerimaan</span>
               </a>

@@ -28,7 +28,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="{{route('daftar-campaign')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
@@ -52,7 +52,7 @@
             <span class="nav-link-text">Transaksi Dana</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
+            <li class="active">
               <a href="{{route('daftar-transfer')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Transfer</span>
@@ -269,7 +269,7 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Daftar New Campaign</li>
+        <li class="breadcrumb-item active">Daftar Transfer</li>
       </ol>
       <!-- Example DataTables Card-->
       
@@ -278,7 +278,7 @@
     <!-- isi data -->
     <div class="card mb-3" style="margin: 20px;">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data New Campaign</div>
+          <i class="fa fa-table"></i> Data Transfer</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
@@ -287,9 +287,8 @@
                 	<th>Id</th>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Cover Picture</th>
-                  <th>Target Donasi</th>
-                  <th>Verif Picture</th>
+                  <th>Jumlah Transfer</th>
+                  <th>Tanggal Transfer</th>
                   <th>Detail</th>
                   <th>Status</th>
                 </tr>
@@ -299,7 +298,6 @@
               		<td>1</td>
               		<td>Bagus</td>
               		<td>Bantu Andi</td>
-                  <td></td>
                   <td></td>
               		<td></td>
               		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
@@ -312,7 +310,6 @@
               		<td>2</td>
                   <td>Aagus</td>
                   <td>Bantu Anto</td>
-                  <td></td>
                   <td></td>
                   <td></td>
                   <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>

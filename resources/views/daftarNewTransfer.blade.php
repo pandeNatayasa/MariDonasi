@@ -53,13 +53,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li class="active">
-              <a href="navbar.html">
+              <a href="{{route('daftar-transfer')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Transfer</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-pencairan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Pencairan</span>
               </a>
@@ -73,13 +73,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
-              <a href="navbar.html">
+              <a href="{{route('daftar-pengiriman')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Pengiriman</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-penerimaan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Penerimaan</span>
               </a>
@@ -302,10 +302,10 @@
                   <td></td>
                   <td></td>
               		<td></td>
-              		<td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
+              		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
               		<td>
-              			<button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
+              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
               	<tr>

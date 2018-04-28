@@ -33,16 +33,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Profile User">
           <div class="row" style="height: 80px; background-color: #060606; margin-right: 0px;">
             <div class="col-sm-4 admin-pic" style="padding: 10px 10px 10px 20px;">
               <center><!-- #898989 #181717-->
                 <img src="img/prastha.jpg" class="img-responsive" alt="">
               </center>
             </div>
-            <div class="col-sm-8" style="padding: 15px 0 15px 0;">
-              <div class="col-sm-12" style="padding: 0; color: #D6D5D5; ">Pande Natayasa</div>
-              <div class="col-sm-12" style="padding: 0; color: #D6D5D5;font-size: 12px;">natayasa12@gmail.com</div>
+            <div class="col-sm-8 nav-link" style="padding: 15px 0 15px 0;">
+              <div class="col-sm-12 nav-link-text" style="padding: 0; color: #D6D5D5; ">Pande Natayasa</div>
+              <div class="col-sm-12 nav-link-text" style="padding: 0; color: #D6D5D5;font-size: 12px;">natayasa12@gmail.com</div>
             </div>
           </div>
         </li>
@@ -77,13 +77,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">
+              <a href="{{route('daftar-transfer')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Transfer</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-pencairan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Pencairan</span>
               </a>
@@ -97,13 +97,13 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents1">
             <li>
-              <a href="navbar.html">
+              <a href="{{route('daftar-pengiriman')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Pengiriman</span>
               </a>
             </li>
             <li>
-              <a href="cards.html">
+              <a href="{{route('daftar-penerimaan')}}">
                 <i class="fa fa-fw fa-download"></i>
                 <span class="nav-link-text">Penerimaan</span>
               </a>
@@ -875,17 +875,14 @@
     <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="{{asset('js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
 
     <!-- Data Tables -->
     <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>

@@ -28,7 +28,7 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="{{route('daftar-campaign')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
@@ -72,7 +72,7 @@
             <span class="nav-link-text">Transaksi Barang</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents1">
-            <li>
+            <li class="active">
               <a href="{{route('daftar-pengiriman')}}">
                 <i class="fa fa-fw fa-upload"></i>
                 <span class="nav-link-text">Pengiriman</span>
@@ -269,7 +269,7 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Daftar New Campaign</li>
+        <li class="breadcrumb-item active">Daftar Pengiriman Barang</li>
       </ol>
       <!-- Example DataTables Card-->
       
@@ -278,7 +278,7 @@
     <!-- isi data -->
     <div class="card mb-3" style="margin: 20px;">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data New Campaign</div>
+          <i class="fa fa-table"></i> Data Pengiriman Barang</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
@@ -287,9 +287,9 @@
                 	<th>Id</th>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Cover Picture</th>
-                  <th>Target Donasi</th>
-                  <th>Verif Picture</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah</th>
+                  <th>Tanggal Pengiriman</th>
                   <th>Detail</th>
                   <th>Status</th>
                 </tr>
