@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Redirect;
+use App\campaign_user;
 
 class admin extends Controller
 {
@@ -16,18 +17,25 @@ class admin extends Controller
      */
     public function index()
     {
+        //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
         $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
-        if($jumlahNewUser != 0){
-            return view('index',compact('jumlahNewUser'));
-        }else {
+        $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->count();
+
+
+        if($jumlahNewUser == 0 ){
             $jumlahNewUser = 0;
-            return view('index',compact('jumlahNewUser'));
         }
+        if($jumlahNewCampaignUser == 0 ){
+            $jumlahNewCampaignUser = 0;
+        }
+
+        return view('index',compact('jumlahNewUser','jumlahNewCampaignUser'));
     }
 
     public function showDaftarCampaign()
     {
-        return view('daftarCampaign');
+        $dataCampaignUser = campaign_user::all()->where('status','=','verified');
+        return view('daftarCampaign',compact('dataCampaignUser'));
     }
 
     public function showDaftarAdmin()
@@ -36,7 +44,8 @@ class admin extends Controller
     }
 
     public function showDaftarUser(){
-        return view('daftarUser');
+        $daftarUser = User::all()->where('status','=','verified');
+        return view('daftarUser',compact('daftarUser'));
     }
 
     public function showDaftarNewUser(){
@@ -45,7 +54,8 @@ class admin extends Controller
     }
 
     public function showDaftarNewCampaign(){
-        return view('daftarNewCampaign');
+        $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
+        return view('daftarNewCampaign',compact('dataNewCampaignUser'));
     }
 
     public function showDaftarNewTransfer(){
@@ -128,6 +138,17 @@ class admin extends Controller
         $dataUser = User::all()->where('status','=','non-verified');
         // return redirect('daftarNewUser',compact('dataUser'));
         return Redirect::to('/daftar-new-user')->with(compact('dataUser'));
+    }
+
+    public function validasi_campaign($id)
+    {
+        $data = campaign_user::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-campaign')->with(compact('dataNewCampaignUser'));
     }
 
     /**

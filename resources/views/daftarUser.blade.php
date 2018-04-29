@@ -35,7 +35,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="{{url('/datar-admin')}}">
+          <a class="nav-link" href="{{url('/daftar-admin')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar Admin</span>
           </a>
@@ -286,47 +286,33 @@
                 <tr>
                 	<th>Id</th>
                   	<th>Nama User</th>
+                    <th>Email</th>
                   	<th>Foto Profile</th>
-                  	<th>Ktp Picture</th>
                   	<th>Pic Verif</th>
                   	<th>Status</th>
                 </tr>
               </thead>
               <tbody>
-              	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-              		<td>19</td>
-              		<td>25-12-2018</td>
-              		<td>
-              			<div class="row">
-              				<div class="col-sm6">
-              					<button>Edit</button>
-              				</div>
-              				<div class="col-sm6">
-              					<button>Delete</button>
-              				</div>
-              			</div>
-              		</td>
-              	</tr>
-              	<tr>
-              		<td>2</td>
-              		<td>Aagus</td>
-              		<td>Bantu Andi</td>
-              		<td>15</td>
-              		<td>25-12-2018</td>
-              		<td>
-              			<div class="row">
-              				<div class="col-sm6">
-              					<button>Edit</button>
-              				</div>
-              				<div class="col-sm6">
-              					<button>Delete</button>
-              				</div>
-              			</div>
-              		</td>
-              	</tr>
+                @foreach($daftarUser as $data)
+                	<tr>
+                		<td>{{$data->id}}</td>
+                		<td>{{$data->name}}</td>
+                		<td>{{$data->email}}</td>
+                		<td></td>
+                		<td></td>
+                		<td>
+                			<div class="row">
+                				<div class="col-sm6">
+                					<button>Edit</button>
+                				</div>
+                				<div class="col-sm6">
+                					<button>Delete</button>
+                				</div>
+                			</div>
+                		</td>
+                	</tr>
+                @endforeach
+              	
               </tbody>
             </table>
           </div>

@@ -294,30 +294,29 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $no = 0?>
+                @foreach($dataCampaignUser as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-              		<td>12</td>
-              		<td>25-12-2018</td>
-              		<td>Rp. 1.000.000</td>
+              		<td>{{$no += 1}}</td>
+              		<td>{{$data->User->name}}</td>
+              		<td>{{$data->judul}}</td>
+                  <?php
+                    $dateNow = time();
+                    $end_date = strtotime($data->deadline);
+                    // $interval = date_diff($dateNow,$end_date);
+                    $diff = $end_date - $dateNow;
+                    $interval=floor($diff / (60 * 60 * 24));
+                  ?>
+              		<td>{{$interval}} Hari</td>
+              		<td>{{$data->deadline}}</td>
+              		<td>{{$data->dana_sementara}}</td>
               		<td>
               			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
               			<button class="btn btn-danger "><i class="fa fa-trash"></i></butto
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-              		<td>Aagus</td>
-              		<td>Bantu Andi</td>
-              		<td>15</td>
-              		<td>25-12-2018</td>
-              		<td>Rp. 3.000.000</td>
-              		<td>
-              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
-              			<button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-              		</td>
-              	</tr>
+                @endforeach
+              	
               </tbody>
             </table>
           </div>

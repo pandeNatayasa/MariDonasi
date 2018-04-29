@@ -295,32 +295,22 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($dataNewCampaignUser as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
+              		<td>{{$data->id}}</td>
+              		<td>{{$data->User->name}}</td>
+              		<td>{{$data->judul}}</td>
                   <td></td>
-                  <td></td>
+                  <td>{{$data->target_donasi}}</td>
               		<td></td>
               		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
               		<td>
-              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+              			<a href="{{route('validasi-campaign',$data->id)}}" class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></a>
                     <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-                  <td>Aagus</td>
-                  <td>Bantu Anto</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
-                  <td>
-                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                  </td>
-              	</tr>
+                @endforeach
+              	
               </tbody>
             </table>
           </div>

@@ -42,6 +42,8 @@ Route::get('/daftar-new-pencairan','admin@showDaftarNewPencairan')->name('daftar
 Route::get('/daftar-pencairan','admin@showDaftarPencairan')->name('daftar-pencairan');
 Route::get('/daftar-pengiriman','admin@showDaftarPengiriman')->name('daftar-pengiriman');
 Route::get('/daftar-penerimaan','admin@showDaftarPenerimaan')->name('daftar-penerimaan');
+Route::get('/validasi-campaign/{id}','admin@validasi_campaign')->name('validasi-campaign');
+
 
 Route::get('/donasi-saya','memberController@create')->middleware('auth');
 

@@ -308,7 +308,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-list"></i>
               </div>
-              <div class="mr-5">11 New Campaign!</div>
+              <div class="mr-5">{{$jumlahNewCampaignUser}} New Campaign!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-campaign')}}">
               <span class="float-left">View Details</span>
