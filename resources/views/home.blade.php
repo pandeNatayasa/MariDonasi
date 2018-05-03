@@ -62,32 +62,18 @@
           <li><a href="{{ '/galangDana'}}">Galang Dana</a></li>
           <li class="menu-has-children">
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                {{ Auth::user()->name }} <span class="caret"></span>
+                Hai Orang Baik, {{ Auth::user()->name }} <span class="caret"></span>
             </a>
             <ul>
                 <li>
                   <a href="{{route('member.index')}}">
-                    <div class="row">
-                      <div class="col-2"> 
-                      </div>
-                      <div class="col-8">
-                        <div class="col-4">
-                          {{Auth::user()->name}}
-                        </div>
-                        <div class="col-4">
-                          {{Auth::user()->email}}
-                        </div>
-                      </div>
-                    </div>
+                    {{Auth::user()->name}}
                   </a>
                 </li>
                 <li>
                   <a href="{{ route('user.logout') }}" >
                         Logout
                   </a>
-                  <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form> -->
                 </li>
             </ul>
           </li>

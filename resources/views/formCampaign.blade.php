@@ -28,9 +28,15 @@
   <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
   <link href="{{asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
+  <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="lib/jquery/jquery-3.3.1.min.js"></script>
+
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
   <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
+
+  <!-- Import data tables -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 </head>
 
 <body>
@@ -61,14 +67,9 @@
                   <a href="{{route('member.index')}}">{{Auth::user()->name}}</a>
                 </li>
                 <li>
-                  <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
+                  <a href="{{ route('user.logout') }}" >
                         Logout
                   </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>
                 </li>
             </ul>
           </li>
@@ -163,10 +164,10 @@
                                 <div class="col-md-9">
                                   <select name="lokasi" class="form-control" required="required">
                                   <option value="" disabled selected>Pilih Lokasi Penerima Dana</option>
-                                  <option value="Prov. Bali, Kab. Bangli">Prov. Bali, Kab. Bangli</option>
-                                  <option value="Prov. Bali, kab. Badung">Prov. Bali, kab. Badung</option> 
-                                  <option value="Prov. Bali, kab. Gianyar">Prov. Bali, kab. Gianyar</option>
-                                  <option value="Prov. Bali, kota Denparas">Prov. Bali, kota Denparas</option>          
+                                  <option value="Prov. Bali Kab. Bangli">Prov. Bali Kab. Bangli</option>
+                                  <option value="Prov. Bali kab. Badung">Prov. Bali kab. Badung</option> 
+                                  <option value="Prov. Bali kab. Gianyar">Prov. Bali kab. Gianyar</option>
+                                  <option value="Prov. Bali kota Denparas">Prov. Bali kota Denparas</option>          
                                   </select>
                                 </div>
                               </div>
@@ -215,6 +216,70 @@
                      </form>
                   </div>
                </div>
+               <div style=" margin-top: 20px; margin-bottom: 90px;" class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="500ms" data-wow-delay="150ms">
+                  <div class="box">
+                    <div class="box-body">
+                      <div class="box-body-col">
+                        <h4>Input Target Donasi Barang</h4>
+                        <input type="submit" name="submit" value="Tambah Data" class="btn btn-primary" style="margin-bottom: 20px;"> 
+                        <div class="card-header">
+                          <i class="fa fa-table"></i> Data Target Donasi Barang</div>
+                        <div class="card-body">
+                           <div class="table-responsive" style="margin-top: 10px;">
+                            <table class="table table-bordered table-striped table-hover display" id="table_target_donasi">
+                              <thead style="background-color: black;">
+                                <tr>
+                                  <th style="color: #fff;">No</th>
+                                  <th style="color: #fff;">Nominal</th>
+                                  <th style="color: #fff;">Tanggal Pencairan</th>
+                                  <th style="color: #fff;">Status</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>20000</td>
+                                  <td>201212</td>
+                                  <td>sukses</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         </div>
       </div>
     </section><!-- #portfolio -->
@@ -292,7 +357,7 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
   <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('lib/easing/easing.min.js')}}"></script>
@@ -308,8 +373,18 @@
   <!-- Contact Form JavaScript File -->
   <script src="{{asset('contactform/contactform.js')}}"></script>
 
+  <!-- Data Tables -->
+  <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
+
   <!-- Template Main Javascript File -->
   <script src="{{asset('js/main.js')}}"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function () {
+      $('#table_target_donasi').DataTable();
+    } );
+
+  </script>
 
 </body>
 </html>

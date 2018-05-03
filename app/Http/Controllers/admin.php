@@ -38,57 +38,57 @@ class admin extends Controller
             $jumlahNewCampaignUser = 0;
         }
 
-        return view('index',compact('jumlahNewUser','jumlahNewCampaignUser'));
+        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser'));
     }
 
     public function showDaftarCampaign()
     {
         $dataCampaignUser = campaign_user::all()->where('status','=','verified');
-        return view('daftarCampaign',compact('dataCampaignUser'));
+        return view('viewAdmin.daftarCampaign',compact('dataCampaignUser'));
     }
 
     public function showDaftarAdmin()
     {
-        return view('daftarAdmin');
+        return view('viewAdmin.daftarAdmin');
     }
 
     public function showDaftarUser(){
         $daftarUser = User::all()->where('status','=','verified');
-        return view('daftarUser',compact('daftarUser'));
+        return view('viewAdmin.daftarUser',compact('daftarUser'));
     }
 
     public function showDaftarNewUser(){
         $dataUser = User::all()->where('status','=','non-verified');
-        return view('daftarNewUser',compact('dataUser'));
+        return view('viewAdmin.daftarNewUser',compact('dataUser'));
     }
 
     public function showDaftarNewCampaign(){
         $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
-        return view('daftarNewCampaign',compact('dataNewCampaignUser'));
+        return view('viewAdmin.daftarNewCampaign',compact('dataNewCampaignUser'));
     }
 
     public function showDaftarNewTransfer(){
-        return view('daftarNewTransfer');
+        return view('viewAdmin.daftarNewTransfer');
     }
 
     public function showDaftarNewPencairan(){
-        return view('daftarNewPencairan');
+        return view('viewAdmin.daftarNewPencairan');
     }
 
     public function showDaftarPengiriman(){
-        return view('daftarPengiriman');
+        return view('viewAdmin.daftarPengiriman');
     }
 
     public function showDaftarPenerimaan(){
-        return view('daftarPenerimaan');
+        return view('viewAdmin.daftarPenerimaan');
     }
 
     public function showDaftarTransfer(){
-        return view('daftarTransfer');
+        return view('viewAdmin.daftarTransfer');
     }
 
     public function showDaftarPencairan(){
-        return view('daftarPencairan');
+        return view('viewAdmin.daftarPencairan');
     }
     /**
      * Show the form for creating a new resource.

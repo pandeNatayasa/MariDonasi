@@ -30,6 +30,7 @@ Route::get('/rek-user','RekUserController@index')->middleware('auth');
 Route::resource('/galangDana','GalangDanaController')->middleware('auth');
 
 Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
+Route::get('/dompetKebaikanUser-Pencairan','RekUserController@showFormPencairan')->name('pencairan_dana')->middleware('auth');
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');

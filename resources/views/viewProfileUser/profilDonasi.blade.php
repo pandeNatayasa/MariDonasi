@@ -9,7 +9,14 @@
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
             <center>
-              <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
+              <?php
+                $foto = Auth::user()->profil_pic;
+                if($foto == '0'){
+                  $foto = "img/profil_pic/profile_default.jpg";
+                }
+
+              ?>
+              <img src="{{$foto}}" class="img-responsive" alt="">
             </center>
             
           </div>
@@ -54,10 +61,24 @@
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
-            <li>
-              <a href="{{route('dompetKebaikanUser.index')}}">
-              <i class="glyphicon glyphicon-flag"></i>
-              Dompet Kebaikan </a>
+            <li data-toggle="tooltip" data-placement="right" title="Dompet Kebaikan User">
+              <a data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                <span >Dompet Kebaikan</span>
+              </a>
+              <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
+                <li >
+                  <a href="{{route('dompetKebaikanUser.index')}}">
+                    <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
+                    <span >Tambah Deposit</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('pencairan_dana')}}">
+                    <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
+                    <span>Pencairan Dana</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>

@@ -14,7 +14,12 @@ class RekUserController extends Controller
      */
     public function index()
     {
-        return view('dompetKebaikan');
+        return view('viewProfileUser.dompetKebaikan');
+    }
+
+    public function showFormPencairan()
+    {
+        return view('viewProfileUser.dompetKebaikanPencairan');
     }
 
     /**

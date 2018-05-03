@@ -26,7 +26,7 @@ class MemberController extends Controller
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('profilUserOverview',compact('jumlahCampaignDimulai'));
+        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
     }
 
     /**
@@ -36,7 +36,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('profilDonasi');
+        return view('viewProfileUser.profilDonasi');
     }
 /**
      * Show the form for creating a new resource.
@@ -45,7 +45,7 @@ class MemberController extends Controller
      */
     public function editProfile()
     {
-        return view('editProfilFull');
+        return view('viewProfileUser.editProfilFull');
     }
     /**
      * Store a newly created resource in storage.
@@ -56,9 +56,7 @@ class MemberController extends Controller
     public function storeCompleteAcount(Request $request)
     {
         $idUser = Auth::user()->id;
-        $a = "profillePic";
-        $b = "ktpPic";
-        $c = "verifPic";
+        
         if ($request->hasFile('profilPic')) {
             $fileProfilPic=$request->file('profilPic');
             $filename1 = "profillePic_" . $idUser . '.' . $fileProfilPic->getClientOriginalExtension();
@@ -155,7 +153,7 @@ class MemberController extends Controller
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('profilUserOverview',compact('jumlahCampaignDimulai'));
+        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
     }
 
     /**
@@ -177,12 +175,12 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        return view('editProfil');
+        return view('viewProfileUser.editProfil');
     }
 
     public function edit2()
     {
-        return view('editProfil');
+        return view('viewProfileUser.editProfil');
     }
 
     /**

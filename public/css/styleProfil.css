@@ -22,8 +22,8 @@ body {
 .profile-userpic img {
   float: none;
   margin: 0 auto;
-  width: 50%;
-  height: 50%;
+  width: 125px;
+  height: 125px;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
@@ -94,7 +94,8 @@ body {
 }
 .bodyone {
   background-color: #fff;
-  padding: 0px 20px 2px 20px;
+  padding: 30px 30px 30px 50px;
+  min-height: 120px;
 }
 .profile-usermenu ul li a {
   color: #93a3b5;
@@ -129,6 +130,12 @@ body {
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+/* Profile Content */
+.profile-content1 {
+  padding: 20px;
+  background: #fff;
+  min-height: 340px;
 }
 
 /* Profile Header */
