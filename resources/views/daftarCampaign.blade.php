@@ -23,19 +23,19 @@
       		</div>
       	</li>
         <li class="nav-item " data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{{route('admin.index')}}">
+          <a class="nav-link" href="{{route('admin.home')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="{{url('/datar-campaign-admin')}}">
+          <a class="nav-link" href="{{route('daftar-campaign')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="{{url('/datar-admin')}}">
+          <a class="nav-link" href="{{route('daftar-admin')}}">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">Daftar Admin</span>
           </a>

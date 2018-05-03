@@ -17,20 +17,35 @@ Route::resource('/member','memberController')->middleware('auth');
 Route::resource('/campaignSaya','campaignSaya')->middleware('auth');
 Auth::routes();
 
+Route::get('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout');
+
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/editProfile', 'memberController@editProfile')->name('editProfile')->middleware('auth');
 Route::post('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth');
 
 Route::resource('/campaignUser','CampaignUserController');
 
-Route::get('users','RekUserController@index')->middleware('auth');
+Route::get('/rek-user','RekUserController@index')->middleware('auth');
 
 Route::resource('/galangDana','GalangDanaController')->middleware('auth');
 
 Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
 
-//Route untuk halaman Admin 
-Route::resource('/admin','admin');
+Route::group(['prefix'=>'admin'],function() {
+	Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');
+	Route::post('/login','AuthAdmin\LoginController@login')->name('admin.login.submit');
+	Route::get('/','admin@index')->name('admin.home');
+	Route::get('/edit/{id}','admin@edit')->name('admin.edit');
+	Route::get('/logout','AuthAdmin\LoginController@logout')->name('admin.logout');
+
+	Route::get('/password/reset','AuthAdmin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+	Route::post('/password/email','AuthAdmin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+
+	Route::get('/password/reset/{token}','AuthAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+	Route::post('/password/reset','AuthAdmin\ResetPasswordController@reset');
+
+});
+
 Route::get('/daftar-campaign-admin','admin@showDaftarCampaign')->name('daftar-campaign');
 Route::get('/daftar-admin','admin@showDaftarAdmin')->name('daftar-admin');
 Route::get('/daftar-user','admin@showDaftarUser')->name('daftar-user');
@@ -48,6 +63,8 @@ Route::get('/validasi-campaign/{id}','admin@validasi_campaign')->name('validasi-
 Route::get('/donasi-saya','memberController@create')->middleware('auth');
 
 Route::get('/edit-profile','memberController@edit2')->middleware('auth');
+
+
 
 
 

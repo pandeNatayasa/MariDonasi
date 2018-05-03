@@ -8,32 +8,35 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700')}}" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
   <!-- link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
   <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
   <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-3.3.1.min.js"></script>
   <!-- Include the above in your HEAD tag -->
 
   <!-- Main Stylesheet File -->
     <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet">
+
+  <!-- Import data tables -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -106,145 +109,8 @@
     </div>
   </section><!-- #intro -->
   <main id="main">
-
-<div class="container">
-    <div class="row profile">
-    <div class="col-md-3">
-      <div class="profile-sidebar">
-        <div class="profile-background">
-          <!-- SIDEBAR USERPIC -->
-          <div class="profile-userpic">
-            <center>
-              <img src="{{Auth::user()->profil_pic}}" class="img-responsive" alt="">
-            </center>
-            
-          </div>
-          <!-- END SIDEBAR USERPIC -->
-          <!-- SIDEBAR USER TITLE -->
-          <div class="profile-usertitle">
-            <div class="profile-usertitle-name">
-              {{Auth::user()->name}}
-            </div>
-            <div class="profile-usertitle-job">
-              {{Auth::user()->email}}
-            </div>
-          </div>
-          <!-- END SIDEBAR USER TITLE -->
-          <!-- SIDEBAR BUTTONS -->
-          <div class="profile-userbuttons">
-            <!-- <button type="button" class="btn btn-success btn-sm">Follow</button> <button type="button" ></button>-->
-            <a href="{{route('editProfile')}}" class="btn btn-info btn-sm">Edit Profile</a> 
-          </div>
-        </div>
-        
-        
-        <!-- END SIDEBAR BUTTONS -->
-        <!-- SIDEBAR MENU -->
-        <div class="profile-usermenu">
-          <ul class="nav" >
-            <li class="active">
-              <a href="{{route('member.index')}}">
-              <i class="glyphicon glyphicon-home"></i>
-              Overview </a>
-            </li>
-            <li>
-              <a href="{{route('campaignSaya.index')}}">
-              <i class="glyphicon glyphicon-user"></i>
-              Campaign Saya </a>
-            </li>
-            <li>
-              <a href="{{url('/donasi-saya')}}">
-              <i class="glyphicon glyphicon-user"></i>
-              Donasi Saya </a>
-            </li>
-            <li>
-              <a href="{{url('/edit-profile')}}">
-              <i class="glyphicon glyphicon-user"></i>
-              Akun Saya </a>
-            </li>
-            <li>
-              <a href="{{route('dompetKebaikanUser.index')}}">
-              <i class="glyphicon glyphicon-flag"></i>
-              Dompet Kebaikan </a>
-            </li>
-          </ul>
-        </div>
-        <!-- END MENU -->
-      </div>
-    </div>
-    <!-- bagian kontent -->
-    <div class="col-md-9">
-      <div class="profile-header">
-        <strong> Overview</strong>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="profile-overview">
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="profile-userpic" >
-                  <img style="height: 65px; width: 65px;" src="img/start.jpg" class="img-responsive" alt=""> 
-                </div>
-              </div>
-              <div class="col-sm-9">
-                <div class="col-sm-12 jumlah">
-                  <strong>{{$jumlahCampaignDimulai}}</strong> 
-                </div>
-                <div class="col-sm-12 jumlah1">
-                  Campaign dimulai
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="profile-overview">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="profile-userpic" >
-                  <img style="height: 65px; width: 65px;" src="img/donate_plan.jpg" class="img-responsive" alt=""> 
-                </div>
-              </div>
-              <div class="col-sm-8">
-                <div class="col-sm-12 jumlah">
-                  <strong>0</strong> 
-                </div>
-                <div class="col-sm-12 jumlah1">
-                  Donasi
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="profile-overview">
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="profile-userpic" >
-                  <img style="height: 65px; width: 65px;" src="img/donate.jpg" class="img-responsive" alt="">
-                </div>
-              </div>
-              <div class="col-sm-9">
-                <div class="col-sm-12 jumlah">
-                  <strong>Rp. 15.000.000</strong> 
-                </div>
-                <div class="col-sm-12 jumlah1">
-                  Donasi disalurkan
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="profile-content">
-         aaaaaaaaaa
-      </div>
-    </div>
-    <!-- End of content -->
-  </div>
-</div>
-
+  
+    @yield('content')
    
   </main>
 
@@ -320,24 +186,34 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
+
+  <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
+  <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('lib/easing/easing.min.js')}}"></script>
+  <script src="{{asset('lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{asset('lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{asset('lib/wow/wow.min.js')}}"></script>
+  <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
+  <script src="{{asset('lib/counterup/counterup.min.js')}}"></script>
+  <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('lib/isotope/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('lib/lightbox/js/lightbox.min.js')}}"></script>
+  <script src="{{asset('lib/touchSwipe/jquery.touchSwipe.min.js')}}"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script src="{{asset('contactform/contactform.js')}}"></script>
+
+  <!-- Data Tables -->
+  <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="{{asset('js/main.js')}}"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function () {
+      $('#table_donasi').DataTable();
+    } );
+  </script>
 
 </body>
 </html>

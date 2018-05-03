@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\campaign_user;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -46,10 +47,7 @@ class LoginController extends Controller
      */
     public function logoutUser()
     {
-        return "aaaaaaaaaaaa";
-        // Auth::guard('web')->logout();
-        // $dataDonasi = campaign_user::all()->where('status','=','verified');
-        // return view('welcome',compact('dataDonasi'));
-        // return redirect('/');
+        Auth::guard('web')->logout();
+        return redirect('/');
     }
 }

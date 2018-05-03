@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Redirect;
+use App\campaign_user;
+
 
 class MemberController extends Controller
 {
@@ -17,7 +20,13 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('profilUserOverview');
+        $idUser = Auth::user()->id;
+        $jumlahCampaignDimulai = DB::table('campaign_users')->where('id_user','=',$idUser)->count();
+
+        if($jumlahCampaignDimulai == 0 ){
+            $jumlahCampaignDimulai = 0;
+        }
+        return view('profilUserOverview',compact('jumlahCampaignDimulai'));
     }
 
     /**
@@ -46,23 +55,30 @@ class MemberController extends Controller
      */
     public function storeCompleteAcount(Request $request)
     {
+        $idUser = Auth::user()->id;
+        $a = "profillePic";
+        $b = "ktpPic";
+        $c = "verifPic";
         if ($request->hasFile('profilPic')) {
             $fileProfilPic=$request->file('profilPic');
-            $fileProfilPic->move('img/profil_pic',$fileProfilPic->getClientOriginalName());
+            $filename1 = "profillePic_" . $idUser . '.' . $fileProfilPic->getClientOriginalExtension();
+            $fileProfilPic->move('img/profil_pic',$filename1);
         }else{
             return 'no selected image Profil Picture';
         }
 
         if ($request->hasFile('ktpPic')) {
             $fileKtpPic=$request->file('ktpPic');
-            $fileKtpPic->move('img/bio_user',$fileKtpPic->getClientOriginalName());
+            $filename2 = "ktpPic_" . $idUser . '.' . $fileKtpPic->getClientOriginalExtension();
+            $fileKtpPic->move('img/ktp_pic',$filename2);
         }else{
             return 'no selected image KTP Picture';
         }
 
         if ($request->hasFile('verifPic')) {
             $fileVerifPic=$request->file('verifPic');
-            $fileVerifPic->move('img/bio_user',$fileVerifPic->getClientOriginalName());
+            $filename3 = "verifPic_" . $idUser . '.' . $fileVerifPic->getClientOriginalExtension();
+            $fileVerifPic->move('img/verif_pic',$filename3);
         }else{
             return 'no selected image Verif Picture';
         }
@@ -72,9 +88,9 @@ class MemberController extends Controller
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
         $user1->bio=$request->bioUser;
-        $user1->profil_pic='img/profil_pic/'.$fileProfilPic->getClientOriginalName();
-        $user1->ktp_pic='img/ktp_pic/'.$fileKtpPic->getClientOriginalName();
-        $user1->verif_pic='img/verif_pic/'.$fileVerifPic->getClientOriginalName();
+        $user1->profil_pic='img/profil_pic/'.$filename1;
+        $user1->ktp_pic='img/ktp_pic/'.$filename2;
+        $user1->verif_pic='img/verif_pic/'.$filename3;
         $user1->save();
 
         $art = Auth::user()->id;
@@ -94,23 +110,28 @@ class MemberController extends Controller
     }
     public function store(Request $request)
     {
+        $idUser = Auth::user()->id;
+
         if ($request->hasFile('profilPic')) {
             $fileProfilPic=$request->file('profilPic');
-            $fileProfilPic->move('img/profil_pic',$fileProfilPic->getClientOriginalName());
+            $filename1 = "profillePic_" . $idUser . '.' . $fileProfilPic->getClientOriginalExtension();
+            $fileProfilPic->move('img/profil_pic', $filename1);
         }else{
             return 'no selected image Profil Picture';
         }
 
         if ($request->hasFile('ktpPic')) {
             $fileKtpPic=$request->file('ktpPic');
-            $fileKtpPic->move('img/bio_user',$fileKtpPic->getClientOriginalName());
+            $filename2 = "ktpPic_" . $idUser . '.' . $fileKtpPic->getClientOriginalExtension();
+            $fileKtpPic->move('img/ktp_pic',$filename2);
         }else{
             return 'no selected image KTP Picture';
         }
 
         if ($request->hasFile('verifPic')) {
             $fileVerifPic=$request->file('verifPic');
-            $fileVerifPic->move('img/bio_user',$fileVerifPic->getClientOriginalName());
+            $filename3 = "verifPic_" . $idUser . '.' . $fileVerifPic->getClientOriginalExtension();
+            $fileVerifPic->move('img/verif_pic',$filename3);
         }else{
             return 'no selected image Verif Picture';
         }
@@ -123,12 +144,18 @@ class MemberController extends Controller
         $user1->no_telp=$request->noTelpUser;
         $user1->lokasi=$request->lokasiUser;
         $user1->bio=$request->bioUser;
-        $user1->profil_pic='img/profil_pic/'.$fileProfilPic->getClientOriginalName();
-        $user1->ktp_pic='img/ktp_pic/'.$fileKtpPic->getClientOriginalName();
-        $user1->verif_pic='img/verif_pic/'.$fileVerifPic->getClientOriginalName();
+        $user1->profil_pic='img/profil_pic/'.$filename1;
+        $user1->ktp_pic='img/ktp_pic/'.$filename2;
+        $user1->verif_pic='img/verif_pic/'.$filename3;
         $user1->save();
 
-        return view('profilUserOverview');
+        $idUser = Auth::user()->id;
+        $jumlahCampaignDimulai = DB::table('campaign_users')->where('id_user','=',$idUser)->count();
+
+        if($jumlahCampaignDimulai == 0 ){
+            $jumlahCampaignDimulai = 0;
+        }
+        return view('profilUserOverview',compact('jumlahCampaignDimulai'));
     }
 
     /**
