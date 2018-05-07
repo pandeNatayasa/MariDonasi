@@ -312,7 +312,7 @@
               		<td>{{$data->dana_sementara}}</td>
               		<td>
               			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
-              			<button class="btn btn-danger "><i class="fa fa-trash"></i></butto
+              			<button class="btn btn-danger "><i class="fa fa-trash"></i></butto>
               		</td>
               	</tr>
                 @endforeach
@@ -349,7 +349,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="{{route('admin.logout')}}">Logout</a>
           </div>
         </div>
       </div>

@@ -69,47 +69,259 @@
 
           if(number_string.length >= 4 ){
             var i = 0;
+            var count = 0;
             var len = number_string.length;
             while(i < len){
-              
-                if(i != 0 && i == 3 ){
+              if(len >= 4 && len <= 5){
+                if(i != 0 && i % 3 == 0){
                   number_string = insert(number_string, '.', number_string.length - i);
-                  len = len + 1;
+                  len = number_string.length;
+                  i += 1;
+                  count = count + 1;
                 } 
 
-                if(i != 0 && i == 7){
-                    number_string = insert(number_string, '.', number_string.length - i);
-                    // len = number_string.length;
-                } 
-                if(i != 0 && i == 11 ){
-                    number_string = insert(number_string, '.', number_string.length - i);
-                    // len = number_string.length;
-                } 
-                
-                if(i != 0 && i == 15){
-                  number_string = insert(number_string, '.', number_string.length - i);                   
-                } 
-                
-              i = i + 1;    
-              console.log('i');
-              console.log(i);
+                // if(i != 0 && i % 7 == 0){
+                // console.log(count)
+                // number_string = insert(number_string, '.', number_string.length - i);
+                // len = number_string.length;
+                // // i += 1;
+                // }
 
-              console.log(len);
+              }else if(len >= 6 ){
+                if(count<=4){
+
+                  if(i != 0 && i % 3 == 0){
+                    // console.log(count)
+                    // console.log("len")
+                    // console.log(len)
+                    // console.log(i)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    len = number_string.length;
+                    // i += 1;
+                    var a = 0;
+                    for(a=0;a<=len;a++){
+                      count = count + 1;
+                    }
+                    // console.log(count)
+
+                    // if(i != 0 && i % 7 == 0){
+                    // console.log(count)
+                    // number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // // i += 1;
+
+                    
+                    // }
+                    
+                  } 
+                }else if(count<=8){
+
+                  if(i != 0 && i % 7 == 0){
+                    // console.log('bb')
+                    // console.log(count)
+                    // console.log("len")
+                    // console.log(len)
+                    // console.log(i)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = 0;
+                    // len = number_string.length;
+                    // i += 1;
+                    // console.log('aa')
+
+                    // console.log(number_string)
+
+                    // count = 0;
+                    // var a = 0;
+                    // for(a=0;a<=len;a++){
+                    //   count = count + 1;
+                    // }
+
+                    // count = count +1;
+                  }
+
+                }else if(count==9){
+
+                  if(i != 0 && i % 7 == 0){
+                    // console.log('bb')
+                    // console.log(count)
+                    // console.log("len")
+                    // console.log(len)
+                    // console.log(i)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = 0;
+                    // len = number_string.length;
+                    // i += 1;
+                    // console.log('aa')
+
+                    // console.log(number_string)
+
+                    // count = count +1;
+                  }
+
+                }else if(count==10){
+                  if(i != 0 && i % 7 == 0){
+                    // console.log(count)
+                    // console.log("len")
+                    // console.log(len)
+                    // console.log(i)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = 0;
+                    // len = number_string.length;
+
+                    // i += 1;
+                    
+                    // count = count + 1; 
+                  }
+
+                }else if(count == 11){
+                  if(i != 0 && i % 7 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = 0;
+                    // len = number_string.length;
+                    // i += 1;
+
+                    // count = count + 1;
+                  }
+                }else if(count == 12){
+                  if(i != 0 && i % 7 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = 0;
+                    // len = number_string.length;
+                    // i += 1;
+                    // var a = 0;
+
+                    // count = 0;
+                  }
+
+                }else if(count == 13){
+                  if(i != 0 && i % 7 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // len = number_string.length;
+                    // i += 1;
+                    // var a = 0;
+                  }
+
+                  if(i != 0 && i % 11 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                    // count = count + 1;
+                  } 
+                }else if(count == 14){
+                  if(i != 0 && i == 7 ){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                  }
+
+                  if(i != 0 && i % 11 == 0){
+                    // console.log(count)
+                    // console.log('aa');
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                    
+                    // count = count + 1;
+                  }
+
+                }else if(count == 15){
+                  if(i != 0 && i == 7){
+                    // console.log(i)
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+
+                  }
+
+                  if(i != 0 && i == 11){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+
+                    // count = count + 1;
+                  } 
+                  if(i != 0 && i == 15){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                    // count = count + 1;
+                    
+                  } 
+                }else if(count == 16){
+                  if(i != 0 && i == 7){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                                      
+                  }
+
+                  if(i != 0 && i == 11){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                    // var a = 0;
+
+                  } 
+
+                  if(i != 0 && i == 15){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+                    // count = count + 1;
+                    
+                  } 
+                }else if(count == 17){
+                  if(i != 0 && i == 7){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+
+                  }
+
+                  if(i != 0 && i % 11 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+
+                  } 
+
+                  if(i != 0 && i % 15 == 0){
+                    // console.log(count)
+                    number_string = insert(number_string, '.', number_string.length - i);
+                    // len = number_string.length;
+                    // i += 1;
+
+                    // count = count + 1;
+                  } 
+                }else{
+                  count = count + 1;
+                }  
+              }
+              i++;
+              console.log(count);
             }
             len = 0 ;
-            
-            document.getElementById("targetDonasi2").value=number_string;
-            // console.log(number_string);
+            count = 0 ;
+            console.log(number_string);
             // return number_string;
-            
+            document.getElementById("targetDonasi").value=number_string;
             number_string = number_string.replace(".", "");
-            
-          }else{
-            number_string = number_string.replace(".", ""); 
-            document.getElementById("targetDonasi2").value=number_string;
+            console.log("ee");
           }
-          number_string = number_string.replace(".", ""); 
-          document.getElementById("targetDonasi").value=number_string;
           
           // var hasil document.getElementById("hasilTargetDonasi");
           // hasil.innerHTML=number_string;
@@ -203,9 +415,7 @@
                             <div class="row">
                               <label class="control-label col-md-3">Target Donasi</label>
                              <div class="col-md-9">
-                                 <input id="targetDonasi2" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi2" required="required" type="text" onkeyup="formatRupiah(this.value)" value="">
-                                 <input id="targetDonasi" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi" required="required" type="hidden"  value="">
-                                 <!-- onkeypress="formatRupiah(this.value)" onkeyup="formatRupiah(this.value)" onkeypress="return onlyNumbers();" -->
+                                 <input id="targetDonasi" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi" required="required" type="text" onkeyup="formatRupiah(this.value)" value=""><!-- onkeypress="formatRupiah(this.value)"  onkeypress="return onlyNumbers();" -->
                              </div>
                              <!-- <div class="col-md-3 hasilTargetDonasi">
                              </div> -->

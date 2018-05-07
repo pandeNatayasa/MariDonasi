@@ -16,4 +16,7 @@ class campaign_user extends Model
     // public function tb_nota_barang(){
     // 	return $this->hashMany('App\tb_detail_nota');
     // }
+    public function campaign_user_barang(){
+        return $this->hashMany('App\campaign_user_barang');
+    }
 }

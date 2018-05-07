@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\campaign_user;
+use App\campaign_user_barang;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,13 +36,28 @@ class CampaignUserController extends Controller
         if($data[0]->status =="non-verified"){
             return view('formUpdateUser');
         }elseif ($data[0]->status=="verified") {
-            return view('formCampaign');
+            $dataBarang = campaign_user_barang::all()->where('id_campaign_user','=','1');
+            return view('formCampaign',compact('dataBarang'));
         }else{
             return "not found".$data;
         }
         
     }
 
+    public function storeBarang(Request $request){
+        $data = new campaign_user_barang();
+        $data->id_campaign_user='1';
+        $data->nama_barang = $request->namaBarang;
+        $data->target_jumlah= $request->jumlahBarang;
+        $data->jumlah_sementara='0';
+        $data->jumlah_sisa='0';
+        $data->satuan=$request->satuanBarang;
+        $data->save();
+
+        $dataBarang = campaign_user_barang::all()->where('id_campaign_user','=','1');
+
+        return $dataBarang;
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -62,8 +78,9 @@ class CampaignUserController extends Controller
         }else{
             return 'no selected image Profil Picture';
         }
-        $dateNow = date('Y-m-d');
+        
         //
+        $dateNow = date('Y-m-d');
         $idUser = Auth::user()->id;
         $newCampaign = new campaign_user();
         $newCampaign->id_user = $idUser;
@@ -82,9 +99,11 @@ class CampaignUserController extends Controller
         $newCampaign->pic_verif = 'img/image_verif_campaign/'.$fileCoverPic->getClientOriginalName();
         $newCampaign->status='non-verified';
         $newCampaign->save();
+
+        $id_campaign_user_max = DB::table('campaign_users')->max('id');
         
-        // $dataDonasi = campaign_user::all();
-        // return view('home',compact('dataDonasi'));
+        DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
+        
         return view('intermeso');
     }
 

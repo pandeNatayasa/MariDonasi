@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:web');
     }
 
     /**
@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dataDonasi = campaign_user::all()->where('status','=','verified');
+        $dateNow = date('Y-m-d');
+        $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','=',$dateNow);
         return view('home',compact('dataDonasi'));
     }
 

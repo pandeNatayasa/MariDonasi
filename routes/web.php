@@ -13,24 +13,26 @@
 
 Route::get('/','welcome@index');
 
-Route::resource('/member','memberController')->middleware('auth');
-Route::resource('/campaignSaya','campaignSaya')->middleware('auth');
+Route::resource('/member','memberController')->middleware('auth:web');
+Route::resource('/campaignSaya','campaignSaya')->middleware('auth:web');
 Auth::routes();
 
 Route::get('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout');
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/editProfile', 'memberController@editProfile')->name('editProfile')->middleware('auth');
-Route::post('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth:web');
+Route::get('/editProfile', 'memberController@editProfile')->name('editProfile')->middleware('auth:web');
+Route::post('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth:web');
 
 Route::resource('/campaignUser','CampaignUserController');
+Route::resource('/campaign_user_barang','CampaignUserBarangController');
+Route::post('/tambahBarang','CampaignUserController@storeBarang')->name('tambahBarang');
 
-Route::get('/rek-user','RekUserController@index')->middleware('auth');
+Route::get('/rek-user','RekUserController@index')->middleware('auth:web');
 
-Route::resource('/galangDana','GalangDanaController')->middleware('auth');
+Route::resource('/galangDana','GalangDanaController')->middleware('auth:web');
 
-Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth');
-Route::get('/dompetKebaikanUser-Pencairan','RekUserController@showFormPencairan')->name('pencairan_dana')->middleware('auth');
+Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth:web');
+Route::get('/dompetKebaikanUser-Pencairan','RekUserController@showFormPencairan')->name('pencairan_dana')->middleware('auth:web');
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');
@@ -61,12 +63,12 @@ Route::get('/daftar-penerimaan','admin@showDaftarPenerimaan')->name('daftar-pene
 Route::get('/validasi-campaign/{id}','admin@validasi_campaign')->name('validasi-campaign');
 
 
-Route::get('/donasi-saya','memberController@create')->middleware('auth');
+Route::get('/donasi-saya','memberController@create')->middleware('auth:web');
 
-Route::get('/edit-profile','memberController@edit2')->middleware('auth');
-
-
+Route::get('/edit-profile','memberController@edit2')->middleware('auth:web');
 
 
+Route::post('list','ListController@store');
+Route::get('list','ListController@index');
 
-
+Route::resource('/galang-barang-user','CampaignUserBarangController')->middleware('auth:web');
