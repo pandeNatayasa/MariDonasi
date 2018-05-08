@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\campaign_organisasi;
 use Illuminate\Http\Request;
+use Auth;
+use App\organisasis;
+use DB;
 
 class CampaignOrganisasiController extends Controller
 {
@@ -14,7 +17,7 @@ class CampaignOrganisasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('tutorial_galang_dana_organisasi');
     }
 
     /**
@@ -24,7 +27,20 @@ class CampaignOrganisasiController extends Controller
      */
     public function create()
     {
-        //
+        $art = Auth::guard('organitation')->user()->id;
+        $data = DB::table('organisasis')
+        ->where('organisasis.id','LIKE','%'.$art.'%')
+        ->select('status')
+        ->get();
+        // select('select status from users where users.id = ?', $artikel); {{ $collection[0]->title }}
+        if($data[0]->status =="non-verified"){
+            return view('formUpdateOrganisasi');
+        }elseif ($data[0]->status=="verified") {
+            $dataBarang = campaign_user_barang::all()->where('id_campaign_user','=','1');
+            return view('formCampaign',compact('dataBarang'));
+        }else{
+            return "not found".$data;
+        }
     }
 
     /**

@@ -17,13 +17,16 @@ class CreateOrganisasisTable extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('no_telp',15);
             $table->string('lokasi',100);
             $table->text('bio');
             $table->string('pic',200);
+            $table->biginteger('wallet');
             $table->enum('status',['verified', 'non-verified']);
             $table->string('pic_surat',200);
             $table->date('berlaku_hingga');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\campaign_user;
 
-class HomeController extends Controller
+class HomeControllerOrganisasi extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:web');
+        $this->middleware('auth:organitation');
     }
 
     /**
@@ -26,7 +26,8 @@ class HomeController extends Controller
     {
         $dateNow = date('Y-m-d');
         $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
-        return view('home',compact('dataDonasi'));
+        
+        return view('homeOrganisasi',compact('dataDonasi'));
     }
 
 }

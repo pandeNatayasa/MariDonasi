@@ -81,12 +81,29 @@
                         <a href="{{ url('/home') }}">Home</a>
                       </li>
                     @else
-                      <li>
-                        <a href="{{ route('login') }}">Login</a>
+                      
+                      
+                      <li class="menu-has-children"><a href="">Login</a>
+                        <ul id="portfolio-flters">
+                          <li>
+                            <a href="{{ route('login') }}">As User</a>
+                          </li>
+                          <li>
+                            <a href="{{ route('organisasi.login') }}">As Organisasi</a>
+                          </li>
+                        </ul>
                       </li>
-                      <li>
-                        <a href="{{ route('register') }}">Register</a>
-                      </li>   
+                      <li class="menu-has-children"><a href="">Register</a>
+                        <ul id="portfolio-flters">
+                          <li>
+                            <a href="{{ route('register') }}">Register As User</a>
+                          </li>
+                          <li>
+                            <a href="">Register As Organisasi</a>
+                          </li>
+                        </ul>
+                      </li>
+                        
                     @endauth
             @endif
           

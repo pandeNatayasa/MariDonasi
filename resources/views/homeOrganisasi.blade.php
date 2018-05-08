@@ -24,19 +24,19 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li>
-          <li><a href="{{route('campaignUser.index')}}">Galang Dana</a></li>
+          <li><a href="{{ route('campaignOrganisasi.index')}}">Galang Dana</a></li>
           <li class="menu-has-children">
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                Hai Orang Baik, {{ Auth::user()->name }} <span class="caret"></span>
+                Hai Organisasi Baik, {{ Auth::guard('organitation')->user()->name }}  <span class="caret"></span>
             </a>
             <ul>
                 <li>
                   <a href="{{route('member.index')}}">
-                    {{Auth::user()->name}}
+                    {{ Auth::guard('organitation')->user()->name }}
                   </a>
                 </li>
                 <li>
-                  <a href="{{ route('user.logout') }}" >
+                  <a href="{{ route('organisasi.logout') }}" >
                         Logout
                   </a>
                 </li>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
   <meta charset="utf-8">
-  <title>MariDonasi</title>
+  <title>Mari Donasi</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+
+  <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Favicons -->
   <link href="{{asset('img/favicon.png')}}" rel="icon">
@@ -15,7 +18,7 @@
   <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700')}}" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <!-- link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
   <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -26,24 +29,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
-
-  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
-  <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
-  <!-- Include the above in your HEAD tag -->
-
-  <!-- Main Stylesheet File -->
-    <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet">
-
-  <!-- Import data tables -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
-
-  <!-- =======================================================
-    Theme Name: BizPage
-    Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -53,64 +38,68 @@
   ============================-->
   <header id="header">
     <div class="container-fluid">
+
       <div id="logo" class="pull-left">
-        <h1><a href="{{'/home' }}" class="scrollto">MariDonasi</a></h1>
+        <h1><a href="{{ url('/') }}" class="scrollto">MariDonasi</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="{{route('member.index')}}">Profil</a></li>
-          <li><a href="{{route('galangDana.index')}}">Galang Dana</a></li>
-          <li>
-              @if (Route::has('login'))
-                <!-- <div class="top-right links"> -->
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                <!-- </div> -->
-            @endif
-          </li>
-          <li >
-            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+          <li><a href="{{ url('/') }}">Welcome</a></li>
+          <li><a href="{{ route('organisasi.register') }}">Register</a></li>
 
-            <ul class="dropdown-menu">
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                  <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-              </li> 
-                <li>
-                  <a href="{{ route('user.logout') }}" >
+          <!-- Authentication Links -->
+            
+              <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
+            
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                   <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
                         Logout
-                  </a>
-                </li>
-            </ul>
-          </li>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
+                  </li>
+                </ul>
+              </li> -->
+            
+            
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                  Organisasi <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ route('organisasi.logout') }}"
+                      >
+                        Logout
+                    </a>
+                  </li>
+                </ul>
+              </li> -->
+            
+              <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
+            
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
 
-  <!--==========================
-    Intro Section
-  ============================-->
-  <section id="introgd">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-        <!-- <div class="carousel-background"><img src="img/intro-carousel/1.jpg" alt=""></div> -->
-      </div>
-    </div>
-  </section><!-- #intro -->
-  <main id="main">
-  
     @yield('content')
-   
+
+  <main id="main">
+
   </main>
 
   <!--==========================
@@ -122,17 +111,16 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>MariDonasi</h3>
-            <p>Mari Donasi merupakan website untuk membantu orang-orang yang membutuhkan dengan mendonasikan uang atau barang.</p>
+            <h3>BizPage</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Learn More</h4>
+            <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Apa itu MariDonasi ?</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">FAQ</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Syarat dan Ketentuan</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Kebijakan privasi</a></li>
             </ul>
           </div>
 
@@ -159,7 +147,6 @@
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            
           </div>
 
         </div>
@@ -168,7 +155,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+        &copy; Copyright <strong>2018</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -183,27 +170,9 @@
   </footer><!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="{{route('admin.logout')}}">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
   <!-- JavaScript Libraries -->
-  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
-
+  <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
   <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('lib/easing/easing.min.js')}}"></script>
@@ -219,21 +188,8 @@
   <!-- Contact Form JavaScript File -->
   <script src="{{asset('contactform/contactform.js')}}"></script>
 
-  <!-- Data Tables -->
-  <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
-
   <!-- Template Main Javascript File -->
   <script src="{{asset('js/main.js')}}"></script>
-
-  <script type="text/javascript">
-    $(document).ready( function () {
-      $('#table_donasi').DataTable();
-    } );
-
-    $(document).ready( function () {
-      $('#table_pencairan').DataTable();
-    } );
-  </script>
 
 </body>
 </html>

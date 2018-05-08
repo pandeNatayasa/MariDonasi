@@ -55,6 +55,16 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
+
+        'organitation' => [
+            'driver' => 'session',
+            'provider' => 'organitations',
+        ],
+
+        'api-organitation' => [
+            'driver' => 'token',
+            'provider' => 'organitations',
+        ],
     ],
 
     /*
@@ -83,6 +93,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\admin::class,
+        ],
+
+        'organitations' => [
+            'driver' => 'eloquent',
+            'model' => App\organisasi::class,
         ],
 
         // 'users' => [
@@ -114,6 +129,11 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'organitations' => [
+            'provider' => 'organitations',
             'table' => 'password_resets',
             'expire' => 60,
         ],
