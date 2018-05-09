@@ -6,6 +6,7 @@ use App\campaign_organisasi;
 use Illuminate\Http\Request;
 use Auth;
 use App\organisasis;
+use App\campaign_user_barang;
 use DB;
 
 class CampaignOrganisasiController extends Controller
@@ -37,7 +38,7 @@ class CampaignOrganisasiController extends Controller
             return view('formUpdateOrganisasi');
         }elseif ($data[0]->status=="verified") {
             $dataBarang = campaign_user_barang::all()->where('id_campaign_user','=','1');
-            return view('formCampaign',compact('dataBarang'));
+            return view('formCampaignOrganisasi',compact('dataBarang'));
         }else{
             return "not found".$data;
         }
@@ -51,7 +52,45 @@ class CampaignOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('imageCover')) {
+            $fileCoverPic=$request->file('imageCover');
+            $fileCoverPic->move('img/cover_campaign',$fileCoverPic->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
+        }
+        if ($request->hasFile('pic_verif')) {
+            $filePicVerif=$request->file('pic_verif');
+            $filePicVerif->move('img/image_verif_campaign',$filePicVerif->getClientOriginalName());
+        }else{
+            return 'no selected image Profil Picture';
+        }
+        
         //
+        $dateNow = date('Y-m-d');
+        $id_organisasi = Auth::guard('organitation')->user()->id;
+        $newCampaign = new campaign_organisasi();
+        $newCampaign->id_organisasi = $id_organisasi;
+        $newCampaign->judul=$request->campaignName;
+        $newCampaign->pic_cover_campaign = 'img/cover_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->cerita_singkat=$request->deskripsiSingkat;
+        $newCampaign->cerita_lengkap=$request->deskripsiLengkap;
+        $newCampaign->target_donasi=$request->targetDonasi;
+        $newCampaign->tgl_awal = $dateNow;
+        $newCampaign->deadline=$request->deadlineCampaign;
+        $newCampaign->kategori=$request->kategoriCampaign;
+        $newCampaign->lokasi_penerima=$request->lokasi;
+        $newCampaign->dana_sementara='0';
+        $newCampaign->dana_bersih='0';
+        $newCampaign->sisa_dana='0';
+        $newCampaign->pic_verif = 'img/image_verif_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->status='non-verified';
+        $newCampaign->save();
+
+        $id_campaign_user_max = DB::table('campaign_users')->max('id');
+        
+        DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
+        
+        return view('intermesoOrganisasi');
     }
 
     /**

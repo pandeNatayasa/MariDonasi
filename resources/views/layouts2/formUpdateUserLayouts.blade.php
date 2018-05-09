@@ -15,7 +15,7 @@
           <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                   
                   <div class="box" style="margin-top: 10px;">
-                     <form action="@yield('route_completeAcount') {{route('completeAcount')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                     <form action="@yield('route_completeAcount') " class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                      {{csrf_field()}}
              
                      <div class="box-body">

@@ -1,17 +1,17 @@
 @extends('layouts2.intermeso_layouts')
 
 @section('home')
-  {{ url('/home') }}
+  {{ route('organisasi.home') }}
 @endsection
 
 @section('nama_pengguna')
-  {{ Auth::user()->name }}
+  {{ Auth::guard('organitation')->user()->name }}
 @endsection
 
 @section('route_logout')
-  {{ route('user.logout') }}
+  {{ route('organisasi.logout') }}
 @endsection
 
 @section('route_home')
-  {{ route('home') }}
+  {{ route('organisasi.home') }}
 @endsection

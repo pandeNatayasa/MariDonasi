@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 // use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\organisasi;
+use App\campaign_user;
 
 class RegisterController extends Controller
 {

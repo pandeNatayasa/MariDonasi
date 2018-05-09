@@ -40,6 +40,19 @@
   <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 
   <script> 
+    // menampilkan data input di modal
+    $(document).ready(function(){
+      var i = 1;
+      $("#tambahDataBarang").on('click',function(){
+        var namaBarang=document.getElementById("namaBarangAdd").value;
+        var jumlahBarang=document.getElementById("jumlahBarangAdd").value;
+        var satuanBarang=document.getElementById("satuanBarangAdd").value;
+        $(".odd").html("");
+        $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
+        i++;
+      });
+    });
+    //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button><button class="btn btn-danger "><i class="fa fa-trash"></i></button>
 //    function()
 // {
 //    var hasil;
@@ -113,7 +126,7 @@
           
           // var hasil document.getElementById("hasilTargetDonasi");
           // hasil.innerHTML=number_string;
-      }
+      }    
            
   </script>
 </head>
@@ -297,7 +310,8 @@
 
                         <div class="box-body-col" style="margin-bottom: 60px;" >
                           <h4>Input Target Donasi Barang</h4>
-                          <a id="tambahData" href="" data-toggle="modal" data-target="#modal-form" name="tambahData"  class="btn btn-primary" style="margin-bottom: 20px;">Tambah Data </a>
+                          <!-- " -->
+                          <a id="tambahData" href="" data-toggle="modal"  name="tambahData" data-target="#modal-form" class="btn btn-primary" style="margin-bottom: 20px;">Tambah Data </a>
                           <div class="card-header">
                             <i class="fa fa-table"></i> Data Target Donasi Barang</div>
                           <div class="card-body">
@@ -312,10 +326,10 @@
                                     <th style="color: #fff;">Status</th>
                                   </tr>
                                 </thead>
-                                <tbody>
-                                  <?php $no = 0;?>
-                                  @foreach($dataBarang as $data)
-                                  <tr class="ourItem">
+                                <tbody class="dataBaru" id="dataBaru">
+                                  <!-- <?php $no ;?> -->
+                                  <!-- @foreach($dataBarang as $data) -->
+                                  <!-- <tr class="ourItem">
                                     <td>{{$no = $no+1}}</td>
                                     <td class="ourItem1" data-toggle="modal" data-target="#modalData">{{$data->nama_barang}}</td>
                                     <td class="ourItem2">{{$data->target_jumlah}}</td>
@@ -324,8 +338,8 @@
                                       <button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target=""><i class="fa fa-edit"></i></button>
                                       <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
                                     </td>
-                                  </tr>
-                                  @endforeach
+                                  </tr> -->
+                                  <!-- @endforeach -->
                                   <!-- <tr class="ourItem">
                                     <td>2</td>
                                     <td class="ourItem1" data-toggle="modal" data-target="#modalData">20000</td>
@@ -346,7 +360,7 @@
                                       <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
                                     </td>
                                   </tr>
- -->                                  
+                                  -->
                                 </tbody>
                               </table>
                             </div>
@@ -439,25 +453,26 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <form method="post" action="{{route('campaign_user_barang.store')}}" class="form_tambah_barang" data-toggle="validator">
+          <!-- method="post" action="{{route('campaign_user_barang.store')}}" -->
+          <form  class="form_tambah_barang" data-toggle="validator">
           {{csrf_field()}}
             <div class="modal-body">
               <div class="row">
                 <label class="control-label col-md-3">Nama Barang</label>
                 <div class="col-md-9">
-                  <input class="form-control" placeholder="Nama Barang yang diminta" name="namaBarang" required="required" type="text" value="" id="namaBarang">
+                  <input class="form-control" placeholder="Nama Barang yang diminta" name="namaBarangAdd" required="required" type="text" value="" id="namaBarangAdd">
                 </div>
               </div>
               <div class="row">
                 <label class="control-label col-md-3">Jumlah Barang</label>
                 <div class="col-md-9">
-                  <input class="form-control" placeholder="Jumlah Barang yang diminta" name="jumlahBarang" required="required" type="text" value="" id="jumlahBarang">
+                  <input class="form-control" placeholder="Jumlah Barang yang diminta" name="jumlahBarangAdd" required="required" type="text" value="" id="jumlahBarangAdd">
                 </div>
               </div>
               <div class="row">
                 <label class="control-label col-md-3">Satuan</label>
                 <div class="col-md-9">
-                  <select name="satuanBarang" class="form-control" required="required" id="satuan">
+                  <select name="satuanBarangAdd" id="satuanBarangAdd" class="form-control" required="required" id="satuan">
                     <option value="" disabled selected>Pilih Satuan Barang</option>
                     <option value="Lusin">Lusin</option>
                     <option value="Meter">Meter</option> 
@@ -469,7 +484,7 @@
             </div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary" type="submit" id="tambahDataBarang">Tambah</button>
+              <button class="btn btn-primary" type="button" id="tambahDataBarang" data-dismiss="modal">Tambah</button>
             </div>
           </form>
         </div>
@@ -586,9 +601,9 @@
   <script src="{{asset('js/main.js')}}"></script>
 
   <script type="text/javascript">
-    $(document).ready( function () {
-      $('#table_target_donasi').DataTable();
-    } );
+    // $(document).ready( function () {
+    //   $('#table_target_donasi').DataTable();
+    // } );
 
     // memformat angka ribuan
     function formatAngka(angka) {
@@ -684,22 +699,22 @@
           
         });
 
-        $('#tambahDataBarang').click(function(){
+        // $('#tambahDataBarang').click(function(){
           
-          var data = $('.form_tambah_barang').serialize();
+        //   var data = $('.form_tambah_barang').serialize();
 
-          $.ajax({
-            type: 'POST',
-            url: "{{ URL::route('tambahBarang') }}",
-            data: {
-              '_token': $('input[name=_token]').val() 
-              },
-            success: function(data) {
-                        // empty
-            },
-          });
+        //   $.ajax({
+        //     type: 'POST',
+        //     url: "{{ URL::route('tambahBarang') }}",
+        //     data: {
+        //       '_token': $('input[name=_token]').val() 
+        //       },
+        //     success: function(data) {
+        //                 // empty
+        //     },
+        //   });
           
-        });
+        // });
 
       });
     } );

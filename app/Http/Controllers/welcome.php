@@ -9,7 +9,8 @@ class welcome extends Controller
 {
     public function index()
     {
-        $dataDonasi = campaign_user::all()->where('status','=','verified');
+    		$dateNow = date('Y-m-d');
+        $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
         return view('welcome',compact('dataDonasi'));
     }
 }

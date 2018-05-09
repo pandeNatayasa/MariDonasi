@@ -75,7 +75,7 @@
           
           <li><a href="#contact">Contact</a></li>
           
-              @if (Route::has('login'))
+              <!-- @if (Route::has('login')) -->
                     @auth
                       <li>
                         <a href="{{ url('/home') }}">Home</a>
@@ -99,13 +99,13 @@
                             <a href="{{ route('register') }}">Register As User</a>
                           </li>
                           <li>
-                            <a href="">Register As Organisasi</a>
+                            <a href="{{ route('organisasi.register') }}">Register As Organisasi</a>
                           </li>
                         </ul>
                       </li>
                         
                     @endauth
-            @endif
+            <!-- @endif -->
           
           
         </ul>
