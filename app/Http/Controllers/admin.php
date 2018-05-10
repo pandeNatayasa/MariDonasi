@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\organisasi;
+use App\campaign_organisasi;
 use DB;
 use Redirect;
 use App\campaign_user;
@@ -30,6 +32,9 @@ class admin extends Controller
         $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
         $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->count();
 
+        //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
+        $jumlahNewOrganisasi = DB::table('organisasis')->where('status','=','non-verified')->count();
+        $jumlahNewCampaignOrganisasi = DB::table('campaign_organisasis')->where('status','=','non-verified')->count();
 
         if($jumlahNewUser == 0 ){
             $jumlahNewUser = 0;
@@ -38,7 +43,14 @@ class admin extends Controller
             $jumlahNewCampaignUser = 0;
         }
 
-        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser'));
+        if($jumlahNewOrganisasi == 0 ){
+            $jumlahNewOrganisasi = 0;
+        }
+        if($jumlahNewCampaignOrganisasi == 0 ){
+            $jumlahNewCampaignOrganisasi = 0;
+        }
+
+        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser','jumlahNewOrganisasi','jumlahNewCampaignOrganisasi'));
     }
 
     public function showDaftarCampaign()

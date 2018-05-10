@@ -1,5 +1,8 @@
 @extends('layouts.formCampaign')
 
+@section('home')
+	{{route('organisasi.home')}}
+@endsection
 @section('nama_pengguna')
   {{ Auth::guard('organitation')->user()->name }}
 @endsection

@@ -180,7 +180,7 @@ class MemberController extends Controller
 
     public function edit2()
     {
-        return view('viewProfileUser.editProfil');
+        return view('viewProfileUser.akunSaya');
     }
 
     /**

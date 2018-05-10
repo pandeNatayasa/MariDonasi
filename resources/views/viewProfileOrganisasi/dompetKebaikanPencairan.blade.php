@@ -18,7 +18,6 @@
               ?>
               <img src="{{$foto}}" class="img-responsive" alt="">
             </center>
-            
           </div>
           <!-- END SIDEBAR USERPIC -->
           <!-- SIDEBAR USER TITLE -->
@@ -58,7 +57,7 @@
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
-            <li class="active">
+            <li class=>
               <a href="{{url('/edit-profile')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
@@ -68,13 +67,13 @@
                 <span >Dompet Kebaikan</span>
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
-                <li >
+                <li>
                   <a href="{{route('dompetKebaikanUser.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
                 </li>
-                <li>
+                <li class="active">
                   <a href="{{route('pencairan_dana')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
                     <span>Pencairan Dana</span>
@@ -90,88 +89,61 @@
     <!-- bagian kontent -->
     <div class="col-md-9">
       <div class="profile-header" style="margin-bottom: 20px;">
-        <strong>Edit Profile</strong> 
+        <strong>Dompet Kebaikan > Pencairan</strong> 
       </div>
-      <div class="profile-content">
+      <form>
+        <div class="bodyone" style="margin-bottom: 20px;">
+          <strong >
+            <div class="row">
+               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. 100.000</h1>
+            </div>
+          </strong>
+        </div>
+      </form>
+      <div class="profile-content1">
+        
         <div class="box" style="margin-top: 10px;">
-          <form action="{{route('member.store')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="#" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             {{csrf_field()}}
              
             <div class="bodyone">
               <div class="box-body-col">
                 <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Nama</label>
-                    <div class="col-md-9">
-                      <input class="form-control" disabled name="nama" required="required" type="text" value="{{Auth::user()->name}}">
+                  <div class="row" style="padding-bottom: 30px;">
+                    <label class="col-md-12" style="text-align: center;"><strong><h4>Pencairan Dana pada Dompet Anda</h4> </strong> </label>
+                  </div> 
+                  <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4">Jumlah Pencairan Dana</label>
+                    <div class="col-md-6">
+                      <input class="form-control" name="jumlahPencairanDana" required="required" type="text" value="">
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4">Bank tujuan</label>
+                    <div class="col-md-6">
+                      <input class="form-control" name="bankTujuan" required="required" type="text" value="">
+                    </div>
+                  </div>
+                  <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4">Nama Pemilik Rekening</label>
+                    <div class="col-md-6">
+                      <input class="form-control" name="namaPemilikRekening" required="required" type="text" value="">
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4">No. Rekening</label>
+                    <div class="col-md-6">
+                      <input class="form-control" name="noRekening" required="required" type="text" value="">
                     </div>
                   </div>         
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Email</label>
-                    <div class="col-md-9">
-                      <input class="form-control" disabled name="email" required="required" type="text" value="{{Auth::user()->email}}">
-                    </div>
-                  </div>        
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">No Telepun</label>
-                    <div class="col-md-9">
-                      <input class="form-control" placeholder="nomor telepon anda" name="noTelpUser" required="required" type="text" value="">
-                    </div>
-                  </div>     
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Lokasi</label>
-                    <div class="col-md-9">
-                      <select name="lokasiUser" class="form-control" required="required">
-                        <option value="" disabled selected>Pilih Lokasi Anda</option>
-                        <option value="kabBadungBali">Kab. Badung, Prov. Bali</option>
-                        <option value="kabBangliBali">Kab. Bangli, Prov. Bali</option> 
-                        <option value="kabDenpasarBali">Kota Denpasar, Prov. Bali</option>
-                        <option value="kabGianyarBali">Kab Gianyar, Prov. Bali</option>          
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Bio</label>
-                    <div class="col-md-9">
-                      <textarea name="bioUser" class="form-control" required="required" placeholder="deskripsi lengkap dari campaign anda" rows="6"></textarea>
-                    </div>
-                  </div>
-                </div>
                 
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Profil Picture</label>
-                    <div class="col-md-9">
-                      <input class="form-control" placeholder="Your last profil picture" name="profilPic" required="required" type="file" value="">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">KTP Picture</label>
-                    <div class="col-md-9">
-                      <input class="form-control" placeholder="Your bio" name="ktpPic" required="required" type="file" value="">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-md-3">Verif Picture</label>
-                    <div class="col-md-9">
-                      <input class="form-control" placeholder="Your bio" name="verifPic" required="required" type="file" value="">
-                    </div>
-                  </div>
-                </div>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-11">
                     <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px; float: right; "> 
                   </div>
                 </div>
@@ -184,5 +156,4 @@
     <!-- End of content -->
   </div>
 </div>
-
 @endsection

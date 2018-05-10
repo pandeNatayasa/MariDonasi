@@ -43,14 +43,25 @@
     // menampilkan data input di modal
     $(document).ready(function(){
       var i = 1;
+      var barangs=[];
       $("#tambahDataBarang").on('click',function(){
         var namaBarang=document.getElementById("namaBarangAdd").value;
         var jumlahBarang=document.getElementById("jumlahBarangAdd").value;
         var satuanBarang=document.getElementById("satuanBarangAdd").value;
+        let temp={
+          'nama':namaBarang,
+          'jumlah':jumlahBarang,
+          'satuan':satuanBarang
+        }
+        barangs.push(temp)
         $(".odd").html("");
         $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
         i++;
       });
+      $("#save").click(function(){
+        //console.log(barangs)
+        axios.post('/campaignUser/store', barangs);
+      })
     });
     //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button><button class="btn btn-danger "><i class="fa fa-trash"></i></button>
 //    function()
@@ -140,15 +151,14 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="{{ url('/') }}" class="scrollto">MariDonasi</a></h1>
+        <h1><a href="@yield('home')" class="scrollto">MariDonasi</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a href="{{ url('/') }}">Welcome</a></li>
-          <li><a href="{{ url('/home') }}">Home</a></li>
+          <li><a href="@yield('home')">Home</a></li>
           <li>
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                 @yield('nama_pengguna')  <span class="caret"></span>
@@ -214,7 +224,8 @@
                            </div>
                            <div class="form-group">
                             <div class="row">
-                              <label class="control-label col-md-3">Target Donasi</label>
+                              <label class="control-label col-md-2">Target Donasi</label>
+                              <label class="control-label col-md-1 " style=" padding-left: 40px">Rp. </label>
                              <div class="col-md-9">
                                  <input id="targetDonasi2" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi2" required="required" type="text" onkeyup="formatRupiah(this.value)" value="">
                                  <input id="targetDonasi" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi" required="required" type="hidden"  value="">
@@ -366,7 +377,7 @@
                             </div>
                           </div>
                           <div class="col-md-12" style="padding-top: 50px;">
-                            <input type="submit" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 40px; float: right; padding-left: 30px; padding-right: 30px; "> 
+                            <input type="submit" id="save" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 40px; float: right; padding-left: 30px; padding-right: 30px; "> 
                           </div>
                         </div>
 

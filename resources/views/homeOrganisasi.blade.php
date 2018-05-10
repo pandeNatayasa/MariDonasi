@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="/" class="scrollto">MariDonasi</a></h1>
+        <h1><a href="{{route('organisasi.home')}}" class="scrollto">MariDonasi</a></h1>
         <a href="#intro"><img src="img/logo.png" alt="" title="" width="60px" /></a>
       </div>
 
@@ -31,7 +31,7 @@
             </a>
             <ul>
                 <li>
-                  <a href="{{route('member.index')}}">
+                  <a href="{{route('profille-organisasi.index')}}">
                     {{ Auth::guard('organitation')->user()->name }}
                   </a>
                 </li>

@@ -1,23 +1,23 @@
 @extends('layouts.profilleUser')
 
 @section('home')
-  {{route('home')}}
+  {{route('organisasi.home')}}
 @endsection
 
 @section('profile')
-  {{route('member.index')}}
+  {{route('profille-organisasi.index')}}
 @endsection
 
 @section('galang_dana')
-  {{route('campaignUser.index')}}
+  {{route('campaignOrganisasi.index')}}
 @endsection
 
 @section('name')
-  {{ Auth::user()->name }}
+  {{ Auth::guard('organitation')->user()->name }}
 @endsection
 
 @section('logout')
-  {{ route('user.logout') }}
+  {{ route('organisasi.logout') }}
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
           <div class="profile-userpic">
             <center>
               <?php
-                $foto = Auth::user()->profil_pic;
+                $foto = Auth::guard('organitation')->user()->pic;
                 if($foto == '0'){
                   $foto = "img/profil_pic/profile_default.jpg";
                 }
@@ -44,10 +44,10 @@
           <!-- SIDEBAR USER TITLE -->
           <div class="profile-usertitle">
             <div class="profile-usertitle-name">
-              {{Auth::user()->name}}
+              {{Auth::guard('organitation')->user()->name}}
             </div>
             <div class="profile-usertitle-job">
-              {{Auth::user()->email}}
+              {{Auth::guard('organitation')->user()->email}}
             </div>
           </div>
           <!-- END SIDEBAR USER TITLE -->
@@ -63,22 +63,22 @@
         <div class="profile-usermenu">
           <ul class="nav" >
             <li class="active">
-              <a href="{{route('member.index')}}">
+              <a href="{{route('profille-organisasi.index')}}">
               <i class="glyphicon glyphicon-home"></i>
               Overview </a>
             </li>
             <li>
-              <a href="{{route('campaignSaya.index')}}">
+              <a href="{{route('campaignView')}}">
               <i class="glyphicon glyphicon-user"></i>
               Campaign Saya </a>
             </li>
             <li>
-              <a href="{{url('/donasi-saya')}}">
+              <a href="{{route('profille-organisasi.create')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
             <li>
-              <a href="{{url('/edit-profile')}}">
+              <a href="{{route('akun.organisasi')}}">
               <i class="glyphicon glyphicon-user"></i>
               Akun Saya </a>
             </li>

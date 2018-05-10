@@ -54,20 +54,20 @@
   <header id="header">
     <div class="container-fluid">
       <div id="logo" class="pull-left">
-        <h1><a href="{{'/home' }}" class="scrollto">MariDonasi</a></h1>
+        <h1><a href="@yield('home')" class="scrollto">MariDonasi</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="{{route('member.index')}}">Profil</a></li>
-          <li><a href="{{route('galangDana.index')}}">Galang Dana</a></li>
+          <li class="menu-active"><a href="@yield('profile')">Profil</a></li>
+          <li><a href="@yield('galang_dana')">Galang Dana</a></li>
           <li>
               @if (Route::has('login'))
                 <!-- <div class="top-right links"> -->
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="@yield('home')">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -77,17 +77,13 @@
           </li>
           <li >
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                {{ Auth::user()->name }} <span class="caret"></span>
+                @yield('name') <span class="caret"></span>
             </a>
 
             <ul class="dropdown-menu">
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                  <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-              </li> 
                 <li>
-                  <a href="{{ route('user.logout') }}" >
-                        Logout
+                  <a href="@yield('logout')" >
+                        <i class="fa fa-fw fa-sign-out"></i>Logout</a>
                   </a>
                 </li>
             </ul>

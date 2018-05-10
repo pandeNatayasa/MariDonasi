@@ -1,5 +1,10 @@
 @extends('layouts.formCampaign')
 
+
+@section('home')
+	{{route('home')}}
+@endsection
+
 @section('nama_pengguna')
   {{ Auth::user()->name }}
 @endsection

@@ -102,9 +102,26 @@ class CampaignUserController extends Controller
 
         $id_campaign_user_max = DB::table('campaign_users')->max('id');
         
-        DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
-        
-        return view('intermeso');
+        // DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
+
+        $Barang = $request->barangs;
+        $jumlahBarang = count($Barang);
+
+        for ($x = 0; $x < $jumlahBarang; $x++) {
+            // $data = new campaign_user_barang();
+            // $data->id_campaign_user=$id_campaign_user_max;
+            // $data->nama_barang = $Barang[$x][nama];
+            // $data->target_jumlah= $Barang[$x][jumlah];
+            // $data->jumlah_sementara='0';
+            // $data->jumlah_sisa='0';
+            // $data->satuan=$Barang[$x][satuan];
+            // $data->save();
+            return $jumlahBarang;
+
+        }
+        return $Barang;
+        // return ['nama'];
+        // return view('intermeso');
     }
 
     /**
