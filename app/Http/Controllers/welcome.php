@@ -11,6 +11,6 @@ class welcome extends Controller
     {
     		$dateNow = date('Y-m-d');
         $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
-        return view('welcome',compact('dataDonasi'));
+        return view('donasi',compact('dataDonasi'));
     }
 }

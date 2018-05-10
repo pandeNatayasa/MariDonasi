@@ -10,6 +10,7 @@
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" type="text/css" href="{{url::asset('css/galangDana.css')}}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -70,22 +71,23 @@
   <main id="main">
     <section id="about">
       <div class="container">
-
         <header class="section-header">
-          <h3>DONASI</h3>
-          <p>Teman saya sakit hati tidak kunjung mendapat jodoh. Bagi yang memiliki harta lebih, diharap bisa memberi sedikit uang untuk modal berdandan</p>
+          <h3>GALANG DANA UNTUK PRASTHA</h3>
+          <form>
+            <table>
+              <tr>
+                <td id="gambar">
+                  <img src="img/prastha.jpg" height="400" width="600">
+                </td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 50%"></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
         </header>
-
-        <div class="container-fluid">
-          <div class="img">
-                <img src="img/prastha.jpg" alt="" class="img-fluid">
-            </div>  
-        </div>
-          <div align="center">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-primary">DONASI</button>
-          </div>
-        </div>
       </div>
         
     </section><!-- #about -->
