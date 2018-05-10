@@ -54,13 +54,15 @@
           'satuan':satuanBarang
         }
         barangs.push(temp)
+
         $(".odd").html("");
         $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
         i++;
       });
-      $("#save").click(function(){
+      $("#tambahData").click(function(){
         //console.log(barangs)
-        axios.post('/campaignUser/store', barangs);
+        // axios.post('/campaignUser/store', barangs);
+        document.getElementById("barang").value=barangs;
       })
     });
     //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button><button class="btn btn-danger "><i class="fa fa-trash"></i></button>
@@ -338,6 +340,7 @@
                                   </tr>
                                 </thead>
                                 <tbody class="dataBaru" id="dataBaru">
+                                  <input type="hidden" name="barang" id="barang">
                                   <!-- <?php $no ;?> -->
                                   <!-- @foreach($dataBarang as $data) -->
                                   <!-- <tr class="ourItem">

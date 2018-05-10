@@ -49,14 +49,22 @@ Route::get('/daftar-campaign-admin','admin@showDaftarCampaign')->name('daftar-ca
 Route::get('/daftar-admin','admin@showDaftarAdmin')->name('daftar-admin');
 Route::get('/daftar-user','admin@showDaftarUser')->name('daftar-user');
 Route::get('/daftar-new-user','admin@showDaftarNewUser')->name('daftar-new-user');
-Route::get('/daftar-new-campaign','admin@showDaftarNewCampaign')->name('daftar-new-campaign');
-Route::get('/daftar-new-transfer','admin@showDaftarNewTransfer')->name('daftar-new-transfer');
-Route::get('/daftar-transfer','admin@showDaftarTransfer')->name('daftar-transfer');
+Route::get('/daftar-new-campaign-user','admin@showDaftarNewCampaign')->name('daftar-new-campaign');
+Route::get('/daftar-new-transfer-user','admin@showDaftarNewTransfer')->name('daftar-new-transfer');
+Route::get('/daftar-transfer-user','admin@showDaftarTransfer')->name('daftar-transfer');
 Route::get('/daftar-new-pencairan','admin@showDaftarNewPencairan')->name('daftar-new-pencairan');
 Route::get('/daftar-pencairan','admin@showDaftarPencairan')->name('daftar-pencairan');
 Route::get('/daftar-pengiriman','admin@showDaftarPengiriman')->name('daftar-pengiriman');
 Route::get('/daftar-penerimaan','admin@showDaftarPenerimaan')->name('daftar-penerimaan');
 Route::get('/validasi-campaign/{id}','admin@validasi_campaign')->name('validasi-campaign');
+
+Route::resource('/admin-organisasi', 'adminOrganisasi');
+Route::get('/daftar-new-campaign-organisasi','adminOrganisasi@showDaftarNewCampaign')->name('daftar-new-campaign-group');
+Route::get('/daftar-campaign-organisasi','adminOrganisasi@showDaftarCampaign')->name('daftar-campaign-group');
+Route::get('/daftar-new-pencairan-organisasi','adminOrganisasi@showDaftarNewPencairan')->name('daftar-new-pencairan-group');
+Route::get('/daftar-new-transfer-organisasi','adminOrganisasi@showDaftarNewTransfer')->name('daftar-new-transfer-group');
+Route::get('/daftar-new-organisasi','adminOrganisasi@showDaftarNewOrganisasi')->name('daftar-new-organisasi');
+Route::get('/daftar-organisasi','adminOrganisasi@showDaftarOrganisasi')->name('daftar-organisasi');
 
 //-------------------------------------ROUTE Organisasi----------------------------------------//
 //---------------------------------------------------------------------------------------------//

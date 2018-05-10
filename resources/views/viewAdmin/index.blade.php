@@ -6,13 +6,14 @@
 
 @section('content')
   <div class="content-wrapper">
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 25px;">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">MariDonasi</a>
         </li>
         <li class="breadcrumb-item active">Admin</li>
+        <li class="breadcrumb-item active">User</li>
       </ol>
       <!-- Icon Cards-->
       <div class="row">
@@ -71,79 +72,9 @@
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-fw fa-support"></i>
+                <i class="fa fa-fw fa-money"></i>
               </div>
               <div class="mr-5">13 New Pencairan Dana!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-pencairan')}}">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Icon Cards-->
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-info o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-comments"></i>
-              </div>
-              <div class="mr-5">
-                {{$jumlahNewOrganisasi}}
-                New Acount Organisasi!
-              </div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-user')}}">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-secondary o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-list"></i>
-              </div>
-              <div class="mr-5">{{$jumlahNewCampaignOrganisasi}} New Campaign Organisasi!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-campaign')}}">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white o-hidden h-100" style="background-color: #F5AB99;">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-shopping-cart"></i>
-              </div>
-              <div class="mr-5">123 New Transfer Organisasi!</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-transfer')}}">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white o-hidden h-100" style="background-color: #ea125e;">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-support"></i>
-              </div>
-              <div class="mr-5">13 New Pencairan Dana Organisasi!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-pencairan')}}">
               <span class="float-left">View Details</span>

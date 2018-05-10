@@ -104,8 +104,13 @@ class CampaignUserController extends Controller
         
         // DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
 
-        $Barang = $request->barangs;
+        $Barang = $request->barang;
         $jumlahBarang = count($Barang);
+
+        $nama = 'nama';
+        return $Barang;
+        // return $jumlahBarang;
+
 
         for ($x = 0; $x < $jumlahBarang; $x++) {
             // $data = new campaign_user_barang();
@@ -116,10 +121,10 @@ class CampaignUserController extends Controller
             // $data->jumlah_sisa='0';
             // $data->satuan=$Barang[$x][satuan];
             // $data->save();
-            return $jumlahBarang;
+            // return $jumlahBarang;
 
         }
-        return $Barang;
+        // return $Barang;
         // return ['nama'];
         // return view('intermeso');
     }

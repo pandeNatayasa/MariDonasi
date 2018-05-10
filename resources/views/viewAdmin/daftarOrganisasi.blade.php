@@ -37,7 +37,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($daftarUser as $data)
+                @foreach($daftarOrganisasi as $data)
                 	<tr>
                 		<td>{{$data->id}}</td>
                 		<td>{{$data->name}}</td>

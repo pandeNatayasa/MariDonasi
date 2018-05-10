@@ -62,7 +62,7 @@
           </a>
         </li>
         <li class="nav-item @yield('dashboard-organisasi')" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{{route('admin.home')}}">
+          <a class="nav-link" href="{{route('admin-organisasi.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard (Group)</span>
           </a>
@@ -73,8 +73,8 @@
             <span class="nav-link-text">Daftar Campaign (User)</span>
           </a>
         </li>
-        <li class="nav-item @yield('daftar-campaign')" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="{{route('daftar-campaign')}}">
+        <li class="nav-item @yield('daftar-campaign-group')" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="{{route('daftar-campaign-group')}}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Daftar Campaign (Group)</span>
           </a>
@@ -98,7 +98,7 @@
               </a>
             </li>
             <li class="nav-item @yield('daftar-organisasi')" data-toggle="tooltip" data-placement="right" title="Charts">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('daftar-organisasi')}}">
                 <i class="fa fa-fw fa-user"></i>
                 <span class="nav-link-text">Daftar Organisasi</span>
               </a>
@@ -356,11 +356,11 @@
     <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
 
     <script type="text/javascript">
-    $(document).ready( function () {
-      $('#data').DataTable();
-    } );
+      $(document).ready( function () {
+        $('#data').DataTable();
+      } );
 
-  </script>
+    </script>
   </div>
 </body>
 
