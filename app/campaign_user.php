@@ -19,4 +19,8 @@ class campaign_user extends Model
     public function campaign_user_barang(){
         return $this->hashMany('App\campaign_user_barang');
     }
+
+    public function galang_dana(){
+        return $this->hashMany('App\galang_dana');
+    }
 }

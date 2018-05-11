@@ -78,7 +78,7 @@
               Donasi Saya </a>
             </li>
             <li class=>
-              <a href="{{url('/edit-profile')}}">
+              <a href="{{route('akunsaya')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -88,7 +88,7 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li>
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-user.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
@@ -115,7 +115,7 @@
         <div class="bodyone" style="margin-bottom: 20px;">
           <strong >
             <div class="row">
-               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. 100.000</h1>
+               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. {{Auth::user()->wallet}},00</h1>
             </div>
           </strong>
         </div>

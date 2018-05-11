@@ -98,7 +98,7 @@ class admin extends Controller
      */
     public function create()
     {
-        //
+        return view('viewAdmin.registerAdmin');
     }
 
     /**

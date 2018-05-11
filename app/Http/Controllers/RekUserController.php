@@ -14,13 +14,9 @@ class RekUserController extends Controller
      */
     public function index()
     {
-        return view('viewProfileUser.dompetKebaikan');
+        //
     }
 
-    public function showFormPencairan()
-    {
-        return view('viewProfileUser.dompetKebaikanPencairan');
-    }
 
     /**
      * Show the form for creating a new resource.

@@ -10,19 +10,19 @@
   <title>MariDonasi-admin</title>
 
   <!-- Favicons -->
-  <link href="{{asset('img/favicon.png')}}" rel="icon">
-  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
+  <link href="{{asset('/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
   <!-- Custom fonts for this template-->
-  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="{{asset('/css/sb-admin.css')}}" rel="stylesheet">
 
   <!-- Page level plugin CSS-->
-   <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('/css/datatables.min.css')}}">
   
 </head>
 
@@ -42,7 +42,7 @@
                 <?php
                   $foto = Auth::guard('admin')->user()->profil_pic;
                   if($foto == '0'){
-                    $foto = "img/profil_pic/profile_default.jpg";
+                    $foto = "/img/profil_pic/profile_default.jpg";
                   }
 
                 ?>
@@ -144,6 +144,12 @@
               </a>
             </li>
           </ul>
+        </li>
+        <li class="nav-item @yield('register')" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="{{route('admin.create')}}">
+            <i class="fa fa-fw fa-edit"></i>
+            <span class="nav-link-text">Register</span>
+          </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -341,19 +347,19 @@
       </div>
     </div>
       <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="/js/sb-admin-datatables.min.js"></script>
     <!-- Data Tables -->
-    <script type="text/javascript" charset="utf8" src="{{asset('js/datatables.min.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="{{asset('/js/datatables.min.js')}}"></script>
 
     <script type="text/javascript">
       $(document).ready( function () {

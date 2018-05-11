@@ -38,4 +38,12 @@ class User extends Authenticatable
     public function campaign_user(){
         return $this->hashMany('App\campaign_user');
     }
+
+    public function dompetKebaikan(){
+        return $this->hashMany('App\dompetKebaikan');
+    }
+
+    public function galang_dana(){
+        return $this->hashMany('App\galang_dana');
+    }
 }

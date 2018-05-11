@@ -77,7 +77,7 @@
               Donasi Saya </a>
             </li>
             <li>
-              <a href="{{url('/edit-profile')}}">
+              <a href="route('akunsaya')">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -87,7 +87,7 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li >
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-user.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>

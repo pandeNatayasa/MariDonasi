@@ -1,5 +1,25 @@
 @extends('layouts.profilleUser')
 
+@section('home')
+  {{route('home')}}
+@endsection
+
+@section('profile')
+  {{route('member.index')}}
+@endsection
+
+@section('galang_dana')
+  {{route('campaignUser.index')}}
+@endsection
+
+@section('name')
+  {{ Auth::user()->name }}
+@endsection
+
+@section('logout')
+  {{ route('user.logout') }}
+@endsection
+
 @section('content')
      <!--==========================
       Portfolio Section

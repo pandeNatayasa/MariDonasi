@@ -7,14 +7,16 @@ Route::get('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout
 Route::resource('/member','memberController')->middleware('auth:web');
 Route::get('/editProfile', 'memberController@editProfile')->name('editProfile')->middleware('auth:web');
 Route::post('/completeAcount', 'memberController@storeCompleteAcount')->name('completeAcount')->middleware('auth:web');
-Route::get('/rek-user','RekUserController@index')->middleware('auth:web');
+//Route::get('/rek-user','RekUserController@index')->middleware('auth:web');
 Route::resource('/campaignSaya','campaignSaya')->middleware('auth:web');
-Route::resource('/dompetKebaikanUser','RekUserController')->middleware('auth:web');
-Route::get('/dompetKebaikanUser-Pencairan','RekUserController@showFormPencairan')->name('pencairan_dana')->middleware('auth:web');
+Route::resource('/rek-user','RekUserController')->middleware('auth:web');
+
 Route::get('/donasi-saya','memberController@create')->middleware('auth:web');
 
 Route::get('/myprofile','memberController@edit2')->name('akunsaya')->middleware('auth:web');
 
+Route::resource('/dompet-kebaikan-user', 'DompetKebaikanController')->middleware('auth:web');
+Route::get('/dompet-kebaikan-user-pencairan','DompetKebaikanController@showFormPencairan')->name('pencairan_dana')->middleware('auth:web');
 //-------------------------------------ROUTE Public---------------------------------------------//
 //---------------------------------------------------------------------------------------------//
 Route::get('/','welcome@index');
@@ -27,6 +29,7 @@ Route::resource('/galang-barang-user','CampaignUserBarangController')->middlewar
 
 Route::resource('/campaignOrganisasi','CampaignOrganisasiController')->middleware('auth:organitation');
 Route::get('/campaignOrganisasiView','OrganisasiController@showCampaignOrganisasi')->name('campaignView')->middleware('auth:organitation');
+
 //-------------------------------------ROUTE Admin---------------------------------------------//
 //---------------------------------------------------------------------------------------------//
 Route::group(['prefix'=>'admin'],function() {
@@ -41,6 +44,8 @@ Route::group(['prefix'=>'admin'],function() {
 
 	Route::get('/password/reset/{token}','AuthAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');
 	Route::post('/password/reset','AuthAdmin\ResetPasswordController@reset');
+
+	Route::get('/register','admin@create')->name('admin.create');
 
 });
 

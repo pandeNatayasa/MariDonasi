@@ -79,7 +79,7 @@
               Donasi Saya </a>
             </li>
             <li class=>
-              <a href="{{url('/edit-profile')}}">
+              <a href="{{route('akunsaya')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -89,7 +89,7 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li class="active">
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-user.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
@@ -116,7 +116,7 @@
         <div class="bodyone" style="margin-bottom: 20px;">
           <strong >
             <div class="row">
-               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. 100.000</h1>
+               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. {{Auth::user()->wallet}},00</h1>
             </div>
           </strong>
         </div>
@@ -139,7 +139,14 @@
                     <div class="col-md-6">
                       <input class="form-control" name="jumlahPenambahanDeposit" required="required" type="text" value="">
                     </div>
-                  </div>         
+                  </div>
+                  <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4">Silahkan Transfer Ke </label>
+                    <div class="col-md-6">
+                      <input class="form-control" name="rekTransfer" required="required" type="text" disabled value="45476571652871251">
+                    </div>
+                  </div>          
                 </div>
                 
                 <div class="row">

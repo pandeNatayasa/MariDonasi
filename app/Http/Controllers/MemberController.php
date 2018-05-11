@@ -9,6 +9,8 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use Redirect;
 use App\campaign_user;
+use App\dompetKebaikan;
+use App\galang_dana;
 
 
 class MemberController extends Controller
@@ -26,7 +28,10 @@ class MemberController extends Controller
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
+
+        $dataTambahDeposit = dompetKebaikan::all()->where('id_user','=',$idUser);
+
+        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai','dataTambahDeposit'));
     }
 
     /**
@@ -36,7 +41,9 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('viewProfileUser.profilDonasi');
+        $idUser = Auth::user()->id;
+        $dataDonasi = galang_dana::all()->where('id_user','=',$idUser);
+        return view('viewProfileUser.profilDonasi',compact('dataDonasi'));
     }
 /**
      * Show the form for creating a new resource.

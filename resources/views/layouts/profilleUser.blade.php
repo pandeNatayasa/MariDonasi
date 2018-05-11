@@ -75,7 +75,7 @@
                 <!-- </div> -->
             @endif
           </li>
-          <li >
+          <li class="menu-has-children">
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                 @yield('name') <span class="caret"></span>
             </a>

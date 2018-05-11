@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('daftar-organisasi')
+@section('daftar-user')
   active
 @endsection
 

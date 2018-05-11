@@ -1,5 +1,25 @@
 @extends('layouts.profilleUser')
 
+@section('home')
+  {{route('organisasi.home')}}
+@endsection
+
+@section('profile')
+  {{route('profille-organisasi.index')}}
+@endsection
+
+@section('galang_dana')
+  {{route('campaignOrganisasi.index')}}
+@endsection
+
+@section('name')
+  {{ Auth::guard('organitation')->user()->name }}
+@endsection
+
+@section('logout')
+  {{ route('organisasi.logout') }}
+@endsection
+
 @section('content')
      <!--==========================
       Portfolio Section

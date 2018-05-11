@@ -77,7 +77,7 @@
               Donasi Saya </a>
             </li>
             <li>
-              <a href="{{url('/edit-profile')}}">
+              <a href="{{route('akunsaya')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -87,7 +87,7 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li >
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-user.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
@@ -115,6 +115,7 @@
         <table class="table table-bordered table-striped table-hover display" id="table_donasi">
           <thead style="background-color: black;">
             <tr>
+              <th style="color: #fff;">No</th>
               <th style="color: #fff;">Judul Campaign</th>
               <th style="color: #fff;">Nominal</th>
               <th style="color: #fff;">Tanggal Donasi</th>
@@ -122,31 +123,16 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($dataDonasi as $i => $data)
             <tr>
-              <td>eee</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
+              <td>{{$i+1}}</td>
+              <td>{{$data->campaign_user->judul}}</td>
+              <td>{{$data->nominal}}</td>
+              <td>{{$data->created_at}}</td>
+              <td>{{$data->status}}</td>
             </tr>
-            <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
-            </tr>
-            <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
-            </tr>
-            <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
-            </tr>
-          </tbody>
+            @endforeach
+            
         </table>
       </div>
 
