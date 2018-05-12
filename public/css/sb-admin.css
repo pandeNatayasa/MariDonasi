@@ -487,3 +487,14 @@ footer.sticky-footer {
   border-radius: 50% !important;
   
 }
+
+.campaign_pic img {
+  float: none;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  /*-webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;*/
+  
+}

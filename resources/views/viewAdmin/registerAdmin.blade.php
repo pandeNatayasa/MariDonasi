@@ -24,7 +24,7 @@
         <div class="card-header">
           <i class="fa fa-edit"></i>  Register New admin</div>
         <div class="card-body">
-          <form role="form" action="{{ route('organisasi.register.post') }}" method="POST" class="register-form">
+          <form role="form" action="{{ route('admin.register.post') }}" method="POST" class="register-form">
             {{ csrf_field()}}
             
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

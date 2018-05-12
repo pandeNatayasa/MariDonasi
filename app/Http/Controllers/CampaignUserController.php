@@ -96,7 +96,7 @@ class CampaignUserController extends Controller
         $newCampaign->dana_sementara='0';
         $newCampaign->dana_bersih='0';
         $newCampaign->sisa_dana='0';
-        $newCampaign->pic_verif = 'img/image_verif_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->pic_verif = 'img/image_verif_campaign/'.$filePicVerif->getClientOriginalName();
         $newCampaign->status='non-verified';
         $newCampaign->save();
 
@@ -104,15 +104,15 @@ class CampaignUserController extends Controller
         
         // DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
 
-        $Barang = $request->barang;
-        $jumlahBarang = count($Barang);
+        // $Barang = $request->barang;
+        // $jumlahBarang = count($Barang);
 
-        $nama = 'nama';
-        return $Barang;
+        // $nama = 'nama';
+        // return $Barang;
         // return $jumlahBarang;
 
 
-        for ($x = 0; $x < $jumlahBarang; $x++) {
+        //for ($x = 0; $x < $jumlahBarang; $x++) {
             // $data = new campaign_user_barang();
             // $data->id_campaign_user=$id_campaign_user_max;
             // $data->nama_barang = $Barang[$x][nama];
@@ -123,10 +123,10 @@ class CampaignUserController extends Controller
             // $data->save();
             // return $jumlahBarang;
 
-        }
+        //}
         // return $Barang;
         // return ['nama'];
-        // return view('intermeso');
+        return view('intermeso');
     }
 
     /**

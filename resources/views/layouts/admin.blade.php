@@ -61,7 +61,7 @@
             <span class="nav-link-text">Dashboard (User)</span>
           </a>
         </li>
-        <li class="nav-item @yield('dashboard-organisasi')" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item @yield('dashboard-organisasi')" data-toggle="tooltip" data-placement="right" title="Dashboard Group">
           <a class="nav-link" href="{{route('admin-organisasi.index')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard (Group)</span>

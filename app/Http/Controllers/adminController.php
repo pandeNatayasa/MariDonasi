@@ -9,8 +9,9 @@ use App\campaign_organisasi;
 use DB;
 use Redirect;
 use App\campaign_user;
+use App\admin;
 
-class admin extends Controller
+class adminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -31,6 +32,7 @@ class admin extends Controller
         //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
         $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
         $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->count();
+        $jumlahNewTransfer = DB::table('galang_danas')->where('status','=','onGoing')->count();
 
         if($jumlahNewUser == 0 ){
             $jumlahNewUser = 0;
@@ -39,7 +41,7 @@ class admin extends Controller
             $jumlahNewCampaignUser = 0;
         }
 
-        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser'));
+        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser','jumlahNewTransfer'));
     }
 
     public function showDaftarCampaign()
@@ -50,7 +52,8 @@ class admin extends Controller
 
     public function showDaftarAdmin()
     {
-        return view('viewAdmin.daftarAdmin');
+        $daftarAdmin = admin::all();
+        return view('viewAdmin.daftarAdmin',compact('daftarAdmin'));
     }
 
     public function showDaftarUser(){
@@ -109,7 +112,23 @@ class admin extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = date("Y-m-d");
+
+        $pass = $request->password;
+        $data = new admin();
+        $data->name = $request->name;
+        $data->email= $request->email;
+        $data->password= bcrypt($pass);
+        $data->no_telp='0';
+        $data->lokasi='0';
+        $data->bio='0';
+        $data->profil_pic='0';
+        $data->wallet='0';
+        $data->remember_token='0';
+        $data->save();
+
+        $daftarAdmin = admin::all();
+        return view('viewAdmin.daftarAdmin',compact('daftarAdmin'));
     }
 
     /**
@@ -158,7 +177,7 @@ class admin extends Controller
 
         $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
 
-        return Redirect::to('/daftar-new-campaign')->with(compact('dataNewCampaignUser'));
+        return Redirect::to('/daftar-new-campaign-user')->with(compact('dataNewCampaignUser'));
     }
 
     /**

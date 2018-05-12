@@ -58,7 +58,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">123 New Transfer!</div>
+              <div class="mr-5">{{$jumlahNewTransfer}} New Transfer!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-transfer')}}">
               <span class="float-left">View Details</span>

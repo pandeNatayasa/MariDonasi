@@ -31,34 +31,25 @@
                 	<th>Id</th>
                   	<th>Nama Admin</th>
                   	<th>Alamat</th>
-                  	<th>usia</th>
+                  	<th>Wallet</th>
                   	<th>Tanggal Terdaftar</th>
                   	<th>Status</th>
                 </tr>
               </thead>
               <tbody>
+                @foreach($daftarAdmin as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-              		<td>19</td>
-              		<td>25-12-2018</td>
+              		<td>{{$data->id}}</td>
+              		<td>{{$data->name}}</td>
+              		<td>{{$data->lokasi}}</td>
+              		<td>{{$data->wallet}}</td>
+              		<td>{{$data->created_at}}</td>
               		<td>
               			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
                     <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-              		<td>Aagus</td>
-              		<td>Bantu Andi</td>
-              		<td>15</td>
-              		<td>25-12-2018</td>
-              		<td>
-              			<button class="btn btn-primary "><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-              		</td>
-              	</tr>
+                @endforeach
               </tbody>
             </table>
           </div>

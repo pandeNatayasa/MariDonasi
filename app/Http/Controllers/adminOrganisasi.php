@@ -105,6 +105,17 @@ class adminOrganisasi extends Controller
         return view('viewAdmin.daftarNewOrganisasi',compact('dataOrganisasi'));
     }
 
+    public function validasi_campaign($id)
+    {
+        $data = campaign_organisasi::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataNewCampaignOrganisasi = campaign_organisasi::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-campaign-organisasi')->with(compact('dataNewCampaignOrganisasi'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,7 +124,13 @@ class adminOrganisasi extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = organisasi::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataOrganisasi = organisasi::all()->where('status','=','non-verified');
+        // return redirect('daftarNewUser',compact('dataUser'));
+        return Redirect::to('/daftar-new-organisasi')->with(compact('dataOrganisasi'));
     }
 
     /**

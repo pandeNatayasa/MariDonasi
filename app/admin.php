@@ -38,8 +38,8 @@ class admin extends Authenticatable
         $this->notify(new AdminResetPasswordNotification($token));
     }
 
-    public function campaign_organisasi(){
-        return $this->hashMany('App\campaign_organisasi');
-    }
+    // public function campaign_organisasi(){
+    //     return $this->hashMany('App\campaign_organisasi');
+    // }
 
 }

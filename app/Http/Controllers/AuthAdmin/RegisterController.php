@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+// use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -20,14 +20,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    // use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:admin');
     }
 
     /**
@@ -55,11 +55,7 @@ class RegisterController extends Controller
             'lokasi',
             'bio',
             'profil_pic',
-            'ktp_pic',
-            'verif_pic',
             'wallet' ,
-            'camp_earn',
-            'status',
         ]);
     }
 
@@ -69,21 +65,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function store(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'no_telp'=>'0',
-            'lokasi'=>'0',
-            'bio'=>'0',
-            'profil_pic'=>'0',
-            'ktp_pic'=>'0',
-            'verif_pic'=>'0',
-            'wallet'=>0,
-            'camp_earn'=>0,
-            'status'=>'non-verified',
-        ]);
+        $date = date("Y-m-d");
+
+        $pass = $request->password;
+        $data = new admin();
+        $data->name = $request->name;
+        $data->email= $request->email;
+        $data->password= bcrypt($pass);
+        $data->no_telp='0';
+        $data->lokasi='0';
+        $data->bio='0';
+        $data->profil_pic='0';
+        $data->wallet='0';
+        $data->remember_token='0';
+        $data->save();
+
+        $daftarAdmin = admin::all();
+        return view('viewAdmin.daftarAdmin',compact('daftarAdmin'));
     }
 }

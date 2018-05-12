@@ -28,7 +28,7 @@
               <thead>
                 <tr>
                 	<th>No</th>
-                  	<th>Nama</th>
+                  	<th>Nama Organisasi</th>
                   	<th>Judul Campaign</th>
                   	<th>Sisa Hari</th>
                   	<th>Deadline Campaign</th>
@@ -41,7 +41,7 @@
                 @foreach($dataCampaignOrganisasi as $data)
               	<tr>
               		<td>{{$no += 1}}</td>
-              		<td>{{$data->User->name}}</td>
+              		<td>{{$data->organisasi->name}}</td>
               		<td>{{$data->judul}}</td>
                   <?php
                     $dateNow = time();

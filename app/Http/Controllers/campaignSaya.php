@@ -16,7 +16,8 @@ class campaignSaya extends Controller
      */
     public function index()
     {
-        $dataCampaignSaya = campaign_user::all();
+        $idUser = Auth::user()->id;
+        $dataCampaignSaya = campaign_user::all()->where('id_user','=',$idUser);
         return view('viewProfileUser.profilCampaignSaya',compact('dataCampaignSaya'));
     }
 
