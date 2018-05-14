@@ -24,6 +24,8 @@
 
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
+  <!-- <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet"> -->
   
 </head>
 
@@ -49,7 +51,7 @@
                       </li>
                       <li>
                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            @yield('nama_pengguna') <span class="caret"></span>
+                            {{ Auth::user()->name }}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                           <li>
@@ -92,21 +94,77 @@
     </div>
   </section><!-- #intro -->
   <main id="main">
-  <div class="row portfolio-container">
+  <div class="row ">
+    <div class="col-md-8" style="padding: 50px; margin-left: 50px;">
+       <!--==========================
+        Portfolio Section
+      ============================-->
+      <section id="makecampaign" >
+        <div class=" container">
+
+          <header class="section-header wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="margin-top: 10px">
+            <h3 class="section-title">Make Your Campaign</h3>
+          </header>
+          <center>
+            <?php
+                $ktp_pic = "/img/ktp_pic/ktp.jpg";
+            ?>
+            <div style="padding: 10px  0px 10px 0 ;" class="wow fadeInUp" data-wow-duration="800ms" data-wow-delay="250ms">
+              <img src="{{$ktp_pic}}" class="img-responsive" alt="" style="height: 350px;">
+            </div>
+          </center>
+
+          <div class="row portfolio-container">
+            <div class="col-md-11 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+              <div class="box" style="margin-top: 10px; background: rgb(0,0,0.8);">
+                <div>
+                  <h4 style="padding-top: 20px;">Informasi Campaign</h4>
+                  <div class="col-md-12" style="padding-bottom: 20px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
+                    <div class="row" >
+                      <div class="col-md-2" >
+                        <div class="userpic_detail_campaign">
+                          <img src="{{$ktp_pic}}" class="img-responsive" alt="" >
+                        </div>
+                      </div>
+                      <div class="col-md-8" style="padding: 20px 0px 20px 0px;">
+                        natayasa
+                      </div>
+                         
+                    </div >
+                  </div>
+                    
+                    <div style="padding-top: 20px;" class="form-group">
+                      Cerita Lengkap Campaign
+                    </div>
+
+                </div>
+                           
+              </div>
+                    
+          </div>
+        </div>
+      </section><!-- #portfolio -->
+    </div>
+    <div class="col-md-3">
+      sssss
+    </div>
+  </div>
+  
+  <!-- <div class="row portfolio-container">
     <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-    <div class="box" style="padding: 20px;">
+    <div class="box" style="padding: 20px;">-->
 
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-        <li role="presentation"><button class="btn btn-success"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></button></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      <!-- <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" style="padding: 10px;"><button class="btn btn-info"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></button></li>
+        <li role="presentation" style="padding: 10px;"><button class="btn btn-success"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></button></li>
+        <li role="presentation" style="padding: 10px;"><button class="btn btn-secondary"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></button></li>
+        <li role="presentation" style="padding: 10px;"><button class="btn btn-success"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></button></li>
       </ul>
-
+ -->
       <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">...</div>
+      <!-- <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">Home</div>
         <div role="tabpanel" class="tab-pane" id="profile">Profile...</div>
         <div role="tabpanel" class="tab-pane" id="messages">...</div>
         <div role="tabpanel" class="tab-pane" id="settings">...</div>
@@ -114,8 +172,8 @@
 
     </div>
   </div>
-  </div>
-
+  </div> -->
+ 
   </main>
   <!--==========================
     Footer
@@ -189,10 +247,12 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
       <!-- Bootstrap core JavaScript-->
     <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
-     <script src="lib/jquery/jquery-migrate.min.js"></script>
+     <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
     <script src="{{asset('/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{asset('/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('/lib/superfish/hoverIntent.js')}}"></script>
+    <script src="{{asset('lib/superfish/superfish.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
     <script src="{{asset('/vendor/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
@@ -213,12 +273,20 @@
     <script type="text/javascript" charset="utf8" src="{{asset('/js/datatables.min.js')}}"></script>
 
   </div>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $('#profile a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
+      e.preventDefault();
+      $(this).tab('show');
+    });
+
+    
   </script>
+  <script type="text/javascript">
+    $('#home a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  </script> -->
 </body>
 
 
