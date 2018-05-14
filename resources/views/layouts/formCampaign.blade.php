@@ -30,7 +30,7 @@
 
 <!-- <script src="{{asset('lib/jquery/jquery.maskMoney.min.js')}}"></script> -->
   <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
 
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -39,31 +39,55 @@
   <!-- Import data tables -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
 
-  <script> 
+   <script type="text/javascript" async> 
     // menampilkan data input di modal
-    $(document).ready(function(){
-      var i = 1;
-      var barangs=[];
-      $("#tambahDataBarang").on('click',function(){
-        var namaBarang=document.getElementById("namaBarangAdd").value;
-        var jumlahBarang=document.getElementById("jumlahBarangAdd").value;
-        var satuanBarang=document.getElementById("satuanBarangAdd").value;
-        let temp={
-          'nama':namaBarang,
-          'jumlah':jumlahBarang,
-          'satuan':satuanBarang
-        }
-        barangs.push(temp)
+    function loadComment(){
+        var url = '/campaign/get-barang';
+        $.ajax({
+          type:'get',
+          url:url,
+          success: function(data){
+            // console.log(data)
+            // $(".table").append(data);
+            $(".table").html(data);
+          },
+          error: function(){
+            alert("error collecting comment");
+          }
+        });
+      }
+  </script>
+  <script type="text/javascript"> 
+    // menampilkan data input di modal
 
-        $(".odd").html("");
-        $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
-        i++;
-      });
-      $("#tambahData").click(function(){
-        //console.log(barangs)
-        // axios.post('/campaignUser/store', barangs);
-        document.getElementById("barang").value=barangs;
-      })
+
+
+    $(document).ready(function(){
+
+      
+
+      // var i = 1;
+      // var barangs=[];
+      // $("#tambahDataBarang").on('click',function(){
+      //   var namaBarang=document.getElementById("namaBarangAdd").value;
+      //   var jumlahBarang=document.getElementById("jumlahBarangAdd").value;
+      //   var satuanBarang=document.getElementById("satuanBarangAdd").value;
+      //   let temp={
+      //     'nama':namaBarang,
+      //     'jumlah':jumlahBarang,
+      //     'satuan':satuanBarang
+      //   }
+      //   barangs.push(temp)
+
+      //   $(".odd").html("");
+      //   $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
+      //   i++;
+      // });
+      // $("#tambahData").click(function(){
+      //   //console.log(barangs)
+      //   // axios.post('/campaignUser/store', barangs);
+      //   document.getElementById("barang").value=barangs;
+      // })
     });
     //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button><button class="btn btn-danger "><i class="fa fa-trash"></i></button>
 //    function()
@@ -323,64 +347,30 @@
 
                         <div class="box-body-col" style="margin-bottom: 60px;" >
                           <h4>Input Target Donasi Barang</h4>
-                          <!-- " -->
-                          <a id="tambahData" href="" data-toggle="modal"  name="tambahData" data-target="#modal-form" class="btn btn-primary" style="margin-bottom: 20px;">Tambah Data </a>
+                          <!-- " onclick="addForm()"-->
+                          <a id="tambahData"  data-toggle="modal"  name="tambahData" data-target="#modal-form"  class="btn btn-primary" style="margin-bottom: 20px;">Tambah Data </a>
                           <div class="card-header">
                             <i class="fa fa-table"></i> Data Target Donasi Barang</div>
-                          <div class="card-body">
-                             <div class="table-responsive" style="margin-top: 10px;">
-                              <table class="table table-bordered table-striped table-hover display" id="table_target_donasi">
-                                <thead style="background-color: black;">
-                                  <tr>
-                                    <th style="color: #fff;">No</th>
-                                    <th style="color: #fff;">Nama Barang</th>
-                                    <th style="color: #fff;">Target Donasi Barang</th>
-                                    <th style="color: #fff;">Satuan</th>
-                                    <th style="color: #fff;">Status</th>
-                                  </tr>
-                                </thead>
-                                <tbody class="dataBaru" id="dataBaru">
-                                  <input type="hidden" name="barang" id="barang">
-                                  <!-- <?php $no ;?> -->
-                                  <!-- @foreach($dataBarang as $data) -->
-                                  <!-- <tr class="ourItem">
-                                    <td>{{$no = $no+1}}</td>
-                                    <td class="ourItem1" data-toggle="modal" data-target="#modalData">{{$data->nama_barang}}</td>
-                                    <td class="ourItem2">{{$data->target_jumlah}}</td>
-                                    <td class="ourItem3">{{$data->satuan}}</td>
-                                    <td>
-                                      <button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target=""><i class="fa fa-edit"></i></button>
-                                      <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                                    </td>
-                                  </tr> -->
-                                  <!-- @endforeach -->
-                                  <!-- <tr class="ourItem">
-                                    <td>2</td>
-                                    <td class="ourItem1" data-toggle="modal" data-target="#modalData">20000</td>
-                                    <td class="ourItem2">201212</td>
-                                    <td class="ourItem3">201212</td>
-                                    <td>
-                                      <button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button>
-                                      <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>20000</td>
-                                    <td>201212</td>
-                                    <td>201212</td>
-                                    <td>
-                                      <button class="btn btn-primary "><i class="fa fa-edit"></i></button>
-                                      <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                                    </td>
-                                  </tr>
-                                  -->
-                                </tbody>
-                              </table>
+                            <div class="card-body">
+                               <div class="table-responsive" style="margin-top: 10px;" id="tableBarang">
+                                <table class="table table-bordered table-striped table-hover display" id="table_target_donasi">
+                                  <!-- <thead style="background-color: black;">
+                                    <tr>
+                                      <th style="color: #fff;">No</th>
+                                      <th style="color: #fff;">Nama Barang</th>
+                                      <th style="color: #fff;">Target Donasi Barang</th>
+                                      <th style="color: #fff;">Satuan</th>
+                                      <th style="color: #fff;">Status</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="dataBaru" id="dataBaru">
+
+                                  </tbody> -->
+                                </table>
+                              </div>
                             </div>
-                          </div>
                           <div class="col-md-12" style="padding-top: 50px;">
-                            <input type="submit" id="save" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 40px; float: right; padding-left: 30px; padding-right: 30px; "> 
+                            <input type="submit" id="save" name="submit" value="Save & Next" class="btn btn-primary" style="margin-bottom: 600px; margin-top: 40px; float: right; padding-left: 30px; padding-right: 30px; "> 
                           </div>
                         </div>
 
@@ -468,25 +458,28 @@
             </button>
           </div>
           <!-- method="post" action="{{route('campaign_user_barang.store')}}" -->
-          <form  class="form_tambah_barang" data-toggle="validator">
-          {{csrf_field()}}
+          <!-- <form method="POST" action="{{route('campaign_user_barang.store')}}" class="form-horizontal" data-toggle="validator">
+          {{csrf_field()}} -->
+          <!--  {{method_field('POST')}}  -->
             <div class="modal-body">
               <div class="row">
+                <input type="hidden" name="token" id="token" value="{{csrf_token()}}" >
                 <label class="control-label col-md-3">Nama Barang</label>
                 <div class="col-md-9">
-                  <input class="form-control" placeholder="Nama Barang yang diminta" name="namaBarangAdd" required="required" type="text" value="" id="namaBarangAdd">
+                  <input class="form-control" placeholder="Nama Barang yang diminta"  required="required" type="text" value="" id="nama_barang">
+                  
                 </div>
               </div>
               <div class="row">
                 <label class="control-label col-md-3">Jumlah Barang</label>
                 <div class="col-md-9">
-                  <input class="form-control" placeholder="Jumlah Barang yang diminta" name="jumlahBarangAdd" required="required" type="text" value="" id="jumlahBarangAdd">
+                  <input class="form-control" placeholder="Jumlah Barang yang diminta" required="required" type="text" value="" id="target_jumlah">
                 </div>
               </div>
               <div class="row">
                 <label class="control-label col-md-3">Satuan</label>
                 <div class="col-md-9">
-                  <select name="satuanBarangAdd" id="satuanBarangAdd" class="form-control" required="required" id="satuan">
+                  <select id="satuan" class="form-control" required="required" id="satuan">
                     <option value="" disabled selected>Pilih Satuan Barang</option>
                     <option value="Lusin">Lusin</option>
                     <option value="Meter">Meter</option> 
@@ -498,101 +491,15 @@
             </div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary" type="button" id="tambahDataBarang" data-dismiss="modal">Tambah</button>
+              <input class="btn btn-primary btn-save" type="submit" data-dismiss="modal" id="tambahDataBarang" value="Tambah">
             </div>
-          </form>
+          <!-- /form> -->
         </div>
       </div>
     </div>
 
-<!-- Modal Edit Data-->
-    <div class="modal fade" id="modalEditData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalEditDataLabel">Edit Data Donasi Barang</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <form method="post" action="{{route('campaign_user_barang.store')}}" class="form_tambah_barang" data-toggle="validator">
-          {{csrf_field()}}
-            <div class="modal-body">
-              <div class="row">
-                <label class="control-label col-md-3">Nama Barang</label>
-                <div class="col-md-9">
-                  <input class="form-control" placeholder="Nama Barang yang diminta" name="namaBarangEdit" required="required" type="text" value="" id="namaBarangEdit">
-                </div>
-              </div>
-              <div class="row">
-                <label class="control-label col-md-3">Jumlah Barang</label>
-                <div class="col-md-9">
-                  <input class="form-control" placeholder="Jumlah Barang yang diminta" name="jumlahBarangEdit" required="required" type="text" value="" id="jumlahBarangEdit">
-                </div>
-              </div>
-              <div class="row">
-                <label class="control-label col-md-3">Satuan</label>
-                <div class="col-md-9">
-                  <select name="satuanEdit" class="form-control" required="required" id="satuanEdit">
-                    <option value="" disabled selected>Pilih Satuan Barang</option>
-                    <!-- if($post->satuan == 'lusin' )
-                      <option selected value="Lusin">Lusin</option>
-                    elseif($post->satuan == 'Meter')
-                      <option selected value="Meter">Meter</option> 
-                    elseif($post->satuan == 'Dus')
-                      <option selected value="Dus">Dus</option>
-                    elseif($post->satuan == 'Buah')
-                      <option selected value="Buah">Buah</option>
-                    endif -->
-                    <option value="Lusin">Lusin</option>
-                    <option value="Meter">Meter</option> 
-                    <option value="Dus">Dus</option>
-                    <option value="Buah">Buah</option>  
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a  type="submit" class="btn btn-primary" href="">Save Change</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Edit Data-->
-    <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalDataLabelc">Tambah Data Donasi Barang</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <form method="post" class="form-horizontal" data-toggle="validator">
-          {{csrf_field()}}
-            <div class="modal-body">
-              <div class="row">
-                <label class="control-label col-md-3">Nama Barang</label>
-                <div class="col-md-9">
-                  <input class="form-control" placeholder="Nama Barang yang diminta" name="namaBarang" required="required" type="text" value="" id="namaBarang1">
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="delete" class="btn btn-danger" style="display: none;" >Delete</button>
-              <button type="button" id="saveChange" class="btn btn-primary" style="display: none;" href="">Save Change</button>
-              <button type="button" id="tambah" class="btn btn-primary" href="">Tambah</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  
   <!-- JavaScript Libraries -->
-  <script src="{{asset('lib/jquery/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('lib/jquery/jquery-migrate.min.js')}}"></script>
   <script src="{{asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('lib/easing/easing.min.js')}}"></script>
@@ -615,123 +522,95 @@
   <script src="{{asset('js/main.js')}}"></script>
 
   <script type="text/javascript">
-    // $(document).ready( function () {
-    //   $('#table_target_donasi').DataTable();
-    // } );
+    // $('#table_target_donasi').DataTable();
 
-    // memformat angka ribuan
-    function formatAngka(angka) {
-      if (typeof(angka) != 'string') angka = angka.toString();
-      var reg = new RegExp('([0-9]+)([0-9]{3})');
-      while(reg.test(angka)) angka = angka.replace(reg, '$1.$2');
-      return angka;
-    }
+    $("#tambahDataBarang").click(function(){
+      //var id_campaign_user = $("#id_campaign_user").val();
+      var nama_barang = $("#nama_barang").val();
+      var target_jumlah = $("#target_jumlah").val();
+      var satuan = $("#satuan").val();
+      // var token = '{{csrf_token()}}';
 
-    // tambah event keypress untuk input bayar
-    $('#target-donasi').on('keypress', function(e) {
-     var c = e.keyCode || e.charCode;
-     switch (c) {
-      case 8: case 9: case 27: case 13: return;
-      case 65:
-       if (e.ctrlKey === true) return;
-     }
-     if (c < 48 || c > 57) e.preventDefault();
-    }).on('keyup', function() {
-     var inp = $(this).val().replace(/\./g, '');
-      
-     // set nilai ke variabel bayar
-     bayar = new Number(inp);
-     $(this).val(formatAngka(inp));
-      
-    });
+      // console.log(nama_barang);
 
-    $(document).ready( function () {
-      // Edit a post
-        $(document).on('click', '.editBarang', function() {
-            
-            $('#namaBarangEdit').val($(this).data('nama_barang'));
-            $('#jumlahBarangEdit').val($(this).data('target_jumlah'));
-            $('#satuanEdit').val($(this).data('satuan'));
-            id = $('#id_campaign_user').val();
-            $('#modalEditData').modal('show');
-        });
-      // $('.ourItem1').each(function(){
-      //   $('#editBarang').click(function(event){
-      //     var text1 = $('.ourItem1').text();
-      //     var text2 = $('.ourItem2').text();
-      //     var text3 = $('.ourItem3').text();
-      //     $('#namaBarangEdit').val(text1);
-      //     $('#jumlahBarangEdit').val(text2);
-      //     $('#satuanEdit').val(text3);
-      //     console.log(text1);
-      //     console.log(text2);
-      //     console.log(text3);
-      //   })
-      // });
-      // $('#editBarang').click(function(event){
-      //   $('.ourItem').each(function(){
-      //     var text1 = $(this'.ourItem1').text();
-      //     var text2 = $(this'.ourItem2').text();
-      //     var text3 = $(this'.ourItem3').text();
-      //     $('#namaBarangEdit').val(text1);
-      //     $('#jumlahBarangEdit').val(text2);
-      //     $('#satuanEdit').val(text3);
-      //     console.log(text1);
-      //     console.log(text2);
-      //     console.log(text3);
-      //   })
-      // });
-      $('.ourItem1').each(function(){
-        $(this).click(function(event){
-          var text1 = $(this).text();
-          
-          $('#namaBarang1').val(text1);
-          $('#modalDataLabelc').text('Edit Item');
-          $('#saveChange').show('400');
-          $('#delete').show('400');
-          $('#tambah').hide('400');
-
-          console.log(text1);
-        });
-
-        $('#tambahData').click(function(event){
-          
-          $('#namaBarang1').val("");
-          $('#modalDataLabelc').text('Add New Item');
-          $('#saveChange').hide('400');
-          $('#delete').hide('400');
-          $('#tambah').show('400');
-        });
-
-        $('#tambah').click(function(event){
-          
-          var text = $('#namaBarang1').val();
-
-          $.post('list', {'text':text, '_token':$('input[name=_token]').val()}, function(data){
-            console.log(data);
-          });
-          
-        });
-
-        // $('#tambahDataBarang').click(function(){
-          
-        //   var data = $('.form_tambah_barang').serialize();
-
-        //   $.ajax({
-        //     type: 'POST',
-        //     url: "{{ URL::route('tambahBarang') }}",
-        //     data: {
-        //       '_token': $('input[name=_token]').val() 
-        //       },
-        //     success: function(data) {
-        //                 // empty
-        //     },
-        //   });
-          
-        // });
-
+      $.ajax({
+        type: "POST",
+        // data: "id_campaign_user=" + id_campaign_user + "&nama_barang" + nama_barang + "&target_jumlah" + target_jumlah + "&satuan" + satuan + "&_token" + token,
+        data: { nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
+        url: "<?php echo url('/campaign_user_barang/store-barang')?>",
+        success:function(data){
+          ///console.log(data);
+          // $('#tableBarang').load(location.href + ' #tableBarang')
+          loadComment();
+        }
       });
-    } );
+
+
+      //$('#modal-form form')[0].reset();
+
+    });
+    
+    // $("#save-change").click(function(){
+    //   var id_donasi_barang = $("#id_donasi_barang").val();
+    //   var nama_barang = $("#namaBarangEdit").val();
+    //   var target_jumlah = $("#targetJumlahEdit").val();
+    //   var satuan = $("#satuanEdit").val();
+      
+
+    //   $.ajax({
+    //     type: "POST",
+        
+    //     data: { id_donasi_barang: id_donasi_barang, nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
+    //     url: "<?php //echo url('/campaign/edit-barang')?>",
+    //     success:function(data){
+          
+    //       loadComment();
+    //     }
+    //   });
+    // {
+    //   processing : true,
+    //   serverSide : true,
+    //   ajax: [
+    //     {data: 'id',name : 'id'},
+    //     {data: 'id_campaign_user',name:'id_campaign_user'},
+    //     {data: 'nama_barang',name:'nama_barang'},
+    //     {data: 'target_jumlah',name:'target_jumlah'},
+    //     {data: 'satuan',name:'satuan'},
+    //     {data: 'action', name:'action', orderable:false,searchable:false}
+    //   ]
+
+    // });
+
+    // function addForm() {
+    //   save_method = "add";
+    //   $('input[name=_method]').val('POST');
+    //   $('#modal-form').modal('show');
+    //   $('#modal-form form')[0].reset();
+    // }   
+
+    // $(function(){
+    //   $('#modal-form form').validator().on('submit', function(e){
+    //     if(!e.isDefaultPrevented()){
+    //       var id = $('#id').val();
+    //       // if(save_method == 'add') url = "{{url('campaign_user_barang/store')}}";
+    //       // else url = "{{url('campaign_user_barang/create') . '/'}}" + id;
+
+    //       var url = '/campaign_user_barang/store';
+    //       $.ajax({
+    //         url : url,
+    //         type : "POST",
+    //         data : $('#modal-form form').serialize(),
+    //         success : function($data) {
+    //           $('modal-form').modal('hide');
+    //         },
+    //         eror : function(){
+    //           alert('Oops something eror!');
+    //         }
+    //       });
+    //       return false;
+    //     }
+    //   });
+    // });
 
   </script>
 

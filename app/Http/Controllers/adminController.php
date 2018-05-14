@@ -10,6 +10,7 @@ use DB;
 use Redirect;
 use App\campaign_user;
 use App\admin;
+use Auth;
 
 class adminController extends Controller
 {
@@ -159,6 +160,25 @@ class adminController extends Controller
         // $barang->save();
 
         // return redirect('barang');
+        $dateNow = date('Y-m-d');
+        // $idUser = Auth::user()->id;
+        $newCampaign = new campaign_user();
+        $newCampaign->id_user = $id;
+        $newCampaign->judul='0';
+        $newCampaign->pic_cover_campaign = '0';
+        $newCampaign->cerita_singkat='0';
+        $newCampaign->cerita_lengkap='0';
+        $newCampaign->target_donasi='0';
+        $newCampaign->tgl_awal = $dateNow;
+        $newCampaign->deadline=$dateNow;
+        $newCampaign->kategori='0';
+        $newCampaign->lokasi_penerima='0';
+        $newCampaign->dana_sementara='0';
+        $newCampaign->dana_bersih='0';
+        $newCampaign->sisa_dana='0';
+        $newCampaign->pic_verif = '0';
+        $newCampaign->status='non-verified';
+        $newCampaign->save();
 
         $data = User::find($id);
         $data->status = 'verified';

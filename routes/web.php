@@ -25,7 +25,10 @@ Route::resource('/campaignUser','CampaignUserController')->middleware('auth:web'
 Route::resource('/campaign_user_barang','CampaignUserBarangController')->middleware('auth:web');
 Route::post('/tambahBarang','CampaignUserController@storeBarang')->name('tambahBarang');
 Route::resource('/galangDana','GalangDanaController')->middleware('auth:web');
-Route::resource('/galang-barang-user','CampaignUserBarangController')->middleware('auth:web');
+// Route::resource('/galang-barang-user','CampaignUserBarangController')->middleware('auth:web');
+Route::post('/campaign_user_barang/store-barang','CampaignUserBarangController@store')->middleware('auth:web');
+Route::get('/campaign/get-barang','CampaignUserBarangController@loadComment');
+Route::post('/campaign/edit-barang','CampaignUserBarangController@editBarang');
 
 Route::resource('/campaignOrganisasi','CampaignOrganisasiController')->middleware('auth:organitation');
 Route::get('/campaignOrganisasiView','OrganisasiController@showCampaignOrganisasi')->name('campaignView')->middleware('auth:organitation');
