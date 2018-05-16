@@ -26,15 +26,10 @@
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
   <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
   <!-- <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet"> -->
-  <!-- Import data tables -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
   
-  <script type="text/javascript">
-    
-  </script>
 </head>
 
-<body>
+<body >
   <header id="header">
     <div class="container-fluid">
       <div id="logo" class="pull-left">
@@ -98,123 +93,20 @@
       </div>
     </div>
   </section><!-- #intro -->
-  <main id="main">
-  <div class="row ">
-    <div class="col-md-8" style="padding: 20px 50px 50px 50px; margin-left: 50px; ">
-       <!--==========================
-        Portfolio Section
-      ============================-->
-      <section id="makecampaign" >
-        <div class=" container">
+  <main id="main" >
+    <section id="about">
+      <div class="container">
 
-          <header class="section-header wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="margin-top: 10px">
-            <h3 class="section-title">{{$dataCampaign->judul}}</h3>
-          </header>
+        <header class="section-header wow fadeInUp" style="margin-top: 30px; margin-bottom: 200px;">
+          <h3>Pemberitahuan</h3>
+          <p>Silahkan Tunggu Untuk Divalidasi. Data anda sudah berhasil disimpan, silahkan upload foto bukti transfer pada profile dengan menu donasi, setalah itu cek status donasi pada profile anda, Terimaksih</p>
           <center>
-            <div style="padding: 10px  0px 10px 0 ;" class="wow fadeInUp" data-wow-duration="800ms" data-wow-delay="250ms">
-              <img src="{{$dataCampaign->pic_cover_campaign}}" class="img-responsive" alt="" style="height: 350px;">
-            </div>
+            <a href="{{ url('/home') }}" class="btn btn-primary wow bounceInUp"> Back to Home</a>
           </center>
+        </header>
 
-          <div class="row portfolio-container">
-            <div class="col-md-11 portfolio-item wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms">
-              <div class="box" style="margin-top: 10px; background: rgb(0,0,0.8);">
-                <div>
-                  <h4 style="padding-top: 20px;">{{$dataCampaign->cerita_singkat}}</h4>
-                  <div class="col-md-12" style="padding-bottom: 20px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
-                    <div class="row" >
-                      <div class="col-md-2" >
-                        <div class="userpic_detail_campaign">
-                        <?php
-                          $foto = $dataCampaign->User->profil_pic;
-                          if($foto == '0'){
-                            $foto = "/img/profil_pic/profile_default.jpg";
-                          }
-
-                        ?>
-                          <img src="{{$foto}}" class="img-responsive" alt="" >
-                        </div>
-                      </div>
-                      <div class="col-md-8" style="padding: 20px 0px 20px 0px;">
-                        {{$dataCampaign->User->name}}
-                      </div>
-                         
-                    </div >
-                  </div>
-                    
-                    <div style="padding-top: 20px;" class="form-group">
-                      {{$dataCampaign->cerita_lengkap}}
-                    </div>
-
-                </div>
-                           
-              </div>
-                    
-          </div>
-        </div>
-      </section><!-- #portfolio -->
-      @if($jumlahDonasiBarang != '0' )
-      <div class=" wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms" style="padding-top: 40px;">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Data Barang yang dibutuhkan
-        </div>
-        <div class="card-body">
-           <div class="table-responsive" style="margin-top: 10px;">
-            <table class="table table-bordered table-striped table-hover display" id="table_donasi">
-              <thead style="background-color: black;">
-                <tr>
-                  <th style="color: #fff;">No</th>
-                  <th style="color: #fff;">Nama Barang</th>
-                  <th style="color: #fff;">Target Jumlah</th>
-                  <th style="color: #fff;">Jumlah terkumpul</th>
-                  <th style="color: #fff;">Satuan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $no = 0;?>
-                @foreach($dataDonasiBarang as $data)
-                  <td>{{$no = $no+1}}</td>
-                  <td>{{$data->nama_barang}}</td>
-                  <td>{{$data->target_jumlah}}</td>
-                  <td>{{$data->jumlah_sementara}}</td>
-                  <td>{{$data->satuan}}</td>
-                @endforeach                
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
-      @endif
-        
-    </div>
-    <div class="col-md-3" style=" margin-top: 60px; padding: 20px ; background: rgba(0,0,0,0.05); height: 350px;">
-      <h3 style="">{{number_format($dataCampaign->dana_sementara)}}</h3>
-      <p style="margin-bottom: 2px;">Terkumpul dari target Rp. {{number_format($dataCampaign->target_donasi)}}</p>
-      <div class="row" style=" padding-bottom: 5px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
-      </div>
-      <div class="row" style=" padding-bottom: 5px; padding-top: 25px; ">
-        <div class="col-md-6">
-          <label style="float: left;">Sisa Hari</label>
-        </div>
-        <div class="col-md-6">
-          <?php
-            $dateNow = time();
-            $end_date = strtotime($dataCampaign->deadline);
-            // $interval = date_diff($dateNow,$end_date);
-            $diff = $end_date - $dateNow;
-            $interval=floor($diff / (60 * 60 * 24));
-          ?>
-          <label style="float: right;">{{$interval}} Hari</label>
-        </div>
-      </div>
-      
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 90px 10px 90px;" class="btn btn-success"><center>Donasi Sekarang</center> </a>
-        @if($jumlahDonasiBarang != '0' )
-
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 100px 10px 100px;" class="btn btn-info"><center>Donasi Barang</center> </a>
-        @endif
-    </div>
-  </div>
+    </section><!-- #about -->
  
   </main>
   <!--==========================
@@ -315,12 +207,20 @@
     <script type="text/javascript" charset="utf8" src="{{asset('/js/datatables.min.js')}}"></script>
 
   </div>
-  <script type="text/javascript">
-    $(document).ready( function () {
-      $('#table_donasi').DataTable();
-    } );
+  <!-- <script type="text/javascript">
+    $('#profile a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
 
+    
   </script>
+  <script type="text/javascript">
+    $('#home a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  </script> -->
 </body>
 
 

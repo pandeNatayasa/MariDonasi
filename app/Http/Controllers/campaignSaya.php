@@ -17,7 +17,7 @@ class campaignSaya extends Controller
     public function index()
     {
         $idUser = Auth::user()->id;
-        $dataCampaignSaya = campaign_user::all()->where('id_user','=',$idUser);
+        $dataCampaignSaya = campaign_user::all()->where('id_user','=',$idUser)->where('judul','!=','0');
         return view('viewProfileUser.profilCampaignSaya',compact('dataCampaignSaya'));
     }
 
@@ -39,7 +39,20 @@ class campaignSaya extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->id_donasi_barang;
+        
+        $id_campaign_user_min = DB::table('campaign_users')->where('id_user','=',$idUser)->min('id');
+
+        $data = campaign_user_barang::find($id);
+        $data->id_campaign_user=$id_campaign_user_min;
+        $data->nama_barang = $request->nama_barang;
+        $data->target_jumlah= $request->target_jumlah;
+        $data->jumlah_sementara='0';
+        $data->jumlah_sisa='0';
+        $data->satuan=$request->satuan;
+        $data->save();
+        
+        return $request;
     }
 
     /**

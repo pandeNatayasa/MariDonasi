@@ -29,9 +29,16 @@ class MemberController extends Controller
             $jumlahCampaignDimulai = 0;
         }
 
+        $jumlahDonasiDisalurkan = DB::table('galang_danas')
+                    ->join('campaign_users', 'galang_danas.id_campaign_user', '=', 'campaign_users.id')
+                    ->join('users', 'campaign_users.id_user', '=', 'users.id')
+                    ->where('users.id','=',$idUser)
+                    ->count('nominal');
+                    //->get();
+
         $dataTambahDeposit = dompetKebaikan::all()->where('id_user','=',$idUser);
 
-        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai','dataTambahDeposit'));
+        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai','dataTambahDeposit','jumlahDonasiDisalurkan'));
     }
 
     /**

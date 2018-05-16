@@ -86,7 +86,59 @@
                     {{$data->berlaku_hingga}}
                   </td>
               		<td>
-                    <a href="" class="btn btn-info " data-toggle="tooltip" data-placement="right" title="Vew Detail"><i class="fa fa-eye"></i></a>
+                    <a href="" class="btn btn-info " data-toggle="modal"  name="viewDetailOrganisasi" data-target="#modal_view_detail_organisasi_{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Vew Detail"><i class="fa fa-eye"></i></a>
+                    <!-- Modal View Detail Organisasi-->
+                      <div class="modal fade" id="modal_view_detail_organisasi_{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="modalTambahDataLabel">Detail Organisasi id : {{$data->id}}</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <input type="hidden" name="token" id="token" value="{{csrf_token()}}" >
+                                    <label class="control-label col-md-3" style="padding-right: 0px;">Nama</label>
+                                    <div class="col-md-9">
+                                      <input class="form-control" placeholder="Nama Barang yang diminta"  required="required" type="text" value="{{$data->name}}" id="nama_barang">
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="row" style="padding-top: 10px;">
+                                    <label class="control-label col-md-3" style="padding-right: 0px;">Email</label>
+                                    <div class="col-md-9">
+                                      <input class="form-control" placeholder="Jumlah Barang yang diminta" required="required" type="text" value="{{$data->email}}" id="target_jumlah">
+                                    </div>
+                                  </div>
+                                  <div class="row" style="padding-top: 10px;">
+                                    <label class="control-label col-md-3">No Telp</label>
+                                    <div class="col-md-9">
+                                      <input class="form-control" placeholder="Jumlah Barang yang diminta" required="required" type="text" value="{{$data->no_telp}}" id="target_jumlah">
+                                    </div>
+                                  </div>
+                                  <div class="row" style="padding-top: 10px;">
+                                    <label class="control-label col-md-3">Lokasi</label>
+                                    <div class="col-md-9">
+                                      <input class="form-control" placeholder="Jumlah Barang yang diminta" required="required" type="text" value="{{$data->lokasi}}" id="target_jumlah">
+                                    </div>
+                                  </div>
+                                  <div class="row" style="padding-top: 10px;">
+                                    <label class="control-label col-md-3">Bio</label>
+                                    <div class="col-md-9">
+                                      <input class="form-control" placeholder="Jumlah Barang yang diminta" required="required" type="text" value="{{$data->bio}}" id="target_jumlah">
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <div class="modal-footer">
+                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Done</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      <!-- End of Modal View Detail Organisasi -->
               			<a href="{{route('admin-organisasi.edit',$data->id)}}" class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></a>
                     <button href="" class="btn btn-danger " data-toggle="modal"  name="conrifm_delete" data-target="#modal_confirm_delete_{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
                     <!-- Modal Confirmation Delete-->
@@ -99,8 +151,8 @@
                                   <span aria-hidden="true">×</span>
                                 </button>
                               </div>
-                              <form method="POST" action="" >
-                              {{csrf_field()}}
+                              <!-- <form method="POST" action="" >
+                              {{csrf_field()}} -->
                                 <div class="modal-body">
                                   <div class="row">
                                     <label class="control-label col-md-12">Apakah anda yakin akan menghapus user dengan data :</label>
@@ -126,10 +178,14 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button class="btn btn-succes" type="button" data-dismiss="modal">Concel</button>
-                                  <button class="btn btn-danger" type="button" data-dismiss="modal">Delete</button>
+                                  <form method="POST" action="{{route('delete_organisasi',$data->id)}}" >
+                                  {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                  </form>
                                 </div>
                             </div>
-                            </form>
+                            <!-- </form> -->
                           </div>
                         </div>
                       <!-- End of Modal Confirmation delete -->

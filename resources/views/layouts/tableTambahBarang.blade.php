@@ -18,7 +18,7 @@
       <td >{{$data->target_jumlah}}</td>
       <td >{{$data->satuan}}</td>
       <td>
-        <button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData_{{$data->id}}">
+        <button id="editBarang" class="btn btn-primary " type="button" data-toggle="modal" data-target="#modalEditData_{{$data->id}}">
           <i class="fa fa-edit"></i>
         </button>
         <!-- Modal Edit Data-->
@@ -71,14 +71,14 @@
                     </div>
                     <div class="modal-footer">
                       <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                      <button  type="submit" class="btn btn-primary" id="save-change" href="">Save Change</button>
+                      <button  type="button" onclick="editDataBarang()" class="btn btn-primary" data-dismiss="modal">Save Change</button>
                     </div>
                   <!-- </form> -->
                 </div>
               </div>
             </div>
         
-        <button class="btn btn-danger " data-toggle="modal" data-target="#modalDelete_{{$data->id}}">
+        <button class="btn btn-danger " type="button" data-toggle="modal" data-target="#modalDelete_{{$data->id}}">
           <i class="fa fa-trash"></i>
         </button>
           <!-- Modal Edit Data-->
@@ -132,7 +132,7 @@
                     </div>
                    <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                      <button type="submit" id="delete" class="btn btn-danger" data-dismiss="modal" >Delete</button>
+                      <button type="button" id="delete" class="btn btn-danger" data-dismiss="modal" >Delete</button>
                    </div>
                  <!-- </form> -->
                </div>
@@ -145,24 +145,5 @@
   </tbody>
 <!--     <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script> -->
   <!-- <script type="text/javascript">
-    $("#save-change").click(function(){
-      var id_donasi_barang = $("#id_donasi_barang").val();
-      var nama_barang = $("#namaBarangEdit").val();
-      var target_jumlah = $("#targetJumlahEdit").val();
-      var satuan = $("#satuanEdit").val();
-      // var token = '{{csrf_token()}}';
-
-      // console.log(nama_barang);
-
-      $.ajax({
-        type: "POST",
-        // data: "id_campaign_user=" + id_campaign_user + "&nama_barang" + nama_barang + "&target_jumlah" + target_jumlah + "&satuan" + satuan + "&_token" + token,
-        data: { id_donasi_barang: id_donasi_barang, nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
-        url: "<?php echo url('/campaign/edit-barang')?>",
-        success:function(data){
-          ///console.log(data);
-          // $('#tableBarang').load(location.href + ' #tableBarang')
-          loadComment();
-        }
-      });
+    
   </script> -->

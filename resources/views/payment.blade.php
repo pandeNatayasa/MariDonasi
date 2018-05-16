@@ -25,16 +25,83 @@
   <!-- Main Stylesheet File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
   <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
+   <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
   <!-- <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet"> -->
-  <!-- Import data tables -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/datatables.min.css')}}">
   
   <script type="text/javascript">
+    // $(document).ready(function(){
+    function formatRupiah(angka)
+    {
+        var number_string = angka.toString();
+        // number_string = number_string.replace(".", "");
+        // console.log(number_string);
     
+        var i = 0;
+        //fungsi insert
+        insert = function(main_string, ins_string, pos) {
+          if(typeof(pos) == "undefined") {
+            pos = 0;
+          }
+           if(typeof(ins_string) == "undefined") {
+            ins_string = '';
+          }
+          return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
+        }
+
+        if(number_string.length >= 4 ){
+          var i = 0;
+          var len = number_string.length;
+          while(i < len){
+            
+              if(i != 0 && i == 3 ){
+                number_string = insert(number_string, '.', number_string.length - i);
+                len = len + 1;
+              } 
+
+              if(i != 0 && i == 7){
+                  number_string = insert(number_string, '.', number_string.length - i);
+                  // len = number_string.length;
+              } 
+              if(i != 0 && i == 11 ){
+                  number_string = insert(number_string, '.', number_string.length - i);
+                  // len = number_string.length;
+              } 
+              
+              if(i != 0 && i == 15){
+                number_string = insert(number_string, '.', number_string.length - i);                   
+              } 
+              
+            i = i + 1;    
+            // console.log('i');
+            // console.log(i);
+
+            // console.log(len);
+          }
+          //len = 0 ;
+          
+          //document.getElementById("targetDonasi2").value=number_string;
+          console.log(number_string);
+          // return number_string;
+          document.getElementById("targetDonasi").value=number_string;
+          
+          //number_string = number_string.replace(".", "");
+          
+        }else{
+          console.log(number_string);
+          //number_string = number_string.replace(".", ""); 
+          document.getElementById("targetDonasi").value=number_string;
+        }
+        //number_string = number_string.replace(".", ""); 
+        document.getElementById("targetDonasi").value=number_string;
+        console.log(number_string);
+        // var hasil document.getElementById("hasilTargetDonasi");
+        // hasil.innerHTML=number_string;
+    }
+  // });
   </script>
 </head>
 
-<body>
+<body >
   <header id="header">
     <div class="container-fluid">
       <div id="logo" class="pull-left">
@@ -98,121 +165,77 @@
       </div>
     </div>
   </section><!-- #intro -->
-  <main id="main">
-  <div class="row ">
-    <div class="col-md-8" style="padding: 20px 50px 50px 50px; margin-left: 50px; ">
-       <!--==========================
-        Portfolio Section
-      ============================-->
-      <section id="makecampaign" >
-        <div class=" container">
-
-          <header class="section-header wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="margin-top: 10px">
-            <h3 class="section-title">{{$dataCampaign->judul}}</h3>
-          </header>
-          <center>
-            <div style="padding: 10px  0px 10px 0 ;" class="wow fadeInUp" data-wow-duration="800ms" data-wow-delay="250ms">
-              <img src="{{$dataCampaign->pic_cover_campaign}}" class="img-responsive" alt="" style="height: 350px;">
-            </div>
-          </center>
-
-          <div class="row portfolio-container">
-            <div class="col-md-11 portfolio-item wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms">
-              <div class="box" style="margin-top: 10px; background: rgb(0,0,0.8);">
-                <div>
-                  <h4 style="padding-top: 20px;">{{$dataCampaign->cerita_singkat}}</h4>
-                  <div class="col-md-12" style="padding-bottom: 20px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
-                    <div class="row" >
-                      <div class="col-md-2" >
-                        <div class="userpic_detail_campaign">
-                        <?php
-                          $foto = $dataCampaign->User->profil_pic;
-                          if($foto == '0'){
-                            $foto = "/img/profil_pic/profile_default.jpg";
-                          }
-
-                        ?>
-                          <img src="{{$foto}}" class="img-responsive" alt="" >
-                        </div>
-                      </div>
-                      <div class="col-md-8" style="padding: 20px 0px 20px 0px;">
-                        {{$dataCampaign->User->name}}
-                      </div>
-                         
-                    </div >
-                  </div>
-                    
-                    <div style="padding-top: 20px;" class="form-group">
-                      {{$dataCampaign->cerita_lengkap}}
-                    </div>
-
-                </div>
-                           
-              </div>
-                    
-          </div>
-        </div>
-      </section><!-- #portfolio -->
-      @if($jumlahDonasiBarang != '0' )
-      <div class=" wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms" style="padding-top: 40px;">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Data Barang yang dibutuhkan
-        </div>
-        <div class="card-body">
-           <div class="table-responsive" style="margin-top: 10px;">
-            <table class="table table-bordered table-striped table-hover display" id="table_donasi">
-              <thead style="background-color: black;">
-                <tr>
-                  <th style="color: #fff;">No</th>
-                  <th style="color: #fff;">Nama Barang</th>
-                  <th style="color: #fff;">Target Jumlah</th>
-                  <th style="color: #fff;">Jumlah terkumpul</th>
-                  <th style="color: #fff;">Satuan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $no = 0;?>
-                @foreach($dataDonasiBarang as $data)
-                  <td>{{$no = $no+1}}</td>
-                  <td>{{$data->nama_barang}}</td>
-                  <td>{{$data->target_jumlah}}</td>
-                  <td>{{$data->jumlah_sementara}}</td>
-                  <td>{{$data->satuan}}</td>
-                @endforeach                
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      @endif
-        
-    </div>
-    <div class="col-md-3" style=" margin-top: 60px; padding: 20px ; background: rgba(0,0,0,0.05); height: 350px;">
-      <h3 style="">{{number_format($dataCampaign->dana_sementara)}}</h3>
-      <p style="margin-bottom: 2px;">Terkumpul dari target Rp. {{number_format($dataCampaign->target_donasi)}}</p>
-      <div class="row" style=" padding-bottom: 5px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
-      </div>
-      <div class="row" style=" padding-bottom: 5px; padding-top: 25px; ">
-        <div class="col-md-6">
-          <label style="float: left;">Sisa Hari</label>
-        </div>
-        <div class="col-md-6">
-          <?php
-            $dateNow = time();
-            $end_date = strtotime($dataCampaign->deadline);
-            // $interval = date_diff($dateNow,$end_date);
-            $diff = $end_date - $dateNow;
-            $interval=floor($diff / (60 * 60 * 24));
-          ?>
-          <label style="float: right;">{{$interval}} Hari</label>
-        </div>
-      </div>
+  <main id="main" >
+  <div class="row" >
+    <div class="col-md-3">
       
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 90px 10px 90px;" class="btn btn-success"><center>Donasi Sekarang</center> </a>
-        @if($jumlahDonasiBarang != '0' )
+    </div>
+    <div class="col-md-6">
+      <header class="section-header wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="margin-top: 50px">
+        <h3 class="section-title" style="padding-bottom: 0px; margin-bottom: 0px;">Donasi</h3>
+      </header>
+      <div class="box wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms">
+         <form action="{{route('galangDana.store')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+          {{csrf_field()}}
+         <div class="box-body" style=" margin-bottom: 150px;">
+            <div class="box-body-col" style="padding-bottom: 50px;">
+               <h4>Donasi Uang</h4>
+               <label class="col-md-12">Donasi minimal Rp 10.000 dengan kelipatan ribuan (contoh: 15.000, 50.000)</label>
+               <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-md-1" ></label>
+                  <label class="control-label col-md-1 " >Rp. </label>
+                 <div class="col-md-8">
+                     <input id="targetDonasi2" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi2" required="required" type="text" onkeyup="formatRupiah(this.value)" value="" maxlength="15">
+                     <input type="hidden" name="id_campaign" value="{{$id}}">
+                 </div>
+                </div>
+               </div>
+               <div class="form-group" style="padding-top: 40px; ">
+                <div class="row">
+                  <label class="control-label col-md-3" >Donasi Anda</label>
+                  <label class="control-label col-md-1 " >Rp. </label>
+                 <div class="col-md-8">
+                     <input id="targetDonasi" class="form-control" placeholder="Donasi Anda" name="targetDonasi" required="required" type="text" disabled  value="">
+                 </div>
+                </div>
+               </div>
+               <!-- <div class="col-md-12"> -->
+                 <!-- <input style="float: right;" type="submit" class="btn btn-success" name="donasi" value="Donasi"> -->
+               <!-- </div> -->
+               
+            </div>
+            <div class="box-body-col" style="padding-bottom: 50px;">
+               <h4>Metode Pembayaran</h4>
+               <label class="col-md-12" style="padding-left: 0px;" >Pilih Metode Pembayaran yang akan anda lakukan</label>
 
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 100px 10px 100px;" class="btn btn-info"><center>Donasi Barang</center> </a>
-        @endif
+               <div class="form-group box-body-col">
+                <div class="row">
+                  <div class="col-md-12 radio-inline"> <input required="pilih salah satu metode pembayaran" type="radio" name="metodePembayaran" id="opsi2" value="wallet"><strong style="font-size: 22px;">  Wallet/Dompet Kebaikan</strong>  </div>
+                </div>
+               </div>
+               <div class="form-group box-body-col" >
+                <div class="row">
+                  <div class="col-md-12 radio-inline"> <input type="radio" name="metodePembayaran" id="opsi1" value="transfer" ><strong style="font-size: 22px;">  Transfer </strong></div> 
+                </div>
+                <div class="row" style="padding-top: 30px;">
+                  <label class="control-label col-md-5" style="padding-left: 30px; padding-right: 0px;">Transfer ke No. Rek :</label>
+                  <div class="col-md-7">
+                      <input id="targetDonasi" class="form-control" name="no_rek" type="text" disabled  value="6354376452462">
+                  </div>
+                  
+                        
+                </div>
+               </div>
+               <!-- <div class="col-md-12"> -->
+                 <input style="float: right;" type="submit" class="btn btn-success" name="donasi" value="Donasi">
+               <!-- </div> -->
+               
+            </div>
+          </div>
+            
+         </form>
+      </div>
     </div>
   </div>
  
@@ -315,12 +338,20 @@
     <script type="text/javascript" charset="utf8" src="{{asset('/js/datatables.min.js')}}"></script>
 
   </div>
-  <script type="text/javascript">
-    $(document).ready( function () {
-      $('#table_donasi').DataTable();
-    } );
+  <!-- <script type="text/javascript">
+    $('#profile a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
 
+    
   </script>
+  <script type="text/javascript">
+    $('#home a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  </script> -->
 </body>
 
 

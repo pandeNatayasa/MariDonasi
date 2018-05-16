@@ -124,6 +124,26 @@ class adminOrganisasi extends Controller
      */
     public function edit($id)
     {
+        $dateNow = date('Y-m-d');
+        // $idUser = Auth::user()->id;
+        $newCampaign = new campaign_organisasi();
+        $newCampaign->id_organisasi = $id;
+        $newCampaign->judul='0';
+        $newCampaign->pic_cover_campaign = '0';
+        $newCampaign->cerita_singkat='0';
+        $newCampaign->cerita_lengkap='0';
+        $newCampaign->target_donasi='0';
+        $newCampaign->tgl_awal = $dateNow;
+        $newCampaign->deadline=$dateNow;
+        $newCampaign->kategori='0';
+        $newCampaign->lokasi_penerima='0';
+        $newCampaign->dana_sementara='0';
+        $newCampaign->dana_bersih='0';
+        $newCampaign->sisa_dana='0';
+        $newCampaign->pic_verif = '0';
+        $newCampaign->status='non-verified';
+        $newCampaign->save();
+
         $data = organisasi::find($id);
         $data->status = 'verified';
         $data->save();

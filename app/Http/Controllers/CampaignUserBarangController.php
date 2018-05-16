@@ -53,7 +53,7 @@ class CampaignUserBarangController extends Controller
 
             //membuat campaign kosong untuk mendapatkan id campaign yang akan digunakan di tabel campaign barang
             // $dateNow = date('Y-m-d');
-            $idUser = Auth::user()->id;
+            
             // $newCampaign = new campaign_user();
             // $newCampaign->id_user = $idUser;
             // $newCampaign->judul='0';
@@ -71,14 +71,14 @@ class CampaignUserBarangController extends Controller
             // $newCampaign->pic_verif = '0';
             // $newCampaign->status='non-verified';
             // $newCampaign->save();
-
+            $idUser = Auth::user()->id;
             // $id_campaign_user_max = $request->id_campaign_user_max;
             $id_campaign_user_min = DB::table('campaign_users')->where('id_user','=',$idUser)->min('id');
             
             // $id_campaign_user_max = DB::table('campaign_users')->max('id');
-            $dataBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign_user_min);
-            
-            return view('formCampaign',compact('id_campaign_user_min','dataBarang'));
+            $dataBarang = DB::table('campaign_user_barangs')->where('id_campaign_user','=',$id_campaign_user_min)->delete();
+
+            return view('formCampaign',compact('id_campaign_user_min'));
         }else{
             return "not found".$data;
         }
@@ -127,6 +127,10 @@ class CampaignUserBarangController extends Controller
         $data->jumlah_sisa='0';
         $data->satuan=$request->satuan;
         $data->save();
+
+        return response()->json($data);
+
+        // return $request;
     }
 
     public function store(Request $request)

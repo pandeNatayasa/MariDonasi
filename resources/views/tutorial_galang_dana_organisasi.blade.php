@@ -13,5 +13,5 @@
 @endsection
 
 @section('route_create')
-  {{route('campaignOrganisasi.create')}}
+  {{route('campaign_organisasi_barang.create')}}
 @endsection

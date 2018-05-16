@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\galang_dana;
 use Illuminate\Http\Request;
+use App\campaign_user;
+use Auth;
+use App\User;
 
 class GalangDanaController extends Controller
 {
@@ -14,7 +17,9 @@ class GalangDanaController extends Controller
      */
     public function index()
     {
-         return view('tutorial_galang_dana');
+         $dateNow = date('Y-m-d');
+        $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
+         return view('home',compact('dataDonasi'));
     }
 
     /**
@@ -24,7 +29,7 @@ class GalangDanaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +40,47 @@ class GalangDanaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $metodePembayaran = $request->metodePembayaran;
+        $nominal = $request->targetDonasi2;
+        $wallet = Auth::user()->wallet;
+        $idUser = Auth::user()->id;
+
+        if($metodePembayaran=='wallet'){
+            if($wallet > $nominal){
+                $sisa_wallet = $wallet - $nominal;
+                $data = User::find($idUser);
+                $data->wallet=$sisa_wallet;
+                $data->save();
+
+                $data = new galang_dana();
+                $data->id_user = $idUser;
+                $data->id_campaign_user= $request->id_campaign;
+                $data->nominal = $nominal;
+                $data->bank='bni';
+                $data->status='onGoing';
+                $data->privacy = 'anonim';
+                $data->save();
+                return view('intermeso_donasi');
+            }else{
+                return view('intermeso_donasi_wallet');
+            }
+        }elseif ($metodePembayaran == 'transfer') {
+
+            $data = new galang_dana();
+            $data->id_user = $idUser;
+            $data->id_campaign_user= $request->id_campaign;
+            $data->nominal = $nominal;
+            $data->bank='bni';
+            $data->status='onGoing';
+            $data->privacy = 'anonim';
+            $data->save();
+
+            return view('intermeso_donasi');
+        }else{
+            return $metodePembayaran;
+        }
+        
+        
     }
 
     /**
@@ -44,9 +89,10 @@ class GalangDanaController extends Controller
      * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function show(galang_dana $galang_dana)
+    public function show($id)
     {
-        //
+
+        return view('payment',compact('id'));
     }
 
     /**

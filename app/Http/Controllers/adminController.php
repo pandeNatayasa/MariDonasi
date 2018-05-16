@@ -11,6 +11,7 @@ use Redirect;
 use App\campaign_user;
 use App\admin;
 use Auth;
+use App\galang_dana;
 
 class adminController extends Controller
 {
@@ -32,7 +33,7 @@ class adminController extends Controller
     {
         //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
         $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
-        $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->count();
+        $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->where('judul','!=','0')->count();
         $jumlahNewTransfer = DB::table('galang_danas')->where('status','=','onGoing')->count();
 
         if($jumlahNewUser == 0 ){
@@ -68,12 +69,13 @@ class adminController extends Controller
     }
 
     public function showDaftarNewCampaign(){
-        $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
+        $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified')->where('judul','!=','0');
         return view('viewAdmin.daftarNewCampaign',compact('dataNewCampaignUser'));
     }
 
     public function showDaftarNewTransfer(){
-        return view('viewAdmin.daftarNewTransfer');
+        $dataTransfer = galang_dana::all()->where('status','!=','paidOff');
+        return view('viewAdmin.daftarNewTransfer',compact('dataTransfer'));
     }
 
     public function showDaftarNewPencairan(){
@@ -218,8 +220,19 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function destroyOrganisasi($id_organisasi)
+    {
+
+        
+    }
+
     public function destroy($id)
     {
-        //
+        $data = organisasi::find($id_organisasi);
+        $data->delete();
+
+        $$dataOrganisasi = organisasi::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-organisasi')->with(compact('dataOrganisasi'));
     }
 }

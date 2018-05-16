@@ -7,6 +7,7 @@ use App\campaign_user_barang;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Redirect;
 
 class CampaignUserController extends Controller
 {
@@ -144,7 +145,7 @@ class CampaignUserController extends Controller
         $newCampaign = new campaign_user();
         $newCampaign->id_user = $idUser;
         $newCampaign->judul=$request->campaignName;
-        $newCampaign->pic_cover_campaign = 'img/cover_campaign/'.$fileCoverPic->getClientOriginalName();
+        $newCampaign->pic_cover_campaign = '/img/cover_campaign/'.$fileCoverPic->getClientOriginalName();
         $newCampaign->cerita_singkat=$request->deskripsiSingkat;
         $newCampaign->cerita_lengkap=$request->deskripsiLengkap;
         $newCampaign->target_donasi=$request->targetDonasi;
@@ -155,7 +156,7 @@ class CampaignUserController extends Controller
         $newCampaign->dana_sementara='0';
         $newCampaign->dana_bersih='0';
         $newCampaign->sisa_dana='0';
-        $newCampaign->pic_verif = 'img/image_verif_campaign/'.$filePicVerif->getClientOriginalName();
+        $newCampaign->pic_verif = '/img/image_verif_campaign/'.$filePicVerif->getClientOriginalName();
         $newCampaign->status='non-verified';
         $newCampaign->save();
 
@@ -201,8 +202,12 @@ class CampaignUserController extends Controller
      */
     public function show($id_campaign)
     {
-           return view('detailCampaign');
+        $dataCampaign = campaign_user::find($id_campaign);
+        $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        return view('detailCampaign',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -233,8 +238,16 @@ class CampaignUserController extends Controller
      * @param  \App\campaign_user  $campaign_user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(campaign_user $campaign_user)
+    public function destroy($id_campaign_user)
     {
-        //
+        $data = DB::table('campaign_user_barangs')->where('id_campaign_user','=',$id_campaign_user);
+        $data->delete(); 
+
+        $dataCampaign = campaign_user::find($id_campaign_user);
+        $dataCampaign->delete();
+
+        $dataNewCampaignUser = campaign_user::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-campaign-user')->with(compact('dataNewCampaignUser'));
     }
 }

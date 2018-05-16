@@ -1,4 +1,4 @@
-@extends('layouts.formCampaign')
+@extends('layouts.formCampaignOrganisasi')
 
 @section('home')
 	{{route('organisasi.home')}}

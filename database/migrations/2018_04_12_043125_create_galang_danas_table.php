@@ -18,9 +18,10 @@ class CreateGalangDanasTable extends Migration
             $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_campaign_user');
             $table->biginteger('nominal');
-            $table->enum('bank',['bri','bni','mandiri','bca','cimb']);
-            $table->enum('status',['onGoing','paidOff','cancel']);
-            $table->enum('privacy',['anonim','publik']);
+            $table->string('bukti_transfer');
+            // $table->enum('bank',['bri','bni','mandiri','bca','cimb']);
+            $table->enum('status',['onGoing','paidOff','cancel','success']);
+            // $table->enum('privacy',['anonim','publik']);
             $table->timestamps();
 
             Schema::disableForeignKeyConstraints();

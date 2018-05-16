@@ -160,7 +160,7 @@
               </div>
               <div class="col-sm-9">
                 <div class="col-sm-12 jumlah">
-                  <strong>Rp. 15.000.000</strong> 
+                  <strong>Rp. {{$jumlahDonasiDisalurkan}}</strong> 
                 </div>
                 <div class="col-sm-12 jumlah1">
                   Donasi disalurkan

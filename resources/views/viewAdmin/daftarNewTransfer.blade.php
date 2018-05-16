@@ -29,42 +29,30 @@
               <thead>
                 <tr>
                 	<th>Id</th>
-                  <th>Nama</th>
+                  <th>Nama Pendonasi</th>
                   <th>Judul Campaign</th>
-                  <th>Cover Picture</th>
-                  <th>Target Donasi</th>
-                  <th>Verif Picture</th>
-                  <th>Detail</th>
+                  <th>Nominal</th>
+                  <th>Bukti Transfer</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
+                <?php $no = 0;?>
+                @foreach($dataTransfer as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-                  <td></td>
-                  <td></td>
-              		<td></td>
-              		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
+              		<td>{{$no=$no+1}}</td>
+              		<td>{{$data->User->name}}</td>
+              		<td>{{$data->campaign_user->judul}}</td>
+                  <td>{{number_format($data->nominal)}}</td>
+              		<td>
+                    <center><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></center>
+                  </td>
               		<td>
               			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-                  <td>Aagus</td>
-                  <td>Bantu Anto</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
-                  <td>
-                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                  </td>
-              	</tr>
+                @endforeach
               </tbody>
             </table>
           </div>

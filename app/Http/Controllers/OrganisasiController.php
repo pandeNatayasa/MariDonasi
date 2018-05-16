@@ -194,8 +194,9 @@ class OrganisasiController extends Controller
      * @param  \App\organisasi  $organisasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(organisasi $organisasi)
+    public function destroy($id_organisasi)
     {
-        //
+
+        
     }
 }

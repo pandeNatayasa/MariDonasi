@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AuthOrganisasi;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\organisasi;
 use App\campaign_user;
@@ -23,7 +23,7 @@ class RegisterController extends Controller
     |
     */
 
-    // use RegistersUsers;
+    use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -97,8 +97,10 @@ class RegisterController extends Controller
         $data->remember_token='0';
         $data->save();
 
-        $dateNow = date('Y-m-d');
-        $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
-        return view('homeOrganisasi',compact('dataDonasi'));
+        // $dateNow = date('Y-m-d');
+        // $dataDonasi = campaign_user::all()->where('status','=','verified')->where('deadline','>',$dateNow);
+        // return view('homeOrganisasi',compact('dataDonasi'));
+
+        return view('authOrganisasi.login');
     }
 }
