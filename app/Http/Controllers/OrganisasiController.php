@@ -8,6 +8,9 @@ use Auth;
 use App\organisasis;
 use DB;
 use App\campaign_organisasi;
+use App\galang_dana_organisasi;
+use App\dompet_kebaikan_organisasi;
+use App\galang_dana_user_forOrganisasi;
 
 class OrganisasiController extends Controller
 {
@@ -19,12 +22,22 @@ class OrganisasiController extends Controller
     public function index()
     {
         $idOrganisasi = Auth::guard('organitation')->user()->id;
-        $jumlahCampaignDimulai = DB::table('campaign_organisasis')->where('id_organisasi','=',$idOrganisasi)->count();
+        $jumlahCampaignDimulai = DB::table('campaign_organisasis')->where('id_organisasi','=',$idOrganisasi)->where('judul','!=','0')->count();
 
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('viewProfileOrganisasi.profilOrganisasiOverview',compact('jumlahCampaignDimulai'));
+
+        $jumlahDonasiDisalurkan = DB::table('galang_dana_organisasis')
+                    ->join('campaign_organisasis', 'galang_dana_organisasis.id_campaign_organisasi', '=', 'campaign_organisasis.id')
+                    ->join('organisasis', 'campaign_organisasis.id_organisasi', '=', 'organisasis.id')
+                    ->where('organisasis.id','=',$idOrganisasi)
+                    ->count('nominal');
+                    //->get();
+
+        $dataTambahDeposit = dompet_kebaikan_organisasi::all()->where('id_organisasi','=',$idOrganisasi);
+
+        return view('viewProfileOrganisasi.profilOrganisasiOverview',compact('jumlahCampaignDimulai','jumlahDonasiDisalurkan','dataTambahDeposit'));
     }
 
     /**
@@ -34,12 +47,16 @@ class OrganisasiController extends Controller
      */
     public function create()
     {
-        return view('viewProfileOrganisasi.profilDonasi');
+        $idOrganisasi = Auth::guard('organitation')->user()->id;
+        $dataDonasi = galang_dana_organisasi::all()->where('id_organisasi','=',$idOrganisasi);
+        $dataDonasiOrganisasi = galang_dana_user_forOrganisasi::all()->where('id_organisasi','=',$idOrganisasi);
+        // return $dataDonasiOrganisasi;
+        return view('viewProfileOrganisasi.profilDonasi',compact('dataDonasi','dataDonasiOrganisasi'));
     }
 
     public function showCampaignOrganisasi()
     {
-        $dataCampaignSaya = campaign_organisasi::all();
+        $dataCampaignSaya = campaign_organisasi::all()->where('judul','!=','0');
         return view('viewProfileOrganisasi.profilCampaignSaya',compact('dataCampaignSaya'));
     }
     /**

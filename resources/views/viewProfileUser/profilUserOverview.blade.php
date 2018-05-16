@@ -209,7 +209,7 @@
                                   </button>
                                 </div>
                                 <!-- method="post" action="{{route('campaign_user_barang.store')}}" -->
-                                <form method="POST" action="{{route('dompet-kebaikan-user.update',$data->id)}}" >
+                                <form method="POST" enctype="multipart/form-data"  action="{{route('dompet-kebaikan-user.update',$data->id)}}" >
                                 {{csrf_field()}}
                                 {{method_field('PUT')}}
                                   <div class="modal-body">
@@ -217,7 +217,7 @@
                                       <label class="control-label col-md-3">Pic Bukti Trasfer</label>
                                       <div class="col-md-9">
                                         <!-- <input class="form-control" placeholder="Gambar Bukti Transfer" name="pic_bukti_transfer" type="file" required id="pic_bukti_trasnfer" accept="image/*"> -->
-                                        <input name="picBuktiTransfer" type="file" class="form-control" accept="image/*">
+                                        <input name="picBuktiTransfer" id="picBuktiTransfer" type="file" class="form-control" accept="image/*">
                                       </div>
                                     </div>
                                     

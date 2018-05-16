@@ -42,7 +42,7 @@
    <script type="text/javascript" async> 
     // menampilkan data input di modal
     function loadComment(){
-        var url = '/campaign/get-barang';
+        var url = '/campaign_organisasi/get-barang';
         $.ajax({
           type:'get',
           url:url,
@@ -64,38 +64,9 @@
 
     $(document).ready(function(){
 
-      
-
-      // var i = 1;
-      // var barangs=[];
-      // $("#tambahDataBarang").on('click',function(){
-      //   var namaBarang=document.getElementById("namaBarangAdd").value;
-      //   var jumlahBarang=document.getElementById("jumlahBarangAdd").value;
-      //   var satuanBarang=document.getElementById("satuanBarangAdd").value;
-      //   let temp={
-      //     'nama':namaBarang,
-      //     'jumlah':jumlahBarang,
-      //     'satuan':satuanBarang
-      //   }
-      //   barangs.push(temp)
-
-      //   $(".odd").html("");
-      //   $(".dataBaru").append("<tr><td>" + i + " </td><td> " + namaBarang + " </td><td> " + jumlahBarang + " </td><td> " + satuanBarang + " </td><td>Edit</td></tr>");
-      //   i++;
-      // });
-      // $("#tambahData").click(function(){
-      //   //console.log(barangs)
-      //   // axios.post('/campaignUser/store', barangs);
-      //   document.getElementById("barang").value=barangs;
-      // })
+     
     });
-    //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i class="fa fa-edit"></i></button><button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-//    function()
-// {
-//    var hasil;
-//    hasil = 1+3+5+7+9;
-//    document.getElementById("tempat_hasil").innerHTML=hasil;
-// }
+    //<button id="editBarang" class="btn btn-primary " data-toggle="modal" data-target="#modalEditData"><i 
 
       /* Fungsi Konversi ke Rupiah */
       // window.onload = 
@@ -479,7 +450,7 @@
               <div class="row">
                 <label class="control-label col-md-3">Satuan</label>
                 <div class="col-md-9">
-                  <select id="satuan" class="form-control" required="required" id="satuan">
+                  <select id="satuan" name="satuan" class="form-control" required="required" id="satuan">
                     <option value="" disabled selected>Pilih Satuan Barang</option>
                     <option value="Lusin">Lusin</option>
                     <option value="Meter">Meter</option> 
@@ -537,7 +508,7 @@
         type: "POST",
         // data: "id_campaign_user=" + id_campaign_user + "&nama_barang" + nama_barang + "&target_jumlah" + target_jumlah + "&satuan" + satuan + "&_token" + token,
         data: { nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
-        url: "<?php echo url('/campaign_user_barang/store-barang')?>",
+        url: "<?php echo url('/campaign_organisasi_barang/store-barang')?>",
         success:function(data){
           ///console.log(data);
           // $('#tableBarang').load(location.href + ' #tableBarang')
@@ -564,7 +535,7 @@
         type: 'POST',
         
         data: { id_donasi_barang: id_donasi_barang, nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
-        url: "{{route('ajaxEdit')}}",
+        url: "",
         
         success:function(data){
           console.log(data);
@@ -574,68 +545,7 @@
       });
       //$('#modal-form form')[0].reset();
     };
-    
-    // $("#save-change").click(function(){
-    //   var id_donasi_barang = $("#id_donasi_barang").val();
-    //   var nama_barang = $("#namaBarangEdit").val();
-    //   var target_jumlah = $("#targetJumlahEdit").val();
-    //   var satuan = $("#satuanEdit").val();
-      
-
-    //   $.ajax({
-    //     type: "POST",
-        
-    //     data: { id_donasi_barang: id_donasi_barang, nama_barang: nama_barang, target_jumlah: target_jumlah, satuan: satuan , _token: '{{csrf_token()}}' },
-    //     url: "<?php //echo url('/campaign/edit-barang')?>",
-    //     success:function(data){
-          
-    //       loadComment();
-    //     }
-    //   });
-    // {
-    //   processing : true,
-    //   serverSide : true,
-    //   ajax: [
-    //     {data: 'id',name : 'id'},
-    //     {data: 'id_campaign_user',name:'id_campaign_user'},
-    //     {data: 'nama_barang',name:'nama_barang'},
-    //     {data: 'target_jumlah',name:'target_jumlah'},
-    //     {data: 'satuan',name:'satuan'},
-    //     {data: 'action', name:'action', orderable:false,searchable:false}
-    //   ]
-
-    // });
-
-    // function addForm() {
-    //   save_method = "add";
-    //   $('input[name=_method]').val('POST');
-    //   $('#modal-form').modal('show');
-    //   $('#modal-form form')[0].reset();
-    // }   
-
-    // $(function(){
-    //   $('#modal-form form').validator().on('submit', function(e){
-    //     if(!e.isDefaultPrevented()){
-    //       var id = $('#id').val();
-    //       // if(save_method == 'add') url = "{{url('campaign_user_barang/store')}}";
-    //       // else url = "{{url('campaign_user_barang/create') . '/'}}" + id;
-
-    //       var url = '/campaign_user_barang/store';
-    //       $.ajax({
-    //         url : url,
-    //         type : "POST",
-    //         data : $('#modal-form form').serialize(),
-    //         success : function($data) {
-    //           $('modal-form').modal('hide');
-    //         },
-    //         eror : function(){
-    //           alert('Oops something eror!');
-    //         }
-    //       });
-    //       return false;
-    //     }
-    //   });
-    // });
+   
 
   </script>
 

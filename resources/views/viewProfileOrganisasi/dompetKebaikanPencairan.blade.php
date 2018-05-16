@@ -1,5 +1,25 @@
 @extends('layouts.profilleUser')
 
+@section('home')
+  {{route('organisasi.home')}}
+@endsection
+
+@section('profile')
+  {{route('profille-organisasi.index')}}
+@endsection
+
+@section('galang_dana')
+  {{route('campaignOrganisasi.index')}}
+@endsection
+
+@section('name')
+  {{ Auth::guard('organitation')->user()->name }}
+@endsection
+
+@section('logout')
+  {{ route('organisasi.logout') }}
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row profile">
@@ -10,7 +30,7 @@
           <div class="profile-userpic">
             <center>
               <?php
-                $foto = Auth::user()->profil_pic;
+                $foto = Auth::guard('organitation')->user()->pic;
                 if($foto == '0'){
                   $foto = "img/profil_pic/profile_default.jpg";
                 }
@@ -43,22 +63,22 @@
         <div class="profile-usermenu">
           <ul class="nav" >
             <li >
-              <a href="{{route('member.index')}}">
+              <a href="{{route('profille-organisasi.index')}}">
               <i class="glyphicon glyphicon-home"></i>
               Overview </a>
             </li>
             <li>
-              <a href="{{route('campaignSaya.index')}}">
+              <a href="{{route('campaignView')}}">
               <i class="glyphicon glyphicon-user"></i>
               Campaign Saya </a>
             </li>
             <li>
-              <a href="{{url('/donasi-saya')}}">
+              <a href="{{route('profille-organisasi.create')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
             <li class=>
-              <a href="{{url('/edit-profile')}}">
+              <a href="{{route('akun.organisasi')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -68,13 +88,13 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li>
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-organisasi.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
                 </li>
                 <li class="active">
-                  <a href="{{route('pencairan_dana')}}">
+                  <a href="{{route('pencairan_dana_organisasi')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
                     <span>Pencairan Dana</span>
                   </a>
@@ -95,7 +115,7 @@
         <div class="bodyone" style="margin-bottom: 20px;">
           <strong >
             <div class="row">
-               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. 100.000</h1>
+               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. {{number_format(Auth::guard('organitation')->user()->wallet)}}</h1>
             </div>
           </strong>
         </div>

@@ -12,6 +12,7 @@ use App\campaign_user;
 use App\admin;
 use Auth;
 use App\galang_dana;
+use App\galang_dana_user_forOrganisasi;
 
 class adminController extends Controller
 {
@@ -34,7 +35,10 @@ class adminController extends Controller
         //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
         $jumlahNewUser = DB::table('users')->where('status','=','non-verified')->count();
         $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->where('judul','!=','0')->count();
-        $jumlahNewTransfer = DB::table('galang_danas')->where('status','=','onGoing')->count();
+        $jumlahNewTransferUser = DB::table('galang_danas')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
+        $jumlahNewTransferOrganisasi = DB::table('galang_dana_user_for_organisasis')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
+        $jumlahNewTransfer = $jumlahNewCampaignUser+$jumlahNewTransferOrganisasi;
+                //$jumlahNewTransfer = galang_dana::all()->where('status','=','onGoing')->whereOr('status','=','paidOff')->count();//
 
         if($jumlahNewUser == 0 ){
             $jumlahNewUser = 0;
@@ -74,8 +78,9 @@ class adminController extends Controller
     }
 
     public function showDaftarNewTransfer(){
-        $dataTransfer = galang_dana::all()->where('status','!=','paidOff');
-        return view('viewAdmin.daftarNewTransfer',compact('dataTransfer'));
+        $dataTransfer = galang_dana::all()->where('status','!=','success');
+        $dataTransferOrganisasi = galang_dana_user_forOrganisasi::all()->where('status','!=','success');
+        return view('viewAdmin.daftarNewTransfer',compact('dataTransfer','dataTransferOrganisasi'));
     }
 
     public function showDaftarNewPencairan(){
@@ -202,6 +207,65 @@ class adminController extends Controller
         return Redirect::to('/daftar-new-campaign-user')->with(compact('dataNewCampaignUser'));
     }
 
+    public function validasi_transfer($id)
+    {
+        $data = galang_dana::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $nominal = DB::table('galang_danas')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_users')
+                    ->where('id','=',$id)
+                    ->sum('dana_sementara');
+
+        $id_campaign_user = DB::table('galang_danas')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
+
+        $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
+
+        $dataDana = campaign_user::find($id_campaign_user);
+        $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->save();
+
+        $dataTransfer = galang_dana::all()->where('status','!=','success');
+
+        return Redirect::to('/daftar-new-transfer-user')->with(compact('dataTransfer'));
+    }
+
+    public function validasi_transfer_organisasi($id)
+    {
+        $data = galang_dana_user_forOrganisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $nominal = DB::table('galang_dana_user_for_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_users')
+                    ->where('id','=',$id)
+                    ->sum('dana_sementara');
+
+        $id_campaign_user = DB::table('galang_dana_user_for_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
+
+        $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
+
+        $dataDana = campaign_user::find($id_campaign_user);
+        $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->save();
+
+        $dataTransfer = galang_dana::all()->where('status','!=','success');
+        $dataTransferOrganisasi = galang_dana_user_forOrganisasi::all()->where('status','!=','success');
+
+        return Redirect::to('/daftar-new-transfer-user')->with(compact('dataTransfer','dataTransferOrganisasi'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -220,19 +284,20 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroyOrganisasi($id_organisasi)
+    public function destroyUser($id)
     {
+        $dataCampaign = User::find($id);
+        $dataCampaign->delete();
 
-        
+        $dataUser = User::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-user')->with(compact('dataUser'));
     }
 
     public function destroy($id)
     {
-        $data = organisasi::find($id_organisasi);
-        $data->delete();
-
-        $$dataOrganisasi = organisasi::all()->where('status','=','non-verified');
-
-        return Redirect::to('/daftar-new-organisasi')->with(compact('dataOrganisasi'));
+        // $data = DB::table('campign_organisasi_barangs')->where('id_campaign_organisasi','=',$id_campaign_organisasi)->delete();
+        
+        
     }
 }

@@ -32,7 +32,7 @@ class adminOrganisasi extends Controller
 
         //Menghitung jumlah campaign, user, transfer, dan pencairan terbaru
         $jumlahNewOrganisasi = DB::table('organisasis')->where('status','=','non-verified')->count();
-        $jumlahNewCampaignOrganisasi = DB::table('campaign_organisasis')->where('status','=','non-verified')->count();
+        $jumlahNewCampaignOrganisasi = DB::table('campaign_organisasis')->where('status','=','non-verified')->where('judul','!=','0')->count();
 
         if($jumlahNewOrganisasi == 0 ){
             $jumlahNewOrganisasi = 0;
@@ -83,12 +83,12 @@ class adminOrganisasi extends Controller
 
     public function showDaftarCampaign()
     {
-        $dataCampaignOrganisasi = campaign_organisasi::all()->where('status','=','verified');
+        $dataCampaignOrganisasi = campaign_organisasi::all()->where('status','=','verified')->where('judul','!=','0');
         return view('viewAdmin.daftarCampaignOrganisasi',compact('dataCampaignOrganisasi'));
     }
 
     public function showDaftarNewCampaign(){
-        $dataNewCampaignOrganisasi = campaign_organisasi::all()->where('status','=','non-verified');
+        $dataNewCampaignOrganisasi = campaign_organisasi::all()->where('status','=','non-verified')->where('judul','!=','0');
         return view('viewAdmin.daftarNewCampaignOrganisasi',compact('dataNewCampaignOrganisasi'));
     }
 
@@ -171,8 +171,24 @@ class adminOrganisasi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_campaign_organisasi)
     {
-        //
+        // return "aa";
+        $data = DB::table('campign_organisasi_barangs')->where('id_campaign_organisasi','=',$id_campaign_organisasi)->delete();
+        
+        $dataCampaign = campaign_organisasi::find($id_campaign_organisasi);
+        $dataCampaign->delete();
+
+        $dataNewCampaignOrganisasi = campaign_organisasi::all()->where('status','=','non-verified');
+
+        return Redirect::to('/daftar-new-campaign-organisasi')->with(compact('dataNewCampaignOrganisasi'));
+    }
+    public function destroyOrganisasi($id)
+    {
+        $data = organisasi::find($id);
+        $data->delete();
+
+        $dataOrganisasi = organisasi::all()->where('status','=','non-verified');
+        return view('viewAdmin.daftarNewOrganisasi',compact('dataOrganisasi'));
     }
 }

@@ -83,23 +83,20 @@ class DompetKebaikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $filePicVerif=$request->file('pic_bukti_transfer');
-        // return $filePicVerif;
+
         if ($request->hasFile('picBuktiTransfer')) {
-            //return 'aa';
             $filePicVerif=$request->file('picBuktiTransfer');
-            $filename3 = "pic_bukti_transfer" . $id . '.' . $fileVerifPic->getClientOriginalExtension();
+            $filename3 = "pic_bukti_transfer" . $id . '.' . $filePicVerif->getClientOriginalExtension();
             $filePicVerif->move('img/pic_bukti_transfer',$filename3);
         }else{
             return 'no selected image Bukti Transfer ';
         }
 
         $data = dompetKebaikan::find($id);
-        $data->pic_bukti_trasnfer = 'img/pic_bukti_transfer/'.$filename3;
+        $data->pic_bukti_transfer = 'img/pic_bukti_transfer/'.$filename3;
         $data->save();
 
         return redirect()->back();
-
     }
 
     /**

@@ -65,7 +65,7 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li>
-                            <a href="{{route('member.index')}}">@yield('nama_pengguna') </a>
+                            <a href="@yield('profil_pengguna') ">@yield('nama_pengguna') </a>
                           </li>
                           <li>
                             <a href="@yield('route_logout')" >

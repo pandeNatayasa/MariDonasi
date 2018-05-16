@@ -15,3 +15,8 @@
 @section('route_create')
   {{route('campaign_organisasi_barang.create')}}
 @endsection
+
+
+@section('profil_pengguna')
+	{{route('profille-organisasi.index')}}
+@endsection

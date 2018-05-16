@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\campign_organisasi_barang;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 
 class CampignOrganisasiBarangController extends Controller
@@ -24,6 +25,17 @@ class CampignOrganisasiBarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function loadComment(){
+        $idOrganisasi = Auth::guard('organitation')->user()->id;
+
+        $id_campaign_organisasi_min = DB::table('campaign_organisasis')->where('id_organisasi','=',$idOrganisasi)->min('id');
+        
+        $dataBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign_organisasi_min);
+        
+        // return view('formCampaign',compact('id_campaign_user_max','dataBarang'));
+        return view('layouts.tableTambahBarang', compact('dataBarang'));
+    }
+
     public function create()
     {
         $art = Auth::guard('organitation')->user()->id;
@@ -41,9 +53,9 @@ class CampignOrganisasiBarangController extends Controller
             $id_campaign_user_min = DB::table('campaign_organisasis')->where('id_organisasi','=',$idUser)->min('id');
             
             // $id_campaign_user_max = DB::table('campaign_users')->max('id');
-            $dataBarang = DB::table('campaign_organisasi_barangs')->where('id_campaign_organisasis','=',$id_campaign_user_min)->delete();
+            $dataBarang = DB::table('campign_organisasi_barangs')->where('id_campaign_organisasi','=',$id_campaign_user_min)->delete();
 
-            return view('formCampaign',compact('id_campaign_user_min'));
+            return view('formCampaignOrganisasi',compact('id_campaign_user_min'));
         }else{
             return "not found".$data;
         }
@@ -57,7 +69,18 @@ class CampignOrganisasiBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $idOrganisasi = Auth::guard('organitation')->user()->id;
+
+        $id_campaign_organisasi_min = DB::table('campaign_organisasis')->where('id_organisasi','=',$idOrganisasi)->min('id');
+
+        $data = new campign_organisasi_barang();
+        $data->id_campaign_organisasi=$id_campaign_organisasi_min;
+        $data->nama_barang = $request->nama_barang;
+        $data->target_jumlah= $request->target_jumlah;
+        $data->jumlah_sementara='0';
+        $data->jumlah_sisa='0';
+        $data->satuan=$request->satuan;
+        $data->save();
     }
 
     /**

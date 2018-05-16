@@ -8,7 +8,7 @@
 @endsection
 
 @section('route_pengguna')
-  {{route('member.index')}}
+  {{route('profille-organisasi.index')}}
 @endsection
 
 @section('route_logout')

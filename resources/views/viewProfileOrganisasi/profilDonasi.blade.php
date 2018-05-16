@@ -87,13 +87,13 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li >
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-organisasi.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{route('pencairan_dana')}}">
+                  <a href="{{route('pencairan_dana_organisasi')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
                     <span>Pencairan Dana</span>
                   </a>
@@ -115,37 +115,77 @@
         <table class="table table-bordered table-striped table-hover display" id="table_donasi">
           <thead style="background-color: black;">
             <tr>
+              <th style="color: #fff;">No</th>
               <th style="color: #fff;">Judul Campaign</th>
               <th style="color: #fff;">Nominal</th>
               <th style="color: #fff;">Tanggal Donasi</th>
+              <th style="color: #fff;">Bukti Transfer</th>
               <th style="color: #fff;">Status</th>
             </tr>
           </thead>
           <tbody>
+            @foreach($dataDonasi as $i => $data)
             <tr>
-              <td>eee</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
+              <td>{{$i+1}}</td>
+              <td>{{$data->campaign_organisasi->judul}}</td>
+              <td>{{$data->nominal}}</td>
+              <td>{{$data->created_at}}</td>
+              <td>
+                
+              </td>
+              <td>{{$data->status}}</td>
             </tr>
+            @endforeach
+
+            @foreach($dataDonasiOrganisasi as $i => $data)
             <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
+              <td>{{$i+1}}</td>
+              <td>{{$data->campaign_user->judul}}</td>
+              <td>Rp. {{number_format($data->nominal)}}</td>
+              <td>{{$data->created_at}}</td>
+              <td>
+                @if($data->bukti_transfer =='0')
+                  <center><button class="btn btn-info " data-toggle="modal"  name="tambahData" data-target="#modal-form-organisasi_{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Pic Bukti Transfer"><i class="fa fa-upload"></i></button></center>
+                @else
+                  <center><button class="btn btn-success " data-toggle="tooltip" data-placement="right" title="Pic Bukti Transfer Sudah Terupload"><i class="fa fa-check"></i></button></center>
+                @endif
+                <!-- Modal Tambah Data-->
+                  <div class="modal fade" id="modal-form-organisasi_{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalTambahDataLabel">Upload Bukti Transfer</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <!-- method="post" action="{{route('campaign_user_barang.store')}}" -->
+                          <form method="POST" enctype="multipart/form-data"  action="{{route('galangDanaUserToOrganisasi.update',$data->id)}}" >
+                          {{csrf_field()}}
+                          {{method_field('PUT')}}
+                            <div class="modal-body">
+                              <div class="row">
+                                <label class="control-label col-md-3">Pic Bukti Trasfer</label>
+                                <div class="col-md-9">
+                                  <!-- <input class="form-control" placeholder="Gambar Bukti Transfer" name="pic_bukti_transfer" type="file" required id="pic_bukti_trasnfer" accept="image/*"> -->
+                                  <input name="picBuktiTransfer" id="picBuktiTransfer" type="file" class="form-control" accept="image/*">
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                              <input class="btn btn-primary" name="tambahBuktiTransfer" value="Upload" type="submit" id="tambahBuktiTransfer">
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- End of modal upload bukti transfer -->
+              </td>
+              <td>{{$data->status}}</td>
             </tr>
-            <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
-            </tr>
-            <tr>
-              <td>aaaaaaa</td>
-              <td>20000</td>
-              <td>201212</td>
-              <td>sukses</td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

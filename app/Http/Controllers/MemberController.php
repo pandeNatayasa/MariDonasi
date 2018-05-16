@@ -23,7 +23,7 @@ class MemberController extends Controller
     public function index()
     {
         $idUser = Auth::user()->id;
-        $jumlahCampaignDimulai = DB::table('campaign_users')->where('id_user','=',$idUser)->count();
+        $jumlahCampaignDimulai = DB::table('campaign_users')->where('id_user','=',$idUser)->where('judul','!=','0')->count();
 
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;

@@ -124,7 +124,7 @@
       <div class="profile-content1">
         
         <div class="box" style="margin-top: 10px;">
-        <form action="#" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="{{route('dompet-kebaikan-user.store')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             {{csrf_field()}}
              
             <div class="bodyone">

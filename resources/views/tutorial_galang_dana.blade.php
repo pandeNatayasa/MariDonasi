@@ -15,3 +15,7 @@
 @section('route_create')
   {{route('campaign_user_barang.create')}}
 @endsection
+
+@section('profil_pengguna')
+	{{route('member.index')}}
+@endsection

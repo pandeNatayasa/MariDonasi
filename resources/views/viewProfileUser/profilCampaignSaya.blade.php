@@ -149,7 +149,7 @@
         </div>
         @endforeach
         <div class="col-md-4">
-          <a href="{{ '/galangDana'}}">
+          <a href="{{route('campaignUser.index')}}">
             <div class="daftar-campaign1">
               <div class="col-sm-12">
                 <i class="fa fa-plus fa-3x"></i>

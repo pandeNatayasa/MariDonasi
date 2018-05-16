@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\dompet_kebaikan_organisasi;
 use Illuminate\Http\Request;
+use Auth;
 
 class DompetKebaikanOrganisasiController extends Controller
 {
@@ -14,9 +15,13 @@ class DompetKebaikanOrganisasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('viewProfileOrganisasi.dompetKebaikan');
     }
 
+    public function showFormPencairan()
+    {
+        return view('viewProfileOrganisasi.dompetKebaikanPencairan');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +40,15 @@ class DompetKebaikanOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idOrganisasi = Auth::guard('organitation')->user()->id;
+        $data = new dompet_kebaikan_organisasi();
+        $data->id_organisasi=$idOrganisasi;
+        $data->nominal = $request->jumlahPenambahanDeposit;
+        $data->pic_bukti_transfer= '0';
+        $data->status='non_verified';
+        $data->save();
+
+        return redirect('profille-organisasi');
     }
 
     /**
@@ -67,9 +80,21 @@ class DompetKebaikanOrganisasiController extends Controller
      * @param  \App\dompet_kebaikan_organisasi  $dompet_kebaikan_organisasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, dompet_kebaikan_organisasi $dompet_kebaikan_organisasi)
+    public function update(Request $request, $id)
     {
-        //
+         if ($request->hasFile('picBuktiTransfer')) {
+            $filePicVerif=$request->file('picBuktiTransfer');
+            $filename3 = "pic_bukti_transfer" . $id . '.' . $filePicVerif->getClientOriginalExtension();
+            $filePicVerif->move('img/pic_bukti_transfer',$filename3);
+        }else{
+            return 'no selected image Bukti Transfer ';
+        }
+
+        $data = dompet_kebaikan_organisasi::find($id);
+        $data->pic_bukti_transfer = 'img/pic_bukti_transfer/'.$filename3;
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**

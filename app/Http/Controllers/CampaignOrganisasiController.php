@@ -8,6 +8,7 @@ use Auth;
 use App\organisasis;
 use App\campaign_user_barang;
 use DB;
+use App\campaign_user;
 
 class CampaignOrganisasiController extends Controller
 {
@@ -86,9 +87,16 @@ class CampaignOrganisasiController extends Controller
         $newCampaign->status='non-verified';
         $newCampaign->save();
 
-        $id_campaign_user_max = DB::table('campaign_users')->max('id');
+        // $id_campaign_user_max = DB::table('campaign_users')->max('id');
         
-        DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
+        // DB::table('campaign_user_barangs')->where("id_campaign_user",1)->update(['id_campaign_user'=>$id_campaign_user_max]);
+
+        $id_campaign_organisasi_max = DB::table('campaign_organisasis')->max('id');
+
+        $id_campaign_organisasi_min = DB::table('campaign_organisasis')->where('id_organisasi','=',$id_organisasi)->min('id');
+        
+        
+        DB::table('campign_organisasi_barangs')->where("id_campaign_organisasi",$id_campaign_organisasi_min)->update(['id_campaign_organisasi'=>$id_campaign_organisasi_max]);
         
         return view('intermesoOrganisasi');
     }
@@ -99,9 +107,12 @@ class CampaignOrganisasiController extends Controller
      * @param  \App\campaign_organisasi  $campaign_organisasi
      * @return \Illuminate\Http\Response
      */
-    public function show(campaign_organisasi $campaign_organisasi)
+    public function show($id_campaign)
     {
-        //
+        $dataCampaign = campaign_user::find($id_campaign);
+        $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        return view('detailCampaignUserForOrganisasi',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang'));
     }
 
     /**
@@ -135,6 +146,6 @@ class CampaignOrganisasiController extends Controller
      */
     public function destroy(campaign_organisasi $campaign_organisasi)
     {
-        //
+        
     }
 }

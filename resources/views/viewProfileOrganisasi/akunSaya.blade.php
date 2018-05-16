@@ -90,13 +90,13 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li >
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-organisasi.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{route('pencairan_dana')}}">
+                  <a href="{{route('pencairan_dana_organisasi')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
                     <span>Pencairan Dana</span>
                   </a>
@@ -228,7 +228,7 @@
                   <div class="row">
                     <label class="control-label col-md-3">Status</label>
                     <div class="col-md-9">
-                      <input class="form-control" disabled name="status" required="required" type="text" value="{{Auth::guard('organitation')->user()->berlaku_hingga}}">
+                      <input class="form-control" disabled name="status" required="required" type="text" value="{{Auth::guard('organitation')->user()->status}}">
                     </div>
                   </div>
                 </div>

@@ -186,8 +186,7 @@
                                   <span aria-hidden="true">×</span>
                                 </button>
                               </div>
-                              <form method="POST" action="" >
-                              {{csrf_field()}}
+                              
                                 <div class="modal-body">
                                   <div class="row">
                                     <label class="control-label col-md-12">Apakah anda yakin akan menghapus user dengan data :</label>
@@ -213,10 +212,14 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button class="btn btn-succes" type="button" data-dismiss="modal">Concel</button>
-                                  <button class="btn btn-danger" type="button" data-dismiss="modal">Delete</button>
+                                  <form method="POST" action="{{route('admin.user.delete',$data->id)}}" >
+                                  {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                  </form>
                                 </div>
                             </div>
-                            </form>
+                            
                           </div>
                         </div>
                       <!-- End of Modal Confirmation delete -->

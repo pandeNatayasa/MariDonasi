@@ -56,9 +56,8 @@ class GalangDanaController extends Controller
                 $data->id_user = $idUser;
                 $data->id_campaign_user= $request->id_campaign;
                 $data->nominal = $nominal;
-                $data->bank='bni';
+                $data->bukti_transfer= '0';
                 $data->status='onGoing';
-                $data->privacy = 'anonim';
                 $data->save();
                 return view('intermeso_donasi');
             }else{
@@ -70,9 +69,8 @@ class GalangDanaController extends Controller
             $data->id_user = $idUser;
             $data->id_campaign_user= $request->id_campaign;
             $data->nominal = $nominal;
-            $data->bank='bni';
+            $data->bukti_transfer= '0';
             $data->status='onGoing';
-            $data->privacy = 'anonim';
             $data->save();
 
             return view('intermeso_donasi');
@@ -113,9 +111,22 @@ class GalangDanaController extends Controller
      * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, galang_dana $galang_dana)
+    public function update(Request $request, $id)
     {
-        //
+        if ($request->hasFile('picBuktiTransfer')) {
+            $filePicVerif=$request->file('picBuktiTransfer');
+            $filename3 = "pic_bukti_transfer" . $id . '.' . $filePicVerif->getClientOriginalExtension();
+            $filePicVerif->move('img/pic_bukti_transfer_donasi',$filename3);
+        }else{
+            return 'no selected image Bukti Transfer ';
+        }
+
+        $data = galang_dana::find($id);
+        $data->bukti_transfer = '/img/pic_bukti_transfer_donasi/'.$filename3;
+        $data->status='paidOff';
+        $data->save();
+
+        return redirect()->back();
     }
 
     /**

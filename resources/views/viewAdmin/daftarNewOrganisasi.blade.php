@@ -178,7 +178,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button class="btn btn-succes" type="button" data-dismiss="modal">Concel</button>
-                                  <form method="POST" action="{{route('delete_organisasi',$data->id)}}" >
+                                  <form method="POST" action="{{route('admin-edit-organisasi.destroy',$data->id)}}" >
                                   {{csrf_field()}}
                                     <input type="hidden" name="_method" value="delete">
                                     <button class="btn btn-danger" type="submit">Delete</button>

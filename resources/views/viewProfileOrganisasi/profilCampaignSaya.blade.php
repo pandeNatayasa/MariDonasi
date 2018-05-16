@@ -87,13 +87,13 @@
               </a>
               <ul id="collapseComponents" class="list-unstyled" style="padding-top: 10px;">
                 <li >
-                  <a href="{{route('dompetKebaikanUser.index')}}">
+                  <a href="{{route('dompet-kebaikan-organisasi.index')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-upload"></i>
                     <span >Tambah Deposit</span>
                   </a>
                 </li>
                 <li>
-                  <a href="{{route('pencairan_dana')}}">
+                  <a href="{{route('pencairan_dana_organisasi')}}">
                     <i class="glyphicon glyphicon-flag fa fa-fw fa-download"></i>
                     <span>Pencairan Dana</span>
                   </a>
@@ -149,7 +149,7 @@
         </div>
         @endforeach
         <div class="col-md-4">
-          <a href="{{ '/galangDana'}}">
+          <a href="{{ route('campaign_organisasi_barang.create')}}">
             <div class="daftar-campaign1">
               <div class="col-sm-12">
                 <i class="fa fa-plus fa-3x"></i>

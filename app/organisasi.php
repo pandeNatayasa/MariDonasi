@@ -45,4 +45,8 @@ class organisasi extends Authenticatable
         return $this->hashMany('App\campaign_organisasi');
     }
 
+    public function galang_dana_user_forOrganisasi(){
+        return $this->hashMany('App\galang_dana_user_forOrganisasi');
+    }
+
 }
