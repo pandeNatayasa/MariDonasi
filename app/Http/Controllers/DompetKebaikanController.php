@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\dompetKebaikan;
 use Illuminate\Http\Request;
 use Auth;
+use App\campaign_user;
+use App\campaign_user_barang;
+use App\pencairan_dana_user;
+use App\rek_user;
+use DB;
 
 class DompetKebaikanController extends Controller
 {
@@ -39,6 +44,34 @@ class DompetKebaikanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function storePencairan(Request $request)
+    {
+        $idUser = Auth::user()->id;
+        $dataRek = new rek_user();
+        $dataRek->id_user=$idUser;
+        $dataRek->no_rek=$request->no_rek;
+        $dataRek->nama=$request->nama_pemilik_rek;
+        $dataRek->status='verified';
+        $dataRek->save();
+
+        $id_rek_max = DB::table('rek_users')->where('id_user','=',$idUser)->max('id');
+        $id_campaign=$request->id_campaign;
+        $data = new pencairan_dana_user();
+        $data->id_user=$idUser;
+        $data->id_campaign_user=$request->id_campaign;
+        $data->id_rek=$id_rek_max;
+        $data->nominal = $request->jumlah_pencairan_dana;
+        $data->status='onGoing';
+        $data->save();
+
+        $dataCampaign = campaign_user::find($id_campaign);
+        $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        $dataPencairan = pencairan_dana_user::all()->where('id_campaign_user','=',$id_campaign);
+        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign'));
+    }
+
     public function store(Request $request)
     {
         $idUser = Auth::user()->id;
@@ -58,9 +91,17 @@ class DompetKebaikanController extends Controller
      * @param  \App\dompetKebaikan  $dompetKebaikan
      * @return \Illuminate\Http\Response
      */
-    public function show(dompetKebaikan $dompetKebaikan)
+    public function show($id_campaign)
     {
-        //
+        $dataCampaign = campaign_user::find($id_campaign);
+        $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        $dataPencairan = pencairan_dana_user::all()->where('id_campaign_user','=',$id_campaign);
+        $sisaDana = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign)
+                    ->sum('sisa_dana');
+        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
+        // return $dataPencairan;
     }
 
     /**

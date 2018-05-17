@@ -17,4 +17,8 @@ class campaign_organisasi extends Model
     public function galang_dana_organisasi(){
         return $this->hashMany('App\galang_dana_organisasi');
     }
+
+    public function pencairan_dana_organisasi(){
+        return $this->hashMany('App\pencairan_dana_organisasi');
+    }
 }

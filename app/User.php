@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function galang_dana(){
         return $this->hashMany('App\galang_dana');
     }
+
+    public function pencairan_dana_user(){
+        return $this->hashMany('App\pencairan_dana_user');
+    }
 }

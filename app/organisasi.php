@@ -49,4 +49,8 @@ class organisasi extends Authenticatable
         return $this->hashMany('App\galang_dana_user_forOrganisasi');
     }
 
+    public function pencairan_dana_organisasi(){
+        return $this->hashMany('App\pencairan_dana_organisasi');
+    }
+
 }

@@ -13,6 +13,7 @@ use App\admin;
 use Auth;
 use App\galang_dana;
 use App\galang_dana_user_forOrganisasi;
+use App\pencairan_dana_user;
 
 class adminController extends Controller
 {
@@ -39,6 +40,7 @@ class adminController extends Controller
         $jumlahNewTransferOrganisasi = DB::table('galang_dana_user_for_organisasis')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
         $jumlahNewTransfer = $jumlahNewCampaignUser+$jumlahNewTransferOrganisasi;
                 //$jumlahNewTransfer = galang_dana::all()->where('status','=','onGoing')->whereOr('status','=','paidOff')->count();//
+        $jumlahNewPencairan = DB::table('pencairan_dana_users')->where('status','=','onGoing')->count();
 
         if($jumlahNewUser == 0 ){
             $jumlahNewUser = 0;
@@ -47,7 +49,7 @@ class adminController extends Controller
             $jumlahNewCampaignUser = 0;
         }
 
-        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser','jumlahNewTransfer'));
+        return view('viewAdmin.index',compact('jumlahNewUser','jumlahNewCampaignUser','jumlahNewTransfer','jumlahNewPencairan'));
     }
 
     public function showDaftarCampaign()
@@ -84,7 +86,8 @@ class adminController extends Controller
     }
 
     public function showDaftarNewPencairan(){
-        return view('viewAdmin.daftarNewPencairan');
+        $dataNewPencairan = pencairan_dana_user::all()->where('status','=','onGoing');
+        return view('viewAdmin.daftarNewPencairan',compact('dataNewPencairan'));
     }
 
     public function showDaftarPengiriman(){
@@ -264,6 +267,34 @@ class adminController extends Controller
         $dataTransferOrganisasi = galang_dana_user_forOrganisasi::all()->where('status','!=','success');
 
         return Redirect::to('/daftar-new-transfer-user')->with(compact('dataTransfer','dataTransferOrganisasi'));
+    }
+
+    public function validasi_pencairan_dana_user($id)
+    {
+        $data = pencairan_dana_user::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $id_campaign_user = DB::table('pencairan_dana_users')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
+
+        $nominal = DB::table('pencairan_dana_users')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign_user)
+                    ->sum('sisa_dana');
+
+        $sisa_dana_sekarang = $dana_campaign_sementara - $nominal;
+
+        $dataDana = campaign_user::find($id_campaign_user);
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
+        $dataDana->save();
+
+        $dataNewPencairan = pencairan_dana_user::all()->where('status','=','onGoing');
+        return view('viewAdmin.daftarNewPencairan',compact('dataNewPencairan'));
     }
 
     /**

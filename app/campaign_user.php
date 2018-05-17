@@ -27,4 +27,8 @@ class campaign_user extends Model
     public function galang_dana_user_forOrganisasi(){
         return $this->hashMany('App\galang_dana_user_forOrganisasi');
     }
+
+    public function pencairan_dana_user(){
+        return $this->hashMany('App\pencairan_dana_user');
+    }
 }

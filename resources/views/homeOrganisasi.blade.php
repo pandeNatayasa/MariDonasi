@@ -61,7 +61,7 @@
         </figure>
 
         <div class="portfolio-info">
-          <h4><a href="{{route('campaignUser.show',$data->id)}}">{{$data->judul}}</a></h4>
+          <h4><a href="{{route('campaignOrganisasi.show',$data->id)}}">{{$data->judul}}</a></h4>
           <p>{{$data->User->name}}</p>
           <div class="row" style="padding: 15px 0px 0 0px; ">
             <div class="col-md-8 pleft" >Dana Terkumpul</div>

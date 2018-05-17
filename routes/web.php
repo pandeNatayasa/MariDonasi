@@ -15,6 +15,8 @@ Route::get('/donasi-saya','memberController@create')->middleware('auth:web');
 Route::get('/myprofile','memberController@edit2')->name('akunsaya')->middleware('auth:web');
 
 Route::resource('/dompet-kebaikan-user', 'DompetKebaikanController')->middleware('auth:web');
+
+Route::post('/dompet-kebaikan-user/pencairan_dana_campaign', 'DompetKebaikanController@storePencairan')->name('pencairan_dana_campaign')->middleware('auth:web');
 Route::get('/dompet-kebaikan-user-pencairan','DompetKebaikanController@showFormPencairan')->name('pencairan_dana')->middleware('auth:web');
 //-------------------------------------ROUTE Public---------------------------------//
 //----------------------------------------------------------------------------------//
@@ -79,6 +81,8 @@ Route::get('/daftar-penerimaan','adminController@showDaftarPenerimaan')->name('d
 Route::get('/validasi-campaign/{id}','adminController@validasi_campaign')->name('validasi-campaign');
 Route::get('/validasi-transfer/{id}','adminController@validasi_transfer')->name('validasi-transfer');
 Route::get('/validasi-transfer-organisasi/{id}','adminController@validasi_transfer_organisasi')->name('validasi-transfer-organisasi');
+
+Route::get('/validasi_pencairan_dana_user/{id}','adminController@validasi_pencairan_dana_user')->name('validasi_pencairan_dana_user');
 
 Route::resource('/admin-organisasi', 'adminOrganisasi');
 Route::get('/daftar-new-campaign-organisasi','adminOrganisasi@showDaftarNewCampaign')->name('daftar-new-campaign-group');

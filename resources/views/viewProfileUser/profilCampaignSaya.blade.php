@@ -118,8 +118,24 @@
               <img style="width: 100%; height: 190px;" src="{{$data->pic_cover_campaign}}" class="img-responsive" alt="">
             </div>
             <div style="padding : 0px 10px 10px 10px;">
-              <div class="judul-campaign">
-                {{$data->judul}}
+              <div class="judul-campaign" style="padding-bottom: 2px;">
+                <div class="row" >
+                  <div class="col-sm-6" style="margin-bottom: 2px;">
+                    {{$data->judul}}
+                  </div>
+                  <div class="col-sm-6" >
+                    <p style="color: black; float: right; margin-bottom: 2px;">{{$data->status}}</p>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                  </div>
+                  <div class="col-sm-6">
+                    <a href="{{route('dompet-kebaikan-user.show',$data->id)}}" style="float: right;" >Detail</a>
+                  </div>
+                  
+                </div>
               </div>
               <div class="row">
                 <div class="col-sm-6 judul-data-campaign">
@@ -131,7 +147,7 @@
               </div>
               <div class="row">
                 <div class="col-sm-6 judul-data-campaign-cover">
-                  <p style=" margin-bottom: 0;">Rp. {{$data->dana_sementara}}</p> 
+                  <p style=" margin-bottom: 0;">Rp. {{number_format($data->dana_sementara)}}</p> 
                 </div>
                 <div class="col-sm-6 judul-data-campaign-cover">
                   <?php
