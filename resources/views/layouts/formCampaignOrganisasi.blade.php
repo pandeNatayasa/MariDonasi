@@ -254,10 +254,13 @@
                               <div class="col-md-9">
                                   <select name="kategoriCampaign" class="form-control" required="required">
                                   <option value="" disabled selected>Pilih Kategori Campaign</option>
-                                  <option value="Balita & Anak">Balita & Anak</option>
+                                  <option value="Beasiswa & Pendidikan">Beasiswa & Pendidikan</option>
                                   <option value="Bencana Alam">Bencana Alam</option> 
-                                  <option value="Pendidikan">Pendidikan</option>
-                                  <option value="Kemanusiaan">Kemanusiaan</option>          
+                                  <option value="Lingkungan">Lingkungan</option>
+                                  <option value="Kemanusiaan">Kemanusiaan</option>
+                                  <option value="Menolong Hewan">Menolong Hewan</option>
+                                  <option value="Panti Asuhan">Panti Asuhan</option>
+                                  <option value="Kategori Lain">Kategori Lain</option>         
                                   </select>
                               </div>
                             </div> 

@@ -60,8 +60,8 @@
             </ul> -->
           <li class="menu-has-children"><a href="">All</a>
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active"><a href="#"> ALL</a></li>
-              <li data-filter=".filter-app"><a href="#"> Beasiswa & Pendidikan</a></li>
+              <li data-filter="*"><a href="#"> ALL</a></li>
+              <li data-filter=".filter-app active"><a href="#"> Beasiswa & Pendidikan</a></li>
               <li data-filter=".filter-card"><a href="#">Lingkungan</a></li>
               <li data-filter=".filter-web"><a href="#">PantiAsuhan</a></li>
               <li><a href="#">Bencana Alam</a></li>
