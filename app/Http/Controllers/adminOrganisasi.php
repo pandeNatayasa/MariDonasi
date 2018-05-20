@@ -12,6 +12,9 @@ use App\campaign_user;
 use App\galang_dana_organisasi;
 use App\galang_dana_organisasi_forUser;
 use App\pencairan_dana_organisasi;
+use App\dompetKebaikan;
+use App\dompet_kebaikan_organisasi;
+use Auth;
 
 class adminOrganisasi extends Controller
 {
@@ -117,6 +120,81 @@ class adminOrganisasi extends Controller
         return view('viewAdmin.daftarNewOrganisasi',compact('dataOrganisasi'));
     }
 
+    public function showDepositUser(){
+        $dataNewDepositUser = dompetKebaikan::all()->where('status','=','non_verified');
+        $dataDepositUser = dompetKebaikan::all()->where('status','=','verified');
+        return view('viewAdmin.depositUser',compact('dataNewDepositUser','dataDepositUser'));
+        //return $dataNewDepositUser;
+    }
+
+    public function showDepositOrganisasi(){
+        $dataNewDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','non_verified');
+        $dataDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','verified');
+        return view('viewAdmin.depositOrganisasi',compact('dataNewDepositOrganisasi','dataDepositOrganisasi'));
+    }
+
+    public function validasi_deposit_user($id)
+    {
+
+        $idOrganisasi= DB::table('dompet_kebaikans')
+                    ->where('id','=',$id)
+                    ->sum('id_user');
+
+        $tambahan_dana = DB::table('dompet_kebaikans')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $sisa_dana_sebelumnya = DB::table('users')
+                    ->where('id','=',$idUser)
+                    ->sum('wallet');
+
+        $sisa_dana_sekarang = $tambahan_dana + $sisa_dana_sebelumnya;
+
+        $dataDana = User::find($idUser);
+        $dataDana->wallet = $sisa_dana_sekarang;
+        $dataDana->save();
+        
+        $data = dompetKebaikan::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataNewDepositUser = dompetKebaikan::all()->where('status','=','non_verified');
+        $dataDepositUser = dompetKebaikan::all()->where('status','=','verified');
+        // return view('viewAdmin.depositUser',);
+        return Redirect::to('/daftar-deposit-user')->with(compact('dataNewDepositUser','dataDepositUser'));
+    }
+
+    public function validasi_deposit_organisasi($id)
+    {
+
+        $idOrganisasi= DB::table('dompet_kebaikan_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('id_organisasi');
+
+        $tambahan_dana = DB::table('dompet_kebaikan_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $sisa_dana_sebelumnya = DB::table('organisasis')
+                    ->where('id','=',$idOrganisasi)
+                    ->sum('wallet');
+
+        $sisa_dana_sekarang = $tambahan_dana + $sisa_dana_sebelumnya;
+
+        $dataDana = organisasi::find($idOrganisasi);
+        $dataDana->wallet = $sisa_dana_sekarang;
+        $dataDana->save();
+        
+        $data = dompet_kebaikan_organisasi::find($id);
+        $data->status = 'verified';
+        $data->save();
+
+        $dataNewDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','non_verified');
+        $dataDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','verified');
+        // return view('viewAdmin.depositUser',);
+        return Redirect::to('/daftar-deposit-organisasi')->with(compact('dataNewDepositOrganisasi','dataDepositOrganisasi'));
+    }
+
     public function validasi_campaign($id)
     {
         $data = campaign_organisasi::find($id);
@@ -193,6 +271,27 @@ class adminOrganisasi extends Controller
         return view('viewAdmin.daftarNewPencairanOrganisasi',compact('dataNewPencairan'));
     }
 
+    public function delete_deposit_organisasi($id)
+    {
+        $data = dompet_kebaikan_organisasi::find($id);
+        $data->delete();
+
+        $dataNewDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','non_verified');
+        $dataDepositOrganisasi = dompet_kebaikan_organisasi::all()->where('status','=','verified');
+        // return view('viewAdmin.depositUser',);
+        return Redirect::to('/daftar-deposit-organisasi')->with(compact('dataNewDepositOrganisasi','dataDepositOrganisasi'));
+    }
+
+    public function delete_deposit_user($id)
+    {
+        $data = dompetKebaikan::find($id);
+        $data->delete();
+
+        $dataNewDepositOrganisasi = dompetKebaikan::all()->where('status','=','non_verified');
+        $dataDepositOrganisasi = dompetKebaikan::all()->where('status','=','verified');
+        // return view('viewAdmin.depositUser',);
+        return Redirect::to('/daftar-deposit-user')->with(compact('dataNewDepositOrganisasi','dataDepositOrganisasi'));
+    }
 
     /**
      * Update the specified resource in storage.

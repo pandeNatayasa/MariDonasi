@@ -146,13 +146,13 @@
           </ul>
         </li>
         <li class="nav-item @yield('deposit-user')" data-toggle="tooltip" data-placement="right" title="Deposit User">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{route('daftar-deposit-user')}}">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">Deposit User</span>
           </a>
         </li>
         <li class="nav-item @yield('deposit-group')" data-toggle="tooltip" data-placement="right" title="Deposit Group">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{route('daftar-deposit-organisasi')}}">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">Deposit Group</span>
           </a>

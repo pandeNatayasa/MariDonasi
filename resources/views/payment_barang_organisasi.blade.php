@@ -1,4 +1,4 @@
-@extends('layouts.detail_campaign_layouts2')
+@extends('layouts.payment_barang_layouts')
 
 @section('home')
   {{ url('/organisasi') }}
@@ -20,11 +20,7 @@
   {{ route('organisasi.logout') }}
 @endsection
 
-@section('route_show_payment')
-  {{route('galangDanaOrganisasi.show',$id_campaign)}}
-@endsection
-
-@section('route_show_payment_barang')
-  {{route('galangBarangOrganisasi.show',$id_campaign)}}
+@section('galangDana_store')
+  {{route('galangDana.store')}}
 @endsection
 

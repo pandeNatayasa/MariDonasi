@@ -211,7 +211,7 @@
         <a href="@yield('route_show_payment') " style="margin-top: 20px; padding: 10px 90px 10px 90px;" class="btn btn-success"><center>Donasi Sekarang</center> </a>
         @if($jumlahDonasiBarang != '0' )
 
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 100px 10px 100px;" class="btn btn-info"><center>Donasi Barang</center> </a>
+        <a href="@yield('route_show_payment_barang')" style="margin-top: 20px; padding: 10px 100px 10px 100px;" class="btn btn-info"><center>Donasi Barang</center> </a>
         @endif
     </div>
   </div>

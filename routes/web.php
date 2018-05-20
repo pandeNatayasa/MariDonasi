@@ -32,6 +32,8 @@ Route::get('/campaign_organisasi/get-barang','CampignOrganisasiBarangController@
 
 Route::post('/tambahBarang','CampaignUserController@storeBarang')->name('tambahBarang');
 Route::resource('/galangDana','GalangDanaController')->middleware('auth:web');
+Route::resource('/galangBarang','GalangBarangController')->middleware('auth:web');
+Route::resource('/galangBarangOrganisasi','GalangBarangOrganisasiController')->middleware('auth:organitation');
 Route::post('/campaign_user_barang/store-barang','CampaignUserBarangController@store')->middleware('auth:web');
 Route::get('/campaign/get-barang','CampaignUserBarangController@loadComment');
 Route::post('/campaign-contribute/edit-barang','campaignSaya@store')->name('ajaxEdit');
@@ -81,6 +83,15 @@ Route::get('/daftar-new-pencairan','adminController@showDaftarNewPencairan')->na
 Route::get('/daftar-pencairan','adminController@showDaftarPencairan')->name('daftar-pencairan');
 Route::get('/daftar-pengiriman','adminController@showDaftarPengiriman')->name('daftar-pengiriman');
 Route::get('/daftar-penerimaan','adminController@showDaftarPenerimaan')->name('daftar-penerimaan');
+Route::get('/daftar-deposit-user','adminOrganisasi@showDepositUser')->name('daftar-deposit-user');
+Route::get('/daftar-deposit-organisasi','adminOrganisasi@showDepositOrganisasi')->name('daftar-deposit-organisasi');
+
+Route::get('/validasi-deposit-user/{id}','adminOrganisasi@validasi_deposit_user')->name('validasi_deposit_user');
+Route::get('/validasi-deposit-organisasi/{id}','adminOrganisasi@validasi_deposit_organisasi')->name('validasi_deposit_organisasi');
+
+Route::delete('/delete_deposit_user/{id}','adminOrganisasi@delete_deposit_user')->name('delete_deposit_user');
+Route::delete('/delete_deposit_organisasi/{id}','adminOrganisasi@delete_deposit_organisasi')->name('delete_deposit_organisasi');
+
 Route::get('/validasi-campaign/{id}','adminController@validasi_campaign')->name('validasi-campaign');
 Route::get('/validasi-transfer/{id}','adminController@validasi_transfer')->name('validasi-transfer');
 Route::get('/validasi_transfer_organisasi_to_user/{id}','adminController@validasi_transfer_organisasi_to_user')->name('validasi_transfer_organisasi_to_user');

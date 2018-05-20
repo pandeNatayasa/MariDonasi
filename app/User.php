@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function pencairan_dana_user(){
         return $this->hashMany('App\pencairan_dana_user');
     }
+
+    public function galang_barang(){
+        return $this->hashMany('App\galang_barang');
+    }
 }

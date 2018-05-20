@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\galang_barang;
+use App\galang_barang_organisasi_for_user;
 use Illuminate\Http\Request;
-use App\campaign_user_barang;
 
-class GalangBarangController extends Controller
+class GalangBarangOrganisasiForUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,22 +41,21 @@ class GalangBarangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\galang_barang  $galang_barang
+     * @param  \App\galang_barang_organisasi_for_user  $galang_barang_organisasi_for_user
      * @return \Illuminate\Http\Response
      */
-    public function show($id_campaign)
+    public function show(galang_barang_organisasi_for_user $galang_barang_organisasi_for_user)
     {
-        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
-        return view('payment_barang',compact('id_campaign','dataDonasiBarang'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\galang_barang  $galang_barang
+     * @param  \App\galang_barang_organisasi_for_user  $galang_barang_organisasi_for_user
      * @return \Illuminate\Http\Response
      */
-    public function edit(galang_barang $galang_barang)
+    public function edit(galang_barang_organisasi_for_user $galang_barang_organisasi_for_user)
     {
         //
     }
@@ -66,10 +64,10 @@ class GalangBarangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\galang_barang  $galang_barang
+     * @param  \App\galang_barang_organisasi_for_user  $galang_barang_organisasi_for_user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, galang_barang $galang_barang)
+    public function update(Request $request, galang_barang_organisasi_for_user $galang_barang_organisasi_for_user)
     {
         //
     }
@@ -77,10 +75,10 @@ class GalangBarangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\galang_barang  $galang_barang
+     * @param  \App\galang_barang_organisasi_for_user  $galang_barang_organisasi_for_user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(galang_barang $galang_barang)
+    public function destroy(galang_barang_organisasi_for_user $galang_barang_organisasi_for_user)
     {
         //
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\galang_barang_organisasi;
 use Illuminate\Http\Request;
+use App\campign_organisasi_barang;
 
 class GalangBarangOrganisasiController extends Controller
 {
@@ -44,9 +45,10 @@ class GalangBarangOrganisasiController extends Controller
      * @param  \App\galang_barang_organisasi  $galang_barang_organisasi
      * @return \Illuminate\Http\Response
      */
-    public function show(galang_barang_organisasi $galang_barang_organisasi)
+    public function show($id_campaign)
     {
-        //
+        $dataDonasiBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign);
+        return view('payment_barang_organisasi',compact('id_campaign','dataDonasiBarang'));
     }
 
     /**

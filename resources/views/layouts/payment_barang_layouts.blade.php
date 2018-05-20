@@ -27,78 +27,8 @@
   <link href="{{asset('css/styleform.css')}}" rel="stylesheet">
    <script src="{{asset('/lib/jquery/jquery-3.3.1.min.js')}}"></script>
   <!-- <link href="{{asset('css/styleProfil.css')}}" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/datatables.min.css')}}">
   
-  <script type="text/javascript">
-    // $(document).ready(function(){
-    function formatRupiah(angka)
-    {
-        var number_string = angka.toString();
-        // number_string = number_string.replace(".", "");
-        // console.log(number_string);
-    
-        var i = 0;
-        //fungsi insert
-        insert = function(main_string, ins_string, pos) {
-          if(typeof(pos) == "undefined") {
-            pos = 0;
-          }
-           if(typeof(ins_string) == "undefined") {
-            ins_string = '';
-          }
-          return main_string.slice(0, pos) + ins_string + main_string.slice(pos);
-        }
-
-        if(number_string.length >= 4 ){
-          var i = 0;
-          var len = number_string.length;
-          while(i < len){
-            
-              if(i != 0 && i == 3 ){
-                number_string = insert(number_string, '.', number_string.length - i);
-                len = len + 1;
-              } 
-
-              if(i != 0 && i == 7){
-                  number_string = insert(number_string, '.', number_string.length - i);
-                  // len = number_string.length;
-              } 
-              if(i != 0 && i == 11 ){
-                  number_string = insert(number_string, '.', number_string.length - i);
-                  // len = number_string.length;
-              } 
-              
-              if(i != 0 && i == 15){
-                number_string = insert(number_string, '.', number_string.length - i);                   
-              } 
-              
-            i = i + 1;    
-            // console.log('i');
-            // console.log(i);
-
-            // console.log(len);
-          }
-          //len = 0 ;
-          
-          //document.getElementById("targetDonasi2").value=number_string;
-          console.log(number_string);
-          // return number_string;
-          document.getElementById("targetDonasi").value=number_string;
-          
-          //number_string = number_string.replace(".", "");
-          
-        }else{
-          console.log(number_string);
-          //number_string = number_string.replace(".", ""); 
-          document.getElementById("targetDonasi").value=number_string;
-        }
-        //number_string = number_string.replace(".", ""); 
-        document.getElementById("targetDonasi").value=number_string;
-        console.log(number_string);
-        // var hasil document.getElementById("hasilTargetDonasi");
-        // hasil.innerHTML=number_string;
-    }
-  // });
-  </script>
 </head>
 
 <body >
@@ -171,58 +101,35 @@
       
     </div>
     <div class="col-md-6">
-      <header class="section-header wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="margin-top: 50px">
-        <h3 class="section-title" style="padding-bottom: 0px; margin-bottom: 0px;">Donasi</h3>
+      <header class="section-header wow fadeInUp" data-wow-duration="600ms" data-wow-delay="250ms" style="margin-top: 50px">
+        <h3 class="section-title" style="padding-bottom: 0px; margin-bottom: 0px;">Donasi Barang</h3>
       </header>
       <div class="box wow fadeInUp" data-wow-duration="700ms" data-wow-delay="250ms">
          <form action="@yield('galangDana_store')" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
           {{csrf_field()}}
-         <div class="box-body" style=" margin-bottom: 150px;">
+         <div class="box-body" style=" margin-bottom: 0px;">
             <div class="box-body-col" style="padding-bottom: 50px;">
-               <h4>Donasi Uang</h4>
-               <label class="col-md-12">Donasi minimal Rp 10.000 dengan kelipatan ribuan (contoh: 15.000, 50.000)</label>
+               <h4>Donasi Barang</h4>
+               <label class="col-md-12">Donasi minimal 1 dan kelipatan-nya dengan satuan sesuai dengan barang yang dibutuhkan)</label>
+               <div class="form-group" style="padding-top: 10px;">
+                <div class="row">
+                  <label class="control-label col-md-3">Nama Barang</label>
+                  <div class="col-md-9">
+                      <select name="kategoriCampaign" class="form-control" required="required">
+                      <option value="" disabled selected>nama Barang</option>
+                      @foreach($dataDonasiBarang as $data)
+                        <option value="{{$data->nama_barang}}">{{$data->nama_barang}}</option>
+                      @endforeach       
+                      </select>
+                  </div>
+                </div> 
+                </div>
                <div class="form-group">
                 <div class="row">
-                  <label class="control-label col-md-1" ></label>
-                  <label class="control-label col-md-1 " >Rp. </label>
-                 <div class="col-md-8">
-                     <input id="targetDonasi2" class="form-control" placeholder="Target donasi dari campaign ini" name="targetDonasi2" required="required" type="text" onkeyup="formatRupiah(this.value)" value="" maxlength="15">
-                     <input type="hidden" name="id_campaign" value="{{$id_campaign}}">
+                  <label class="control-label col-md-3 " >Jumlah </label>
+                 <div class="col-md-9">
+                     <input id="tambahDonasiBarang" class="form-control" placeholder="Donasi Barang dari campaign ini" name="tambahDonasiBarang" required="required" type="text" >
                  </div>
-                </div>
-               </div>
-               <div class="form-group" style="padding-top: 40px; ">
-                <div class="row">
-                  <label class="control-label col-md-3" >Donasi Anda</label>
-                  <label class="control-label col-md-1 " >Rp. </label>
-                 <div class="col-md-8">
-                     <input id="targetDonasi" class="form-control" placeholder="Donasi Anda" name="targetDonasi" required="required" type="text" disabled  value="">
-                 </div>
-                </div>
-               </div>
-               <!-- <div class="col-md-12"> -->
-                 <!-- <input style="float: right;" type="submit" class="btn btn-success" name="donasi" value="Donasi"> -->
-               <!-- </div> -->
-               
-            </div>
-            <div class="box-body-col" style="padding-bottom: 50px;">
-               <h4>Metode Pembayaran</h4>
-               <label class="col-md-12" style="padding-left: 0px;" >Pilih Metode Pembayaran yang akan anda lakukan</label>
-
-               <div class="form-group box-body-col">
-                <div class="row">
-                  <div class="col-md-12 radio-inline"> <input required="pilih salah satu metode pembayaran" type="radio" name="metodePembayaran" id="opsi2" value="wallet"><strong style="font-size: 22px;">  Wallet/Dompet Kebaikan</strong>  </div>
-                </div>
-               </div>
-               <div class="form-group box-body-col" >
-                <div class="row">
-                  <div class="col-md-12 radio-inline"> <input type="radio" name="metodePembayaran" id="opsi1" value="transfer" ><strong style="font-size: 22px;">  Transfer </strong></div> 
-                </div>
-                <div class="row" style="padding-top: 30px;">
-                  <label class="control-label col-md-5" style="padding-left: 30px; padding-right: 0px;">Transfer ke No. Rek :</label>
-                  <div class="col-md-7">
-                      <input id="targetDonasi" class="form-control" name="no_rek" type="text" disabled  value="6354376452462">
-                  </div>                        
                 </div>
                </div>
                <div class="form-group">
@@ -233,17 +140,46 @@
                  </div>
                 </div>
                </div>
-               <!-- <div class="col-md-12"> -->
-                 <input style="float: right;" type="submit" class="btn btn-success" name="donasi" value="Donasi">
-               <!-- </div> -->
-               
+
+               <input style="float: right;" type="submit" class="btn btn-success" name="donasi" value="Donasi">
             </div>
           </div>
-            
          </form>
       </div>
     </div>
   </div>
+  <div class=" wow fadeInUp" data-wow-duration="500ms" data-wow-delay="250ms" style="padding-top: 0px; padding-left: 40px; padding-right: 40px;">
+      <div class="card-header">
+        <i class="fa fa-table"></i> Data Barang yang dibutuhkan
+      </div>
+      <div class="card-body">
+         <div class="table-responsive" style="margin-top: 0px;">
+          <table class="table table-bordered table-striped table-hover display" id="table_donasi">
+            <thead style="background-color: black;">
+              <tr>
+                <th style="color: #fff;">No</th>
+                <th style="color: #fff;">Nama Barang</th>
+                <th style="color: #fff;">Target Jumlah</th>
+                <th style="color: #fff;">Jumlah terkumpul</th>
+                <th style="color: #fff;">Satuan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 0;?>
+              @foreach($dataDonasiBarang as $data)
+              <tr>
+                <td>{{$no = $no+1}}</td>
+                <td>{{$data->nama_barang}}</td>
+                <td>{{$data->target_jumlah}}</td>
+                <td>{{$data->jumlah_sementara}}</td>
+                <td>{{$data->satuan}}</td>
+              </tr>
+              @endforeach                
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
  
   </main>
   <!--==========================
@@ -344,20 +280,12 @@
     <script type="text/javascript" charset="utf8" src="{{asset('/js/datatables.min.js')}}"></script>
 
   </div>
-  <!-- <script type="text/javascript">
-    $('#profile a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-
-    
-  </script>
   <script type="text/javascript">
-    $('#home a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-  </script> -->
+    $(document).ready( function () {
+      $('#table_donasi').DataTable();
+    } );
+
+  </script>
 </body>
 
 

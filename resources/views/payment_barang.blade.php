@@ -1,4 +1,4 @@
-@extends('layouts.detail_campaign_layouts')
+@extends('layouts.payment_barang_layouts')
 
 @section('home')
   {{ url('/home') }}
@@ -20,11 +20,7 @@
   {{ route('user.logout') }}
 @endsection
 
-@section('route_show_payment')
-  {{route('galangDana.show',$id_campaign)}}
-@endsection
-
-@section('route_show_payment_barang')
-  {{route('galangBarang.show',$id_campaign)}}
+@section('galangDana_store')
+  {{route('galangDana.store')}}
 @endsection
 
