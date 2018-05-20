@@ -58,9 +58,9 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-shopping-cart"></i>
               </div>
-              <div class="mr-5">123 New Transfer Organisasi!</div>
+              <div class="mr-5">{{$jumlahNewTransfer}} New Transfer Organisasi!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-transfer')}}">
+            <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-transfer-group')}}">
               <span class="float-left">View Details</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -74,7 +74,7 @@
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-money"></i>
               </div>
-              <div class="mr-5">13 New Pencairan Dana Organisasi!</div>
+              <div class="mr-5">{{$jumlahNewPencairan}} New Pencairan Dana Organisasi!</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="{{route('daftar-new-pencairan-group')}}">
               <span class="float-left">View Details</span>

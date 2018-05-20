@@ -6,7 +6,9 @@ use App\campign_organisasi_barang;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
-
+use App\campaign_organisasi;
+use App\campaign_user;
+use App\campaign_user_barang;
 
 class CampignOrganisasiBarangController extends Controller
 {
@@ -89,9 +91,13 @@ class CampignOrganisasiBarangController extends Controller
      * @param  \App\campign_organisasi_barang  $campign_organisasi_barang
      * @return \Illuminate\Http\Response
      */
-    public function show(campign_organisasi_barang $campign_organisasi_barang)
+    public function show($id_campaign)
     {
-        //
+        
+            $dataCampaign = campaign_user::find($id_campaign);
+            $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+            $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+            return view('detailCampaignUserForOrganisasi',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang'));
     }
 
     /**

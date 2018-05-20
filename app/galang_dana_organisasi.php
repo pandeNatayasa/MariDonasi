@@ -10,7 +10,7 @@ class galang_dana_organisasi extends Model
     	return $this->belongsTo('App\campaign_organisasi','id_campaign_organisasi');
     }
 
-    public function User(){
+    public function organisasi(){
     	return $this->belongsTo('App\organisasi','id_organisasi');
     }
 }

@@ -11,6 +11,7 @@ use Redirect;
 use App\campaign_user;
 use App\dompetKebaikan;
 use App\galang_dana;
+use App\galang_dana_organisasi_forUser;
 
 
 class MemberController extends Controller
@@ -50,7 +51,8 @@ class MemberController extends Controller
     {
         $idUser = Auth::user()->id;
         $dataDonasi = galang_dana::all()->where('id_user','=',$idUser);
-        return view('viewProfileUser.profilDonasi',compact('dataDonasi'));
+        $dataDonasiOrganisasi = galang_dana_organisasi_forUser::all()->where('id_user','=',$idUser);
+        return view('viewProfileUser.profilDonasi',compact('dataDonasi','dataDonasiOrganisasi'));
     }
 /**
      * Show the form for creating a new resource.

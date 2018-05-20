@@ -118,8 +118,20 @@
               <img style="width: 100%; height: 190px;" src="{{$data->pic_cover_campaign}}" class="img-responsive" alt="">
             </div>
             <div style="padding : 0px 10px 10px 10px;">
-              <div class="judul-campaign">
-                {{$data->judul}}
+              <div class="judul-campaign" style="padding-bottom: 0px;">
+                <div class="row" >
+                  <div class="col-sm-12" style="margin-bottom: 2px;">
+                    {{$data->judul}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p style="color: black; float: left; margin-bottom: 2px; margin-left: 0px;">{{$data->status}}</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <a href="{{route('dompet-kebaikan-organisasi.show',$data->id)}}" style="float: right;" >Detail</a>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-sm-6 judul-data-campaign">

@@ -120,16 +120,13 @@
             <div style="padding : 0px 10px 10px 10px;">
               <div class="judul-campaign" style="padding-bottom: 2px;">
                 <div class="row" >
-                  <div class="col-sm-6" style="margin-bottom: 2px;">
+                  <div class="col-sm-12" style="margin-bottom: 2px;">
                     {{$data->judul}}
-                  </div>
-                  <div class="col-sm-6" >
-                    <p style="color: black; float: right; margin-bottom: 2px;">{{$data->status}}</p>
-                  </div>
-                  
+                  </div>                  
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
+                    <p style="color: black; float: left; margin-bottom: 2px;">{{$data->status}}</p>
                   </div>
                   <div class="col-sm-6">
                     <a href="{{route('dompet-kebaikan-user.show',$data->id)}}" style="float: right;" >Detail</a>

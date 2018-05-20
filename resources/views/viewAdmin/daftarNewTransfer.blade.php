@@ -169,7 +169,7 @@
                       <!-- End of Modal View View Cover Campaign -->
                   </td>
                   <td>
-                    <a href="{{route('validasi-transfer-organisasi',$data->id)}}" class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></a>
+                    <a href="{{route('validasi_transfer_organisasi_to_user',$data->id)}}" class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></a>
                     <button class="btn btn-danger " data-toggle="modal"  name="conrifm_delete" data-target="#modal_confirm_delete_{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
                     <!-- Modal Confirmation Delete-->
                       <div class="modal fade" id="modal_confirm_delete_{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

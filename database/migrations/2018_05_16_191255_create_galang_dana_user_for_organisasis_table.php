@@ -18,7 +18,7 @@ class CreateGalangDanaUserForOrganisasisTable extends Migration
             $table->unsignedInteger('id_organisasi');
             $table->unsignedInteger('id_campaign_user');
             $table->biginteger('nominal');
-            $table->string('bukti_transfer');
+            $table->string('bukti_transfer',100);
             $table->enum('status',['onGoing','paidOff','cancel','success']);
             $table->timestamps();
 

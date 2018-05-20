@@ -31,40 +31,44 @@
                 	<th>Id</th>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
-                  <th>Dana Sebelumnya</th>
-                  <th>Jumlah Pencairan</th>
+                  <th>Dana Dicairkan</th>
                   <th>Tanggal</th>
                   <th>Detail</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
+                <?php $no =0;?>
+                @foreach($dataPencairan as $data)
               	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-                  <td></td>
-                  <td></td>
-              		<td></td>
+              		<td>{{$no=$no+1}}</td>
+              		<td>{{$data->User->name}}</td>
+              		<td>{{$data->campaign_user->judul}}</td>
+                  <td>Rp. {{number_format($data->nominal)}}</td>
+              		<td>{{$data->created_at}}</td>
               		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
               		<td>
               			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
               		</td>
               	</tr>
-              	<tr>
-              		<td>2</td>
-                  <td>Aagus</td>
-                  <td>Bantu Anto</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
+                @endforeach
+
+                <?php $no =0;?>
+                @foreach($dataPencairanOrganisasi as $data)
+                <tr>
+                  <td>{{$no=$no+1}}</td>
+                  <td>{{$data->organisasi->name}}</td>
+                  <td>{{$data->campaign_organisasi->judul}}</td>
+                  <td>Rp. {{number_format($data->nominal)}}</td>
+                  <td>{{$data->created_at}}</td>
+                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                   <td>
-                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
                   </td>
-              	</tr>
+                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

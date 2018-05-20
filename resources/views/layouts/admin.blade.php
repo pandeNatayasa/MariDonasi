@@ -145,13 +145,25 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item @yield('deposit-user')" data-toggle="tooltip" data-placement="right" title="Deposit User">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">Deposit User</span>
+          </a>
+        </li>
+        <li class="nav-item @yield('deposit-group')" data-toggle="tooltip" data-placement="right" title="Deposit Group">
+          <a class="nav-link" href="">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">Deposit Group</span>
+          </a>
+        </li>
         <li class="nav-item @yield('register')" data-toggle="tooltip" data-placement="right" title="Tables">
           <a class="nav-link" href="{{route('admin.create')}}">
             <i class="fa fa-fw fa-edit"></i>
             <span class="nav-link-text">Register</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Components</span>
@@ -221,7 +233,7 @@
             <i class="fa fa-fw fa-link"></i>
             <span class="nav-link-text">Link</span>
           </a>
-        </li>
+        </li> -->
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

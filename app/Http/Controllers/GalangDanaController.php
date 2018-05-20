@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\campaign_user;
 use Auth;
 use App\User;
+use App\campaign_organisasi;
+use App\campign_organisasi_barang;
 
 class GalangDanaController extends Controller
 {
@@ -87,10 +89,14 @@ class GalangDanaController extends Controller
      * @param  \App\galang_dana  $galang_dana
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_campaign)
     {
 
-        return view('payment',compact('id'));
+        return view('payment',compact('id_campaign'));
+        // $dataCampaign = campaign_organisasi::find($id_campaign);
+        //     $jumlahDonasiBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign)->count();
+        //     $dataDonasiBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign);
+        //     return view('detailCampaignOrganisasiForUser',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang'));
     }
 
     /**

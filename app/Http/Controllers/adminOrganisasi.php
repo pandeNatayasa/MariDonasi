@@ -9,6 +9,9 @@ use App\campaign_organisasi;
 use DB;
 use Redirect;
 use App\campaign_user;
+use App\galang_dana_organisasi;
+use App\galang_dana_organisasi_forUser;
+use App\pencairan_dana_organisasi;
 
 class adminOrganisasi extends Controller
 {
@@ -34,6 +37,12 @@ class adminOrganisasi extends Controller
         $jumlahNewOrganisasi = DB::table('organisasis')->where('status','=','non-verified')->count();
         $jumlahNewCampaignOrganisasi = DB::table('campaign_organisasis')->where('status','=','non-verified')->where('judul','!=','0')->count();
 
+        $jumlahNewTransferOrganisasi = DB::table('galang_dana_organisasis')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
+        $jumlahNewTransferUser = DB::table('galang_dana_organisasi_for_users')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
+        $jumlahNewTransfer = $jumlahNewTransferUser+$jumlahNewTransferOrganisasi;
+
+        $jumlahNewPencairan = DB::table('pencairan_dana_organisasis')->where('status','=','onGoing')->count();
+
         if($jumlahNewOrganisasi == 0 ){
             $jumlahNewOrganisasi = 0;
         }
@@ -41,7 +50,7 @@ class adminOrganisasi extends Controller
             $jumlahNewCampaignOrganisasi = 0;
         }
 
-        return view('viewAdmin.dashboard_group',compact('jumlahNewOrganisasi','jumlahNewCampaignOrganisasi'));
+        return view('viewAdmin.dashboard_group',compact('jumlahNewOrganisasi','jumlahNewCampaignOrganisasi','jumlahNewTransfer','jumlahNewPencairan'));
     }
 
     /**
@@ -93,11 +102,14 @@ class adminOrganisasi extends Controller
     }
 
     public function showDaftarNewTransfer(){
-        return view('viewAdmin.daftarNewTransferOrganisasi');
+        $dataTransfer = galang_dana_organisasi::all()->where('status','!=','success');
+        $dataTransferUser = galang_dana_organisasi_forUser::all()->where('status','!=','success');
+        return view('viewAdmin.daftarNewTransferOrganisasi',compact('dataTransfer','dataTransferUser'));
     }
 
     public function showDaftarNewPencairan(){
-        return view('viewAdmin.daftarNewPencairan');
+        $dataNewPencairan = pencairan_dana_organisasi::all()->where('status','=','onGoing');
+        return view('viewAdmin.daftarNewPencairanOrganisasi',compact('dataNewPencairan'));
     }
 
     public function showDaftarNewOrganisasi(){
@@ -152,6 +164,35 @@ class adminOrganisasi extends Controller
         // return redirect('daftarNewUser',compact('dataUser'));
         return Redirect::to('/daftar-new-organisasi')->with(compact('dataOrganisasi'));
     }
+
+    public function validasi_pencairan_dana_organisasi($id)
+    {
+        $data = pencairan_dana_organisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $id_campaign_organisasi = DB::table('pencairan_dana_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi');
+
+        $nominal = DB::table('pencairan_dana_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign_organisasi)
+                    ->sum('sisa_dana');
+
+        $sisa_dana_sekarang = $dana_campaign_sementara - $nominal;
+
+        $dataDana = campaign_organisasi::find($id_campaign_organisasi);
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
+        $dataDana->save();
+
+        $dataNewPencairan = pencairan_dana_organisasi::all()->where('status','=','onGoing');
+        return view('viewAdmin.daftarNewPencairanOrganisasi',compact('dataNewPencairan'));
+    }
+
 
     /**
      * Update the specified resource in storage.

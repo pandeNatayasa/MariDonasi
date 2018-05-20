@@ -10,6 +10,7 @@ use App\campaign_user_barang;
 use App\pencairan_dana_user;
 use App\rek_user;
 use DB;
+use App\campaign_organisasi;
 
 class DompetKebaikanController extends Controller
 {
@@ -69,7 +70,10 @@ class DompetKebaikanController extends Controller
         $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
         $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
         $dataPencairan = pencairan_dana_user::all()->where('id_campaign_user','=',$id_campaign);
-        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign'));
+        $sisaDana = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign)
+                    ->sum('sisa_dana');
+        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
     }
 
     public function store(Request $request)

@@ -14,6 +14,10 @@ use Auth;
 use App\galang_dana;
 use App\galang_dana_user_forOrganisasi;
 use App\pencairan_dana_user;
+use App\galang_dana_organisasi_forUser;
+use App\galang_dana_organisasi;
+use App\pencairan_dana_organisasi;
+
 
 class adminController extends Controller
 {
@@ -38,7 +42,7 @@ class adminController extends Controller
         $jumlahNewCampaignUser = DB::table('campaign_users')->where('status','=','non-verified')->where('judul','!=','0')->count();
         $jumlahNewTransferUser = DB::table('galang_danas')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
         $jumlahNewTransferOrganisasi = DB::table('galang_dana_user_for_organisasis')->where('status','=','onGoing')->orWhere('status','=','paidOff')->count();
-        $jumlahNewTransfer = $jumlahNewCampaignUser+$jumlahNewTransferOrganisasi;
+        $jumlahNewTransfer = $jumlahNewTransferUser+$jumlahNewTransferOrganisasi;
                 //$jumlahNewTransfer = galang_dana::all()->where('status','=','onGoing')->whereOr('status','=','paidOff')->count();//
         $jumlahNewPencairan = DB::table('pencairan_dana_users')->where('status','=','onGoing')->count();
 
@@ -99,11 +103,19 @@ class adminController extends Controller
     }
 
     public function showDaftarTransfer(){
-        return view('viewAdmin.daftarTransfer');
+        $dataTransfer = galang_dana::all()->where('status','=','success');
+        $dataTransferOrganisasiToUser = galang_dana_user_forOrganisasi::all()->where('status','=','success');
+        $dataTransferOrganisasi = galang_dana_organisasi::all()->where('status','=','success');
+        $dataTransferUserToOrganisasi = galang_dana_organisasi_forUser::all()->where('status','=','success');
+        return view('viewAdmin.daftarTransfer',compact('dataTransfer','dataTransferOrganisasi','dataTransferUserToOrganisasi','dataTransferOrganisasiToUser'));
     }
 
     public function showDaftarPencairan(){
-        return view('viewAdmin.daftarPencairan');
+        $dataPencairan = pencairan_dana_user::all()->where('status','=','success');
+        // $dataPencairanOrganisasiToUser = galang_dana_user_forOrganisasi::all()->where('status','=','success');
+        $dataPencairanOrganisasi = pencairan_dana_organisasi::all()->where('status','=','success');
+        // $dataPencairanUserToOrganisasi = galang_dana_organisasi_forUser::all()->where('status','=','success');
+        return view('viewAdmin.daftarPencairan',compact('dataPencairan','dataPencairanOrganisasi'));
     }
     /**
      * Show the form for creating a new resource.
@@ -212,62 +224,209 @@ class adminController extends Controller
 
     public function validasi_transfer($id)
     {
-        $data = galang_dana::find($id);
-        $data->status = 'success';
-        $data->save();
+        
+        $id_campaign_user = DB::table('galang_danas')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
 
         $nominal = DB::table('galang_danas')
                     ->where('id','=',$id)
                     ->sum('nominal');
 
         $dana_campaign_sementara = DB::table('campaign_users')
-                    ->where('id','=',$id)
+                    ->where('id','=',$id_campaign_user)
                     ->sum('dana_sementara');
-
-        $id_campaign_user = DB::table('galang_danas')
-                    ->where('id', '=', $id)
-                    ->sum('id_campaign_user');
 
         $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
 
+        $dana_admin = 0.05 * $nominal;
+        $sisa_dana = $nominal-$dana_admin;
+
+        $idAdmin=Auth::guard('admin')->user()->id;
+
+        $sisa_dana_admin = DB::table('admins')
+                    ->where('id','=',$idAdmin)
+                    ->sum('wallet');
+        $dana_admin_sekarang = $sisa_dana_admin + $dana_admin;
+
+        $dataDana = admin::find($idAdmin);
+        $dataDana->wallet = $dana_admin_sekarang;
+        $dataDana->save();
+
+        $sisa_dana_sebelumnya = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign_user)
+                    ->sum('sisa_dana');
+        $sisa_dana_sekarang = $sisa_dana + $sisa_dana_sebelumnya;
+
         $dataDana = campaign_user::find($id_campaign_user);
         $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
         $dataDana->save();
+        
+        $data = galang_dana::find($id);
+        $data->status = 'success';
+        $data->save();
 
         $dataTransfer = galang_dana::all()->where('status','!=','success');
 
         return Redirect::to('/daftar-new-transfer-user')->with(compact('dataTransfer'));
     }
 
-    public function validasi_transfer_organisasi($id)
+    public function validasi_transfer_organisasi_to_user($id)
     {
-        $data = galang_dana_user_forOrganisasi::find($id);
-        $data->status = 'success';
-        $data->save();
+        $id_campaign_user = DB::table('galang_dana_user_for_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
 
         $nominal = DB::table('galang_dana_user_for_organisasis')
                     ->where('id','=',$id)
                     ->sum('nominal');
 
         $dana_campaign_sementara = DB::table('campaign_users')
-                    ->where('id','=',$id)
+                    ->where('id','=',$id_campaign_user)
                     ->sum('dana_sementara');
-
-        $id_campaign_user = DB::table('galang_dana_user_for_organisasis')
-                    ->where('id', '=', $id)
-                    ->sum('id_campaign_user');
 
         $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
 
+        $dana_admin = 0.05 * $nominal;
+        $sisa_dana = $nominal-$dana_admin;
+
+        $idAdmin=Auth::guard('admin')->user()->id;
+
+        $sisa_dana_admin = DB::table('admins')
+                    ->where('id','=',$idAdmin)
+                    ->sum('wallet');
+        $dana_admin_sekarang = $sisa_dana_admin + $dana_admin;
+
+        $dataDana = admin::find($idAdmin);
+        $dataDana->wallet = $dana_admin_sekarang;
+        $dataDana->save();
+
+        $sisa_dana_sebelumnya = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign_user)
+                    ->sum('sisa_dana');
+
+        $sisa_dana_sekarang = $sisa_dana + $sisa_dana_sebelumnya;
+
         $dataDana = campaign_user::find($id_campaign_user);
         $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
         $dataDana->save();
+
+        $data = galang_dana_user_forOrganisasi::find($id);
+        $data->status = 'success';
+        $data->save();
 
         $dataTransfer = galang_dana::all()->where('status','!=','success');
         $dataTransferOrganisasi = galang_dana_user_forOrganisasi::all()->where('status','!=','success');
 
         return Redirect::to('/daftar-new-transfer-user')->with(compact('dataTransfer','dataTransferOrganisasi'));
     }
+
+
+    public function validasi_transfer_organisasi($id)
+    {
+
+        $id_campaign_organisasi = DB::table('galang_dana_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi');
+
+        $nominal = DB::table('galang_dana_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign_organisasi)
+                    ->sum('dana_sementara');
+
+        $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
+
+        $dana_admin = 0.05 * $nominal;
+        $sisa_dana = $nominal-$dana_admin;
+
+        $idAdmin=Auth::guard('admin')->user()->id;
+
+        $sisa_dana_admin = DB::table('admins')
+                    ->where('id','=',$idAdmin)
+                    ->sum('wallet');
+        $dana_admin_sekarang = $sisa_dana_admin + $dana_admin;
+
+        $dataDana = admin::find($idAdmin);
+        $dataDana->wallet = $dana_admin_sekarang;
+        $dataDana->save();
+
+        $sisa_dana_sebelumnya = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign_organisasi)
+                    ->sum('sisa_dana');
+        $sisa_dana_sekarang = $sisa_dana + $sisa_dana_sebelumnya;
+
+        $dataDana = campaign_organisasi::find($id_campaign_organisasi);
+        $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
+        $dataDana->save();
+
+        $data = galang_dana_organisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataTransfer = galang_dana_organisasi::all()->where('status','!=','success');
+        $dataTransferUser = galang_dana_organisasi_forUser::all()->where('status','!=','success');
+
+        return Redirect::to('/daftar-new-transfer-organisasi')->with(compact('dataTransfer','dataTransferUser'));
+    }
+
+    public function validasi_transfer_user_for_organisasi($id)
+    {
+        $id_campaign_organisasi = DB::table('galang_dana_organisasi_for_users')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi');
+
+        $nominal = DB::table('galang_dana_organisasi_for_users')
+                    ->where('id','=',$id)
+                    ->sum('nominal');
+
+        $dana_campaign_sementara = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign_organisasi)
+                    ->sum('dana_sementara');
+
+        // return $dana_campaign_sementara;
+
+        $dana_sementara_sekarang = $dana_campaign_sementara + $nominal;
+
+        $dana_admin = 0.05 * $nominal;
+        $sisa_dana = $nominal-$dana_admin;
+
+        $idAdmin=Auth::guard('admin')->user()->id;
+
+        $sisa_dana_admin = DB::table('admins')
+                    ->where('id','=',$idAdmin)
+                    ->sum('wallet');
+        $dana_admin_sekarang = $sisa_dana_admin + $dana_admin;
+
+        $dataDana = admin::find($idAdmin);
+        $dataDana->wallet = $dana_admin_sekarang;
+        $dataDana->save();
+
+        $sisa_dana_sebelumnya = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign_organisasi)
+                    ->sum('sisa_dana');
+        $sisa_dana_sekarang = $sisa_dana + $sisa_dana_sebelumnya;
+
+        $dataDana = campaign_organisasi::find($id_campaign_organisasi);
+        $dataDana->dana_sementara = $dana_sementara_sekarang;
+        $dataDana->sisa_dana = $sisa_dana_sekarang;
+        $dataDana->save();
+
+        $data = galang_dana_organisasi_forUser::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataTransfer = galang_dana_organisasi::all()->where('status','!=','success');
+        $dataTransferUser = galang_dana_organisasi_forUser::all()->where('status','!=','success');
+
+        return Redirect::to('/daftar-new-transfer-organisasi')->with(compact('dataTransfer','dataTransferUser'));
+    }
+
 
     public function validasi_pencairan_dana_user($id)
     {

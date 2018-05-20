@@ -43,10 +43,10 @@
                 @foreach($dataNewPencairan as $data )
               	<tr>
               		<td>{{$no=$no+1}}</td>
-              		<td>{{$data->user->name}}</td>
+              		<td>{{$data->User->name}}</td>
               		<td>{{$data->campaign_user->judul}}</td>
-                  <td>{{number_format($data->campaign_user->sisa_dana)}}</td>
-                  <td>{{number_format($data->nominal)}}</td>
+                  <td>Rp. {{number_format($data->campaign_user->sisa_dana)}}</td>
+                  <td>Rp. {{number_format($data->nominal)}}</td>
               		<td>{{$data->created_at}}</td>
               		<td>
                     <button class="btn btn-info " data-toggle="modal"  name="viewDetailCampaign" data-target="#modal_view_detail_campaign_{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Detail Pencairan"><i class="fa fa-eye"></i>

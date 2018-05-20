@@ -85,9 +85,9 @@ class GalangDanaUserForOrganisasiController extends Controller
      * @param  \App\galang_dana_user_forOrganisasi  $galang_dana_user_forOrganisasi
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_campaign)
     {
-        return view('payment_organisasi',compact('id'));
+        return view('payment_organisasi',compact('id_campaign'));
     }
 
     /**

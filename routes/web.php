@@ -37,12 +37,15 @@ Route::get('/campaign/get-barang','CampaignUserBarangController@loadComment');
 Route::post('/campaign-contribute/edit-barang','campaignSaya@store')->name('ajaxEdit');
 
 Route::resource('/campaignOrganisasi','CampaignOrganisasiController')->middleware('auth:organitation');
+// Route::get('/campaign-organisasi-show/{$id}','CampaignOrganisasiController@showDetailOrganisasi')->name('show_detail_campaign_organisasi')->middleware('auth:organitation');
+
 Route::get('/campaignOrganisasiView','OrganisasiController@showCampaignOrganisasi')->name('campaignView')->middleware('auth:organitation');
 
 Route::resource('/admin-edit-organisasi','adminOrganisasiEdit')->middleware('auth:admin');
 
 Route::resource('/galangDanaOrganisasi','GalangDanaOrganisasiController')->middleware('auth:organitation');
 Route::resource('/galangDanaUserToOrganisasi','GalangDanaUserForOrganisasiController')->middleware('auth:organitation');
+Route::resource('/galangDanaOrganisasiToUser','GalangDanaOrganisasiForUserController')->middleware('auth:web');
 //-------------------------------------ROUTE Admin--------------------------------------//
 //--------------------------------------------------------------------------------------//
 Route::group(['prefix'=>'admin'],function() {
@@ -80,9 +83,15 @@ Route::get('/daftar-pengiriman','adminController@showDaftarPengiriman')->name('d
 Route::get('/daftar-penerimaan','adminController@showDaftarPenerimaan')->name('daftar-penerimaan');
 Route::get('/validasi-campaign/{id}','adminController@validasi_campaign')->name('validasi-campaign');
 Route::get('/validasi-transfer/{id}','adminController@validasi_transfer')->name('validasi-transfer');
-Route::get('/validasi-transfer-organisasi/{id}','adminController@validasi_transfer_organisasi')->name('validasi-transfer-organisasi');
+Route::get('/validasi_transfer_organisasi_to_user/{id}','adminController@validasi_transfer_organisasi_to_user')->name('validasi_transfer_organisasi_to_user');
+
+Route::get('/validasi_transfer_organisasi/{id}','adminController@validasi_transfer_organisasi')->name('validasi_transfer_organisasi');
+Route::get('/validasi-transfer-user-to-organisasi/{id}','adminController@validasi_transfer_user_for_organisasi')->name('validasi_transfer_user_for_organisasi');
+
 
 Route::get('/validasi_pencairan_dana_user/{id}','adminController@validasi_pencairan_dana_user')->name('validasi_pencairan_dana_user');
+
+Route::get('/validasi_pencairan_dana_organisasi/{id}','adminOrganisasi@validasi_pencairan_dana_organisasi')->name('validasi_pencairan_dana_organisasi');
 
 Route::resource('/admin-organisasi', 'adminOrganisasi');
 Route::get('/daftar-new-campaign-organisasi','adminOrganisasi@showDaftarNewCampaign')->name('daftar-new-campaign-group');
@@ -118,6 +127,7 @@ Route::post('/completeAcountOrganisasi', 'OrganisasiController@storeCompleteAcou
 Route::get('/myprofille-organisasi','OrganisasiController@edit2')->name('akun.organisasi')->middleware('auth:organitation');
 Route::resource('/dompet-kebaikan-organisasi', 'DompetKebaikanOrganisasiController')->middleware('auth:organitation');
 Route::get('/dompet-kebaikan-organisasi-pencairan','DompetKebaikanOrganisasiController@showFormPencairan')->name('pencairan_dana_organisasi')->middleware('auth:organitation');
+Route::post('/dompet-kebaikan-organisasi/pencairan_dana_campaign', 'DompetKebaikanOrganisasiController@storePencairan')->name('pencairan_dana_campaign_organisasi')->middleware('auth:organitation');
 
 //-------------------------------------ROUTE Lain----------------------------------------//
 //---------------------------------------------------------------------------------------//
