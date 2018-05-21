@@ -116,7 +116,7 @@
         <div class="bodyone" style="margin-bottom: 20px;">
           <strong >
             <div class="row">
-               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. {{Auth::user()->wallet}},00</h1>
+               <h2 style="padding-top: 10px; padding-right: 10px;">Saldo </h2><h1> Rp. {{number_format(Auth::user()->wallet)}},00</h1>
             </div>
           </strong>
         </div>

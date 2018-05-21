@@ -136,7 +136,7 @@ class adminOrganisasi extends Controller
     public function validasi_deposit_user($id)
     {
 
-        $idOrganisasi= DB::table('dompet_kebaikans')
+        $idUser= DB::table('dompet_kebaikans')
                     ->where('id','=',$id)
                     ->sum('id_user');
 

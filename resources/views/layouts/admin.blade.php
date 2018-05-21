@@ -378,6 +378,10 @@
         $('#data').DataTable();
       } );
 
+      $(document).ready( function () {
+        $('#dataBarang').DataTable();
+      } );
+
     </script>
   </div>
 </body>

@@ -56,4 +56,12 @@ class organisasi extends Authenticatable
     public function dompet_kebaikan_organisasi(){
         return $this->hashMany('App\dompet_kebaikan_organisasi');
     }
+
+    public function galang_barang_organisasi(){
+        return $this->hashMany('App\galang_barang_organisasi');
+    }
+
+    public function galang_barang_organisasi_forUser(){
+        return $this->hashMany('App\galang_barang_organisasi_forUser');
+    }
 }

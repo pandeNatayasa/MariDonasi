@@ -30,12 +30,19 @@ class MemberController extends Controller
             $jumlahCampaignDimulai = 0;
         }
 
-        $jumlahDonasiDisalurkan = DB::table('galang_danas')
+        $jumlahDonasiDisalurkanUser = DB::table('galang_danas')
                     ->join('campaign_users', 'galang_danas.id_campaign_user', '=', 'campaign_users.id')
                     ->join('users', 'campaign_users.id_user', '=', 'users.id')
                     ->where('users.id','=',$idUser)
-                    ->count('nominal');
+                    ->sum('nominal');
+
+        $jumlahDonasiDisalurkanOrganisasi = DB::table('galang_dana_user_for_organisasis')
+                    ->join('campaign_users', 'galang_dana_user_for_organisasis.id_campaign_user', '=', 'campaign_users.id')
+                    ->join('users', 'campaign_users.id_user', '=', 'users.id')
+                    ->where('users.id','=',$idUser)
+                    ->sum('nominal');
                     //->get();
+        $jumlahDonasiDisalurkan = $jumlahDonasiDisalurkanUser + $jumlahDonasiDisalurkanOrganisasi;
 
         $dataTambahDeposit = dompetKebaikan::all()->where('id_user','=',$idUser);
 

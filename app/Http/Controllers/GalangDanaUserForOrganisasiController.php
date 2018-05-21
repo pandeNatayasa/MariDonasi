@@ -6,6 +6,7 @@ use App\galang_dana_user_forOrganisasi;
 use Illuminate\Http\Request;
 use App\organisasi;
 use Auth;
+use App\campaign_user;
 
 class GalangDanaUserForOrganisasiController extends Controller
 {

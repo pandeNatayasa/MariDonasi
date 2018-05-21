@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\galang_barang_user_for_organisasi;
 use Illuminate\Http\Request;
+use App\campaign_user_barang;
+use Auth;
 
 class GalangBarangUserForOrganisasiController extends Controller
 {
@@ -35,7 +37,17 @@ class GalangBarangUserForOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idUser = Auth::guard('organitation')->user()->id;
+
+                $data = new galang_barang_user_for_organisasi();
+                $data->id_organisasi = $idUser;
+                $data->id_campaign_user= $request->id_campaign;
+                $data->barang = $request->nama_barang;
+                $data->jumlah= $request->tambahDonasiBarang;
+                $data->status='onGoing';
+                $data->save();
+
+            return view('intermeso_donasi');
     }
 
     /**
@@ -44,9 +56,10 @@ class GalangBarangUserForOrganisasiController extends Controller
      * @param  \App\galang_barang_user_for_organisasi  $galang_barang_user_for_organisasi
      * @return \Illuminate\Http\Response
      */
-    public function show(galang_barang_user_for_organisasi $galang_barang_user_for_organisasi)
+    public function show($id_campaign)
     {
-        //
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        return view('payment_barang_organisasi_to_user',compact('id_campaign','dataDonasiBarang'));
     }
 
     /**

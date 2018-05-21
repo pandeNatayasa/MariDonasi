@@ -34,6 +34,9 @@ Route::post('/tambahBarang','CampaignUserController@storeBarang')->name('tambahB
 Route::resource('/galangDana','GalangDanaController')->middleware('auth:web');
 Route::resource('/galangBarang','GalangBarangController')->middleware('auth:web');
 Route::resource('/galangBarangOrganisasi','GalangBarangOrganisasiController')->middleware('auth:organitation');
+Route::resource('/galangBarangUserForOrganisasi','GalangBarangUserForOrganisasiController')->middleware('auth:organitation');
+Route::resource('/galangBarangOrganisasiForUser','GalangBarangOrganisasiForUserController')->middleware('auth:web');
+
 Route::post('/campaign_user_barang/store-barang','CampaignUserBarangController@store')->middleware('auth:web');
 Route::get('/campaign/get-barang','CampaignUserBarangController@loadComment');
 Route::post('/campaign-contribute/edit-barang','campaignSaya@store')->name('ajaxEdit');

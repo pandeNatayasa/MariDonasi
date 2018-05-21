@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function galang_barang(){
         return $this->hashMany('App\galang_barang');
     }
+
+    public function galang_barang_organisasi_forUser(){
+        return $this->hashMany('App\galang_barang_organisasi_forUser');
+    }
 }

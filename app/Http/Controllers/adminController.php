@@ -17,7 +17,10 @@ use App\pencairan_dana_user;
 use App\galang_dana_organisasi_forUser;
 use App\galang_dana_organisasi;
 use App\pencairan_dana_organisasi;
-
+use App\galang_barang;
+use App\galang_barang_organisasi;
+use App\galang_barang_user_for_organisasi;
+use App\galang_barang_organisasi_for_user;
 
 class adminController extends Controller
 {
@@ -95,11 +98,21 @@ class adminController extends Controller
     }
 
     public function showDaftarPengiriman(){
+
         return view('viewAdmin.daftarPengiriman');
     }
 
     public function showDaftarPenerimaan(){
-        return view('viewAdmin.daftarPenerimaan');
+        $dataNewBarang = galang_barang::all()->where('status','!=','success');
+        $dataNewBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = galang_barang_organisasi::all()->where('status','!=','success');
+        $dataNewBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','!=','success');
+
+        $dataBarang = galang_barang::all()->where('status','=','success');
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','=','success');
+        $dataBarangOrganisasi = galang_barang_organisasi::all()->where('status','=','success');
+        $dataBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','=','success');
+        return view('viewAdmin.daftarPenerimaan',compact('dataNewBarang','dataNewBarangOrganisasi','dataNewBarangUserToOrganisasi','dataNewBarangOrganisasiToUser','dataBarang','dataBarangOrganisasi','dataBarangUserToOrganisasi','dataBarangOrganisasiToUser'));
     }
 
     public function showDaftarTransfer(){

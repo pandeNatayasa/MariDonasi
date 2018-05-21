@@ -15,7 +15,18 @@ class CreateGalangBarangUserForOrganisasisTable extends Migration
     {
         Schema::create('galang_barang_user_for_organisasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('id_organisasi');
+            $table->unsignedInteger('id_campaign_user');
+            $table->string('barang',100);
+            $table->integer('jumlah');
+            $table->enum('status',['onGoing','paidOff','cancel','success']);
             $table->timestamps();
+
+            Schema::disableForeignKeyConstraints();
+            $table->foreign('id_organisasi')->references('id')->on('organisasis');
+            // $table->foreign('id_user_organisasi')->references('id')->on('organisasis');
+            // $table->foreign('id_campaign_user_organisasi')->references('id')->on('campaign_users');
+            $table->foreign('id_campaign_user')->references('id')->on('campaign_users');
         });
     }
 

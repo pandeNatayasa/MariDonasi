@@ -82,7 +82,7 @@
                 </tr>
                 @endforeach
 
-                <?php $no = 0;?>
+                
                 @foreach($dataTransferOrganisasi as $data )
                 <tr>
                   <td>{{$no=$no+1}}</td>
@@ -126,7 +126,7 @@
                 </tr>
                 @endforeach
 
-                <?php $no = 0;?>
+                
                 @foreach($dataTransferUserToOrganisasi as $data )
                 <tr>
                   <td>{{$no=$no+1}}</td>
@@ -170,7 +170,7 @@
                 </tr>
                 @endforeach
 
-                <?php $no = 0;?>
+                
                 @foreach($dataTransferOrganisasiToUser as $data )
                 <tr>
                   <td>{{$no=$no+1}}</td>

@@ -19,7 +19,7 @@ class CreateGalangBarangsTable extends Migration
             $table->unsignedInteger('id_campaign_user');
             $table->string('barang',100);
             $table->integer('jumlah');
-            $table->enum('status',['onGoing','paidOff','cancel']);
+            $table->enum('status',['onGoing','paidOff','cancel','success']);
             $table->timestamps();
 
             Schema::disableForeignKeyConstraints();

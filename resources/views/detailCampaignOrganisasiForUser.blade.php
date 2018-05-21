@@ -24,4 +24,7 @@
   {{route('galangDanaOrganisasiToUser.show',$id_campaign)}}
 @endsection
 
+@section('route_show_payment_barang')
+	{{route('galangBarangOrganisasiForUser.show',$id_campaign)}}
+@endsection
 

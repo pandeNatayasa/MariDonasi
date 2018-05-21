@@ -160,7 +160,7 @@
               </div>
               <div class="col-sm-9">
                 <div class="col-sm-12 jumlah">
-                  <strong>Rp. {{$jumlahDonasiDisalurkan}}</strong> 
+                  <strong>Rp. {{number_format($jumlahDonasiDisalurkan)}}</strong> 
                 </div>
                 <div class="col-sm-12 jumlah1">
                   Donasi disalurkan

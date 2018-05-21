@@ -28,7 +28,7 @@
             <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                	<th>Id</th>
+                	<th>No</th>
                   <th>Nama</th>
                   <th>Judul Campaign</th>
                   <th>Dana Dicairkan</th>
@@ -46,15 +46,17 @@
               		<td>{{$data->campaign_user->judul}}</td>
                   <td>Rp. {{number_format($data->nominal)}}</td>
               		<td>{{$data->created_at}}</td>
-              		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
               		<td>
-              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <center>
+                      <button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button>
+                    </center>
+                  </td>
+              		<td>
+              			{{$data->status}}
               		</td>
               	</tr>
                 @endforeach
 
-                <?php $no =0;?>
                 @foreach($dataPencairanOrganisasi as $data)
                 <tr>
                   <td>{{$no=$no+1}}</td>
@@ -62,10 +64,13 @@
                   <td>{{$data->campaign_organisasi->judul}}</td>
                   <td>Rp. {{number_format($data->nominal)}}</td>
                   <td>{{$data->created_at}}</td>
-                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                   <td>
-                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <center>
+                      <button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button>
+                    </center>
+                  </td>
+                  <td>
+                    {{$data->status}}
                   </td>
                 </tr>
                 @endforeach

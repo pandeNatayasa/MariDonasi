@@ -115,7 +115,7 @@
                 <div class="row">
                   <label class="control-label col-md-3">Nama Barang</label>
                   <div class="col-md-9">
-                      <select name="kategoriCampaign" class="form-control" required="required">
+                      <select name="nama_barang" class="form-control" required="required">
                       <option value="" disabled selected>nama Barang</option>
                       @foreach($dataDonasiBarang as $data)
                         <option value="{{$data->nama_barang}}">{{$data->nama_barang}}</option>
@@ -129,6 +129,7 @@
                   <label class="control-label col-md-3 " >Jumlah </label>
                  <div class="col-md-9">
                      <input id="tambahDonasiBarang" class="form-control" placeholder="Donasi Barang dari campaign ini" name="tambahDonasiBarang" required="required" type="text" >
+                     <input id="id_campaign" class="form-control" name="id_campaign" required="required" type="hidden" value="{{$id_campaign}}">
                  </div>
                 </div>
                </div>

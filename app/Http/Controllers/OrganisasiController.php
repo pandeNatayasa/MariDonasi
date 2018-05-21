@@ -32,7 +32,7 @@ class OrganisasiController extends Controller
                     ->join('campaign_organisasis', 'galang_dana_organisasis.id_campaign_organisasi', '=', 'campaign_organisasis.id')
                     ->join('organisasis', 'campaign_organisasis.id_organisasi', '=', 'organisasis.id')
                     ->where('organisasis.id','=',$idOrganisasi)
-                    ->count('nominal');
+                    ->sum('nominal');
                     //->get();
 
         $dataTambahDeposit = dompet_kebaikan_organisasi::all()->where('id_organisasi','=',$idOrganisasi);

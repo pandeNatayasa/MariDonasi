@@ -23,3 +23,7 @@
 @section('route_show_payment')
   {{route('galangDanaUserToOrganisasi.show',$id_campaign)}}
 @endsection
+
+@section('route_show_payment_barang')
+	{{route('galangBarangUserForOrganisasi.show',$id_campaign)}}
+@endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\galang_barang_organisasi;
 use Illuminate\Http\Request;
 use App\campign_organisasi_barang;
+use Auth;
 
 class GalangBarangOrganisasiController extends Controller
 {
@@ -36,7 +37,17 @@ class GalangBarangOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $idUser = Auth::user()->id;
+
+                $data = new galang_barang_organisasi();
+                $data->id_organisasi = $idUser;
+                $data->id_campaign_organisasi= $request->id_campaign;
+                $data->barang = $request->nama_barang;
+                $data->jumlah= $request->tambahDonasiBarang;
+                $data->status='onGoing';
+                $data->save();
+
+            return view('intermeso_donasi');
     }
 
     /**

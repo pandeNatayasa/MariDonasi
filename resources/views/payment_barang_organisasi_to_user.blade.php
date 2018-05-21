@@ -21,6 +21,6 @@
 @endsection
 
 @section('galangDana_store')
-  {{route('galangBarangOrganisasi.store')}}
+  {{route('galangBarangUserForOrganisasi.store')}}
 @endsection
 

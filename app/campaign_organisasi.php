@@ -25,4 +25,12 @@ class campaign_organisasi extends Model
     public function galang_dana_organisasi_forUser(){
         return $this->hashMany('App\galang_dana_organisasi_forUser');
     }
+
+    public function galang_barang_organisasi(){
+        return $this->hashMany('App\galang_barang_organisasi');
+    }
+
+    public function galang_barang_organisasi_forUser(){
+        return $this->hashMany('App\galang_barang_organisasi_forUser');
+    }
 }
