@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BizPage Bootstrap Template</title>
+  <title>MariDonasi</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link rel="stylesheet" type="text/css" href="{{url::asset('css/galangDana.css')}}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -37,6 +37,9 @@
 
 <body>
 
+  <!--==========================
+    Header
+  ============================-->
   <header id="header">
     <div class="container-fluid">
 
@@ -67,47 +70,33 @@
     </div>
   </header><!-- #header -->
 
+  <!--==========================
+    Intro Section
+  ============================-->
+  <div id="intro" style="background-image: url({{asset('img/intro-carousel/slider-1.jpg')}});">
+    <div class="text-center" style="left: 50%;top: 50%;padding: 120px;">
+      <h1 style="color: #242628"><b>Apa itu MariDonasi?</b></h1><br>
+      <h4 style="color: #242628">MariDonasi adalah platform galang dana dan donasi online<br>yang bertujuan memberi pertolongan dengan cepat</h4>
+    </div>
+  </div>
+
   <main id="main">
+    <!--==========================
+      About Us Section
+    ============================-->
     <section id="about">
       <div class="container">
+
         <header class="section-header">
-          <h3>GALANG DANA UNTUK PRASTHA</h3>
-          <form>
-            <table>
-              <tr>
-                <td id="gambar">
-                  <img src="img/prastha.jpg" height="400" width="600">
-                </td>
-                <td style="padding-top: 0px; padding-bottom: 0px">
-                  <div>
-                    <h1 id="duid" style=""><b>Rp 278.940.440</b></h1>
-                    <h4 id="target_duid">Terkumpul dari target Rp 300.000.000</h4>
-                  </div>
-                  <div class="progress" style="width: 460px">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar"aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                    40%
-                    </div>
-                  </div>
-                  <div style="padding-top: 50px">
-                    <h6>
-                      NB: Setiap donasi akan dipotong 5% untuk biaya administrasi
-                    </h6>
-                  </div>
-                  <div>
-                    <button type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 286px; margin-right: 100px; margin-left: 100px;">Donasi</button>
-                  </div>
-                  <div>
-                    
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </form>
+          <h3>Menghubungkan</h3>
+          <p>MariDonasi bertujuan menghubungkan dan memberi wadah bagi individu, komunitas, organisasi maupun perusahaan untuk saling membantu orang yang membutuhkan.</p>
+        </header>
+        <header class="section-header">
+          <h3>Pendapatan</h3>
+          <p>MariDonasi mendapatkan keuntungan dari biaya administrasi sebesar 5% pada setiap campaign yang dibuat. Hal ini bertujuan untuk mengembangkan teknologi dan layanan MariDonasi</p>
         </header>
       </div>
-        
     </section><!-- #about -->
-      
 
 
   </main>
