@@ -15,6 +15,14 @@ use App\pencairan_dana_organisasi;
 use App\dompetKebaikan;
 use App\dompet_kebaikan_organisasi;
 use Auth;
+use App\campaign_user_barang;
+use App\campign_organisasi_barang;
+use App\galang_barang;
+use App\galang_barang_user_for_organisasi;
+use App\galang_barang_organisasi_for_user;
+use App\galang_barang_organisasi;
+use App\pencairan_barang_user;
+use App\pencairan_barang_organisasi;
 
 class adminOrganisasi extends Controller
 {
@@ -204,6 +212,283 @@ class adminOrganisasi extends Controller
         $dataNewCampaignOrganisasi = campaign_organisasi::all()->where('status','=','non-verified');
 
         return Redirect::to('/daftar-new-campaign-organisasi')->with(compact('dataNewCampaignOrganisasi'));
+    }
+
+    public function validasi_barang(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_user = DB::table('galang_barangs')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
+
+        $jumlah = DB::table('galang_barangs')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sementara');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara + $jumlah;
+
+        $idUserBarang = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('id');
+
+        $dataBarang = campaign_user_barang::find($idUserBarang);
+        $dataBarang->jumlah_sementara = $jumlah_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = galang_barang::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = galang_barang::all()->where('status','!=','success');
+        $dataNewBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = galang_barang_organisasi::all()->where('status','!=','success');
+        $dataNewBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','!=','success');
+
+        $dataBarang = galang_barang::all()->where('status','=','success');
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','=','success');
+        $dataBarangOrganisasi = galang_barang_organisasi::all()->where('status','=','success');
+        $dataBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-penerimaan')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataNewBarangUserToOrganisasi','dataNewBarangOrganisasiToUser','dataBarang','dataBarangOrganisasi','dataBarangUserToOrganisasi','dataBarangOrganisasiToUser'));
+    }
+
+    public function validasi_barang_organisasi(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_user = DB::table('galang_barang_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi');
+
+        $jumlah = DB::table('galang_barang_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sementara');
+
+        $jumlah_sisa_sementara = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sisa');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara + $jumlah;
+        $jumlah_sisa_sementara_sekarang = $jumlah_sisa_sementara + $jumlah;
+
+        $idUserBarang = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('id');
+
+        $dataBarang = campign_organisasi_barang::find($idUserBarang);
+        $dataBarang->jumlah_sementara = $jumlah_sementara_sekarang;
+        $dataBarang->jumlah_sisa=$jumlah_sisa_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = galang_barang_organisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = galang_barang::all()->where('status','!=','success');
+        $dataNewBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = galang_barang_organisasi::all()->where('status','!=','success');
+        $dataNewBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','!=','success');
+
+        $dataBarang = galang_barang::all()->where('status','=','success');
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','=','success');
+        $dataBarangOrganisasi = galang_barang_organisasi::all()->where('status','=','success');
+        $dataBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-penerimaan')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataNewBarangUserToOrganisasi','dataNewBarangOrganisasiToUser','dataBarang','dataBarangOrganisasi','dataBarangUserToOrganisasi','dataBarangOrganisasiToUser'));
+    }
+
+    public function validasi_pengiriman_barang(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_user_barang = DB::table('pencairan_barang_users')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user_barang');
+
+        $id_campaign_user = DB::table('campaign_user_barangs')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id_campaign_user');
+
+        $jumlah = DB::table('pencairan_barang_users')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campaign_user_barangs')
+                    ->where('id','=',$id_campaign_user_barang)
+                    ->sum('jumlah_sisa');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara - $jumlah;
+
+        // $idUserBarang = DB::table('campaign_user_barangs')
+        //             ->where('nama_barang','=',$barang)
+        //             ->sum('id');
+
+        $dataBarang = campaign_user_barang::find($id_campaign_user_barang);
+        $dataBarang->jumlah_sisa = $jumlah_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = pencairan_barang_user::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = pencairan_barang_user::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','!=','success');
+
+        $dataBarang = pencairan_barang_user::all()->where('status','=','success');
+        $dataBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-pengiriman')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataBarang','dataBarangOrganisasi'));
+    }
+
+    public function validasi_pengiriman_barang_organisasi(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_organisasi_barang = DB::table('pencairan_barang_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi_barang');
+
+        $id_campaign_organisasi = DB::table('campign_organisasi_barangs')
+                    ->where('id', '=', $id_campaign_organisasi_barang)
+                    ->sum('id_campaign_organisasi');
+
+        $jumlah = DB::table('pencairan_barang_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campign_organisasi_barangs')
+                    ->where('id','=',$id_campaign_organisasi_barang)
+                    ->sum('jumlah_sisa');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara - $jumlah;
+
+        // $idUserBarang = DB::table('campaign_user_barangs')
+        //             ->where('nama_barang','=',$barang)
+        //             ->sum('id');
+
+        $dataBarang = campign_organisasi_barang::find($id_campaign_organisasi_barang);
+        $dataBarang->jumlah_sisa = $jumlah_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = pencairan_barang_organisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = pencairan_barang_user::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','!=','success');
+
+        $dataBarang = pencairan_barang_user::all()->where('status','=','success');
+        $dataBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-pengiriman')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataBarang','dataBarangOrganisasi'));
+    }
+
+
+    public function validasi_barang_organisasi_to_user(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_user = DB::table('galang_barang_user_for_organisasis')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_user');
+
+        $jumlah = DB::table('galang_barang_user_for_organisasis')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sementara');
+
+        $jumlah_sisa_sementara = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sisa');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara + $jumlah;
+        $jumlah_sisa_sementara_sekarang = $jumlah_sisa_sementara + $jumlah;
+
+        $idUserBarang = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('id');
+
+        $dataBarang = campaign_user_barang::find($idUserBarang);
+        $dataBarang->jumlah_sementara = $jumlah_sementara_sekarang;
+        $dataBarang->jumlah_sisa = $jumlah_sisa_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = galang_barang_user_for_organisasi::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = galang_barang::all()->where('status','!=','success');
+        $dataNewBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = galang_barang_organisasi::all()->where('status','!=','success');
+        $dataNewBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','!=','success');
+
+        $dataBarang = galang_barang::all()->where('status','=','success');
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','=','success');
+        $dataBarangOrganisasi = galang_barang_organisasi::all()->where('status','=','success');
+        $dataBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-penerimaan')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataNewBarangUserToOrganisasi','dataNewBarangOrganisasiToUser','dataBarang','dataBarangOrganisasi','dataBarangUserToOrganisasi','dataBarangOrganisasiToUser'));
+    }
+
+    public function validasi_barang_user_to_organisasi(Request $request)
+    {
+        $barang=$request->barang;
+        $id=$request->id;
+
+        $id_campaign_user = DB::table('galang_barang_organisasi_for_users')
+                    ->where('id', '=', $id)
+                    ->sum('id_campaign_organisasi');
+
+        $jumlah = DB::table('galang_barang_organisasi_for_users')
+                    ->where('id','=',$id)
+                    ->sum('jumlah');
+
+        $jumlah_sementara = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('jumlah_sementara');
+
+        $jumlah_sementara_sekarang = $jumlah_sementara + $jumlah;
+
+        $idUserBarang = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$barang)
+                    ->sum('id');
+
+        $dataBarang = campign_organisasi_barang::find($idUserBarang);
+        $dataBarang->jumlah_sementara = $jumlah_sementara_sekarang;
+        $dataBarang->save();
+        
+        $data = galang_barang_organisasi_for_user::find($id);
+        $data->status = 'success';
+        $data->save();
+
+        $dataNewBarang = galang_barang::all()->where('status','!=','success');
+        $dataNewBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = galang_barang_organisasi::all()->where('status','!=','success');
+        $dataNewBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','!=','success');
+
+        $dataBarang = galang_barang::all()->where('status','=','success');
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('status','=','success');
+        $dataBarangOrganisasi = galang_barang_organisasi::all()->where('status','=','success');
+        $dataBarangUserToOrganisasi = galang_barang_organisasi_for_user::all()->where('status','=','success');
+
+        return Redirect::to('/daftar-penerimaan')->with(compact('dataNewBarang','dataNewBarangOrganisasi','dataNewBarangUserToOrganisasi','dataNewBarangOrganisasiToUser','dataBarang','dataBarangOrganisasi','dataBarangUserToOrganisasi','dataBarangOrganisasiToUser'));
     }
 
     /**

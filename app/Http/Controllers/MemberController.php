@@ -12,6 +12,8 @@ use App\campaign_user;
 use App\dompetKebaikan;
 use App\galang_dana;
 use App\galang_dana_organisasi_forUser;
+use App\galang_barang_user_for_organisasi;
+use App\galang_barang;
 
 
 class MemberController extends Controller
@@ -60,6 +62,15 @@ class MemberController extends Controller
         $dataDonasi = galang_dana::all()->where('id_user','=',$idUser);
         $dataDonasiOrganisasi = galang_dana_organisasi_forUser::all()->where('id_user','=',$idUser);
         return view('viewProfileUser.profilDonasi',compact('dataDonasi','dataDonasiOrganisasi'));
+    }
+
+    public function showDonasiBarang()
+    {
+        $idUser = Auth::user()->id;
+        $dataBarang = galang_barang::all()->where('id_user','=',$idUser);
+        $dataBarangOrganisasiToUser = galang_barang_user_for_organisasi::all()->where('id_user','=',$idUser);
+
+        return view('viewProfileUser.profilDonasiBarang',compact('dataBarang','dataBarangOrganisasiToUser'));
     }
 /**
      * Show the form for creating a new resource.

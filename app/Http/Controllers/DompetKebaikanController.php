@@ -11,6 +11,8 @@ use App\pencairan_dana_user;
 use App\rek_user;
 use DB;
 use App\campaign_organisasi;
+use App\pencairan_barang_user;
+use Redirect;
 
 class DompetKebaikanController extends Controller
 {
@@ -76,6 +78,49 @@ class DompetKebaikanController extends Controller
         return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
     }
 
+    public function storePencairanBarang(Request $request)
+    {
+        $idUser = Auth::user()->id;
+        $id_campaign=$request->id_campaign;
+        $nama_barang = $request->nama_barang;
+
+        $idUserBarang = DB::table('campaign_user_barangs')
+                    ->where('nama_barang','=',$nama_barang)
+                    ->sum('id');
+
+        $data = new pencairan_barang_user();
+        $data->id_user=$idUser;
+        $data->id_campaign_user_barang=$idUserBarang;
+        $data->alamat=$request->alamat;
+        $data->jumlah = $request->jumlah_pencairan_barang;
+        $data->status='onGoing';
+        $data->save();
+
+        $dataCampaign = campaign_user::find($id_campaign);
+        $jumlahDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign)->count();
+        $dataDonasiBarang = campaign_user_barang::all()->where('id_campaign_user','=',$id_campaign);
+        $dataPencairan = pencairan_dana_user::all()->where('id_campaign_user','=',$id_campaign);
+        $sisaDana = DB::table('campaign_users')
+                    ->where('id','=',$id_campaign)
+                    ->sum('sisa_dana');
+        
+        $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                    ->where('id', '=', $id_campaign)
+                    ->sum('id');
+
+        $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id');
+
+        $dataPencairanBarang = DB::table('pencairan_barang_users')
+                            ->join('campaign_user_barangs','pencairan_barang_users.id_campaign_user_barang','=','campaign_user_barangs.id')
+                            ->where('id_campaign_user','=',$id_pencairan_user_barang)
+                            ->get();
+
+        // return Redirect::to('/dompet-kebaikan-user/{{$id_campaign}}')->with(compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
+        return view('detailCampaignSaya', compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
+    }
+
     public function store(Request $request)
     {
         $idUser = Auth::user()->id;
@@ -104,7 +149,21 @@ class DompetKebaikanController extends Controller
         $sisaDana = DB::table('campaign_users')
                     ->where('id','=',$id_campaign)
                     ->sum('sisa_dana');
-        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
+        
+        $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                    ->where('id', '=', $id_campaign)
+                    ->sum('id');
+
+        $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id');
+
+        $dataPencairanBarang = DB::table('pencairan_barang_users')
+                            ->join('campaign_user_barangs','pencairan_barang_users.id_campaign_user_barang','=','campaign_user_barangs.id')
+                            ->where('id_campaign_user','=',$id_pencairan_user_barang)
+                            ->get();
+
+        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
         // return $dataPencairan;
     }
 

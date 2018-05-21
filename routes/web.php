@@ -12,11 +12,15 @@ Route::resource('/rek-user','RekUserController')->middleware('auth:web');
 
 Route::get('/donasi-saya','memberController@create')->middleware('auth:web');
 
+Route::get('/donasi-barang-saya','memberController@showDonasiBarang')->middleware('auth:web');
+Route::get('/donasi-barang-organisasi-saya','OrganisasiController@showDonasiBarang')->middleware('auth:organitation');
+
 Route::get('/myprofile','memberController@edit2')->name('akunsaya')->middleware('auth:web');
 
 Route::resource('/dompet-kebaikan-user', 'DompetKebaikanController')->middleware('auth:web');
 
 Route::post('/dompet-kebaikan-user/pencairan_dana_campaign', 'DompetKebaikanController@storePencairan')->name('pencairan_dana_campaign')->middleware('auth:web');
+Route::post('/dompet-kebaikan-user/pencairan_barang_campaign', 'DompetKebaikanController@storePencairanBarang')->name('pencairan_barang_campaign')->middleware('auth:web');
 Route::get('/dompet-kebaikan-user-pencairan','DompetKebaikanController@showFormPencairan')->name('pencairan_dana')->middleware('auth:web');
 //-------------------------------------ROUTE Public---------------------------------//
 //----------------------------------------------------------------------------------//
@@ -69,8 +73,6 @@ Route::group(['prefix'=>'admin'],function() {
 	Route::get('/register','adminController@create')->name('admin.create');
 	Route::post('/register/post','adminController@store')->name('admin.register.post');
 
-	
-
 });
 
 Route::delete('/user/destroy/{$id}','adminController@destroyUser')->name('admin.user.delete');
@@ -102,10 +104,16 @@ Route::get('/validasi_transfer_organisasi_to_user/{id}','adminController@validas
 Route::get('/validasi_transfer_organisasi/{id}','adminController@validasi_transfer_organisasi')->name('validasi_transfer_organisasi');
 Route::get('/validasi-transfer-user-to-organisasi/{id}','adminController@validasi_transfer_user_for_organisasi')->name('validasi_transfer_user_for_organisasi');
 
-
 Route::get('/validasi_pencairan_dana_user/{id}','adminController@validasi_pencairan_dana_user')->name('validasi_pencairan_dana_user');
 
 Route::get('/validasi_pencairan_dana_organisasi/{id}','adminOrganisasi@validasi_pencairan_dana_organisasi')->name('validasi_pencairan_dana_organisasi');
+
+Route::post('/validasi-barang-user','adminOrganisasi@validasi_barang')->name('validasi_barang');
+Route::post('/validasi_barang_organisasi','adminOrganisasi@validasi_barang_organisasi')->name('validasi_barang_organisasi');
+Route::post('/validasi_barang_organisasi_to_user','adminOrganisasi@validasi_barang_organisasi_to_user')->name('validasi_barang_organisasi_to_user');
+Route::post('/validasi_barang_user_to_organisasi','adminOrganisasi@validasi_barang_user_to_organisasi')->name('validasi_barang_user_to_organisasi');
+Route::post('/validasi_pengiriman_barang','adminOrganisasi@validasi_pengiriman_barang')->name('validasi_pengiriman_barang');
+Route::post('/validasi_pengiriman_barang_organisasi','adminOrganisasi@validasi_pengiriman_barang_organisasi')->name('validasi_pengiriman_barang_organisasi');
 
 Route::resource('/admin-organisasi', 'adminOrganisasi');
 Route::get('/daftar-new-campaign-organisasi','adminOrganisasi@showDaftarNewCampaign')->name('daftar-new-campaign-group');
@@ -142,6 +150,7 @@ Route::get('/myprofille-organisasi','OrganisasiController@edit2')->name('akun.or
 Route::resource('/dompet-kebaikan-organisasi', 'DompetKebaikanOrganisasiController')->middleware('auth:organitation');
 Route::get('/dompet-kebaikan-organisasi-pencairan','DompetKebaikanOrganisasiController@showFormPencairan')->name('pencairan_dana_organisasi')->middleware('auth:organitation');
 Route::post('/dompet-kebaikan-organisasi/pencairan_dana_campaign', 'DompetKebaikanOrganisasiController@storePencairan')->name('pencairan_dana_campaign_organisasi')->middleware('auth:organitation');
+Route::post('/dompet-kebaikan-organisasi/pencairan_barang_campaign', 'DompetKebaikanOrganisasiController@storePencairanBarang')->name('pencairan_barang_campaign_organisasi')->middleware('auth:organitation');
 
 //-------------------------------------ROUTE Lain----------------------------------------//
 //---------------------------------------------------------------------------------------//

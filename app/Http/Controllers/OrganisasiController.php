@@ -11,6 +11,10 @@ use App\campaign_organisasi;
 use App\galang_dana_organisasi;
 use App\dompet_kebaikan_organisasi;
 use App\galang_dana_user_forOrganisasi;
+use App\galang_barang;
+use App\galang_barang_user_for_organisasi;
+use App\galang_barang_organisasi_for_user;
+use App\galang_barang_organisasi;
 
 class OrganisasiController extends Controller
 {
@@ -52,6 +56,15 @@ class OrganisasiController extends Controller
         $dataDonasiOrganisasi = galang_dana_user_forOrganisasi::all()->where('id_organisasi','=',$idOrganisasi);
         // return $dataDonasiOrganisasi;
         return view('viewProfileOrganisasi.profilDonasi',compact('dataDonasi','dataDonasiOrganisasi'));
+    }
+
+    public function showDonasiBarang()
+    {
+        $idUser = Auth::guard('organitation')->user()->id;
+        $dataBarang = galang_barang_organisasi::all()->where('id_organisasi','=',$idUser);
+        $dataBarangOrganisasiToUser = galang_barang_organisasi_for_user::all()->where('id_organisasi','=',$idUser);
+
+        return view('viewProfileOrganisasi.profilDonasiBarang',compact('dataBarang','dataBarangOrganisasiToUser'));
     }
 
     public function showCampaignOrganisasi()

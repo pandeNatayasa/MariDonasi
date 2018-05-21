@@ -21,6 +21,8 @@ use App\galang_barang;
 use App\galang_barang_organisasi;
 use App\galang_barang_user_for_organisasi;
 use App\galang_barang_organisasi_for_user;
+use App\pencairan_barang_user;
+use App\pencairan_barang_organisasi;
 
 class adminController extends Controller
 {
@@ -98,8 +100,14 @@ class adminController extends Controller
     }
 
     public function showDaftarPengiriman(){
+        //return view('viewAdmin.daftarPengiriman');
+        $dataNewBarang = pencairan_barang_user::all()->where('status','!=','success');
+        $dataNewBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','!=','success');
 
-        return view('viewAdmin.daftarPengiriman');
+        $dataBarang = pencairan_barang_user::all()->where('status','=','success');
+        $dataBarangOrganisasi = pencairan_barang_organisasi::all()->where('status','=','success');
+
+        return view('viewAdmin.daftarPengiriman',compact('dataNewBarang','dataNewBarangOrganisasi','dataBarang','dataBarangOrganisasi'));
     }
 
     public function showDaftarPenerimaan(){

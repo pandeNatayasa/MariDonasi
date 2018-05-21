@@ -34,37 +34,64 @@
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
                   <th>Tanggal Pengiriman</th>
-                  <th>Detail</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-              	<tr>
-              		<td>1</td>
-              		<td>Bagus</td>
-              		<td>Bantu Andi</td>
-                  <td></td>
-                  <td></td>
-              		<td></td>
-              		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
-              		<td>
-              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
-              		</td>
-              	</tr>
-              	<tr>
-              		<td>2</td>
-                  <td>Aagus</td>
-                  <td>Bantu Anto</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
-                  <td>
-                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                  </td>
-              	</tr>
+                  <?php $no=0;?>
+                  @foreach($dataNewBarang as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->User->name}}</td>
+                    <td>{{$data->campaign_user_barang->campaign_user->judul}}</td>
+                    <td>{{$data->campaign_user_barang->nama_barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                        <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                          <form action="{{route('validasi_pengiriman_barang')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                          {{csrf_field()}}
+                            <input type="hidden" name="barang" value="{{$data->barang}}">
+                            <input type="hidden" name="id" value="{{$data->id}}">
+                            <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                          </form>
+                        </div>
+                        <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                          <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  @endforeach
+                  @foreach($dataNewBarangOrganisasi as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->organisasi->name}}</td>
+                    <td>{{$data->campign_organisasi_barang->campaign_organisasi->judul}}</td>
+                    <td>{{$data->campign_organisasi_barang->nama_barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      <div class="row">
+                        <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                        <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                          <form action="{{route('validasi_pengiriman_barang_organisasi')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                          {{csrf_field()}}
+                            <input type="hidden" name="barang" value="{{$data->barang}}">
+                            <input type="hidden" name="id" value="{{$data->id}}">
+                            <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                          </form>
+                        </div>
+                        <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                          <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  @endforeach
+              	
               </tbody>
             </table>
           </div>
@@ -89,7 +116,7 @@
           <i class="fa fa-table"></i> Data Pengiriman Barang</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="data" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped" id="dataBarang" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -98,37 +125,38 @@
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
                   <th>Tanggal Pengiriman</th>
-                  <th>Detail</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Bagus</td>
-                  <td>Bantu Andi</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
-                  <td>
-                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Aagus</td>
-                  <td>Bantu Anto</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button class="btn btn-info "><i class="fa fa-eye"></i></button></td>
-                  <td>
-                    <button class="btn btn-primary "><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger "><i class="fa fa-trash"></i></button>
-                  </td>
-                </tr>
+                  <?php $no=0;?>
+                  @foreach($dataBarang as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->User->name}}</td>
+                    <td>{{$data->campaign_user_barang->campaign_user->judul}}</td>
+                    <td>{{$data->campaign_user_barang->nama_barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      {{$data->status}}
+                    </td>
+                  </tr>
+                  @endforeach
+                  @foreach($dataBarangOrganisasi as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->organisasi->name}}</td>
+                    <td>{{$data->campign_organisasi_barang->campaign_organisasi->judul}}</td>
+                    <td>{{$data->campign_organisasi_barang->nama_barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      {{$data->status}}
+                    </td>
+                  </tr>
+                  @endforeach
+                
               </tbody>
             </table>
           </div>

@@ -106,7 +106,7 @@
         <div class=" container">
           <div class=" wow fadeInUp" data-wow-duration="600ms" data-wow-delay="250ms" style="padding-top: 40px;">
             <div class="card-header">
-              <i class="fa fa-table"></i> Data Riwatyat Pencairan
+              <i class="fa fa-table"></i> Data Riwatyat Pencairan Dana
             </div>
             <div class="card-body" style="padding-bottom: 20px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
               <div class="table-responsive" style="margin-top: 30px;">
@@ -126,6 +126,36 @@
                       <td>{{$i+1}}</td>
                       <td>{{$data->rek_user->no_rek}}</td>
                       <td>Rp. {{number_format($data->nominal)}}</td>
+                      <td>{{$data->created_at}}</td>
+                      <td>{{$data->status}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class=" wow fadeInUp" data-wow-duration="600ms" data-wow-delay="250ms" style="padding-top: 40px;">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Data Riwatyat Pencairan Barang
+            </div>
+            <div class="card-body" style="padding-bottom: 20px;  border-bottom: 2px solid #5b9bd1; margin-bottom: -2px;">
+              <div class="table-responsive" style="margin-top: 30px;">
+                <table class="table table-bordered table-striped table-hover display" id="table_pencairan_barang">
+                  <thead style="background-color: black;">
+                    <tr>
+                      <th style="color: #fff;">No</th>
+                      <th style="color: #fff;">Nama Barang</th>
+                      <th style="color: #fff;">Jumlah</th>
+                      <th style="color: #fff;">Tanggal Pencairan</th>
+                      <th style="color: #fff;">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($dataPencairanBarang as $i => $data)
+                    <tr>
+                      <td>{{$i+1}}</td>
+                      <td>{{$data->nama_barang}}</td>
+                      <td>{{$data->jumlah}}</td>
                       <td>{{$data->created_at}}</td>
                       <td>{{$data->status}}</td>
                     </tr>
@@ -196,6 +226,7 @@
                   <th style="color: #fff;">Nama Barang</th>
                   <th style="color: #fff;">Target Jumlah</th>
                   <th style="color: #fff;">Jumlah terkumpul</th>
+                  <th style="color: #fff;">Sisa Barang</th>
                   <th style="color: #fff;">Satuan</th>
                 </tr>
               </thead>
@@ -207,6 +238,7 @@
                   <td>{{$data->nama_barang}}</td>
                   <td>{{$data->target_jumlah}}</td>
                   <td>{{$data->jumlah_sementara}}</td>
+                  <td>{{$data->jumlah_sisa}}</td>
                   <td>{{$data->satuan}}</td>
                 </tr>
                 @endforeach                
@@ -302,7 +334,64 @@
           </div>
         <!-- End of modal tambah pencairan dana -->
       @if($jumlahDonasiBarang != '0' )
-        <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 70px 10px 70px;" class="btn btn-info"><center>Pencairang Barang</center> </a>
+        <!-- <a href="{{route('galangDana.show',$id_campaign)}}" style="margin-top: 20px; padding: 10px 70px 10px 70px;" class="btn btn-info"><center></center> </a> -->
+        <button style="margin-top: 20px; padding: 10px 70px 10px 70px;" class="btn btn-info" data-toggle="modal"  name="pencairanDana" data-target="#modal-form_barang{{$data->id}}" data-toggle="tooltip" data-placement="right" title="Pengajuan Pencairan Dana"><center>Pencairang Barang</center> </button>
+        <!-- Modal Tambah Pencairan Barang-->
+          <div class="modal fade" id="modal-form_barang{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahDataLabel">Pengajuan Pencairan Dana</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!-- method="post" action="{{route('campaign_user_barang.store')}}" -->
+                  <form method="POST" enctype="multipart/form-data"  action="{{route('pencairan_barang_campaign')}}" >
+                  {{csrf_field()}}
+                      <div class="row col-md-12">
+                        <p style="margin-bottom: 0px; padding-left: 15px;">Pencairan barang tidak boleh melebihi sisa barang</p>
+                      </div>
+                    <div class="modal-body">
+                      <div class="form-group" style="padding-top: 10px;">
+                       <div class="row">
+                         <label class="control-label col-md-3">Nama Barang</label>
+                         <div class="col-md-9">
+                             <select name="nama_barang" class="form-control" required="required">
+                             <option value="" disabled selected>nama Barang</option>
+                             @foreach($dataDonasiBarang as $data)
+                               <option value="{{$data->nama_barang}}"> {{$data->nama_barang}}</option>
+                               
+                             @endforeach 
+                             <input type="hidden" name="id" value="{{$data->id}}">      
+                             </select>
+                         </div>
+                       </div> 
+                       </div>
+                      <div class="row">
+                        <label class="control-label col-md-4">Jumlah Pencairan Barang</label>
+                        <div class="col-md-8">
+                          <input class="form-control" placeholder="Jumlah Pencairan Barang" name="jumlah_pencairan_barang" type="text" required ">
+                          <input type="hidden" name="id_campaign" value="{{$id_campaign}}">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <label class="control-label col-md-4">Alamat</label>
+                        <div class="col-md-8">
+                          <input class="form-control" placeholder="Alamat penerima" name="alamat" type="text" required >
+                        </div>
+                      </div>                      
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <input class="btn btn-primary" name="tambahPencairanDana" value="Submit" type="submit" id="tambahBuktiTransfer">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <!-- End of modal tambah pencairan barang -->
       @endif
       
     </div>
@@ -415,6 +504,11 @@
     $(document).ready( function () {
       $('#table_pencairan').DataTable();
     } );
+
+    $(document).ready( function () {
+      $('#table_pencairan_barang').DataTable();
+    } );
+
 
   </script>
 </body>

@@ -10,6 +10,7 @@ use DB;
 use App\campign_organisasi_barang;
 use App\pencairan_dana_organisasi;
 use App\rek_organisasi;
+use App\pencairan_barang_organisasi;
 
 class DompetKebaikanOrganisasiController extends Controller
 {
@@ -95,6 +96,49 @@ class DompetKebaikanOrganisasiController extends Controller
         
     }
 
+    public function storePencairanBarang(Request $request)
+    {
+        $idUser = Auth::guard('organitation')->user()->id;
+        $id_campaign=$request->id_campaign;
+        $nama_barang = $request->nama_barang;
+
+        $idUserBarang = DB::table('campign_organisasi_barangs')
+                    ->where('nama_barang','=',$nama_barang)
+                    ->sum('id');
+
+        $data = new pencairan_barang_organisasi();
+        $data->id_organisasi=$idUser;
+        $data->id_campaign_organisasi_barang=$idUserBarang;
+        $data->alamat=$request->alamat;
+        $data->jumlah = $request->jumlah_pencairan_barang;
+        $data->status='onGoing';
+        $data->save();
+
+        $dataCampaign = campaign_organisasi::find($id_campaign);
+        $jumlahDonasiBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign)->count();
+        $dataDonasiBarang = campign_organisasi_barang::all()->where('id_campaign_organisasi','=',$id_campaign);
+        $dataPencairan = pencairan_dana_organisasi::all()->where('id_campaign_organisasi','=',$id_campaign);
+        $sisaDana = DB::table('campaign_organisasis')
+                    ->where('id','=',$id_campaign)
+                    ->sum('sisa_dana');
+        
+        $id_campaign_user_barang= DB::table('campign_organisasi_barangs')
+                    ->where('id', '=', $id_campaign)
+                    ->sum('id');
+
+        $id_pencairan_user_barang = DB::table('pencairan_barang_organisasis')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id');
+
+        $dataPencairanBarang = DB::table('pencairan_barang_organisasis')
+                            ->join('campign_organisasi_barangs','pencairan_barang_organisasis.id_campaign_organisasi_barang','=','campign_organisasi_barangs.id')
+                            ->where('id_campaign_organisasi','=',$id_pencairan_user_barang)
+                            ->get();
+
+        // return Redirect::to('/dompet-kebaikan-user/{{$id_campaign}}')->with(compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
+        return view('detailCampaignOrganisasiSaya', compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
+    }
+
     public function store(Request $request)
     {
         $idOrganisasi = Auth::guard('organitation')->user()->id;
@@ -123,7 +167,21 @@ class DompetKebaikanOrganisasiController extends Controller
         $sisaDana = DB::table('campaign_organisasis')
                     ->where('id','=',$id_campaign)
                     ->sum('sisa_dana');
-        return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
+
+        $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                    ->where('id', '=', $id_campaign)
+                    ->sum('id');
+
+        $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id');
+
+        $dataPencairanBarang = DB::table('pencairan_barang_organisasis')
+                            ->join('campign_organisasi_barangs','pencairan_barang_organisasis.id_campaign_organisasi_barang','=','campign_organisasi_barangs.id')
+                            ->where('id_campaign_organisasi','=',$id_pencairan_user_barang)
+                            ->get();
+
+        return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
     }
 
     /**

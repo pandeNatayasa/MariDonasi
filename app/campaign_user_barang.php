@@ -11,4 +11,8 @@ class campaign_user_barang extends Model
     public function campaign_user(){
     	return $this->belongsTo('App\campaign_user','id_campaign_user');
     }
+
+    public function pencairan_barang_user(){
+        return $this->hashMany('App\pencairan_barang_user');
+    }
 }

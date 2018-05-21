@@ -34,7 +34,6 @@
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
                   <th>Tanggal Pengiriman</th>
-                  <th>Detail</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -48,10 +47,21 @@
                   <td>{{$data->barang}}</td>
                   <td>{{$data->jumlah}}</td>
               		<td>{{$data->created_at}}</td>
-              		<td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
               		<td>
-              			<button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <div class="row">
+                      <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <form action="{{route('validasi_barang')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                        {{csrf_field()}}
+                          <input type="hidden" name="barang" value="{{$data->barang}}">
+                          <input type="hidden" name="id" value="{{$data->id}}">
+                          <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                        </form>
+                      </div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                      </div>
+                    </div>
               		</td>
               	</tr>
                 @endforeach
@@ -63,10 +73,21 @@
                   <td>{{$data->barang}}</td>
                   <td>{{$data->jumlah}}</td>
                   <td>{{$data->created_at}}</td>
-                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                   <td>
-                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <div class="row">
+                      <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <form action="{{route('validasi_barang_organisasi')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                        {{csrf_field()}}
+                          <input type="hidden" name="barang" value="{{$data->barang}}">
+                          <input type="hidden" name="id" value="{{$data->id}}">
+                          <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                        </form>
+                      </div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
@@ -78,10 +99,21 @@
                   <td>{{$data->barang}}</td>
                   <td>{{$data->jumlah}}</td>
                   <td>{{$data->created_at}}</td>
-                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                   <td>
-                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <div class="row">
+                      <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <form action="{{route('validasi_barang_organisasi_to_user')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                        {{csrf_field()}}
+                          <input type="hidden" name="barang" value="{{$data->barang}}">
+                          <input type="hidden" name="id" value="{{$data->id}}">
+                          <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                        </form>
+                      </div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
@@ -93,14 +125,24 @@
                   <td>{{$data->barang}}</td>
                   <td>{{$data->jumlah}}</td>
                   <td>{{$data->created_at}}</td>
-                  <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                   <td>
-                    <button class="btn btn-primary " data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                    <div class="row">
+                      <div class="col-sm-1" style="padding: 0px; margin:0px;"></div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <form action="{{route('validasi_barang_user_to_organisasi')}}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8" style="padding: 0px; margin:0px;">
+                        {{csrf_field()}}
+                          <input type="hidden" name="barang" value="{{$data->barang}}">
+                          <input type="hidden" name="id" value="{{$data->id}}">
+                          <button class="btn btn-primary " type="submit" data-toggle="tooltip" data-placement="right" title="Validasi"><i class="fa fa-check"></i></button>
+                        </form>
+                      </div>
+                      <div class="col-sm-5" style="padding: 0px; margin:0px;">
+                        <button class="btn btn-danger " data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></button>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
-              	
               </tbody>
             </table>
           </div>
@@ -134,7 +176,6 @@
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
                   <th>Tanggal Pengiriman</th>
-                  <th>Detail</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -148,7 +189,6 @@
                     <td>{{$data->barang}}</td>
                     <td>{{$data->jumlah}}</td>
                     <td>{{$data->created_at}}</td>
-                    <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                     <td>
                       {{$data->status}}
                     </td>
@@ -162,7 +202,6 @@
                     <td>{{$data->barang}}</td>
                     <td>{{$data->jumlah}}</td>
                     <td>{{$data->created_at}}</td>
-                    <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                     <td>
                       {{$data->status}}
                     </td>
@@ -176,7 +215,6 @@
                     <td>{{$data->barang}}</td>
                     <td>{{$data->jumlah}}</td>
                     <td>{{$data->created_at}}</td>
-                    <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                     <td>
                       {{$data->status}}
                     </td>
@@ -189,8 +227,6 @@
                     <td>{{$data->campaign_organisasi->judul}}</td>
                     <td>{{$data->barang}}</td>
                     <td>{{$data->jumlah}}</td>
-                    <td>{{$data->created_at}}</td>
-                    <td><button class="btn btn-info " data-toggle="tooltip" data-placement="right" title="View Detail"><i class="fa fa-eye"></i></button></td>
                     <td>
                       {{$data->status}}
                     </td>

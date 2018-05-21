@@ -66,23 +66,23 @@
               <i class="glyphicon glyphicon-home"></i>
               Overview </a>
             </li>
-            <li class="active">
+            <li>
               <a href="{{route('campaignSaya.index')}}">
               <i class="glyphicon glyphicon-user"></i>
               Campaign Saya </a>
             </li>
-            <li >
+            <li class="">
               <a href="{{url('/donasi-saya')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Saya </a>
             </li>
-            <li >
+            <li class="active">
               <a href="{{url('/donasi-barang-saya')}}">
               <i class="glyphicon glyphicon-user"></i>
               Donasi Barang Saya </a>
             </li>
             <li>
-              <a href="route('akunsaya')">
+              <a href="{{route('akunsaya')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>
             </li>
@@ -112,72 +112,51 @@
     </div>
     <!-- bagian kontent -->
     <div class="col-md-9">
-      <div class="profile-header-campaignSaya">
-        <strong>Pilih Salah Satu Campaign Anda</strong> 
+      <div class="profile-header">
+        <strong>Donasi Barang Saya</strong> 
       </div>
-      <div class="row">
-        @foreach($dataCampaignSaya as $data)
-        <div class="col-md-4">
-          <div class="daftar-campaign">
-            <div class="view-cover-campaign">
-              <img style="width: 100%; height: 190px;" src="{{$data->pic_cover_campaign}}" class="img-responsive" alt="">
-            </div>
-            <div style="padding : 0px 10px 10px 10px;">
-              <div class="judul-campaign" style="padding-bottom: 2px;">
-                <div class="row" >
-                  <div class="col-sm-12" style="margin-bottom: 2px;">
-                    {{$data->judul}}
-                  </div>                  
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <p style="color: black; float: left; margin-bottom: 2px;">{{$data->status}}</p>
-                  </div>
-                  <div class="col-sm-6">
-                    <a href="{{route('dompet-kebaikan-user.show',$data->id)}}" style="float: right;" >Detail</a>
-                  </div>
-                  
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6 judul-data-campaign">
-                  <p style=" margin-bottom: 0;">Dana Terkumpul</p> 
-                </div>
-                <div class="col-sm-6 judul-data-campaign">
-                  <p style="text-align: right; margin-bottom: 0;">Sisa Hari</p> 
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6 judul-data-campaign-cover">
-                  <p style=" margin-bottom: 0;">Rp. {{number_format($data->dana_sementara)}}</p> 
-                </div>
-                <div class="col-sm-6 judul-data-campaign-cover">
-                  <?php
-                      $dateNow = time();
-                      $end_date = strtotime($data->deadline);
-                      // $interval = date_diff($dateNow,$end_date);
-                      $diff = $end_date - $dateNow;
-                      $interval=floor($diff / (60 * 60 * 24));
-                    ?>
-                  <p style=" text-align: right; margin-bottom: 0;">{{$interval}}</p> 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        <div class="col-md-4">
-          <a href="{{route('campaignUser.index')}}">
-            <div class="daftar-campaign1">
-              <div class="col-sm-12">
-                <i class="fa fa-plus fa-3x"></i>
-              </div>
-              
-              Buat Campaign Anda
-            </div>
-          </a>
-        </div>
+      
+      <div class="table-responsive" style="margin-top: 30px;">
+        <table class="table table-bordered table-striped table-hover display" id="table_donasi">
+          <thead style="background-color: black;">
+            <tr>
+              <th style="color: #fff;">No</th>
+              <th style="color: #fff;">Judul Campaign</th>
+              <th style="color: #fff;">Barang</th>
+              <th style="color: #fff;">Nominal</th>
+              <th style="color: #fff;">Tanggal Donasi</th>
+              <th style="color: #fff;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $no=0;?>
+                  @foreach($dataBarang as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->campaign_user->judul}}</td>
+                    <td>{{$data->barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      {{$data->status}}
+                    </td>
+                  </tr>
+                  @endforeach
+                  @foreach($dataBarangOrganisasiToUser as $data)
+                  <tr>
+                    <td>{{$no=$no+1}}</td>
+                    <td>{{$data->campaign_organisasi->judul}}</td>
+                    <td>{{$data->barang}}</td>
+                    <td>{{$data->jumlah}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>
+                      {{$data->status}}
+                    </td>
+                  </tr>
+                  @endforeach
+        </table>
       </div>
+
       <!-- <div class="profile-content">
          aaaaaaaaaa
       </div> -->

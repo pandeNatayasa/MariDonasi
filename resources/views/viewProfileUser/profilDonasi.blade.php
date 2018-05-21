@@ -77,6 +77,11 @@
               Donasi Saya </a>
             </li>
             <li>
+              <a href="{{url('/donasi-barang-saya')}}">
+              <i class="glyphicon glyphicon-user"></i>
+              Donasi Barang Saya </a>
+            </li>
+            <li>
               <a href="{{route('akunsaya')}}">
               <i class="glyphicon glyphicon-ok"></i>
               Akun Saya </a>

@@ -119,6 +119,7 @@
                       <option value="" disabled selected>nama Barang</option>
                       @foreach($dataDonasiBarang as $data)
                         <option value="{{$data->nama_barang}}">{{$data->nama_barang}}</option>
+                        <input type="hidden" name="id" value="{{$data->id}}">
                       @endforeach       
                       </select>
                   </div>
