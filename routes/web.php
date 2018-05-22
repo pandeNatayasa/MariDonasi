@@ -51,6 +51,7 @@ Route::resource('/campaignOrganisasi','CampaignOrganisasiController')->middlewar
 Route::get('/campaignOrganisasiView','OrganisasiController@showCampaignOrganisasi')->name('campaignView')->middleware('auth:organitation');
 
 Route::resource('/admin-edit-organisasi','adminOrganisasiEdit')->middleware('auth:admin');
+//Route::delete('/admin-edit-organisasi/destroy/{$id}','adminOrganisasiEdit@destroyUser')->name('admin.user.delete');
 
 Route::resource('/galangDanaOrganisasi','GalangDanaOrganisasiController')->middleware('auth:organitation');
 Route::resource('/galangDanaUserToOrganisasi','GalangDanaUserForOrganisasiController')->middleware('auth:organitation');
@@ -75,7 +76,8 @@ Route::group(['prefix'=>'admin'],function() {
 
 });
 
-Route::delete('/user/destroy/{$id}','adminController@destroyUser')->name('admin.user.delete');
+Route::delete('/admin/user/destroy/{$id}','adminOrganisasi@destroyUser')->name('admin.user.delete');
+//Route::delete('/user/destroy/{$id}','adminController@destroyUser')->name('admin.user.delete');
 
 Route::get('/daftar-campaign-admin','adminController@showDaftarCampaign')->name('daftar-campaign');
 Route::get('/daftar-admin','adminController@showDaftarAdmin')->name('daftar-admin');
@@ -154,6 +156,6 @@ Route::post('/dompet-kebaikan-organisasi/pencairan_barang_campaign', 'DompetKeba
 
 //-------------------------------------ROUTE Lain----------------------------------------//
 //---------------------------------------------------------------------------------------//
-Route::post('list','ListController@store');
-Route::get('list','ListController@index');
+// Route::post('list','ListController@store');
+// Route::get('list','ListController@index');
 

@@ -86,4 +86,14 @@ class adminOrganisasiEdit extends Controller
         $dataOrganisasi = organisasi::all()->where('status','=','non-verified');
         return view('viewAdmin.daftarNewOrganisasi',compact('dataOrganisasi'));
     }
+
+    // public function destroyUser($id)
+    // {
+    //     $dataCampaign = User::find($id);
+    //     $dataCampaign->delete();
+
+    //     $dataUser = User::all()->where('status','=','non-verified');
+
+    //     return Redirect::to('/daftar-new-user')->with(compact('dataUser'));
+    // }
 }

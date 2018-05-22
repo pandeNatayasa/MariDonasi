@@ -509,6 +509,5 @@ class adminController extends Controller
     {
         // $data = DB::table('campign_organisasi_barangs')->where('id_campaign_organisasi','=',$id_campaign_organisasi)->delete();
         
-        
     }
 }
