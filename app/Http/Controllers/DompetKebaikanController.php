@@ -75,7 +75,21 @@ class DompetKebaikanController extends Controller
         $sisaDana = DB::table('campaign_users')
                     ->where('id','=',$id_campaign)
                     ->sum('sisa_dana');
-        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
+        $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                    ->where('id', '=', $id_campaign)
+                    ->sum('id');
+
+        $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                    ->where('id', '=', $id_campaign_user_barang)
+                    ->sum('id');
+
+        $dataPencairanBarang = DB::table('pencairan_barang_users')
+                            ->join('campaign_user_barangs','pencairan_barang_users.id_campaign_user_barang','=','campaign_user_barangs.id')
+                            ->where('id_campaign_user','=',$id_pencairan_user_barang)
+                            ->get();
+
+        return view('detailCampaignSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
+        // return $dataPencairan;
     }
 
     public function storePencairanBarang(Request $request)

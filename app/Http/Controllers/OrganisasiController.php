@@ -37,11 +37,25 @@ class OrganisasiController extends Controller
                     ->join('organisasis', 'campaign_organisasis.id_organisasi', '=', 'organisasis.id')
                     ->where('organisasis.id','=',$idOrganisasi)
                     ->sum('nominal');
-                    //->get();
+        
+        $jumlahDonasiDanaSayaToOrganisasi =DB::table('galang_dana_user_for_organisasis')
+                    ->where('id_organisasi','=',$idOrganisasi)
+                    ->count('id');
+        $jumlahDonasiDanaSaya =DB::table('galang_dana_organisasis')
+                    ->where('id_organisasi','=',$idOrganisasi)
+                    ->count('id');
+        $jumlahDonasiBarangSayaToOrganisasi =DB::table('galang_barang_user_for_organisasis')
+                    ->where('id_organisasi','=',$idOrganisasi)
+                    ->count('id');
+        $jumlahDonasiBarangSaya =DB::table('galang_barang_organisasis')
+                    ->where('id_organisasi','=',$idOrganisasi)
+                    ->count('id');
+        $jumlahDonasiSaya = $jumlahDonasiDanaSaya + $jumlahDonasiDanaSayaToOrganisasi + $jumlahDonasiBarangSaya+$jumlahDonasiBarangSayaToOrganisasi;
+
 
         $dataTambahDeposit = dompet_kebaikan_organisasi::all()->where('id_organisasi','=',$idOrganisasi);
 
-        return view('viewProfileOrganisasi.profilOrganisasiOverview',compact('jumlahCampaignDimulai','jumlahDonasiDisalurkan','dataTambahDeposit'));
+        return view('viewProfileOrganisasi.profilOrganisasiOverview',compact('jumlahCampaignDimulai','jumlahDonasiDisalurkan','dataTambahDeposit','jumlahDonasiSaya'));
     }
 
     /**

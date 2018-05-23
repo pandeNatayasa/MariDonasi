@@ -146,7 +146,7 @@
               </div>
               <div class="col-sm-8">
                 <div class="col-sm-12 jumlah">
-                  <strong>0</strong> 
+                  <strong>{{$jumlahDonasiSaya}}</strong> 
                 </div>
                 <div class="col-sm-12 jumlah1">
                   Donasi

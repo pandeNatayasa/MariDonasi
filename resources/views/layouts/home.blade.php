@@ -176,17 +176,17 @@
 
           <div class="col-lg-4 box">
             <h4 class="title"><a href="">Campaign Terdanai</a></h4>
-            <p class="description">274 campaign</p>
+            <p class="description">{{$jumlahCampaignTerdanai}} campaign</p>
           </div>
 
           <div class="col-lg-4 box box-bg">
             <h4 class="title"><a href="">Dana Terkumpul</a></h4>
-            <p class="description">Rp. 16.000.000</p>
+            <p class="description">Rp. {{number_format($jumlahDanaTerkumpul)}}</p>
           </div>
 
           <div class="col-lg-4 box">
             <h4 class="title"><a href="">Partisipan</a></h4>
-            <p class="description">1.364 orang</p>
+            <p class="description">{{number_format($jumlahPartisipan)}} orang</p>
           </div>
 
         </div>
@@ -216,7 +216,7 @@
         <div class="row portfolio-container">
         @yield('content')
           
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
               <figure>
                 <img src="img/portfolio/web3.jpg" class="img-fluid" alt="">
@@ -398,7 +398,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
@@ -424,8 +424,8 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Learn More</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Apa itu MariDonasi ?</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">FAQ</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="{{route('AboutUs')}}">Apa itu MariDonasi ?</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="{{route('FAQ')}}">FAQ</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Syarat dan Ketentuan</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Kebijakan privasi</a></li>
             </ul>

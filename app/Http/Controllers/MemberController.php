@@ -43,12 +43,26 @@ class MemberController extends Controller
                     ->join('users', 'campaign_users.id_user', '=', 'users.id')
                     ->where('users.id','=',$idUser)
                     ->sum('nominal');
-                    //->get();
+
         $jumlahDonasiDisalurkan = $jumlahDonasiDisalurkanUser + $jumlahDonasiDisalurkanOrganisasi;
+
+        $jumlahDonasiDanaSayaToOrganisasi =DB::table('galang_dana_organisasi_for_users')
+                    ->where('id_user','=',$idUser)
+                    ->count('id');
+        $jumlahDonasiDanaSaya =DB::table('galang_danas')
+                    ->where('id_user','=',$idUser)
+                    ->count('id');
+        $jumlahDonasiBarangSayaToOrganisasi =DB::table('galang_barang_organisasi_for_users')
+                    ->where('id_user','=',$idUser)
+                    ->count('id');
+        $jumlahDonasiBarangSaya =DB::table('galang_barangs')
+                    ->where('id_user','=',$idUser)
+                    ->count('id');
+        $jumlahDonasiSaya = $jumlahDonasiDanaSaya + $jumlahDonasiDanaSayaToOrganisasi + $jumlahDonasiBarangSaya+$jumlahDonasiBarangSayaToOrganisasi;
 
         $dataTambahDeposit = dompetKebaikan::all()->where('id_user','=',$idUser);
 
-        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai','dataTambahDeposit','jumlahDonasiDisalurkan'));
+        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai','dataTambahDeposit','jumlahDonasiDisalurkan','jumlahDonasiSaya'));
     }
 
     /**

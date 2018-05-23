@@ -78,7 +78,20 @@ class DompetKebaikanOrganisasiController extends Controller
             $sisaDana = DB::table('campaign_organisasis')
                     ->where('id','=',$id_campaign)
                     ->sum('sisa_dana');
-            return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'));
+            $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                        ->where('id', '=', $id_campaign)
+                        ->sum('id');
+
+            $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                        ->where('id', '=', $id_campaign_user_barang)
+                        ->sum('id');
+
+            $dataPencairanBarang = DB::table('pencairan_barang_organisasis')
+                                ->join('campign_organisasi_barangs','pencairan_barang_organisasis.id_campaign_organisasi_barang','=','campign_organisasi_barangs.id')
+                                ->where('id_campaign_organisasi','=',$id_pencairan_user_barang)
+                                ->get();
+
+            return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
 
         }elseif ($sisaDana < $dana_dicairkan) {
             $dataCampaign = campaign_organisasi::find($id_campaign);
@@ -88,7 +101,20 @@ class DompetKebaikanOrganisasiController extends Controller
             $sisaDana = DB::table('campaign_organisasis')
                     ->where('id','=',$id_campaign)
                     ->sum('sisa_dana');
-            return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana'))->with('error', 'Maaf Jumlah Sisa Dana lebih kecil dari dana yang ingin dicairkan');
+            $id_campaign_user_barang= DB::table('campaign_user_barangs')
+                        ->where('id', '=', $id_campaign)
+                        ->sum('id');
+
+            $id_pencairan_user_barang = DB::table('pencairan_barang_users')
+                        ->where('id', '=', $id_campaign_user_barang)
+                        ->sum('id');
+
+            $dataPencairanBarang = DB::table('pencairan_barang_organisasis')
+                                ->join('campign_organisasi_barangs','pencairan_barang_organisasis.id_campaign_organisasi_barang','=','campign_organisasi_barangs.id')
+                                ->where('id_campaign_organisasi','=',$id_pencairan_user_barang)
+                                ->get();
+
+            return view('detailCampaignOrganisasiSaya',compact('id_campaign','dataCampaign','jumlahDonasiBarang','dataDonasiBarang','dataPencairan','id_campaign','sisaDana','dataPencairanBarang'));
         }
         return "aa";
 

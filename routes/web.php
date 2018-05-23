@@ -26,6 +26,8 @@ Route::get('/dompet-kebaikan-user-pencairan','DompetKebaikanController@showFormP
 //----------------------------------------------------------------------------------//
 Route::get('/','welcome@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/FAQ', 'HomeController@showFAQ')->name('FAQ');
+Route::get('/AboutUs', 'HomeController@showAboutUS')->name('AboutUs');
 Route::resource('/campaignUser','CampaignUserController')->middleware('auth:web');
 Route::resource('/campaign_user_barang','CampaignUserBarangController')->middleware('auth:web');
 
@@ -146,6 +148,8 @@ Route::group(['prefix'=>'organisasi'],function() {
 
 });
 
+Route::get('/FAQ', 'HomeControllerOrganisasi@showFAQ')->name('FAQ');
+Route::get('/AboutUs', 'HomeControllerOrganisasi@showAboutUS')->name('AboutUs');
 Route::resource('/profille-organisasi','OrganisasiController')->middleware('auth:organitation');
 Route::post('/completeAcountOrganisasi', 'OrganisasiController@storeCompleteAcount')->name('completeAcountOrganisasi')->middleware('auth:organitation');
 Route::get('/myprofille-organisasi','OrganisasiController@edit2')->name('akun.organisasi')->middleware('auth:organitation');
