@@ -18,10 +18,14 @@
           <li class="menu-active"><a href="{{url('/home')}}">Home</a></li>
           <li class="menu-has-children"><a href="">ALL Kategori</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
+              <li data-filter="*"><a href="#"> ALL</a></li>
+              <li data-filter=".filter-app active"><a href="#"> Beasiswa & Pendidikan</a></li>
+              <li data-filter=".filter-card"><a href="#">Lingkungan</a></li>
+              <li data-filter=".filter-web"><a href="#">PantiAsuhan</a></li>
+              <li><a href="#">Bencana Alam</a></li>
+              <li><a href="#">Menolong Hewan</a></li>
+              <li><a href="#">Kemanusiaan</a></li>
+              <li><a href="#">Kategori Lain</a></li>
             </ul>
           </li>
           <li><a href="{{route('campaignUser.index')}}">Galang Dana</a></li>

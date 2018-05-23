@@ -139,7 +139,8 @@ class OrganisasiController extends Controller
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
+        // return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
+        return redirect('profille-organisasi');
     }
     public function storeCompleteAcount(Request $request)
     {

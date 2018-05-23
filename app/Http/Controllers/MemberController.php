@@ -201,7 +201,8 @@ class MemberController extends Controller
         if($jumlahCampaignDimulai == 0 ){
             $jumlahCampaignDimulai = 0;
         }
-        return view('viewProfileUser.profilUserOverview',compact('jumlahCampaignDimulai'));
+        
+        return redirect('member');
     }
 
     /**
